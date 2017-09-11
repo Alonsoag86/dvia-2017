@@ -5,6 +5,10 @@ var w = window.innerWidth,
 
 var cx, cy; // center position of canvas
 
+var startColor,
+    endColor,
+    hourColor;
+
 // Radius for hands of the clock
 var hourCirclePos;
 var minCirclePos;
@@ -15,6 +19,9 @@ var minDiameter;
 function setup() {
   createCanvas(w, h);
   stroke(255);
+
+  startColor = color('yellow');
+  endColor = color('blue');
 
   var radius = min(width, height) / 2; // this is the maximum possible radius
   clockDiameter = radius * 1.7; // make slightly smaller than maximum allowed
@@ -51,8 +58,11 @@ function draw() {
     var angle = radians(a);
     var x = cx + cos(angle) * hourCirclePos;
     var y = cy + sin(angle) * hourCirclePos;
+    var colorScale = map ((a + 90) % 360 , 0, 360, 0, 1); //to start color change at top
+    hourColor = lerpColor(startColor, endColor, colorScale);
     strokeWeight(3);
     stroke(80);
+    fill(0);
     ellipse(x, y, hourDiameter, hourDiameter);
     for (var b=0; b < 360; b+= 360/60){
       minCirclePos = hourDiameter / 2;
@@ -60,6 +70,7 @@ function draw() {
       var subx = x + cos(subangle) * minCirclePos;
       var suby = y + sin(subangle) * minCirclePos;
       strokeWeight(.5);
+      fill(hourColor);
       ellipse(subx, suby, minDiameter, minDiameter);
     }
   }
