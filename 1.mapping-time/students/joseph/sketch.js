@@ -4,7 +4,9 @@ var maxSecondsRadius, secondTicks;
 var maxMinutesRadius, minuteTicks;
 var maxHoursRadius, hourTicks;
 
+
 function setup() {
+	console.log(hour())
 	createCanvas(800,600);
 	background(51);
 	ellipseMode(RADIUS);
@@ -25,20 +27,22 @@ function setup() {
 	ellipse(cX,cY, maxMinutesRadius, maxMinutesRadius);
 	ellipse(cX,cY, maxSecondsRadius, maxSecondsRadius);
 
-	//fill circles with time elapsed so far
+	//fill circles with current time
 	mapTicks();
+	console.log(minuteTicks + " " + hourTicks);
+
 	for(var i = maxSecondsRadius; i <= minuteTicks; i++){
-		stroke(i, 90, 90);
+		stroke(10*i, 90, 90);
 		ellipse(cX, cY, i, i);
 	}
 
 	for(var i = 0; i <= secondTicks; i++){
-		stroke(90, i, 90);
+		stroke(90, 10*i, 90);
 		ellipse(cX, cY, i, i);
 	}
 
 	for(var i = maxMinutesRadius; i <= hourTicks; i++){
-		stroke(90, 90, i);
+		stroke(90, 90, 10*i);
 		ellipse(cX, cY, i, i);
 	}
 
@@ -48,26 +52,51 @@ function setup() {
 function draw() {
 	//draw second ticks
 	mapTicks();
-    drawSecCircles(secondTicks);
-    console.log(secondTicks);
+    drawSecCircles(secondTicks, maxSecondsRadius);
+    drawMinCircles(minuteTicks, maxMinutesRadius);
+    drawHrCircles(hourTicks, maxHoursRadius);
+   //  console.log(secondTicks);
+  	// console.log(maxSecondsRadius);
+
+	function drawSecCircles(r, maxRad){
+		stroke(90, 2*r, 90);
+		ellipse(cX, cY, r, r);
+		console.log(r);
+		if(r == 0){
+			fill(51);
+			ellipse(cX, cY, maxRad, maxRad)
+			noFill();
+		}
+	}
+
+	function drawMinCircles(r, maxRad){
+		stroke(2*r, 90, 90);
+		ellipse(cX, cY, r, r);
+		if(minute() == 0){
+			fill(51);
+			ellipse(cX, cY, maxRad, maxRad)
+			noFill();
+		}
+	}
+
+	function drawHrCircles(r, maxRad){
+		stroke(90, 90, 2*r);
+		ellipse(cX, cY, r, r);
+		if(hour() == 0){
+			fill(51);
+			ellipse(cX, cY, maxRad, maxRad)
+			noFill();
+		}
+	}
 }
 
-function drawSecCircles(r){
-	var h = random(0,255);
-	from = color(218, 165, 32);
-	to = color(72, 61, 139);
-	interA = lerpColor(from, to, .33);
-	interB = lerpColor(from, to, .66);
-	stroke(h, 90, 90);
-	ellipse(cX, cY, r, r);
-	h = (h + 1) % 255;
-	
-}
+
 
 function mapTicks(){
 	secondTicks = map(second(), 0, 60, 0, maxSecondsRadius);
-	minuteTicks = map(second(), 0, 60, maxSecondsRadius, maxMinutesRadius);
-	hourTicks = map(second(), 0, 60, maxMinutesRadius, maxHoursRadius);
+	minuteTicks = map(minute(), 0, 60, maxSecondsRadius, maxMinutesRadius);
+	hourTicks = map(hour(), 0, 24, maxMinutesRadius, maxHoursRadius);
 
 }
+
 
