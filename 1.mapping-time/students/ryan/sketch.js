@@ -32,8 +32,8 @@ function draw() {
   var yellow = color(255,255,0);
   var blue = color(0,0,255);
 
-  var h1 = map(hr,0,5,0,1);
-  var h2 = map(hr,5,11,0,1);
+  var h1 = map(hr,0,6,0,1);
+  var h2 = map(hr,6,11,0,1);
 
   var framecolor1 = lerpColor(yellow,red,h1);
   if (hour() < 12) {
@@ -53,9 +53,9 @@ function draw() {
 
   //frame color legend
   strokeWeight(0);
-  for (i=0;i<5;i++) {
+  for (i=0;i<6;i++) {
     function legendh(i) {
-      return map(i,0,5,0,1);
+      return map(i,0,6,0,1);
     }
     var legendcolor = lerpColor(yellow,red,legendh(i));
     if (hour() < 12) {
@@ -64,9 +64,9 @@ function draw() {
     fill(legendcolor);
     rect((250)+(25*i),425,25,25);
   }
-  for (i=5;i<11;i++) {
+  for (i=6;i<12;i++) {
     function legendh(i) {
-      return map(i,5,11,0,1);
+      return map(i,6,11,0,1);
     }
     var legendcolor = lerpColor(red,blue,legendh(i));
     if (hour() < 12) {
