@@ -47,35 +47,30 @@ function setup() {
 function draw() {
   background(0);
 
-  // Draw the clock background
-  fill(0);
-  noStroke();
-  ellipse(cx, cy, clockDiameter, clockDiameter);
-
   // Angles for sin() and cos() start at 3 o'clock;
   // subtract HALF_PI to make them start at the top
-  // var s = map(second(), 0, 60, 0, TWO_PI) - HALF_PI;
   var m = map(minute(), 0, 60, 0, TWO_PI) - HALF_PI;
   var h = map(hour(), 0, 24, 0, TWO_PI) - HALF_PI;
 
   // Draw the minute ticks
     beginShape(POINTS);
     var circleNumber = 0;
-  for (var a = 0; a < 360; a+= 360/24) {
+  for (var a = 0; a <360; a+= 360/24) {
     var angle = radians(a) - HALF_PI;
     var x = cx + cos(angle) * hourCirclePos;
-    var y = cy + sin(angle) * hourCirclePos;
+    var y = cy - sin(angle) * hourCirclePos; // subtract sine to get counterclockwise
     strokeWeight(3);
     stroke(80);
     fill(getHourFill(h, angle, circleNumber)); // fill with color if hour has past
     ellipse(x, y, hourDiameter, hourDiameter);
 
-    // fill(color('white')); // for debugging
+    // for debugging
+    // fill(color('white'));
     // text(circleNumber, x, y);
-    for (var b=0; b < 360; b+= 360/60){
+    for (var b = 0; b < 360; b+= 360/60){
       var subangle = radians(b) - HALF_PI;
       var subx = x + cos(subangle) * minCirclePos;
-      var suby = y + sin(subangle) * minCirclePos;
+      var suby = y - sin(subangle) * minCirclePos;
       noStroke();
       fill(getMinFill(h, m, angle, subangle, circleNumber));
       ellipse(subx, suby, minDiameter, minDiameter);
@@ -87,15 +82,17 @@ function draw() {
 
 function getHourFill(h, angle, circleNumber){
   var c = 0;
+  // if current circle angle is past the hour angle
   if (angle < h) {c = calculateColor(circleNumber);}
   return c;
 }
 
 function getMinFill(h, m, angle, subangle, circleNumber){
   var c = 0;
+  // if current circle angle is past the hour angle
   if (angle < h)
     c = calculateColor(circleNumber);
-   else if (angle == h && subangle < m)
+   else if (angle == h && subangle < m) // current hour, minute that has past
     c = calculateColor(circleNumber);
   return c;
 }
@@ -106,33 +103,37 @@ function calculateColor(circleNumber){
   var colorScale = 0;
   var gradientPadding = 2; // hours for the color transition
 
-
   if (circleNumber > (sunsetTime + gradientPadding || circleNumber < (sunriseTime - gradientPadding))){// Night
     startColor = night;
     endColor = night;
-    colorScale = 0; //to start color change at top
+    colorScale = 0;
 
-  } else if (circleNumber >= (sunriseTime - gradientPadding) && circleNumber < (sunriseTime)) { // Night>Sunrise
+  } else if (circleNumber >= (sunriseTime - gradientPadding) && circleNumber < (sunriseTime)) {
+    // Night>Sunrise
     startColor = night;
     endColor = sunrise;
     colorScale = map ((circleNumber), sunriseTime - gradientPadding, sunriseTime, 0, 1);
 
-  } else if (circleNumber >= (sunriseTime) && circleNumber < (sunriseTime + gradientPadding)) { // Sunrise>Noon
+  } else if (circleNumber >= (sunriseTime) && circleNumber < (sunriseTime + gradientPadding)) {
+    // Sunrise>Noon
     startColor = sunrise;
     endColor = day;
     colorScale = map ((circleNumber), sunriseTime, sunriseTime + gradientPadding, 0, 1);
 
-  } else if (circleNumber >= sunriseTime + gradientPadding && circleNumber < (sunsetTime - gradientPadding)) { // Noon
+  } else if (circleNumber >= sunriseTime + gradientPadding && circleNumber < (sunsetTime - gradientPadding)) {
+    // Noon
     startColor = day;
     endColor = day;
     colorScale = 0;
 
-  } else if (circleNumber >= (sunsetTime - gradientPadding) && circleNumber < (sunsetTime + gradientPadding)) { // Noon>Sunset
+  } else if (circleNumber >= (sunsetTime - gradientPadding) && circleNumber < (sunsetTime + gradientPadding)) {
+    // Noon>Sunset
     startColor = day;
     endColor = sunset;
     colorScale = map ((circleNumber), sunsetTime - gradientPadding, sunsetTime + gradientPadding, 0, 1);
 
-  } else if (circleNumber >= (sunsetTime)) { // Sunset>Night
+  } else if (circleNumber >= (sunsetTime)) {
+    // Sunset>Night
     startColor = sunset;
     endColor = night;
     colorScale = map ((circleNumber), sunsetTime + 1, 21, 0, 1);
