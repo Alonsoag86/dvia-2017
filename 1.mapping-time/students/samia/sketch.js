@@ -47,6 +47,12 @@ function draw() {
   noStroke();
   ellipse(cx, cy, milisecondsRadius, milisecondsRadius);
 
+// Enlarge Circle Due to time
+   var n = map (milisecond(), 0, 60, 0, MaxMilisecondsRadius);
+   var s = map(second(), 0, 60, MaxMilisecondsRadius, maxSecondsRadius);
+   var m = map(minute(), 0, 60, maxSecondsRadius, maxMinutesRadius);
+   var h = map(hour(), 0, 24, maxMinutesRadius, maxHoursRadius);
+  
 //Growing circles
 
   fill(0,0,225);
@@ -64,16 +70,6 @@ function draw() {
   fill(255,0,0);
   noStroke();
   ellipse(cx, cy, milisecondsRadius, milisecondsRadius);
-
-  // Enlarge Circle Due to time
-  stroke(255);
-  strokeWeight(1);
-  line(cx, cy, cx + cos(s) * secondsRadius, cy + sin(s) * secondsRadius);
-  strokeWeight(2);
-  line(cx, cy, cx + cos(m) * minutesRadius, cy + sin(m) * minutesRadius);
-  strokeWeight(4);
-  line(cx, cy, cx + cos(h) * hoursRadius, cy + sin(h) * hoursRadius);
-
 
   }
   endShape();
