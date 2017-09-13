@@ -59,7 +59,7 @@ function draw() {
   for (var i = minutesRadius; i < 60; minutesRadius; i++){
     ellipse(cx, cy, minutesRadius, minutesRadius); 
  
-  for (var i = hoursRadius; i < 60; hoursRadius; i++){
+  for (var i = hoursRadius; i < 24; hoursRadius; i++){
     ellipse(cx, cy, hoursRadius, hoursRadius);    
     
     
