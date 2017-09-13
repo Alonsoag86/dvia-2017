@@ -8,7 +8,7 @@ var maxHoursRadius, hourTicks;
 function setup() {
 	console.log(hour())
 	createCanvas(800,600);
-	background(51);
+	background(0);
 	ellipseMode(RADIUS);
 	frameRate(60);
 
@@ -23,6 +23,7 @@ function setup() {
 	
 	//initial "hands"
 	noFill();
+	stroke(51);
 	ellipse(cX,cY, maxHoursRadius, maxHoursRadius);
 	ellipse(cX,cY, maxMinutesRadius, maxMinutesRadius);
 	ellipse(cX,cY, maxSecondsRadius, maxSecondsRadius);
@@ -32,17 +33,18 @@ function setup() {
 	console.log(minuteTicks + " " + hourTicks);
 
 	for(var i = maxSecondsRadius; i <= minuteTicks; i++){
-		stroke(10*i, 90, 90);
+		stroke(2*i, 0, 0);
 		ellipse(cX, cY, i, i);
 	}
 
 	for(var i = 0; i <= secondTicks; i++){
-		stroke(90, 10*i, 90);
+		stroke(90, 2*i, 90);
+		console.log(i);
 		ellipse(cX, cY, i, i);
 	}
 
 	for(var i = maxMinutesRadius; i <= hourTicks; i++){
-		stroke(90, 90, 10*i);
+		stroke(0, i, 2*i);
 		ellipse(cX, cY, i, i);
 	}
 
@@ -70,7 +72,7 @@ function draw() {
 	}
 
 	function drawMinCircles(r, maxRad){
-		stroke(2*r, 90, 90);
+		stroke(2*r, 0, 0);
 		ellipse(cX, cY, r, r);
 		if(minute() == 0){
 			fill(51);
