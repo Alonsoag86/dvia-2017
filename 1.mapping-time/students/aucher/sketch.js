@@ -24,6 +24,7 @@ var sunsetTime;
 function setup() {
   createCanvas(w, h);
   stroke(255);
+  frameRate(1);
 
   // Colors
   night = color('rgb(29, 55, 80)');
@@ -50,6 +51,7 @@ function draw() {
   // Angles for sin() and cos() start at 3 o'clock;
   // subtract HALF_PI to make them start at the top
   var m = map(minute(), 0, 60, 0, TWO_PI) - HALF_PI;
+  // var h = map(hour(), 0, 24, 0, TWO_PI) - HALF_PI;
   var h = map(hour(), 0, 24, 0, TWO_PI) - HALF_PI;
 
   // Draw the minute ticks
@@ -66,7 +68,7 @@ function draw() {
 
     // for debugging
     // fill(color('white'));
-    // text(circleNumber, x, y);
+    // text(h.toFixed(1) + ' ' + angle.toFixed(1), x, y);
     for (var b = 0; b < 360; b+= 360/60){
       var subangle = radians(b) - HALF_PI;
       var subx = x + cos(subangle) * minCirclePos;
@@ -90,10 +92,12 @@ function getHourFill(h, angle, circleNumber){
 function getMinFill(h, m, angle, subangle, circleNumber){
   var c = 0;
   // if current circle angle is past the hour angle
-  if (angle < h)
+  if (angle < h) {
     c = calculateColor(circleNumber);
-   else if (angle == h && subangle < m) // current hour, minute that has past
+  }
+   else if (angle.toFixed(1) == h.toFixed(1) && subangle < m) {// current hour, minute that has past
     c = calculateColor(circleNumber);
+  }
   return c;
 }
 
@@ -136,7 +140,7 @@ function calculateColor(circleNumber){
     // Sunset>Night
     startColor = sunset;
     endColor = night;
-    colorScale = map ((circleNumber), sunsetTime + 1, 21, 0, 1);
+    colorScale = map ((circleNumber), sunsetTime, 21, 0, 1);
   }
 
   hourColor = lerpColor(startColor, endColor, colorScale);
