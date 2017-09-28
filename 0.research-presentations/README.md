@@ -1,1 +1,1 @@
-After presenting, commit a PDF of your slides here with a filename of the form `lastName_researchSubject.pdf`.
+After presenting, commit a PDF of your slides here with a filename of the form `firstname_researchSubject.pdf`.
