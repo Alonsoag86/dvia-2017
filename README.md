@@ -5,3 +5,4 @@
 #### Exercises
 
 - Exercise #1: [Mapping Time](./1.mapping-time)
+- Exercise #2: [Mapping Quantities](./2.mapping-quantities)
