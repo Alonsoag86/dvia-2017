@@ -8,6 +8,15 @@ function preload() {
   // table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv", "csv", "header");
 }
 
+/* TODO
+fix multibar
+add map
+add legend
+add text area
+add timescale
+write number circles
+*/
+
 gWidth = 1000;
 height = 0;
 
@@ -22,7 +31,8 @@ bColors = [];
 bCurve = 5;
 grey = 200
 
-eventX = eventY = -1;
+isEvent = false;
+eventX = eventY = 0;
 pcentView = 100;
 
 // our data
@@ -115,17 +125,20 @@ function drawBars(title, vals) {
       var curWidth = curVal*bUnit;
       
       if (mouseCollide (mouseX, mouseY, curX, curY, curWidth, barHeight)) {
+        isEvent = true;
         eventX = xidx;
         eventY = yidx;
       }       
       rect(curX, curY, curWidth, barHeight, lCurve, rCurve, rCurve, lCurve);
         
       textAlign(CENTER);
-      stroke(grey);
-      fill(grey);
-      if (curTag)  // if a tag exists, print it
+      var a = xidx==eventX||yidx==eventY?120:pcentView;
+      stroke(grey, a);
+      fill(grey, a);      
+      if (curTag) { // if a tag exists, print it
         text(curTag, curX + curWidth/2, curY + ((barHeight + barBuf)/2));
-        
+      }
+         
       pop();
     }
     
@@ -150,7 +163,11 @@ function setup() {
   
   values = [[5,7,22,2,6,8,22,5,7,2,6,8], [5,3,2,6,8,22,5,7,22,2,6,8], [["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5]]];
   labels = ["Magnitude", "Population", "Stations"];
+  
+  frameRate(25);
 }
+
+
 
 function update() {
   barWidth = gWidth - 200;
@@ -158,23 +175,31 @@ function update() {
   values = [[5,7,22,2,6,8,22,5,7,2,6,8], [5,3,2,6,8,22,5,7,22,2,6,8], [["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5]]];
   labels = ["Magnitude", "Population", "Stations"];
 
-  println(eventX + " " + eventY + " " + pcentView);
+  println(eventX + " " + eventY + " " + pcentView + " " + isEvent);
     
   // if event is active, change the percent of other bars we view
-  if (eventY != -1) {
-    pcentView-=4;
-    eventY = -1 // disable the event
-  } else {
+  if (!isEvent && pcentView != 100) {
     pcentView+=4;
+    if (pcentView > 100) pcentView = 100;
   }
   
-  if (pcentView < 0) pcentView = 0;
-  if (pcentView > 100) pcentView = 100;
+  if (isEvent) {
+    pcentView-=4;
+    if (pcentView < 0) pcentView = 0;
+
+    //if (pcentView == 100)  // PROBLEM HERE
+    //  eventY = -1 // disable the event
+  } 
   
   for (var yidx = 0; yidx < values.length; yidx++)
     for (var xidx = 0; xidx < values[yidx].length; xidx++)
-      if (xidx != eventX && yidx != eventY  && yidx != 2) 
-        values[yidx][xidx] = map(pcentView, 0, 100, 0, values[yidx][xidx]); 
+      if (xidx != eventX && yidx != eventY) //  && yidx != 2)         
+        if (values[yidx][xidx].length == undefined) {  // No tag
+          values[yidx][xidx] = map(pcentView, 0, 100, 0, values[yidx][xidx]); 
+        } else { // Has tag
+          values[yidx][xidx][1] = map(pcentView, 0, 100, 0, values[yidx][xidx][1]);
+        }
+   isEvent = false;
 }
 
 function draw() {
