@@ -15,6 +15,7 @@ var booleanValues = [false, true, false, false];
 var textValues = ["red", "blue", "white"];
 var charValues = "polymorphism☃";
 
+
 println('VALUES:', values);
 for (var i=0; i<values.length; i++){
   println(values[i]);
