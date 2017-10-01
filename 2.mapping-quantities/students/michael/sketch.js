@@ -1,20 +1,51 @@
 // define a global variable to hold our USGS data
 var table
+var tType = "Monthly"
+var tHour;
+var tDay;
+var tWeek;
+var tMonth;
 
 function preload() {
   // load data from either a local copy of one of the USGS CSVs or directly:
-  table = loadTable("assets/significant_month.csv", "csv", "header");
+  tHour = loadTable("assets/significant_hour.csv", "csv", "header");
+  tDay = loadTable("assets/significant_day.csv", "csv", "header");
+  tWeek = loadTable("assets/significant_week.csv", "csv", "header");
+  tMonth = loadTable("assets/significant_month.csv", "csv", "header");  
+  table = tMonth;
   // or (while you're designing) from the feed itself:
   // table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv", "csv", "header");
+
 }
 
 /* TODO
-fix multibar
-add map
+DONE: fix multibar
+SVG BROKEN: add map
+
+bars
+TODO: Bounding Bar?
+DONE: fix negative numbers
+DONE: fix 0s
+DONE: country 2 first chars of ID
+DONE: stations sensed by number (net)(nst)
+NODATA: population
+NODATA: density
+DONE: interpretation for magtype (implies distance)
+NODATA: station real name: https://earthquake.usgs.gov/monitoring/operations/network.php
+Researched and can't understand: rms = fit of data
+
+smaller than x pixels == unselectable
+write values after boxes
+somesortamem loss
+fade specific/generic text
+combine mag/type
+source selector
+DONE: time selector
+noinfo msg
+* 
 add legend
 add text area
 add timescale
-write number circles
 */
 
 gWidth = 1000;
@@ -25,7 +56,7 @@ barWidth = gWidth;
 barHeight = 30;
 barSpacer = 40;
 barBuf = 10;
-barX = 50;
+barX = 100;
 barY = 50;
 textHeight = barHeight / 2;
 bColors = [];
@@ -39,7 +70,7 @@ eventX = eventY = 0;
 pcentView = 100;
 
 // our data
-labels = [];
+//labels = [];
 values = [];
 
 /*
@@ -56,14 +87,14 @@ dict.key2 = "value2";
 
 // sum vals of array for .reduce()
 function sum(total, num) {
-    if (num.length == undefined) {  // No tag
+    //if (num.length == undefined) {  // No tag
       return total + num;
-    } else { // Has tag
+    /* } else { // Has tag
       if (total.length == undefined)
-        return total + num[1];
+        return abs(total) + abs(num[1]);
       else
-        return total[1] + num[1];
-    }
+        return abs(total[1]) + abs(num[1]);
+    }*/
 }
 
 // stackexchange collide alg
@@ -88,16 +119,11 @@ function setAlpha(myC, a) {
   return c(r,g,b,a);
 }
 
-// translate/rotate does not work for mouseX/Y!
+
+// P5JS BUG: translate/rotate does not work for mouseX/Y!
 // gotta provide manual bounding boxes!
 function drawMenu(vals, bboxes, bX, bY, r, c) {
-  
-  for (var xidx = 0; true && xidx < vals.length; xidx++) { // debug
-    stroke(111);
-    noFill();
-    rect(bboxes[xidx][0], bboxes[xidx][1], bboxes[xidx][2], bboxes[xidx][3]);
-  }
-  
+    
   push();
   angleMode(DEGREES);
   translate(bX, bY);
@@ -124,7 +150,12 @@ function drawMenu(vals, bboxes, bX, bY, r, c) {
       var curWidth = 100;
       
       if (mouseCollide (mouseX, mouseY, bboxes[xidx][0], bboxes[xidx][1], bboxes[xidx][2], bboxes[xidx][3])) {
-        println(xidx);
+        // println(xidx);
+        tabArr = [tHour, tDay, tWeek, tMonth];
+        if (table != tabArr[xidx]) {
+          table = tabArr[xidx];
+          pcentView = 0;
+        };
       }       
       
       rect(curX, curY, curWidth, barHeight, lCurve, rCurve, rCurve, lCurve);
@@ -134,13 +165,29 @@ function drawMenu(vals, bboxes, bX, bY, r, c) {
       fill(grey, 120);      
       text(vals[xidx], curX + curWidth/2, curY + ((barHeight + barBuf)/2));
     }
-   pop(); 
+  pop(); 
+   
+  for (var xidx = 0; true && xidx < vals.length; xidx++) { // debug
+    stroke(111);
+    noFill();
+    rect(bboxes[xidx][0], bboxes[xidx][1], bboxes[xidx][2], bboxes[xidx][3]);
+  }
+
 }
 
-
-// noinfo msg
-// TODO: Bounding Bar?
-function drawBars(title, vals) {
+// Draw info in a variety of ways adapted to bar format
+// vals     : Actual data
+// dispVals : Data in display format
+// altVals  : Alternative values if data missing, etc
+function drawBars(title, vals, dispVals, altVals) {
+  
+  if (table.rows.length == 0) {
+    a = pcentView<100?pcentView:120;      
+    stroke(grey, a);
+    fill(grey, a);
+    text("No Data For This Period.", barX, barY + 50);
+    return;
+  }
   
   for (var yidx=0; yidx < vals.length; yidx++) {
     
@@ -190,12 +237,15 @@ function drawBars(title, vals) {
         rCurve = bCurve;
       }*/
       
-      if (vals[yidx][xidx].length == undefined) {  // No tag
+      // if (vals[yidx][xidx].length == undefined) {  // No tag
         var curVal = vals[yidx][xidx];
-      } else { // Has tag
-        var curTag = vals[yidx][xidx][0];
-        var curVal = vals[yidx][xidx][1];
+      //} else { // Has tag
+      //  var curTag = vals[yidx][0][xidx];
+      //  var curVal = vals[yidx][1][xidx];
+      if (dispVals[yidx].length) {
+        var curTag = dispVals[yidx][xidx];
       }
+      //}
           
       var curWidth = curVal*bUnit;
       
@@ -217,7 +267,10 @@ function drawBars(title, vals) {
         a = pcentView<100 && eventX==xidx?120-pcentView:0;      
         stroke(grey, a);
         fill(grey, a);
-        text(vals[yidx][xidx], curX + curWidth/2, curY + ((barHeight + barBuf)/2));
+        if (altVals[yidx].length)
+          text(altVals[yidx][xidx], curX + curWidth/2, curY + ((barHeight + barBuf)/2));
+        else
+          text(vals[yidx][xidx], curX + curWidth/2, curY + ((barHeight + barBuf)/2));
       }
          
       pop();
@@ -235,32 +288,120 @@ function drawBars(title, vals) {
   pop();
 }
 
+magTypeXlate = {
+ "md":"Clipped Shaking Duration",
+ "ml":"Richter",
+ "mb_lg":"Lg Surface Waves",
+ "mlg":"Lg Surface Waves",
+ "mb":"Short P Body Waves",
+ "ms":"Rayleigh Surface Wave",
+ "ms_20":"Rayleigh Surface Wave",
+ "mw":"Generic Unknown",
+ "mwb":"Long-Perioud, P & SH Waves",
+ "mwc":"Mid/Long Period & Surface Waves",
+ "mwr":"Regional Complete Waveforms",
+ "mww":"W-phase Inversion",
+ "mi":"Broadband/P Wave",
+ "mwp":"Broadband/P Wave",
+ "me":"Integrated Digital Waveforms"
+}
 
+var info;
+// in generic show:
+// weekly, monthly, etc
+// tot events
+// latest event?
+function textArea() {
+  info = createGraphics(500, 300);  // P5JS BUG: THIS LEAKS!
+  
+  push()
+  info.textSize(20);
+  info.textAlign(LEFT);
+  info.stroke(grey);
+  info.fill(grey);
+  
+  if (isEvent) {
+    var nst = table.getColumn("nst")[eventX];
+    nst = nst==""?"NA":nst
+
+    d = new Date(table.getColumn("time")[eventX]); // parse date
+  }
+  
+  if (isEvent)
+    info.text(	"\nData Source: " + "Monthly" +
+       "\nLocal Event Time: " + d.toLocaleString() +
+        "\nEvent Name: " + table.getColumn("id")[eventX] +
+        "\nLocation: " + table.getColumn("place")[eventX] + 
+    		"\nType Icon: " + table.getColumn("type")[eventX] +
+    		"\nMagnitude Data Type: " + magTypeXlate[table.getColumn("magType")[eventX]] +
+    		"\nNumber of Stations Reporting: " + nst +
+    		"\nStatus: " + table.getColumn("status")[eventX], 0, 0);
+}
 
 
 function setup() {
-  bColors = [color("#005548"), color(0,0,255, 200), color("#7D3051"), color("#2F1F26"), color("#262E35"), color("#783D28"), color("#49000D"), color("#6F6473"), color("#86414F"), color("#357157"), color("#00617E"), color("#7A6333"), color("#77242A"), color("#3E3E24"), color("#7E7E36"), color("#445B1C"), color("#3F342F"), color("#783D28"), color("#7A6333")];
+  bColors = [color("#005548"), color("#7D3051"), color("#2F1F26"), color("#262E35"), color("#783D28"), color("#49000D"), color("#6F6473"), color("#86414F"), color("#357157"), color("#00617E"), color("#7A6333"), color("#77242A"), color("#3E3E24"), color("#7E7E36"), color("#445B1C"), color("#3F342F"), color("#783D28"), color("#7A6333")];
 
   c = color; // Really?!?
-
+  
   gWidth = windowWidth; // set global width
   createCanvas(windowWidth, windowHeight);
-  
-  values = [[5,7,22,2,6,8,22,5,7,2,6,8], [5,3,2,6,8,22,5,7,22,2,6,8], [["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5]]];
-  labels = ["Magnitude", "Population", "Stations"];
-  
   frameRate(25);
+  img = loadImage('a.svg');
 }
+
+// deal intelligently with missing or nonstandard data
+function scrub(val) {
+  if (typeof(val) == "string") {
+    val = val==""?"NA":val;
+    val = val=="0"?"NA":val;
+  }
+  if (typeof(val) == "number") {
+    val = val==0?0.05:val;
+    val = val!=abs(val)?abs(val):val;
+  } 
+  return(val);
+}
+
+// set val to default 
+function one(val) {
+  return(1);
+}
+
+// make zeros high enough not to effect calculation
+function zeroToOneK(val) {
+  return(val<1?1000:val);
+}
+
+// set val to cap country code
+function ccc(val) {
+  return(val.substring(0, 2).toUpperCase());
+}
+
+halfLow = 0;
+// set the min to half of the lowest val.
+// Strategy to deal sanely with non-existing data
+function minHalfLow(val) {
+  return(val<1?halfLow:val);
+}
+
+function degToKm(val) {
+  if (val == "NA")
+    return(val);
+  return(Math.round(val*111.2)); // from website
+}
+
+function round(val) {
+  return(Math.round(val));
+}
+
+dispVals = [];
+altVals = [];
 
 function update() {
   barWidth = gWidth - 200;
   bMax = new Array(values.length).fill(0);
   
-  values = [[5,7,22,2,6,8,22,5,7,2,6,8], [5,3,2,6,8,22,5,7,22,2,6,8], [["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5]]];
-  labels = ["Magnitude", "Population", "Stations"];
-
-  // println(eventX + " " + eventY + " " + pcentView + " " + isEvent);
-    
   // if event is active, change the percent of other bars we view
   if (!isEvent && pcentView != 100) {
     pcentView+=4;
@@ -272,23 +413,93 @@ function update() {
     if (pcentView < 0) pcentView = 0;
   } 
   
+  textArea()
+  
+  if (table.rows.length == 0) {
+   isEvent = false;
+   return;
+  }
+  
+  //values = [[7.5,22,2,6,8.8,22,5,7,2,6,8], [3,2,6,8,22,5,7,22,2,6,8], [["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5]]];
+  //labels = ["Magnitude", "Population", "Stations"];
+  
+  values = [];
+  
+  values.push(table.getColumn("mag").map(Number));
+  dispVals.push([]);
+  altVals.push([]);
+  
+  values.push(table.getColumn("depth").map(Number).map(scrub));
+  dispVals.push([]);
+  altVals.push(table.getColumn("depth").map(scrub));
+  
+  //values.push(table.getColumn("id").map(one));
+  //dispVals.push(table.getColumn("id").map(scrub).map(ccc));
+  //altVals.push([]);
+
+  var numStations = table.getColumn("nst").map(Number).map(scrub)
+  var nsFiltered = numStations.map(zeroToOneK);
+  var low = nsFiltered.reduce(function(a, b, i, arr) {return Math.min(a,b)});
+  halfLow = low/2;
+  
+  values.push(numStations.map(minHalfLow));
+  dispVals.push(table.getColumn("net").map(scrub).map(ccc));
+  altVals.push([]); 
+  
+  magLocSrc = [];
+  m = table.getColumn("magSource").map(scrub).map(ccc);
+  l = table.getColumn("locationSource").map(scrub).map(ccc);
+  for (var idx=0; idx < m.length; idx++)
+    magLocSrc[idx] = m[idx] + "/" + l[idx];
+    
+  values.push(table.getColumn("magSource").map(one));
+  dispVals.push(magLocSrc);
+  altVals.push([]);
+  
+  //values.push(table.getColumn("magSource").map(one));
+  //dispVals.push(table.getColumn("magSource").map(scrub).map(ccc));
+  //altVals.push([]);
+  
+  //values.push(table.getColumn("locationSource").map(one));
+  //dispVals.push(table.getColumn("locationSource").map(scrub).map(ccc));
+  //altVals.push([]);
+  
+  values.push(table.getColumn("dmin").map(Number).map(scrub).map(degToKm)); // can't handle 0
+  dispVals.push([]);
+  altVals.push(table.getColumn("dmin").map(scrub).map(degToKm));
+  
+  labels = [];
+  labels.push("Magnitude");
+  labels.push("Depth (km)");
+  //labels.push("Country");
+  labels.push("Event Source (Network/#Stations)");
+  labels.push("Magnitude / Location Source (Network)")
+  //labels.push("Magnitude Source (Network)");
+  //labels.push("Location Source (Network)");
+  labels.push("Farthest Station (km)");
+
+  
+  // println(eventX + " " + eventY + " " + pcentView + " " + isEvent);
+    
+  
   for (var yidx = 0; yidx < values.length; yidx++)
     for (var xidx = 0; xidx < values[yidx].length; xidx++) {
       if (values[yidx][xidx].length == undefined) {  // No tag
         if (bMax[yidx] < values[yidx][xidx]) bMax[yidx] = values[yidx][xidx];
       } else { // Has tag
-        if (bMax[yidx] < values[yidx][xidx][1]) bMax[yidx] = values[yidx][xidx][1];
+        if (bMax[yidx] < values[yidx][1][xidx]) bMax[yidx] = values[yidx][1][xidx];
       }
     
       if (xidx != eventX && yidx != eventY) {       
         if (values[yidx][xidx].length == undefined) {  // No tag
           values[yidx][xidx] = map(pcentView, 0, 100, 0, values[yidx][xidx]);
         } else { // Has tag
-          values[yidx][xidx][1] = map(pcentView, 0, 100, 0, values[yidx][xidx][1]);
+          values[yidx][1][xidx] = map(pcentView, 0, 100, 0, values[yidx][1][xidx]);
         }
       }
     }
    isEvent = false;
+   
 }
 
 function draw() {
@@ -296,10 +507,18 @@ function draw() {
 
   background(0);
   menu = ["Hourly", "Daily", "Weekly", "Monthly"];
-  bboxes = [[100, 700, 40, 60], [100, 600, 40, 60], [100, 500, 40, 60], [100, 400, 40, 60]]
-  drawMenu(menu, bboxes, 100, 700, -90, bColors);
+  bboxes = [[35, 350, barHeight, 100], [35, 250, barHeight, 98], [35, 150, barHeight, 98], [35, 50, barHeight, 98]]
+  drawMenu(menu, bboxes, 35, 450, -90, bColors);
   
-  drawBars(labels, values);
+  drawBars(labels, values, dispVals, altVals);
+  
+  stroke(111);
+  fill(111);
+  
+  image(img, 0, 0);
+  
+  image(info, 50, 600);
+  //xml = loadXML("assets/mammals.xml");
 }
 
 function windowResized() {
