@@ -15,12 +15,12 @@ var canvasW = 1024,
 
 
 function preload() {
-  var accessToken = 'pk.eyJ1IjoiYXVjaGVyIiwiYSI6ImNqODd4NnBndzFjZDQyd3FocnM4Njc2NWQifQ.dql4s6oWRANbYGt44i6n9A'
-  var mapboxUrl = 'https://api.mapbox.com/styles/v1/aucher/cj87xw3fi3z8a2qpbdhsqfcw8/static/25.613590,-0.000000,0.78,0.00,0.00/' + canvasW + 'x' + canvasH + '?access_token=' + accessToken
-  println('url: ' + mapboxUrl);
+  // var accessToken = 'pk.eyJ1IjoiYXVjaGVyIiwiYSI6ImNqODd4NnBndzFjZDQyd3FocnM4Njc2NWQifQ.dql4s6oWRANbYGt44i6n9A'
+  // var mapboxUrl = 'https://api.mapbox.com/styles/v1/aucher/cj87xw3fi3z8a2qpbdhsqfcw8/static/25.613590,-0.000000,0.78,0.00,0.00/' + canvasW + 'x' + canvasH + '?access_token=' + accessToken
+  // println('url: ' + mapboxUrl);
   // load data from either a local copy of one of the USGS CSVs or directly:
   // table = loadTable("assets/significant_month.csv", "csv", "header");
-  mapImg = loadImage(mapboxUrl);
+  mapImg = loadImage('assets/techtonicMap.png');
   // or (while you're designing) from the feed itself:
   // table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv", "csv", "header");
 }
