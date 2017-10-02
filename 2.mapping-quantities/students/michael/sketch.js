@@ -145,7 +145,7 @@ function drawMenu(vals, bboxes, bX, bY, r, c) {
     
     for (var xidx = 0; xidx < vals.length; xidx++, curX+=curWidth) {
 
-      var c = bColors[xidx%bColors.length];
+      var c = bColors[(xidx+14)%bColors.length];
       stroke(c);
       fill(c);
       
