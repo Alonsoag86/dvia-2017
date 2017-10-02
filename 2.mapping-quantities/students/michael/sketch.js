@@ -8,17 +8,25 @@ var tMonth;
 var svgXML;
 
 function preload() {
-  // load data from either a local copy of one of the USGS CSVs or directly:
-  tHour = loadTable("assets/significant_hour.csv", "csv", "header");
-  tDay = loadTable("assets/significant_day.csv", "csv", "header");
-  tWeek = loadTable("assets/significant_week.csv", "csv", "header");
-  tMonth = loadTable("assets/significant_month.csv", "csv", "header");  
+  var localData = true;
+  
+  if (localData) {
+    // load data from either a local copy of one of the USGS CSVs or directly:
+    tHour = loadTable("assets/significant_hour.csv", "csv", "header");
+    tDay = loadTable("assets/significant_day.csv", "csv", "header");
+    tWeek = loadTable("assets/significant_week.csv", "csv", "header");
+    tMonth = loadTable("assets/significant_month.csv", "csv", "header");  
+  } else {
+    // or (while you're designing) from the feed itself:
+    tHour =  loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.csv", "csv", "header");
+    tDay =   loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_day.csv", "csv", "header");
+    tWeek =  loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.csv", "csv", "header");
+    tMonth = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv", "csv", "header");  
+  }
+  
   table = tMonth;
   
-  
   svgXML = loadXML("worldLow.svg");
-  // or (while you're designing) from the feed itself:
-  // table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv", "csv", "header");
 
 }
 
@@ -58,10 +66,10 @@ transparent = 0;
 
 barWidth = gWidth;
 barHeight = 30;
-barSpacer = 40;
+barSpacer = 50;
 barBuf = 10;
 barX = 100;
-barY = 50;
+barY = 80;
 textHeight = barHeight / 2;
 bColors = [];
 bCurve = 5;
@@ -326,9 +334,9 @@ var info;
 
 function updateGen() {
   push();
-  genText.background(0,0);
+  genText.background(0);
   
-  genText.textSize(20);
+  genText.textSize(textHeight + 4);
   genText.textAlign(LEFT);
   genText.stroke(grey, pcentView);
   genText.fill(grey, pcentView);
@@ -343,9 +351,9 @@ function updateGen() {
 
 function updateSel() {
   push();
-  selText.background(0,0);
+  selText.background(0);
   
-  selText.textSize(20);
+  selText.textSize(textHeight + 4);
   selText.textAlign(LEFT);
   selText.stroke(grey, 100-pcentView);
   selText.fill(grey, 100-pcentView);
@@ -376,18 +384,15 @@ function textArea() {
   }
 }
 
-var eventDiameter = 50;
+var eventDiameter = 20;
 var mapMultiplier = 5;
-var wMap;
-var svg;
+var wMap; // world boarders
+var eMap; // quake map
 
-function updateMap () {
-  //wMap.background(124);  
+// If no libs work, I will parse my own damn SVG from the XML.
+function initWorldMap() {
+  wMap.background(0);  
   
-  if (! table.rows.length)
-    return;
- 
-  // If no libs work, I will parse my own damn SVG from the XML.
   for (var cidx=0; cidx < svgXML.getChild("g").children.length; cidx++) {
     
     var coords = svgXML.getChild("g").children[cidx].attributes.d.split(/,|z|Z|h|v|V|l|L|m|M/); // x y coords
@@ -395,8 +400,8 @@ function updateMap () {
     var cmds = svgXML.getChild("g").children[cidx].attributes.d.replace(/[0-9,.\-]/g, '').slice(0, -1); // rid of z
     
     wMap.push()
-    wMap.strokeWeight(10);
-    wMap.stroke(255, 0, 0);
+    wMap.strokeWeight(3);
+    wMap.stroke(100,111,100);
     wMap.noFill();
     //wMap.fill(255, 0, 0);
     wMap.beginShape();
@@ -405,9 +410,9 @@ function updateMap () {
     var x = 0;
     var y = 0;
     var cOffset = 0;
-    var xScale = 1.7;
+    var xScale = 1.71;
     var yScale = 1.3;
-    wMap.translate(100,0);
+    wMap.translate(80,0);
     for (var idx=0; idx < cmds.length; idx++) {
       px = x;
       py = y;
@@ -474,28 +479,30 @@ function updateMap () {
     wMap.endShape(CLOSE);
     wMap.pop();
   }
-  
-  wMap.push();  
-  wMap.translate(wMap.width/2, wMap.height/2);
-  wMap.stroke (bColors[4]);
-  wMap.fill (bColors[4]);
-  
+}
 
+function updateMap () {
   
-
+  eMap.image(wMap, 0, 0);
   
+  if (! table.rows.length)
+    return;
+ 
+  eMap.push();  
+  eMap.translate(eMap.width/2, eMap.height/2);
+  eMap.stroke (200,255,0,100);
+  eMap.fill (210,255,0,100);
   
-  
-  
-wMap.translate(0,160);
+  eMap.translate(0,170);
   for (var xidx = 0; xidx < table.rows.length; xidx++) {
-    wMap.ellipse(parseInt(table.getColumn("longitude")[xidx]) * mapMultiplier, -1 * parseInt(table.getColumn("latitude")[xidx]) * mapMultiplier, eventDiameter, eventDiameter);
+    eMap.ellipse(parseInt(table.getColumn("longitude")[xidx]) * mapMultiplier, -1 * parseInt(table.getColumn("latitude")[xidx]) * mapMultiplier, eventDiameter, eventDiameter);
   }
   if (isEvent) {
-    wMap.fill (bColors[5]);
-    wMap.ellipse(parseInt(table.getColumn("longitude")[eventX]) * mapMultiplier, -1 * parseInt(table.getColumn("latitude")[eventX]) * mapMultiplier, eventDiameter, eventDiameter);
+    eMap.stroke (200,0,0,100);
+    eMap.fill (220,0,0,180);
+    eMap.ellipse(parseInt(table.getColumn("longitude")[eventX]) * mapMultiplier, -1 * parseInt(table.getColumn("latitude")[eventX]) * mapMultiplier, eventDiameter*2, eventDiameter*2);
   }
-  wMap.pop();
+  eMap.pop();
 }
 
 function setup() {
@@ -511,7 +518,9 @@ function setup() {
   selText = createGraphics(500, 300);
   genText = createGraphics(500, 300);
   wMap = createGraphics(360 * mapMultiplier, 180 * mapMultiplier);
+  eMap = createGraphics(360 * mapMultiplier, 180 * mapMultiplier);
   
+  initWorldMap();
   info = genText;
 }
 
@@ -657,12 +666,15 @@ function draw() {
   stroke(111);
   fill(111);
   
-  imageMode(CENTER) 
-  image(wMap, width/2 - 30, 600, 720, 360);
-  image(info, width/2 - 70, 800);
+  //  imageMode(CENTER) 
+
+  image(eMap, gWidth - 700, 470, 600, 300);
+  imageMode(CORNER);
+  image(info, barX, 500);
 }
 
 function windowResized() {
   gWidth = windowWidth; // set global width
+  if (gWidth > 1400) gWidth = 1400;
   resizeCanvas(windowWidth, windowHeight);
 }
