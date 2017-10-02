@@ -1,10 +1,11 @@
 // define a global variable to hold our USGS data
 var table
-var tType = "Monthly"
+var tName = "Monthly"
 var tHour;
 var tDay;
 var tWeek;
 var tMonth;
+var svgXML;
 
 function preload() {
   // load data from either a local copy of one of the USGS CSVs or directly:
@@ -13,6 +14,9 @@ function preload() {
   tWeek = loadTable("assets/significant_week.csv", "csv", "header");
   tMonth = loadTable("assets/significant_month.csv", "csv", "header");  
   table = tMonth;
+  
+  
+  svgXML = loadXML("worldLow.svg");
   // or (while you're designing) from the feed itself:
   // table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv", "csv", "header");
 
@@ -34,18 +38,18 @@ DONE: interpretation for magtype (implies distance)
 NODATA: station real name: https://earthquake.usgs.gov/monitoring/operations/network.php
 Researched and can't understand: rms = fit of data
 
-smaller than x pixels == unselectable
+DONE: smaller than x pixels == unselectable
 write values after boxes
-somesortamem loss
-fade specific/generic text
-combine mag/type
-source selector
+DONE: somesortamem loss
+DONE: fade specific/generic text
+DONE: combine mag/type
+DONE: source selector
 DONE: time selector
-noinfo msg
-* 
-add legend
-add text area
-add timescale
+DONE: noinfo msg
+
+DONE: add legend
+DONE: add text area
+DONE: add timescale
 */
 
 gWidth = 1000;
@@ -119,7 +123,6 @@ function setAlpha(myC, a) {
   return c(r,g,b,a);
 }
 
-
 // P5JS BUG: translate/rotate does not work for mouseX/Y!
 // gotta provide manual bounding boxes!
 function drawMenu(vals, bboxes, bX, bY, r, c) {
@@ -154,6 +157,7 @@ function drawMenu(vals, bboxes, bX, bY, r, c) {
         tabArr = [tHour, tDay, tWeek, tMonth];
         if (table != tabArr[xidx]) {
           table = tabArr[xidx];
+          tName = vals[xidx];
           pcentView = 0;
         };
       }       
@@ -167,7 +171,7 @@ function drawMenu(vals, bboxes, bX, bY, r, c) {
     }
   pop(); 
    
-  for (var xidx = 0; true && xidx < vals.length; xidx++) { // debug
+  for (var xidx = 0; false && xidx < vals.length; xidx++) { // debug
     stroke(111);
     noFill();
     rect(bboxes[xidx][0], bboxes[xidx][1], bboxes[xidx][2], bboxes[xidx][3]);
@@ -249,7 +253,8 @@ function drawBars(title, vals, dispVals, altVals) {
           
       var curWidth = curVal*bUnit;
       
-      if (mouseCollide (mouseX, mouseY, curX, curY, curWidth, barHeight)) {
+      // check collisons on boxes bigger than X
+      if (curWidth > 3 && mouseCollide (mouseX, mouseY, curX, curY, curWidth, barHeight)) {
         isEvent = true;
         eventX = xidx;
         eventY = yidx;
@@ -281,6 +286,10 @@ function drawBars(title, vals, dispVals, altVals) {
     textAlign(LEFT);
     stroke(grey);
     fill(grey);
+    // hack. find out how to intelligently deal w data
+    if (yidx == 3) bMax[yidx] = "";
+    if (yidx == 2 && tName == "Weekly") bMax[yidx] = "NA";
+    //if (Math.min.apply(null, dispVals[yidx]) == Math.max.apply(null, dispVals[yidx])) bMax[yidx] = "";
     if (title.length)
       text(title[yidx] + ": " + bMax[yidx], barX, curY - 10);
       
@@ -306,38 +315,188 @@ magTypeXlate = {
  "me":"Integrated Digital Waveforms"
 }
 
-var info;
 // in generic show:
-// weekly, monthly, etc
+// Legend
+// Type: weekly, monthly, etc
 // tot events
-// latest event?
-function textArea() {
-  info = createGraphics(500, 300);  // P5JS BUG: THIS LEAKS!
-  
-  push()
-  info.textSize(20);
-  info.textAlign(LEFT);
-  info.stroke(grey);
-  info.fill(grey);
-  
-  if (isEvent) {
-    var nst = table.getColumn("nst")[eventX];
-    nst = nst==""?"NA":nst
+var info;
+var selText;
+var genText;
+var info;
 
-    d = new Date(table.getColumn("time")[eventX]); // parse date
-  }
+function updateGen() {
+  push();
+  genText.background(0,0);
   
-  if (isEvent)
-    info.text(	"\nData Source: " + "Monthly" +
-       "\nLocal Event Time: " + d.toLocaleString() +
-        "\nEvent Name: " + table.getColumn("id")[eventX] +
-        "\nLocation: " + table.getColumn("place")[eventX] + 
-    		"\nType Icon: " + table.getColumn("type")[eventX] +
-    		"\nMagnitude Data Type: " + magTypeXlate[table.getColumn("magType")[eventX]] +
-    		"\nNumber of Stations Reporting: " + nst +
-    		"\nStatus: " + table.getColumn("status")[eventX], 0, 0);
+  genText.textSize(20);
+  genText.textAlign(LEFT);
+  genText.stroke(grey, pcentView);
+  genText.fill(grey, pcentView);
+
+  genText.text(	
+    "\nBar Format: " +
+    "\n  Metric Type (Width Unit): Largest Value (Optional)" +
+    "\n\nData Source: " + tName + 
+    "\nTotal Events: " + table.rows.length 
+   , 0, 0);
+  pop();}
+
+function updateSel() {
+  push();
+  selText.background(0,0);
+  
+  selText.textSize(20);
+  selText.textAlign(LEFT);
+  selText.stroke(grey, 100-pcentView);
+  selText.fill(grey, 100-pcentView);
+  
+  var nst = table.getColumn("nst")[eventX];
+  nst = nst==""?"NA":nst;
+
+  d = new Date(table.getColumn("time")[eventX]); // parse date
+  
+  selText.text(	
+    "\nLocal Event Time: " + d.toLocaleString() +
+    "\nEvent Name: " + table.getColumn("id")[eventX] +
+    "\nEvent Type: " + table.getColumn("type")[eventX] +
+    "\nLocation: " + table.getColumn("place")[eventX] + 
+    "\nMagnitude Data Type: " + magTypeXlate[table.getColumn("magType")[eventX]] +
+    "\nNumber of Stations Reporting: " + nst +
+    "\nStatus: " + table.getColumn("status")[eventX], 0, 0);
+  pop();
 }
 
+function textArea() {
+  if (isEvent) {
+    updateSel();
+    info = selText;
+  } else {
+    updateGen();
+    info = genText;
+  }
+}
+
+var eventDiameter = 50;
+var mapMultiplier = 5;
+var wMap;
+var svg;
+
+function updateMap () {
+  //wMap.background(124);  
+  
+  if (! table.rows.length)
+    return;
+ 
+  // If no libs work, I will parse my own damn SVG from the XML.
+  for (var cidx=0; cidx < svgXML.getChild("g").children.length; cidx++) {
+    
+    var coords = svgXML.getChild("g").children[cidx].attributes.d.split(/,|z|Z|h|v|V|l|L|m|M/); // x y coords
+    coords = coords.filter(function(value) { return value != '' });
+    var cmds = svgXML.getChild("g").children[cidx].attributes.d.replace(/[0-9,.\-]/g, '').slice(0, -1); // rid of z
+    
+    wMap.push()
+    wMap.strokeWeight(10);
+    wMap.stroke(255, 0, 0);
+    wMap.noFill();
+    //wMap.fill(255, 0, 0);
+    wMap.beginShape();
+    var px = 0;
+    var py = 0;
+    var x = 0;
+    var y = 0;
+    var cOffset = 0;
+    var xScale = 1.7;
+    var yScale = 1.3;
+    wMap.translate(100,0);
+    for (var idx=0; idx < cmds.length; idx++) {
+      px = x;
+      py = y;
+      x = parseFloat(coords[idx*2-cOffset]) * xScale;
+      y = parseFloat(coords[idx*2+1-cOffset]) * yScale;
+      
+      wMap.push();
+      switch (cmds[idx]) {
+        case 'z':
+          wMap.endShape(CLOSE);
+          wMap.beginShape();
+          cOffset+=2;
+          break;
+          
+        case 'V':
+          y = x;
+          x = px;
+          cOffset++;
+          wMap.vertex(x, y);
+          break;       
+        case 'v':
+          y = py+x;
+          x = px;
+          cOffset++;
+          wMap.vertex(x, y);
+          break;
+        case 'H':
+          y = py;
+          cOffset++;
+          wMap.vertex(x, y);
+          break;       
+        case 'h':
+          y = py;
+          x = px+x;
+          cOffset++;
+          wMap.vertex(x, y);
+          break;  
+   
+        case "m":
+          x = px+x;
+          y = py+y;
+          //wMap.endShape();
+          wMap.translate(x, y);
+          //wMap.beginShape();
+          break;
+        case "M":
+          //wMap.endShape();
+          wMap.translate(x, y);
+          //wMap.beginShape();
+          break;
+        case "l":
+          x = px+x;
+          y = py+y;
+          wMap.vertex(x, y);
+          break;     
+        case "L":
+          wMap.vertex(x, y);
+          break;
+        default:
+          println("Unhandled path cmd: " + cmds[idx]);
+      }
+      wMap.pop();
+    }
+    wMap.endShape(CLOSE);
+    wMap.pop();
+  }
+  
+  wMap.push();  
+  wMap.translate(wMap.width/2, wMap.height/2);
+  wMap.stroke (bColors[4]);
+  wMap.fill (bColors[4]);
+  
+
+  
+
+  
+  
+  
+  
+wMap.translate(0,160);
+  for (var xidx = 0; xidx < table.rows.length; xidx++) {
+    wMap.ellipse(parseInt(table.getColumn("longitude")[xidx]) * mapMultiplier, -1 * parseInt(table.getColumn("latitude")[xidx]) * mapMultiplier, eventDiameter, eventDiameter);
+  }
+  if (isEvent) {
+    wMap.fill (bColors[5]);
+    wMap.ellipse(parseInt(table.getColumn("longitude")[eventX]) * mapMultiplier, -1 * parseInt(table.getColumn("latitude")[eventX]) * mapMultiplier, eventDiameter, eventDiameter);
+  }
+  wMap.pop();
+}
 
 function setup() {
   bColors = [color("#005548"), color("#7D3051"), color("#2F1F26"), color("#262E35"), color("#783D28"), color("#49000D"), color("#6F6473"), color("#86414F"), color("#357157"), color("#00617E"), color("#7A6333"), color("#77242A"), color("#3E3E24"), color("#7E7E36"), color("#445B1C"), color("#3F342F"), color("#783D28"), color("#7A6333")];
@@ -347,7 +506,13 @@ function setup() {
   gWidth = windowWidth; // set global width
   createCanvas(windowWidth, windowHeight);
   frameRate(25);
-  img = loadImage('a.svg');
+  // img = loadImage('a.svg');  // P5JS BUG: CLIPPING ISSUE CAN'T DEBUG
+  
+  selText = createGraphics(500, 300);
+  genText = createGraphics(500, 300);
+  wMap = createGraphics(360 * mapMultiplier, 180 * mapMultiplier);
+  
+  info = genText;
 }
 
 // deal intelligently with missing or nonstandard data
@@ -391,10 +556,6 @@ function degToKm(val) {
   return(Math.round(val*111.2)); // from website
 }
 
-function round(val) {
-  return(Math.round(val));
-}
-
 dispVals = [];
 altVals = [];
 
@@ -413,15 +574,13 @@ function update() {
     if (pcentView < 0) pcentView = 0;
   } 
   
-  textArea()
-  
+  textArea();
+  updateMap();
+
   if (table.rows.length == 0) {
    isEvent = false;
    return;
   }
-  
-  //values = [[7.5,22,2,6,8.8,22,5,7,2,6,8], [3,2,6,8,22,5,7,22,2,6,8], [["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5], ["mx", 2], ["us", 3], ["at", 5]]];
-  //labels = ["Magnitude", "Population", "Stations"];
   
   values = [];
   
@@ -433,10 +592,6 @@ function update() {
   dispVals.push([]);
   altVals.push(table.getColumn("depth").map(scrub));
   
-  //values.push(table.getColumn("id").map(one));
-  //dispVals.push(table.getColumn("id").map(scrub).map(ccc));
-  //altVals.push([]);
-
   var numStations = table.getColumn("nst").map(Number).map(scrub)
   var nsFiltered = numStations.map(zeroToOneK);
   var low = nsFiltered.reduce(function(a, b, i, arr) {return Math.min(a,b)});
@@ -456,31 +611,18 @@ function update() {
   dispVals.push(magLocSrc);
   altVals.push([]);
   
-  //values.push(table.getColumn("magSource").map(one));
-  //dispVals.push(table.getColumn("magSource").map(scrub).map(ccc));
-  //altVals.push([]);
-  
-  //values.push(table.getColumn("locationSource").map(one));
-  //dispVals.push(table.getColumn("locationSource").map(scrub).map(ccc));
-  //altVals.push([]);
-  
   values.push(table.getColumn("dmin").map(Number).map(scrub).map(degToKm)); // can't handle 0
   dispVals.push([]);
   altVals.push(table.getColumn("dmin").map(scrub).map(degToKm));
   
   labels = [];
-  labels.push("Magnitude");
+  labels.push("Magnitude (Richter)");
   labels.push("Depth (km)");
-  //labels.push("Country");
-  labels.push("Event Source (Network/#Stations)");
-  labels.push("Magnitude / Location Source (Network)")
-  //labels.push("Magnitude Source (Network)");
-  //labels.push("Location Source (Network)");
+  labels.push("Event Source (#Stations)");
+  labels.push("Magnitude / Location Source (Uniform)")
   labels.push("Farthest Station (km)");
 
-  
   // println(eventX + " " + eventY + " " + pcentView + " " + isEvent);
-    
   
   for (var yidx = 0; yidx < values.length; yidx++)
     for (var xidx = 0; xidx < values[yidx].length; xidx++) {
@@ -515,10 +657,9 @@ function draw() {
   stroke(111);
   fill(111);
   
-  image(img, 0, 0);
-  
-  image(info, 50, 600);
-  //xml = loadXML("assets/mammals.xml");
+  imageMode(CENTER) 
+  image(wMap, width/2 - 30, 600, 720, 360);
+  image(info, width/2 - 70, 800);
 }
 
 function windowResized() {
