@@ -397,7 +397,7 @@ function initWorldMap() {
     
     var coords = svgXML.getChild("g").children[cidx].attributes.d.split(/,|z|Z|h|v|V|l|L|m|M/); // x y coords
     coords = coords.filter(function(value) { return value != '' });
-    var cmds = svgXML.getChild("g").children[cidx].attributes.d.replace(/[0-9,.\-]/g, '').slice(0, -1); // rid of z
+    var cmds = svgXML.getChild("g").children[cidx].attributes.d.replace(/[0-9X,.\-]/g, '').slice(0, -1); // rid of z
     
     wMap.push()
     wMap.strokeWeight(3);
