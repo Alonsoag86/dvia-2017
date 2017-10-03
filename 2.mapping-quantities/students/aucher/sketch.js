@@ -25,12 +25,10 @@ function preload() {
 
 // SETUP
 function setup() {
-
   println(table.rows);
-
   createCanvas(window.innerWidth, window.innerHeight);
-
-  var trialCoords = getCoords(lat, lon);
+  frameRate(5);
+  // var trialCoords = getCoords(lat, lon);
   // trialCircle = new circleBurst(trialCoords.x, trialCoords.y, 7, 'magenta');
   // trialCircle.display();
 
@@ -41,7 +39,6 @@ function setup() {
   for (var r in table.rows){
       var thisPoint = table.rows[r].obj;
       thisPoint.dateDiff = dateDiff(new Date(thisPoint.time));
-      // println (thisPoint.mag + ' | ' + thisPoint.depth);
       mags.push(float(thisPoint.mag));
       depths.push(float(thisPoint.depth));
       dateDiffs.push(thisPoint.dateDiff);
@@ -54,8 +51,6 @@ function setup() {
     maxDateDiff = max(dateDiffs);
     minDateDiff = min(dateDiffs);
 
-    // println(maxMag + ' | ' + minMag  + ' | ' + maxDepth + ' | ' + minDepth);
-
   // CREATE NEW BURSTS FOR DATA
   for (var r in table.rows){
     var thisPoint = table.rows[r].obj;
@@ -63,15 +58,12 @@ function setup() {
     thisPoint.burst = new circleBurst(thisPoint.coords.x, thisPoint.coords.y, thisPoint.mag, thisPoint.depth, thisPoint.dateDiff, thisPoint.place);
     thisPoint.burst.display();
   }
-
-  frameRate(5);
 }
 
 // DRAW
 function draw() {
   background(255);
   translate( width/2, height/2);
-
   imageMode(CENTER);
   image(mapImg, 0, 0);
 
@@ -83,11 +75,8 @@ function draw() {
 
 function getCoords(lat, lon){
   // center coordinates
-
   var clat = 0,
-    clon = 0,
-    // cx, cy;
-
+    clon = 0;
   coords = new Object;
   cx = mercX(clon),
   cy = mercY(clat);
@@ -100,7 +89,6 @@ function getCoords(lat, lon){
 
 
 function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
-  // need an array of circles
   var startDiam = map(mag, minMag, maxMag, 5, 10);
   var colorScale = map(dateDiff, maxDateDiff, minDateDiff, 0, 1);
 
@@ -119,8 +107,6 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
   this.place = place;
   this.dateDiff = dateDiff;
   this.hover = false;
-
-  println('dateDiff: ' + this.dateDiff);
 
   // fill in diameters array
   for (var i = 1; i <= numCircles; i++){ diameters.push(startDiam + (stepDiameter * (i - 1)));}
@@ -147,7 +133,8 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
       this.diameters[c] = (this.diameters[c] >= this.maxDiam) ? this.startDiam : this.diameters[c] + 1
       var opacity = map(this.diameters[c], this.startDiam, this.maxDiam, 255, 0);
       noFill();
-      stroke(this.color, opacity);
+      adjColor = color(this.color.levels[0], this.color.levels[1], this.color.levels[2], opacity);
+      stroke(adjColor);
       ellipse(this.x, this.y, this.diameters[c], this.diameters[c]);
     }
 
@@ -191,6 +178,6 @@ function dateDiff(d){
 
 function tooltip(d){
   fill('black');
-  text(d.place, d.x, d.y);
-  text(d.dateDiff, d.x, d.y + 10);
+  text(d.place, d.x + 5, d.y);
+  text(d.dateDiff, d.x + 5, d.y + 10);
 }
