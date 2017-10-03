@@ -13,24 +13,22 @@ var canvasH = 512,
 
 var cx, cy;
 
-var maxMag, minMag, maxDepth, minDepth, today, maxDateDiff, minDateDiff;
+var maxDepth, minDepth, today, maxDateDiff, minDateDiff;
 
 // PRELOAD
 function preload() {
   // load data from either a local copy of one of the USGS CSVs or directly:
-  table = loadTable("assets/significant_month.csv", "csv", "header");
+  // table = loadTable("assets/significant_month.csv", "csv", "header");
   mapImg = loadImage('assets/techtonicMap.png');
-  // table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv", "csv", "header");
+  table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.csv", "csv", "header");
 }
 
 // SETUP
 function setup() {
   println(table.rows);
+  var h1 = createElement('h1','Recent Earthquakes');
   createCanvas(window.innerWidth, window.innerHeight);
   frameRate(5);
-  // var trialCoords = getCoords(lat, lon);
-  // trialCircle = new circleBurst(trialCoords.x, trialCoords.y, 7, 'magenta');
-  // trialCircle.display();
 
   // FIND MAG and DEPTH EXTREMA
   var mags = [];
@@ -39,13 +37,10 @@ function setup() {
   for (var r in table.rows){
       var thisPoint = table.rows[r].obj;
       thisPoint.dateDiff = dateDiff(new Date(thisPoint.time));
-      mags.push(float(thisPoint.mag));
       depths.push(float(thisPoint.depth));
       dateDiffs.push(thisPoint.dateDiff);
   }
 
-    maxMag = max(mags);
-    minMag = min(mags);
     maxDepth = max(depths);
     minDepth = min(depths);
     maxDateDiff = max(dateDiffs);
@@ -63,7 +58,7 @@ function setup() {
 // DRAW
 function draw() {
   background(255);
-  translate( width/2, height/2);
+  translate( width/2, canvasH/2 + 50);
   imageMode(CENTER);
   image(mapImg, 0, 0);
 
@@ -89,11 +84,11 @@ function getCoords(lat, lon){
 
 
 function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
-  var startDiam = map(mag, minMag, maxMag, 5, 10);
+  var startDiam = map(depth, minDepth, maxDepth, 5, 10);
   var colorScale = map(dateDiff, maxDateDiff, minDateDiff, 0, 1);
 
   var numCircles = 5;
-  var stepDiameter = startDiam;
+  var stepDiameter = map(mag, 0, 10 ,0, 15);
   var diameters = [];
 
   var startColor = color(126, 207, 253);
@@ -101,6 +96,7 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
 
   this.x = xPos;
   this.y = yPos;
+  this.mag = mag;
   this.startDiam = startDiam;
   this.maxDiam = startDiam + (stepDiameter * (numCircles))
   this.color = lerpColor(startColor, endColor, colorScale);
@@ -115,7 +111,7 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
   this.checkHover = function (){
     this.hover = false;
     var x = mouseX - width/2; // account for the transform
-    var y = mouseY - height/2;
+    var y = mouseY - (canvasH/2 + 50);
     var d = dist(x, y, this.x, this.y)
     if (d <= 10 ){
       this.hover = true;
@@ -124,14 +120,14 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
 
   // DISPLAY FUNCTION
   this.display = function(){
-    // inner most circle
-    fill(this.color);
-    ellipse(this.x, this.y, startDiam, startDiam);
 
+    fill(this.color); // inner most circle
+    ellipse(this.x, this.y, startDiam, startDiam);
     // concentric circles
     for (var c in diameters){
       this.diameters[c] = (this.diameters[c] >= this.maxDiam) ? this.startDiam : this.diameters[c] + 1
-      var opacity = map(this.diameters[c], this.startDiam, this.maxDiam, 255, 0);
+      var opacity = map(this.diameters[c], this.maxDiam / 2, this.maxDiam, 255, 0);
+
       noFill();
       adjColor = color(this.color.levels[0], this.color.levels[1], this.color.levels[2], opacity);
       stroke(adjColor);
@@ -141,7 +137,6 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
     // if mouse is over burst, call the tooltip
     this.checkHover();
     if (this.hover) {
-      println('HOVER: ' + this.hover);
       tooltip(this);
     }
   };
@@ -177,7 +172,13 @@ function dateDiff(d){
 }
 
 function tooltip(d){
+  var size = 15;
+  var mousebuffer = 5;
   fill('black');
-  text(d.place, d.x + 5, d.y);
-  text(d.dateDiff, d.x + 5, d.y + 10);
+  textFont('monospace', size);
+  textAlign(CENTER);
+  text('Magnitude: ' + d.mag, d.x + mousebuffer, d.y - (3 * size));
+  text(d.place, d.x + mousebuffer, d.y - (2 * size));
+  textSize(size - 3);
+  text('(' + d.dateDiff + ' days ago)', d.x + mousebuffer, d.y - size);
 }
