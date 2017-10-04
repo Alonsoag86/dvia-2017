@@ -78,6 +78,7 @@ createCanvas(windowWidth, windowHeight);
 
 function draw() {
 
+  cursor("assets/eyedropper.png");
 	//set palette colors
 	background(palette.basemap);
 
