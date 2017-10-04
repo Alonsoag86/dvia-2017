@@ -1,16 +1,20 @@
 // sources: https://github.com/fraxen/tectonicplates
+// projection adapted from:  https://en.wikipedia.org/wiki/Web_Mercator
+// with help from: https://www.youtube.com/watch?v=ZiYdOwOrGyc
 var table, mapImg;
 
 var  pictureH = 512,
   pictureW = 1024,
   imageScale = 1.25,
-  canvasW = pictureW * imageScale + 300,
-  canvasH = pictureH * imageScale + 50;
+  canvasW = pictureW * imageScale + 200,
+  canvasH = pictureH * imageScale + 100;
+  // canvasW = window.innerWidth,
+  // canvasH = window.innerHeight;
 
 var cx, cy;
 
 var maxDepth, minDepth, today, maxDateDiff, minDateDiff;
-var startColor, endColor;
+var startColor, endColor, midColor;
 
 // PRELOAD
 function preload() {
@@ -25,6 +29,7 @@ function setup() {
   println(table.rows);
   startColor = color(174, 46, 56);
   endColor = color(135, 146, 149);
+  midColor = color(254, 195, 42);
 
   // FIND MAG and DEPTH EXTREMA
   var mags = [];
@@ -65,31 +70,31 @@ function setup() {
 // DRAW
 function draw() {
   background(250, 250, 250);
+  gradient();
   // translate into center of canvas
   translate( width/2, (canvasH) / 2);
   imageMode(CENTER);
   image(mapImg, 0, 0, mapImg.width*imageScale, mapImg.height*imageScale); // image of map
 
-//   //x
-// :
-// -1303.1658473426014
-// y
-// :
-// -399.23493511426045
-  // text('test', -500, -150);
-
   // iterate through bursts and display them
   for (var r in table.rows){
-    println(table.rows[r].obj.burst);
+    // println(table.rows[r].obj.burst);
     table.rows[r].obj.burst.display();
   }
 }
 
 
-
 function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
   var startDiam = map(depth, minDepth, maxDepth, 5, 10);
-  var colorScale = map(dateDiff, minDateDiff, maxDateDiff, 0, 1);
+  var colorScale;
+  var colorMidpoint = minDateDiff + (maxDateDiff - minDateDiff)/2
+  if (dateDiff <= colorMidpoint){
+    colorScale = map(dateDiff, minDateDiff, colorMidpoint, 0, 1);
+    this.color = lerpColor(startColor, midColor, colorScale);
+  }else {
+    colorScale = map(dateDiff, colorMidpoint, maxDateDiff, 0, 1);
+    this.color = lerpColor(midColor, endColor, colorScale);
+  }
 
   var numCircles = 5;
   var stepDiameter = map(mag, 0, 10 ,0, 15);
@@ -100,7 +105,6 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
   this.mag = mag;
   this.startDiam = startDiam;
   this.maxDiam = startDiam + (stepDiameter * (numCircles));
-  this.color = lerpColor(startColor, endColor, colorScale);
   this.place = place;
   this.dateDiff = dateDiff;
   this.hover = false;
@@ -141,28 +145,10 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
     if (this.hover) {
       tooltip(this);
     }
-
-    // var boxS = 30;
-    // var xOffset = boxS + 10;
-    // var yOffset = boxS / 2;
-    // var keyX = -pictureW / 2;
-    // var keyY = pictureH / 2;
-    // noStroke();
-    // textFont('monospace', 15);
-    // fill(startColor)
-    // rect(keyX, keyY, boxS, boxS);
-    // textAlign(LEFT);
-    // text(minDateDiff + ' days ago', keyX + xOffset , keyY + yOffset);
-    //
-    // fill(endColor)
-    // rect(keyX + 4 * xOffset, keyY, boxS, boxS);
-    // textAlign(LEFT);
-    // text(maxDateDiff + ' days ago', keyX + 5 * xOffset , keyY + yOffset);
   };
 };
 
-// adapted from:  https://en.wikipedia.org/wiki/Web_Mercator
-// with help from: https://www.youtube.com/watch?v=ZiYdOwOrGyc
+
 function mercX(lon){
   lon = radians(lon);
   var a = (pictureH / PI);// * pow(2, zoom);
@@ -213,5 +199,30 @@ function tooltip(d){
 }
 
 function gradient(){
+  var w = 150;
+  var h = 30;
+  var x = width/2 - w/2;
+  var y = height - (h * .75);
+  var padding = 10;
+  var colorMidpoint = x + w/2;
+  var colorScale, c;
+  for (var i = x; i <= x + w; i++){
+    if (i <= colorMidpoint){
+      colorScale = map(i, x, colorMidpoint, 0, 1);
+      c = lerpColor(startColor, midColor, colorScale);
+    }else {
+      colorScale = map(i, colorMidpoint, x + w, 0, 1);
+      c = lerpColor(midColor, endColor, colorScale);
+    }
 
+    var adjc = adjColor = color(c.levels[0], c.levels[1], c.levels[2], 120);
+    stroke(adjc);
+    line(i, y, i, y+h);
+  }
+  fill(76, 82, 83);
+  noStroke();
+  textAlign(RIGHT);
+  text(minDateDiff + ' days ago', x - padding, y + h/2);
+  textAlign(LEFT);
+  text(maxDateDiff + ' days ago', x + w + padding, y + h/2);
 }
