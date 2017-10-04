@@ -1,22 +1,16 @@
 // sources: https://github.com/fraxen/tectonicplates
 var table, mapImg;
 
-var points = [];
-
-// Trial Dot Lat/Lon
-var lat = 31.0461,
-  lon = 34.8516,
-  trialCircle;
-
-var pictureH = 512,
+var  pictureH = 512,
   pictureW = 1024,
-  canvasW = pictureW + 300,
-  canvasH = pictureH + 50;
-
+  imageScale = 1.25,
+  canvasW = pictureW * imageScale + 300,
+  canvasH = pictureH * imageScale + 50;
 
 var cx, cy;
 
 var maxDepth, minDepth, today, maxDateDiff, minDateDiff;
+var startColor, endColor;
 
 // PRELOAD
 function preload() {
@@ -29,6 +23,8 @@ function preload() {
 // SETUP
 function setup() {
   println(table.rows);
+  startColor = color(174, 46, 56);
+  endColor = color(135, 146, 149);
 
   // FIND MAG and DEPTH EXTREMA
   var mags = [];
@@ -72,7 +68,15 @@ function draw() {
   // translate into center of canvas
   translate( width/2, (canvasH) / 2);
   imageMode(CENTER);
-  image(mapImg, 0, 0); // image of map
+  image(mapImg, 0, 0, mapImg.width*imageScale, mapImg.height*imageScale); // image of map
+
+//   //x
+// :
+// -1303.1658473426014
+// y
+// :
+// -399.23493511426045
+  // text('test', -500, -150);
 
   // iterate through bursts and display them
   for (var r in table.rows){
@@ -91,14 +95,11 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
   var stepDiameter = map(mag, 0, 10 ,0, 15);
   var diameters = [];
 
-  var startColor = color(174, 46, 56);
-  var endColor = color(135, 146, 149);
-
   this.x = xPos;
   this.y = yPos;
   this.mag = mag;
   this.startDiam = startDiam;
-  this.maxDiam = startDiam + (stepDiameter * (numCircles))
+  this.maxDiam = startDiam + (stepDiameter * (numCircles));
   this.color = lerpColor(startColor, endColor, colorScale);
   this.place = place;
   this.dateDiff = dateDiff;
@@ -164,14 +165,14 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
 // with help from: https://www.youtube.com/watch?v=ZiYdOwOrGyc
 function mercX(lon){
   lon = radians(lon);
-  var a = (pictureH / PI);
+  var a = (pictureH / PI);// * pow(2, zoom);
   var b = lon + PI;
   return a * b;
 }
 
 function mercY(lat){
   lat = radians(lat);
-  var a = (pictureH / PI);
+  var a = (pictureH / PI);// * pow(2, zoom);
   var b = tan(PI/4 + lat/2);
   var c = PI - log(b);
   return a * c;
@@ -186,8 +187,8 @@ function getCoords(lat, lon){
   cy = mercY(clat);
 
   // calculate
-  coords.x = mercX(lon) - cx,
-  coords.y = mercY(lat) - cy;
+  coords.x = (mercX(lon) - cx) * imageScale,
+  coords.y = (mercY(lat) - cy) * imageScale;
   return coords;
 }
 
@@ -209,4 +210,8 @@ function tooltip(d){
   text(d.place, d.x + mousebuffer, d.y - (2 * size));
   textSize(size - 3);
   text('(' + d.dateDiff + ' days ago)', d.x + mousebuffer, d.y - size);
+}
+
+function gradient(){
+
 }
