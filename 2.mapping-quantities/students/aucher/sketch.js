@@ -62,7 +62,7 @@ function setup() {
   for (var r in table.rows){
     var thisPoint = table.rows[r].obj;
     thisPoint.coords = getCoords(thisPoint.latitude, thisPoint.longitude);
-    thisPoint.burst = new circleBurst(thisPoint.coords.x, thisPoint.coords.y, thisPoint.mag, thisPoint.depth, thisPoint.dateDiff, thisPoint.place);
+    thisPoint.burst = new circleBurst(thisPoint.coords.x, thisPoint.coords.y, thisPoint.mag, thisPoint.depth, thisPoint.dateDiff, thisPoint.place, thisPoint.type);
     thisPoint.burst.display();
   }
 }
@@ -84,7 +84,7 @@ function draw() {
 }
 
 
-function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
+function circleBurst(xPos, yPos, mag, depth, dateDiff, place, type){
   var startDiam = map(depth, minDepth, maxDepth, 5, 10);
   var colorScale;
   var colorMidpoint = minDateDiff + (maxDateDiff - minDateDiff)/2
@@ -106,6 +106,7 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
   this.startDiam = startDiam;
   this.maxDiam = startDiam + (stepDiameter * (numCircles));
   this.place = place;
+  this.type = type;
   this.dateDiff = dateDiff;
   this.hover = false;
 
@@ -192,7 +193,11 @@ function tooltip(d){
   fill('black');
   textFont('monospace', size);
   textAlign(CENTER);
-  text('Magnitude: ' + d.mag, d.x + mousebuffer, d.y - (3 * size));
+  if (d.type == 'earthquake'){
+    text('Magnitude: ' + d.mag, d.x + mousebuffer, d.y - (3 * size));
+  }else{
+    text('Magnitude: ' + d.mag + ' [' + d.type + ']', d.x + mousebuffer, d.y - (3 * size));
+  }
   text(d.place, d.x + mousebuffer, d.y - (2 * size));
   textSize(size - 3);
   text('(' + d.dateDiff + ' days ago)', d.x + mousebuffer, d.y - size);
