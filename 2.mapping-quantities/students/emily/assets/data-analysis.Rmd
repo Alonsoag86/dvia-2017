@@ -33,3 +33,9 @@ pdf("magHist")
 magHist <- hist(significant_month$mag)
 ```
 
+```{r}
+library(ggplot2)
+significant_month$strength<-as.factor(significant_month$strength) # LOW has two values. 0 = Birth Weight >= 2500g, 1 = Birth Weight < 2500g
+ggplot(significant_month, aes(x=strength, group=mag, col=mag)) + geom_density() 
+```
+

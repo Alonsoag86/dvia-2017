@@ -336,7 +336,7 @@ histogram.display = function() {
     push();                    // <- push a drawing context
     translate(x+windowWidth/4.5, y+windowHeight/1.6);            // <- move to position
     noStroke();
-  	fill(13, 30*magnitude[i], 111-magnitude[i]);
+  	fill(30-magnitude[i], 400/magnitude[i], 400/magnitude[i]);
     rect(0,0,w,h);             // <- draw a rectangle
     fill(255);                 // <- change colors
     textSize(10);
