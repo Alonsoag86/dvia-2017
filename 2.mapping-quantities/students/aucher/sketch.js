@@ -8,8 +8,11 @@ var lat = 31.0461,
   lon = 34.8516,
   trialCircle;
 
-var canvasH = 512,
-  canvasW = 1024;
+var pictureH = 512,
+  pictureW = 1024,
+  canvasW = pictureW + 300,
+  canvasH = pictureH + 50;
+
 
 var cx, cy;
 
@@ -26,9 +29,6 @@ function preload() {
 // SETUP
 function setup() {
   println(table.rows);
-  var h1 = createElement('h1','Recent Earthquakes');
-  createCanvas(window.innerWidth, window.innerHeight);
-  frameRate(5);
 
   // FIND MAG and DEPTH EXTREMA
   var mags = [];
@@ -40,11 +40,22 @@ function setup() {
       depths.push(float(thisPoint.depth));
       dateDiffs.push(thisPoint.dateDiff);
   }
+  maxDepth = max(depths);
+  minDepth = min(depths);
+  maxDateDiff = max(dateDiffs);
+  minDateDiff = min(dateDiffs);
 
-    maxDepth = max(depths);
-    minDepth = min(depths);
-    maxDateDiff = max(dateDiffs);
-    minDateDiff = min(dateDiffs);
+  // add title and other html elements to page
+  createElement('h1','Recent Significant Seismic Events');
+  createElement('h2', table.rows.length + ' Significant Seismic Events in the Last ' + maxDateDiff + ' Days');
+  createElement('p', '(hover over circle to see details)' );
+  createCanvas(canvasW, canvasH);
+  var div = createElement('div');
+  createElement('p','Sources:');
+  createElement('p','seismic data comes from the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php">USGS</a> live feed');
+  createElement('p','map comes from the <a href="https://www.mapbox.com/">Mapbox</a>');
+  createElement('p','techtonic plate data comes from the <a href="https://github.com/fraxen/tectonicplates">Fraxen\'s Repository</a> with reference to the work of Hugo Ahlenius, Nordpil and Peter Bird');
+  frameRate(5);
 
   // CREATE NEW BURSTS FOR DATA
   for (var r in table.rows){
@@ -57,42 +68,31 @@ function setup() {
 
 // DRAW
 function draw() {
-  background(255);
-  translate( width/2, canvasH/2 + 50);
+  background(250, 250, 250);
+  // translate into center of canvas
+  translate( width/2, (canvasH) / 2);
   imageMode(CENTER);
-  image(mapImg, 0, 0);
+  image(mapImg, 0, 0); // image of map
 
+  // iterate through bursts and display them
   for (var r in table.rows){
     println(table.rows[r].obj.burst);
     table.rows[r].obj.burst.display();
   }
 }
 
-function getCoords(lat, lon){
-  // center coordinates
-  var clat = 0,
-    clon = 0;
-  coords = new Object;
-  cx = mercX(clon),
-  cy = mercY(clat);
-
-  // calculate
-  coords.x = mercX(lon) - cx,
-  coords.y = mercY(lat) - cy;
-  return coords;
-}
 
 
 function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
   var startDiam = map(depth, minDepth, maxDepth, 5, 10);
-  var colorScale = map(dateDiff, maxDateDiff, minDateDiff, 0, 1);
+  var colorScale = map(dateDiff, minDateDiff, maxDateDiff, 0, 1);
 
   var numCircles = 5;
   var stepDiameter = map(mag, 0, 10 ,0, 15);
   var diameters = [];
 
-  var startColor = color(126, 207, 253);
-  var endColor = color(64, 104, 126);
+  var startColor = color(174, 46, 56);
+  var endColor = color(135, 146, 149);
 
   this.x = xPos;
   this.y = yPos;
@@ -111,7 +111,7 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
   this.checkHover = function (){
     this.hover = false;
     var x = mouseX - width/2; // account for the transform
-    var y = mouseY - (canvasH/2 + 50);
+    var y = mouseY - (canvasH / 2);
     var d = dist(x, y, this.x, this.y)
     if (d <= 10 ){
       this.hover = true;
@@ -130,6 +130,7 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
 
       noFill();
       adjColor = color(this.color.levels[0], this.color.levels[1], this.color.levels[2], opacity);
+      strokeWeight(1.5);
       stroke(adjColor);
       ellipse(this.x, this.y, this.diameters[c], this.diameters[c]);
     }
@@ -139,6 +140,23 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
     if (this.hover) {
       tooltip(this);
     }
+
+    // var boxS = 30;
+    // var xOffset = boxS + 10;
+    // var yOffset = boxS / 2;
+    // var keyX = -pictureW / 2;
+    // var keyY = pictureH / 2;
+    // noStroke();
+    // textFont('monospace', 15);
+    // fill(startColor)
+    // rect(keyX, keyY, boxS, boxS);
+    // textAlign(LEFT);
+    // text(minDateDiff + ' days ago', keyX + xOffset , keyY + yOffset);
+    //
+    // fill(endColor)
+    // rect(keyX + 4 * xOffset, keyY, boxS, boxS);
+    // textAlign(LEFT);
+    // text(maxDateDiff + ' days ago', keyX + 5 * xOffset , keyY + yOffset);
   };
 };
 
@@ -146,34 +164,44 @@ function circleBurst(xPos, yPos, mag, depth, dateDiff, place){
 // with help from: https://www.youtube.com/watch?v=ZiYdOwOrGyc
 function mercX(lon){
   lon = radians(lon);
-  var a = (canvasH / PI);
-  // var a = (128 / PI) * pow(2, zoom);
+  var a = (pictureH / PI);
   var b = lon + PI;
   return a * b;
 }
 
 function mercY(lat){
   lat = radians(lat);
-  var a = (canvasH / PI);
-  // var a = (128 / PI) * pow(2, zoom);
+  var a = (pictureH / PI);
   var b = tan(PI/4 + lat/2);
   var c = PI - log(b);
   return a * c;
 }
 
+function getCoords(lat, lon){
+  // center coordinates
+  var clat = 0,
+  clon = 0;
+  coords = new Object;
+  cx = mercX(clon),
+  cy = mercY(clat);
+
+  // calculate
+  coords.x = mercX(lon) - cx,
+  coords.y = mercY(lat) - cy;
+  return coords;
+}
+
 function dateDiff(d){
   today = new Date(Date.now());
-  // println('today: ' + today + ' | ' + d);
-
   var timeDiff = Math.abs(d.getTime() - today.getTime());
   var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
   return diffDays;
 }
 
 function tooltip(d){
   var size = 15;
   var mousebuffer = 5;
+  noStroke();
   fill('black');
   textFont('monospace', size);
   textAlign(CENTER);
