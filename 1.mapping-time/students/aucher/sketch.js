@@ -68,7 +68,7 @@ function draw() {
 
     // for debugging
     // fill(color('white'));
-    // text(h.toFixed(1) + ' ' + angle.toFixed(1), x, y);
+    // text(circleNumber, x, y);
     for (var b = 0; b < 360; b+= 360/60){
       var subangle = radians(b) - HALF_PI;
       var subx = x + cos(subangle) * minCirclePos;
