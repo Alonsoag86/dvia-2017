@@ -71,7 +71,7 @@ function Jitter() {
 	  this.diameter =  magnitudes[i];
 	  //console.log("depths" + this.diameter);
 
-	  this.speed = depths[i] * .10;
+	  this.speed = depths[i] * .01;
 	  this.place = places[i];
 
 	  
