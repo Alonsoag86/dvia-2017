@@ -100,6 +100,17 @@ for (i=0;i<numberoflonghash;i++) {
       var x = map(longitude[i],longitudeMin, longitudeMax, plotX1, plotX2);
       var y = map(latitude[i],latitudeMin, latitudeMax, plotY2, plotY1);
       point(x,y);
+
+      if ( type[i] === "earthquake") {
+          fill(255,0,0,50);
+      } else {
+          fill(0,255,0,50);
+    	}
+
+      rect(x-(boxwidth/2),y-(boxheight/2),x+(boxwidth/2), y+(boxheight/2));
+
+
+
     }
 }
 }
