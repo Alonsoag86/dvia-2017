@@ -1,85 +1,87 @@
 
-
 var cx, cy;
 
-var millisecondsRadius;
-var secondsRadius;
-var minutesRadius;
-var hoursRadius;
+
+var MaxMilisecondsRadius;
+var MaxSecondsRadius;
+var MaxMinutesRadius;
+var MaxHoursRadius;
+
+var radius
 
 function setup() {
   createCanvas(700, 700);
   stroke(0);
 
-  var radius = min(width, height) / 2; // this is the maximum possible radius
-  millisecondsRadius = radius * 0.25;
-  secondsRadius = radius * 0.50;
-  minutesRadius = radius * 0.75;
-  hoursRadius = radius * 1;
+  radius = min(width, height) / 2;
+  MaxMilisecondsRadius = radius * 0.20;
+  MaxSecondsRadius = radius * 0.40;
+  MaxMinutesRadius = radius * 0.6;
+  MaxHoursRadius = radius * 0.8;
+
+
+
 
   cx = width / 2;
   cy = height / 2;
- 
+
+   console.log("Hello Hours",MaxHoursRadius)
+   console.log("Hello Min",MaxMinutesRadius)
+   console.log("Hello Sec",MaxSecondsRadius)
+
 }
 
 function draw() {
-  background(0);
+  background(226, 196, 173);
 
-  //Background Circles
 
-  fill(0,0,125);
-  noStroke();
-  ellipse(cx, cy, hoursRadius, hoursRadius);
+//backgrounds//
 
-  fill(27, 0, 125);
-  noStroke();
-  ellipse(cx, cy, minutesRadius, minutesRadius);
 
-  fill(125, 0, 125);
-  noStroke();
-  ellipse(cx, cy, secondsRadius, secondsRadius);
+ fill(0,0,102);
+ noStroke();
+ ellipse(cx, cy, MaxHoursRadius, MaxHoursRadius);
 
-  fill(155,0,0);
-  noStroke();
-  ellipse(cx, cy, millisecondsRadius, millisecondsRadius);
+ fill(0,102,102);
+ noStroke();
+ ellipse(cx, cy, MaxMinutesRadius, MaxMinutesRadius);
 
-  
-// Enlarge Circle Due to time
-   var n = map (millisecond(), 0, 60, 0, MillisecondsRadius);
-   var s = map(second(), 0, 60, MillisecondsRadius, SecondsRadius);
-   var m = map(minute(), 0, 60, SecondsRadius, MinutesRadius);
-   var h = map(hour(), 0, 24, MinutesRadius, HoursRadius);
-  
-  for (var i = MillisecondsRadius; i < 60; MillisecondsRadius; i++){
-    ellipse(cx, cy, millisecondsRadius, millisecondsRadius);
-  
-  for (var i = secondsRadius; i < 60; secondsRadius; i++){
-    ellipse(cx, cy, secondsRadius, secondsRadius);   
-    
-  for (var i = minutesRadius; i < 60; minutesRadius; i++){
-    ellipse(cx, cy, minutesRadius, minutesRadius); 
- 
-  for (var i = hoursRadius; i < 24; hoursRadius; i++){
-    ellipse(cx, cy, hoursRadius, hoursRadius);    
-    
-    
-//Growing circles
-  fill(0,0,225);
-  noStroke();
-  ellipse(cx, cy, hoursRadius, hoursRadius);
+ fill(0, 102, 0);
+ noStroke();
+ ellipse(cx, cy, MaxSecondsRadius, MaxSecondsRadius);
 
-  fill(127, 0, 225);
-  noStroke();
-  ellipse(cx, cy, minutesRadius, minutesRadius);
+ fill(0,0,0);
+ noStroke();
+ ellipse(cx, cy, MaxMilisecondsRadius, MaxMilisecondsRadius);
 
-  fill(225, 0, 225);
-  noStroke();
-  ellipse(cx, cy, secondsRadius, secondsRadius);
+// change //
 
-  fill(255,0,0);
-  noStroke();
-  ellipse(cx, cy, millisecondsRadius, millisecondsRadius);
+ fill(0,102,225);
+ noStroke();
+ var ringwidth = MaxHoursRadius - MaxMinutesRadius;
+ var hourradius = (hour() / 24.0 * ringwidth) + MaxMinutesRadius
+ ellipse(cx, cy, hourradius, hourradius);
 
-  }
-  endShape();
+ fill(0,102,102);
+ ellipse(cx, cy, MaxMinutesRadius, MaxMinutesRadius);
+
+
+ fill(0,255,255);
+ noStroke();
+ var ringwidth = MaxMinutesRadius - MaxSecondsRadius;
+ var hourradius = (minute() / 60.0 * ringwidth) + MaxSecondsRadius
+ ellipse(cx, cy, hourradius, hourradius);
+
+ fill(0, 102, 0);
+ ellipse(cx, cy, MaxSecondsRadius, MaxSecondsRadius);
+
+
+ fill(0, 255, 102);
+ noStroke();
+ var ringwidth = MaxSecondsRadius - MaxMilisecondsRadius;
+ var hourradius = (second() / 60.0 * ringwidth) + MaxMilisecondsRadius
+ ellipse(cx, cy, hourradius, hourradius);
+
+ fill(0,0,0);
+ ellipse(cx, cy, MaxMilisecondsRadius, MaxMilisecondsRadius);
 }
