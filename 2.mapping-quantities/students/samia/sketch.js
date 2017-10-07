@@ -94,12 +94,14 @@ for (i=0;i<numberoflonghash;i++) {
 };
 
   function drawDataPoints(){
-    strokeWeight(5);
-    stroke(255,0,0);
+
+    var boxwidth = 20
+    var boxheight = 10
+
+    strokeWeight(0);
     for(var i=0; i<longitude.length; i++){
       var x = map(longitude[i],longitudeMin, longitudeMax, plotX1, plotX2);
       var y = map(latitude[i],latitudeMin, latitudeMax, plotY2, plotY1);
-      point(x,y);
 
       if ( type[i] === "earthquake") {
           fill(255,0,0,50);
@@ -115,9 +117,4 @@ for (i=0;i<numberoflonghash;i++) {
 }
 }
 
-//       	if ( "type" = "earthquake") {
-//       		fill("red");
-//       	} else {
-//       		fill("yellow");
-//       	}
-// }
+// }mag depth mouse over and add the hover
