@@ -6,6 +6,7 @@ var fs = require('fs'),
 var tmplSource = fs.readFileSync('template.html', 'utf-8'),
     template = handlebars.compile(tmplSource),
     // data = JSON.parse(fs.readFileSync('assets/shows.json', 'utf-8'));
+    days = _.uniq(_.map(JSON.parse(fs.readFileSync('assets/shows.json', 'utf-8')), "schedule.date")).sort(function(a,b){return Date.parse(a) > Date.parse(b)}),
     venues = Object.keys(JSON.parse(fs.readFileSync('assets/venues.json', 'utf-8'))).sort(),
     data = JSON.parse(fs.readFileSync('assets/raw-data.json', 'utf-8'));
 
@@ -32,7 +33,7 @@ alpha.forEach(function(a){
     if (csvShowId == "") continue;  // skip ongoing shows with no specific time
     var csvVenueTitle = _.map(data[0]["artists"][idNum]["shows"], "venueTitle").join(",");
     var FDate = _.map(data[0]["artists"][idNum]["shows"], "formattedDate");
-    var csvEpoch = _.map(FDate, function(d){return Date.parse(d.split("&")[0])}).join(",");
+    var csvEpoch = _.map(FDate, function(d){return Date.parse(d.split("&")[0] + " 2017")}).join(",");
     i.push( { id:idNum,  artist:artistInfo.title, sub:artistInfo.subtitle, img:artistInfo.imageURL, sIds:csvShowId, epochs:csvEpoch, vTitles:csvVenueTitle} ); // add elements
   }
   
@@ -42,9 +43,6 @@ alpha.forEach(function(a){
 //artist  artistid subtitle img csvTime csvDate csvVenueID 
 //venuename venueid
 //date 
-
-var d = ["Thursday, 8 June 2017", "Friday, 9 June 2017", "Saturday, 10 June 2017", "Sunday, 11 June 2017"]
-var days = {"test":d, "d":d};
 
 // names:names, shows:shows, 
 var markup = template({days:days, arg:arg, venues:venues})

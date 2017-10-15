@@ -73,8 +73,26 @@ body {
     display: inline-block;
     height: 70px;
     margin: 0 5px; 
+    background: rgb(229, 68, 40);
+    cursor: pointer;
 } 
-  
+
+.sSub {
+  float: left; 
+  display: inline-block;
+  background: white
+}  
+
+#rmSpan {
+  height: 70px; 
+  width: 70px; 
+  position:relative; 
+  top: 50%; transform: 
+  translate(15%, -50%);  
+  font-size: 4em; 
+  display: none; 
+}
+
 .aList {
   width:78%; 
   padding:10px; 
@@ -126,9 +144,11 @@ body {
 .dList {
   height:10px;
   width: 100%;
-  padding:5px;
+  
   font-size: 1.9em;
-  padding-bottom: 40px;
+  
+  padding-top: 5px;
+  padding-bottom: 30px;
   background-color: rgb(33,33,33);
   background-color: rgb(61,65,72);
 }
@@ -167,8 +187,15 @@ body {
 }
 
 .d { 
-  text-align: justify; 
-  text-justify: inter-word; 
+  transform: translateY(9px);
+  text-align: center;
+  color:#eeeeee; 
+  font-variant: small-caps; 
+  float:left;
+  width:20%;
+}
+
+.title { 
   color:#eeeeee; 
   font-variant: small-caps; 
   float:left;
@@ -176,6 +203,7 @@ body {
 }
 
 .a {
+  column-span: 1;
   display: inline;
   font-size: .9em;
 }
