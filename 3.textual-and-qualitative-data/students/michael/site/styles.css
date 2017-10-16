@@ -80,7 +80,18 @@ body {
 .sSub {
   float: left; 
   display: inline-block;
-  background: white
+  background: white;
+  position: relative;
+}  
+
+.sImg {
+  width: 68px;
+  height: 68px;
+}
+
+.sSubInfo {
+  color: rgb(229, 68, 40);
+  font-size: .8em;
 }  
 
 #rmSpan {
@@ -205,6 +216,7 @@ body {
 .a {
   column-span: 1;
   display: inline;
-  font-size: .9em;
+  font-size: .8em;
 }
+
 
