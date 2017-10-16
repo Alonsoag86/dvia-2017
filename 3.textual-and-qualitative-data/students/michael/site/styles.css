@@ -73,7 +73,7 @@ body {
     display: inline-block;
     height: 70px;
     margin: 0 5px; 
-    background: rgb(229, 68, 40);
+    /*background: rgb(229, 68, 40); */
     cursor: pointer;
 } 
 
@@ -160,7 +160,7 @@ body {
   
   padding-top: 5px;
   padding-bottom: 30px;
-  background-color: rgb(33,33,33);
+  /* background-color: rgb(33,33,33); */
   background-color: rgb(61,65,72);
 }
 
@@ -181,13 +181,19 @@ body {
 }
 
 /* artist, venue, date*/
-.a, .v, .d, .s>div { 
+.a, .v, .d, .s>div, .sImg, #rm { 
   -moz-transition: all .1s ease-in;
   -o-transition: all .1s ease-in;
   -webkit-transition: all .1s ease-in;
   transition: all .1s ease-in;
-  width: unset; 
-  padding: unset; 
+}
+
+#rm {
+  width: 68px;
+  height: 0px;
+  font-size: 4em;
+  opacity: 0;
+  color: rgb(229, 68, 40);
 }
 
 .v { 
@@ -211,6 +217,15 @@ body {
   font-variant: small-caps; 
   float:left;
   width:20%;
+}
+
+.dl { 
+  color:#eeeeee; 
+  font-variant: small-caps; 
+  float:left;
+  width:20%;
+  height:0;
+  opacity:0;
 }
 
 .a {
