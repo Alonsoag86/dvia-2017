@@ -181,7 +181,7 @@ body {
 }
 
 /* artist, venue, date*/
-.a, .v, .d, .s>div, .sImg, #rm { 
+.a, .v, .d, .s>div, .sImg, #rm, .title, .dl { 
   -moz-transition: all .1s ease-in;
   -o-transition: all .1s ease-in;
   -webkit-transition: all .1s ease-in;
@@ -212,6 +212,13 @@ body {
   width:20%;
 }
 
+.titleDl { 
+  color:#eeeeee; 
+  font-variant: small-caps; 
+  float:left;
+  width:20%;
+}
+
 .title { 
   color:#eeeeee; 
   font-variant: small-caps; 
@@ -224,6 +231,7 @@ body {
   font-variant: small-caps; 
   float:left;
   width:20%;
+  
   height:0;
   opacity:0;
 }
