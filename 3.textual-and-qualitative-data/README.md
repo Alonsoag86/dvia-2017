@@ -29,6 +29,12 @@ Your work for this project will mostly take place in three places:
   - `render.js` – organize, rename, and pre-process the data you want to display in this script. When you’re ready to re-generate your HTML, run the script.
   - `site/styles.css` – establish CSS rules to format the data differently based on its hierarchical significance, location, time, etc.
 
+Whenever you make changes to the template or render script, you'll need to re-generate the resulting `site/index.html` file by executing the script (after first having `cd`’d into your student directory):
+
+```
+node render.js
+```
+
 The two Javascipt libraries we’ll be using heavily in this project are:
 
  - [Handlebars](http://handlebarsjs.com) for HTML generation from data + templates.
