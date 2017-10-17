@@ -64,8 +64,8 @@ p {
 }
 
 p {
-	background-color:#c2b59b;
-	color: #c2b59b;
+	background-color:#c7b299;
+	color: #c7b299;
 	padding-left:40%;
 	padding-right:40%;
 	text-align:center;
@@ -76,7 +76,7 @@ p {
 
 p:hover {
 	background-color: #231f20;
-	color: #c2b59b;
+	color: #c7b299;
 	max-height: 100%;
     transition: max-height 3s ease-in;
 
@@ -88,7 +88,7 @@ h2 {
 	letter-spacing:-1%;
 	height:100%;
 	color:#231f20;
-	background-color:#c2b59b;
+	background-color:#c7b299;
 	text-align:center;
 }
 
@@ -102,7 +102,6 @@ h2.shows-25 {
 
 .listing {
 	position:relative;
-	top:auto;
 }
 
 .summaryContainer {
@@ -110,7 +109,7 @@ h2.shows-25 {
 	width:100%;
 	height:auto;
 	background-color: #231f20;
-	color: #c2b59b;
+	color: #c7b299;
 	padding-top:2%;
 	padding-bottom:2%;
 	margin:auto;
