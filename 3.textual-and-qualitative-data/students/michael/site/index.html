@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Northside Festival Scheduler</title>
+  <link rel="stylesheet" href="lib/css/typography.css" type="text/css" charset="utf-8">
+  <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+
+</head>
+<body>
+
+
+<!--
+
+  <div class="listing">
+    <h1>Artists</h1>
+     <ul>
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+       <li>  </li> 
+    </ul>
+
+    
+  </div>
+-->
+
+
+  <div class="sList" >
+  </div>
+
+  <div class="dList">
+    <div class="titleDl" >
+      <div class="title">
+        NORTHSIDE&middot;FESTIVAL <br>
+        Scheduler
+      </div>
+      <div class="dl">
+        &nbsp;&nbsp;Download <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schedule
+      </div>
+    </div>
+    <div class="d" data-fdate="Thursday, 8 June 2017">
+      <b>Thursday, 8 June 2017</b>
+    </div>
+    <div class="d" data-fdate="Friday, 9 June 2017">
+      <b>Friday, 9 June 2017</b>
+    </div>
+    <div class="d" data-fdate="Saturday, 10 June 2017">
+      <b>Saturday, 10 June 2017</b>
+    </div>
+    <div class="d" data-fdate="Sunday, 11 June 2017">
+      <b>Sunday, 11 June 2017</b>
+    </div>
+ </div>
+
+  <div class="aList">
+    <div class="aSubList">
+      <div class="aDropCap">A</div> 
+        <div class="a" data-id="2127" data-artist="A Deer A Horse" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2127_20170515124611_7a0fd720.jpg" data-sub="Noise Love + Thursdays for the Cause" data-epochs="1496973600000">A Deer A Horse <b>&middot;</b> </div> 
+        <div class="a" data-id="2592" data-artist="a place both wonderful and strange" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2592_20170517040336_bf57f212.jpg" data-sub="" data-epochs="1496968200000">a place both wonderful and strange <b>&middot;</b> </div> 
+        <div class="a" data-id="2653" data-artist="A. Savage" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2653_20170518062306_973c119a.jpg" data-sub="Dull Tools" data-epochs="1497142800000">A. Savage <b>&middot;</b> </div> 
+        <div class="a" data-id="1925" data-artist="ABLEBODY" data-venues="Music Hall of Williamsburg" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1925_20170420024846_260acf13.jpg" data-sub="" data-epochs="1497056400000">ABLEBODY <b>&middot;</b> </div> 
+        <div class="a" data-id="3217" data-artist="Active Bird Community" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3217_20170527084056_88d35c06.jpg" data-sub="Terrorbird" data-epochs="1497122400000">Active Bird Community <b>&middot;</b> </div> 
+        <div class="a" data-id="2307" data-artist="Adam Schatz" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2307_20170515081632_cd8f3870.jpg" data-sub="Wild Honey Pie present The Beehive" data-epochs="1497047400000">Adam Schatz <b>&middot;</b> </div> 
+        <div class="a" data-id="2626" data-artist="Adrian Daniel" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2626_20170517070835_3d14ff52.jpg" data-sub="" data-epochs="1497058200000">Adrian Daniel <b>&middot;</b> </div> 
+        <div class="a" data-id="3251" data-artist="Aerial East" data-venues="Music Hall of Williamsburg" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3251_20170529061731_0a4ee17a.jpg" data-sub="" data-epochs="1496970000000">Aerial East <b>&middot;</b> </div> 
+        <div class="a" data-id="2267" data-artist="Air Waves" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2267_20170515070914_e9cd58ea.jpg" data-sub="PopGun" data-epochs="1496968200000">Air Waves <b>&middot;</b> </div> 
+        <div class="a" data-id="2157" data-artist="Aldous Harding" data-venues="Baby&#x27;s All Right,Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2157_20170515022543_1c04fbfc.jpg" data-sub="AdHoc x BrooklynVegan | Panache Booking" data-epochs="1497148800000,1496971800000">Aldous Harding <b>&middot;</b> </div> 
+        <div class="a" data-id="2201" data-artist="All Types of Kinds" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2201_20170515040027_767d2ff5.jpg" data-sub="Unit J Records" data-epochs="1497045600000">All Types of Kinds <b>&middot;</b> </div> 
+        <div class="a" data-id="2675" data-artist="Amanda Fama" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2675_20170520084029_4bda94a4.jpg" data-sub="TJO" data-epochs="1496964600000">Amanda Fama <b>&middot;</b> </div> 
+        <div class="a" data-id="3246" data-artist="Amber Arcades" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3246_20170529060847_918a5ee7.jpg" data-sub="Dutch Culture USA" data-epochs="1496970000000">Amber Arcades <b>&middot;</b> </div> 
+        <div class="a" data-id="2649" data-artist="American Pinup" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2649_20170518061655_92d161a0.jpg" data-sub="Play Too Much" data-epochs="1496970000000">American Pinup <b>&middot;</b> </div> 
+        <div class="a" data-id="3400" data-artist="Ana Becker" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3400_20170530110430_a42ab3f9.jpg" data-sub="" data-epochs="1497150000000">Ana Becker <b>&middot;</b> </div> 
+        <div class="a" data-id="2320" data-artist="Ancient Ocean" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2320_20170516101853_9cd70c98.jpg" data-sub="" data-epochs="1496981700000">Ancient Ocean <b>&middot;</b> </div> 
+        <div class="a" data-id="2087" data-artist="Anika Pyle" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2087_20170515112347_a1a508fc.jpg" data-sub="Anchorless Records x For It!" data-epochs="1497063600000">Anika Pyle <b>&middot;</b> </div> 
+        <div class="a" data-id="3399" data-artist="Animah" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3399_20170530105655_23d5740f.jpg" data-sub="" data-epochs="1497124800000">Animah <b>&middot;</b> </div> 
+        <div class="a" data-id="3440" data-artist="Animal Show" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3440_20170531065637_9fd7119f.jpg" data-sub="Scenic" data-epochs="1497051000000">Animal Show <b>&middot;</b> </div> 
+        <div class="a" data-id="2304" data-artist="Anybody But The Cops" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2304_20170515081247_1a05ad89.jpg" data-sub="Gimme Tinnitus x Already Dead Tapes" data-epochs="1496976300000">Anybody But The Cops <b>&middot;</b> </div> 
+        <div class="a" data-id="2684" data-artist="Autodrone" data-venues="The Safari Room at El Cortez" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2684_20170520085733_353a771e.jpg" data-sub="Scenic" data-epochs="1497052800000">Autodrone <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">B</div> 
+        <div class="a" data-id="2211" data-artist="B.R. Mackie" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2211_20170515041639_2715d6fa.jpg" data-sub="Unit J Records" data-epochs="1497052800000">B.R. Mackie <b>&middot;</b> </div> 
+        <div class="a" data-id="2162" data-artist="Baby Shakes" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2162_20170515023422_b8f90a62.jpg" data-sub="Scenic" data-epochs="1497053700000">Baby Shakes <b>&middot;</b> </div> 
+        <div class="a" data-id="2286" data-artist="Baked" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2286_20170515073031_539acaea.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497140100000">Baked <b>&middot;</b> </div> 
+        <div class="a" data-id="3396" data-artist="Beiju" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3396_20170530105117_6706cd22.jpg" data-sub="" data-epochs="1497060000000">Beiju <b>&middot;</b> </div> 
+        <div class="a" data-id="2199" data-artist="Belle Skinner" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2199_20170515035553_3da1a65b.jpg" data-sub="Unit J Records" data-epochs="1497042000000">Belle Skinner <b>&middot;</b> </div> 
+        <div class="a" data-id="3438" data-artist="Best Behavior" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3438_20170531065021_60c1845f.jpg" data-sub="" data-epochs="1496970900000">Best Behavior <b>&middot;</b> </div> 
+        <div class="a" data-id="3414" data-artist="BETS" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3414_20170531075217_345b379c.jpg" data-sub="" data-epochs="1497135600000">BETS <b>&middot;</b> </div> 
+        <div class="a" data-id="2197" data-artist="Beverly" data-venues="Music Hall of Williamsburg" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2197_20170515035158_d465dcbc.jpg" data-sub="" data-epochs="1497060000000">Beverly <b>&middot;</b> </div> 
+        <div class="a" data-id="2224" data-artist="Big Bliss" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2224_20170515055002_c7a51762.jpg" data-sub="Ears To Feed x Impose" data-epochs="1497055500000">Big Bliss <b>&middot;</b> </div> 
+        <div class="a" data-id="1926" data-artist="BIG THIEF" data-venues="Rough Trade,Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1926_20170420025458_d617ad6d.jpg" data-sub="" data-epochs="1497063600000,1497145500000">BIG THIEF <b>&middot;</b> </div> 
+        <div class="a" data-id="2237" data-artist="Big Ups" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2237_20170515063027_eda74afb.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497148200000">Big Ups <b>&middot;</b> </div> 
+        <div class="a" data-id="2581" data-artist="BJ the Chicago Kid" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2581_20170516064923_cf263d1f.jpg" data-sub="" data-epochs="1497137400000">BJ the Chicago Kid <b>&middot;</b> </div> 
+        <div class="a" data-id="2255" data-artist="Black Black Black" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2255_20170515065344_88e5bb30.jpg" data-sub="Aqualamb" data-epochs="1497123900000">Black Black Black <b>&middot;</b> </div> 
+        <div class="a" data-id="2281" data-artist="Blaire Alise &amp; The Bombshells" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2281_20170515072614_d588eee7.jpg" data-sub="Wild Honey Pie present The Beehive" data-epochs="1497049200000">Blaire Alise &amp; The Bombshells <b>&middot;</b> </div> 
+        <div class="a" data-id="2178" data-artist="Blonde Maze" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2178_20170515031913_f788b471.jpg" data-sub="Audiofemme x glamgare" data-epochs="1497111300000">Blonde Maze <b>&middot;</b> </div> 
+        <div class="a" data-id="2134" data-artist="Blushed" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2134_20170515015110_9adecf9f.jpg" data-sub="Paper Scissors" data-epochs="1497123000000">Blushed <b>&middot;</b> </div> 
+        <div class="a" data-id="2652" data-artist="Bodega" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2652_20170518062136_91cb1b85.jpg" data-sub="Dull Tools" data-epochs="1497145500000">Bodega <b>&middot;</b> </div> 
+        <div class="a" data-id="1948" data-artist="Boogie" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1948_20170509113605_729e593e.jpg" data-sub="Cypher League x Northside present The Pull Up" data-epochs="1496986500000">Boogie <b>&middot;</b> </div> 
+        <div class="a" data-id="2413" data-artist="Born Loose" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2413_20170516020034_6d2eff03.jpg" data-sub="" data-epochs="1497056400000">Born Loose <b>&middot;</b> </div> 
+        <div class="a" data-id="3416" data-artist="Brother Brothers" data-venues="Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3416_20170531075644_8ffe3824.jpg" data-sub="" data-epochs="1497140100000">Brother Brothers <b>&middot;</b> </div> 
+        <div class="a" data-id="2088" data-artist="Buck Gooter" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2088_20170515112506_3fe0dd60.jpg" data-sub="Wharf Cat Records x Ramp Local" data-epochs="1497150000000">Buck Gooter <b>&middot;</b> </div> 
+        <div class="a" data-id="2169" data-artist="Bush Tetras" data-venues="The Hall at MP" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2169_20170515024809_e5ab1ba9.jpg" data-sub="Northside Festival x LPR Present: Downtown Trip" data-epochs="1497054600000">Bush Tetras <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">C</div> 
+        <div class="a" data-id="2655" data-artist="Caged Animals" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2655_20170518062649_91ba8e99.jpg" data-sub="Campers&#x27; Rule x Carabella" data-epochs="1497142800000">Caged Animals <b>&middot;</b> </div> 
+        <div class="a" data-id="2305" data-artist="Canter" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2305_20170515081332_7dd60736.jpg" data-sub="Gimme Tinnitus x Already Dead Tapes" data-epochs="1496970900000">Canter <b>&middot;</b> </div> 
+        <div class="a" data-id="3218" data-artist="Casper Skulls" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3218_20170527084302_7b05ff9a.jpg" data-sub="Terrorbird" data-epochs="1497118800000">Casper Skulls <b>&middot;</b> </div> 
+        <div class="a" data-id="3249" data-artist="Castle Black" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3249_20170529061305_0085be9b.jpg" data-sub="TJO" data-epochs="1497052800000">Castle Black <b>&middot;</b> </div> 
+        <div class="a" data-id="2150" data-artist="Ciarra Black" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2150_20170515021515_4a97e831.jpg" data-sub="AdHoc x Impose x No-Tech" data-epochs="1496894400000">Ciarra Black <b>&middot;</b> </div> 
+        <div class="a" data-id="2149" data-artist="CL" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2149_20170515021404_29682fd8.jpg" data-sub="AdHoc x Impose x No-Tech" data-epochs="1496902500000">CL <b>&middot;</b> </div> 
+        <div class="a" data-id="2314" data-artist="Colatura" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2314_20170515091814_0634afe3.jpg" data-sub="PopGun" data-epochs="1497121200000">Colatura <b>&middot;</b> </div> 
+        <div class="a" data-id="3239" data-artist="Color Tongue" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3239_20170529055558_885ae485.jpg" data-sub="Lonely Atom Records x TJO" data-epochs="1496978100000">Color Tongue <b>&middot;</b> </div> 
+        <div class="a" data-id="3546" data-artist="Combo Chimbita" data-venues="Sine Metu Stage @ Bedford Ave" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3546_20170604111341_0420bf03.jpg" data-sub="" data-epochs="1497117600000">Combo Chimbita <b>&middot;</b> </div> 
+        <div class="a" data-id="2244" data-artist="Cones" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2244_20170515063910_0a831251.jpg" data-sub="Panache" data-epochs="1497140100000">Cones <b>&middot;</b> </div> 
+        <div class="a" data-id="2131" data-artist="Container" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2131_20170515125535_de0d4fa7.jpg" data-sub="" data-epochs="1496984400000">Container <b>&middot;</b> </div> 
+        <div class="a" data-id="2385" data-artist="Cop Funeral" data-venues="The Gutter,Vital Joint" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2385_20170516113034_aab421f2.jpg" data-sub="Gimme Tinnitus x Already Dead Tapes | Vital Joint" data-epochs="1496966400000,1497141000000">Cop Funeral <b>&middot;</b> </div> 
+        <div class="a" data-id="2113" data-artist="Craig Leon &amp; Martin Rev" data-venues="The Hall at MP" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2113_20170515122137_0e553896.jpg" data-sub="Northside Festival x LPR Present: Downtown Trip" data-epochs="1497063600000">Craig Leon &amp; Martin Rev <b>&middot;</b> </div> 
+        <div class="a" data-id="1945" data-artist="Crazy Pills" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1945_20170504024511_200c5b4a.jpg" data-sub="El Goodo" data-epochs="1497151800000">Crazy Pills <b>&middot;</b> </div> 
+        <div class="a" data-id="2303" data-artist="Crosslegged" data-venues="Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2303_20170515081159_1d95ff5a.jpg" data-sub="" data-epochs="1496968200000">Crosslegged <b>&middot;</b> </div> 
+        <div class="a" data-id="2166" data-artist="Cuddle Magic" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2166_20170515024105_88a4cf6c.jpg" data-sub="Northern Spy Records" data-epochs="1496973600000">Cuddle Magic <b>&middot;</b> </div> 
+        <div class="a" data-id="2112" data-artist="Cut Worms" data-venues="Music Hall of Williamsburg" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2112_20170515121836_b705457f.jpg" data-sub="" data-epochs="1496972700000">Cut Worms <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">D</div> 
+        <div class="a" data-id="2130" data-artist="Dark Blue" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2130_20170515125446_bdba5c4d.jpg" data-sub="" data-epochs="1496970900000">Dark Blue <b>&middot;</b> </div> 
+        <div class="a" data-id="2136" data-artist="Darkwing" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2136_20170515015348_a8ddf6b2.jpg" data-sub="Paper Scissors" data-epochs="1497115800000">Darkwing <b>&middot;</b> </div> 
+        <div class="a" data-id="2234" data-artist="Darren Keen" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2234_20170515062648_d000884a.jpg" data-sub="Orange Milk Records" data-epochs="1497074400000">Darren Keen <b>&middot;</b> </div> 
+        <div class="a" data-id="2115" data-artist="Dead Leaf Echo" data-venues="Our Wicked Lady,Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2115_20170515122421_736215ba.jpg" data-sub="PaperCup x Indie Shuffle | Reheated Spaghetti" data-epochs="1497063600000,1497059100000">Dead Leaf Echo <b>&middot;</b> </div> 
+        <div class="a" data-id="2146" data-artist="Dead Stars" data-venues="Matchless,Our Wicked Lady,Main Drag,Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2146_20170515021017_d631e64b.jpg" data-sub="Supercrush Studio x Paper Garden Records x Greenpointers.com |Reheated Spaghetti | El Goodo | Noise Love x Thursdays for the Cause" data-epochs="1496972700000,1496979000000,1497060000000,1497053700000">Dead Stars <b>&middot;</b> </div> 
+        <div class="a" data-id="3548" data-artist="Death&#x27;s Dynamic Shroud.wmv" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3548_20170604111620_7205f86e.jpg" data-sub="Orange Milk" data-epochs="1497144600000">Death&#x27;s Dynamic Shroud.wmv <b>&middot;</b> </div> 
+        <div class="a" data-id="2152" data-artist="Debbie Downer" data-venues="Matchless,Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2152_20170515021744_1a9253fe.jpg" data-sub="Supercrush Studio x  Paper Garden Records x Greenpointers.com" data-epochs="1496970000000,1497140100000">Debbie Downer <b>&middot;</b> </div> 
+        <div class="a" data-id="2689" data-artist="Deem Spencer" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2689_20170520094315_78a33620.jpg" data-sub="Move Forward Music" data-epochs="1497054000000">Deem Spencer <b>&middot;</b> </div> 
+        <div class="a" data-id="2289" data-artist="Def.GRLS" data-venues="Little Skips" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2289_20170515074430_b6edad05.jpg" data-sub="GP Stripex x NYCDIY.XYZ" data-epochs="1497148200000">Def.GRLS <b>&middot;</b> </div> 
+        <div class="a" data-id="2104" data-artist="Del Caesar" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2104_20170515120532_d13a96d3.jpg" data-sub="El Goodo" data-epochs="1497144600000">Del Caesar <b>&middot;</b> </div> 
+        <div class="a" data-id="2272" data-artist="Den-Mate" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2272_20170515071500_bd88b921.jpg" data-sub="PopGun" data-epochs="1497135600000">Den-Mate <b>&middot;</b> </div> 
+        <div class="a" data-id="2625" data-artist="Denitia" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2625_20170517070538_0faf11f9.jpg" data-sub="" data-epochs="1497060900000">Denitia <b>&middot;</b> </div> 
+        <div class="a" data-id="3436" data-artist="Dentist" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3436_20170531064537_a8c5e1f6.jpg" data-sub="" data-epochs="1496968200000">Dentist <b>&middot;</b> </div> 
+        <div class="a" data-id="2253" data-artist="Descender" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2253_20170515065004_329aacc9.jpg" data-sub="Aqualamb" data-epochs="1497118500000">Descender <b>&middot;</b> </div> 
+        <div class="a" data-id="2156" data-artist="Destruction Unit" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2156_20170515022416_d89ecaaa.jpg" data-sub="Sacred Bones 10th Anniversary" data-epochs="1497069000000">Destruction Unit <b>&middot;</b> </div> 
+        <div class="a" data-id="2202" data-artist="Dirty Bird" data-venues="Pine Box Rock Shop" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2202_20170515040256_f4a32110.jpg" data-sub="Unit J Records" data-epochs="1497047400000">Dirty Bird <b>&middot;</b> </div> 
+        <div class="a" data-id="2261" data-artist="Dirty Dishes" data-venues="Gold Sounds" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2261_20170515065950_331a3bc8.jpg" data-sub="Cigar City MGMT" data-epochs="1496977200000">Dirty Dishes <b>&middot;</b> </div> 
+        <div class="a" data-id="2126" data-artist="Dirty Projectors" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2126_20170515124417_2f75756f.jpg" data-sub="" data-epochs="1496969100000">Dirty Projectors <b>&middot;</b> </div> 
+        <div class="a" data-id="3665" data-artist="Dj Kool Herc" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3665_20170607052339_a1b0ae3a.jpg" data-sub="" data-epochs="1497055500000">Dj Kool Herc <b>&middot;</b> </div> 
+        <div class="a" data-id="1952" data-artist="DJ Yung Neil" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1952_20170509115705_a18e7f7f.jpg" data-sub="Cypher League x Northside present The Pull Up" data-epochs="1497065400000">DJ Yung Neil <b>&middot;</b> </div> 
+        <div class="a" data-id="2591" data-artist="DOOMSQUAD" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2591_20170517035814_c4ae091e.jpg" data-sub="" data-epochs="1496975400000">DOOMSQUAD <b>&middot;</b> </div> 
+        <div class="a" data-id="2238" data-artist="Dougie Poole" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2238_20170515063143_2620f8f9.jpg" data-sub="AdHoc" data-epochs="1496972700000">Dougie Poole <b>&middot;</b> </div> 
+        <div class="a" data-id="2099" data-artist="Downtown Boys" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2099_20170515115511_482f6363.jpg" data-sub="Pitchfork" data-epochs="1497065400000">Downtown Boys <b>&middot;</b> </div> 
+        <div class="a" data-id="3412" data-artist="Dream Eaters" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3412_20170531074900_23c49fb2.jpg" data-sub="" data-epochs="1497142800000">Dream Eaters <b>&middot;</b> </div> 
+        <div class="a" data-id="2205" data-artist="Dru Cutler &amp; The Heart &amp; Hand Band" data-venues="Pine Box Rock Shop" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2205_20170515041058_e5df7b8e.jpg" data-sub="Unit J Records" data-epochs="1497061800000">Dru Cutler &amp; The Heart &amp; Hand Band <b>&middot;</b> </div> 
+        <div class="a" data-id="2291" data-artist="Dumb Wolves" data-venues="Little Skips" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2291_20170515074844_94140188.jpg" data-sub="GP Stripex x NYCDIY.XYZ" data-epochs="1497144600000">Dumb Wolves <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">E</div> 
+        <div class="a" data-id="2086" data-artist="Early Riser" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2086_20170515112103_06ff605b.jpg" data-sub="Anchorless Records x For It!" data-epochs="1497061800000">Early Riser <b>&middot;</b> </div> 
+        <div class="a" data-id="2705" data-artist="Eartheater" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2705_20170522072338_23aaaef2.jpg" data-sub="" data-epochs="1496966400000">Eartheater <b>&middot;</b> </div> 
+        <div class="a" data-id="2654" data-artist="Eaters" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2654_20170518062334_076e2f83.jpg" data-sub="Dull Tools" data-epochs="1497150900000">Eaters <b>&middot;</b> </div> 
+        <div class="a" data-id="2209" data-artist="Echo Moth" data-venues="Pine Box Rock Shop" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2209_20170515041450_6cc0b72b.jpg" data-sub="Unit J Records" data-epochs="1496982600000">Echo Moth <b>&middot;</b> </div> 
+        <div class="a" data-id="2648" data-artist="Effie Liu" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2648_20170518060941_d952f622.jpg" data-sub="Play Too Much" data-epochs="1496973600000">Effie Liu <b>&middot;</b> </div> 
+        <div class="a" data-id="2596" data-artist="Elizabeth Devlin" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2596_20170517041801_25a03850.jpg" data-sub="" data-epochs="1496968200000">Elizabeth Devlin <b>&middot;</b> </div> 
+        <div class="a" data-id="2124" data-artist="Elvis Depressedly" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2124_20170515124033_b3986a57.jpg" data-sub="" data-epochs="1497144600000">Elvis Depressedly <b>&middot;</b> </div> 
+        <div class="a" data-id="2093" data-artist="Elysia Crampton" data-venues="Good Room" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2093_20170515113333_f5f63a86.jpg" data-sub="Tinnitus x Northside x AdHoc" data-epochs="1496975400000">Elysia Crampton <b>&middot;</b> </div> 
+        <div class="a" data-id="2276" data-artist="Emel Mathlouthi" data-venues="National Sawdust" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2276_20170515072140_421e05a8.jpg" data-sub="Northside Festival x France Rocks Summerfest x POP Montreal" data-epochs="1496975400000">Emel Mathlouthi <b>&middot;</b> </div> 
+        <div class="a" data-id="2248" data-artist="Ernie" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2248_20170515064338_e1732253.jpg" data-sub="Noise Love + Thursdays for the Cause" data-epochs="1496970900000">Ernie <b>&middot;</b> </div> 
+        <div class="a" data-id="3398" data-artist="Errmine" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3398_20170530105433_ad29f7ba.jpg" data-sub="" data-epochs="1497056400000">Errmine <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">F</div> 
+        <div class="a" data-id="2230" data-artist="Fair Panic" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2230_20170515061850_407028ff.jpg" data-sub="Rocker Stalker x Behind The Curtains" data-epochs="1497128400000">Fair Panic <b>&middot;</b> </div> 
+        <div class="a" data-id="2306" data-artist="Fat Heaven" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2306_20170515081430_cbc4a47c.jpg" data-sub="Gimme Tinnitus x Already Dead Tapes" data-epochs="1496968200000">Fat Heaven <b>&middot;</b> </div> 
+        <div class="a" data-id="2313" data-artist="Fern Mayo" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2313_20170515091455_1277b393.jpg" data-sub="PopGun" data-epochs="1497128400000">Fern Mayo <b>&middot;</b> </div> 
+        <div class="a" data-id="2198" data-artist="Field Agent" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2198_20170515035504_32564922.jpg" data-sub="Pitchfork" data-epochs="1497054600000">Field Agent <b>&middot;</b> </div> 
+        <div class="a" data-id="2657" data-artist="FingerFingerrr" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2657_20170518064111_fbb59ce7.jpg" data-sub="Campers&#x27; Rule x Carabella" data-epochs="1497137400000">FingerFingerrr <b>&middot;</b> </div> 
+        <div class="a" data-id="2128" data-artist="Flesh World" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2128_20170515124924_10803906.jpg" data-sub="Pitchfork" data-epochs="1497058200000">Flesh World <b>&middot;</b> </div> 
+        <div class="a" data-id="2158" data-artist="Flock Of Dimes" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2158_20170515022907_111fcbf1.jpg" data-sub="" data-epochs="1496984400000">Flock Of Dimes <b>&middot;</b> </div> 
+        <div class="a" data-id="2193" data-artist="Fond Han" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2193_20170515034338_f6f81524.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497132000000">Fond Han <b>&middot;</b> </div> 
+        <div class="a" data-id="2092" data-artist="Foodman (aka 食品まつり)" data-venues="Brooklyn Bazaar,Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2092_20170515113138_124603d0.jpg" data-sub="Orange Milk Records" data-epochs="1496981700000,1497150000000">Foodman (aka 食品まつり) <b>&middot;</b> </div> 
+        <div class="a" data-id="2292" data-artist="Fraidycat" data-venues="Little Skips" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2292_20170515074932_826449c1.jpg" data-sub="GP Stripex x NYCDIY.XYZ" data-epochs="1497142800000">Fraidycat <b>&middot;</b> </div> 
+        <div class="a" data-id="2280" data-artist="Frances Cone" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2280_20170515072533_90af5002.jpg" data-sub="Wild Honey Pie present The Beehive" data-epochs="1497059100000">Frances Cone <b>&middot;</b> </div> 
+        <div class="a" data-id="2268" data-artist="Frances Rose" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2268_20170515071001_2a5305a3.jpg" data-sub="" data-epochs="1497067200000">Frances Rose <b>&middot;</b> </div> 
+        <div class="a" data-id="2262" data-artist="Fruit &amp; Flowers" data-venues="Gold Sounds" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2262_20170515070337_02ce6232.jpg" data-sub="Cigar City MGMT" data-epochs="1496973600000">Fruit &amp; Flowers <b>&middot;</b> </div> 
+        <div class="a" data-id="2137" data-artist="Future Punx" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2137_20170515015515_2c334318.jpg" data-sub="Dull Tools" data-epochs="1497067200000">Future Punx <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">G</div> 
+        <div class="a" data-id="2098" data-artist="G.S. Sultan" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2098_20170515115402_a4baf963.jpg" data-sub="Orange Milk Records" data-epochs="1497141900000">G.S. Sultan <b>&middot;</b> </div> 
+        <div class="a" data-id="2310" data-artist="Gabi" data-venues="Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2310_20170515090943_847c6aae.jpg" data-sub="" data-epochs="1497056400000">Gabi <b>&middot;</b> </div> 
+        <div class="a" data-id="2294" data-artist="Gary War" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2294_20170515075224_581b143b.jpg" data-sub="Sacred Bones 10th Anniversary" data-epochs="1497151800000">Gary War <b>&middot;</b> </div> 
+        <div class="a" data-id="2100" data-artist="Georgia" data-venues="National Sawdust" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2100_20170515115746_c329dc83.jpg" data-sub="The Creative Independent" data-epochs="1497142800000">Georgia <b>&middot;</b> </div> 
+        <div class="a" data-id="3528" data-artist="Ghostly Times" data-venues="Pine Box Rock Shop" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3528_20170604104557_88e952af.jpg" data-sub="" data-epochs="1497051000000">Ghostly Times <b>&middot;</b> </div> 
+        <div class="a" data-id="2095" data-artist="Giant Claw" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2095_20170515113718_a51065fb.jpg" data-sub="Orange Milk" data-epochs="1497147300000">Giant Claw <b>&middot;</b> </div> 
+        <div class="a" data-id="2239" data-artist="Ginla" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2239_20170515063255_729c841a.jpg" data-sub="AdHoc" data-epochs="1496970000000">Ginla <b>&middot;</b> </div> 
+        <div class="a" data-id="2182" data-artist="Girl Skin" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2182_20170515032806_ae13790f.jpg" data-sub="Audiofemme x glamgare" data-epochs="1497122100000">Girl Skin <b>&middot;</b> </div> 
+        <div class="a" data-id="2108" data-artist="Girlpool" data-venues="Warsaw" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2108_20170515121139_f92464f6.jpg" data-sub="AdHoc" data-epochs="1497061800000">Girlpool <b>&middot;</b> </div> 
+        <div class="a" data-id="2161" data-artist="Giuda" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2161_20170515023259_df1865db.jpg" data-sub="Scenic" data-epochs="1497059100000">Giuda <b>&middot;</b> </div> 
+        <div class="a" data-id="2611" data-artist="Glass Slipper" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2611_20170517064513_6daeea30.jpg" data-sub="King Pizza" data-epochs="1497057300000">Glass Slipper <b>&middot;</b> </div> 
+        <div class="a" data-id="2271" data-artist="gobbinjr" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2271_20170515071323_4213d989.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497137400000">gobbinjr <b>&middot;</b> </div> 
+        <div class="a" data-id="2256" data-artist="Godmaker" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2256_20170515065441_177d14e2.jpg" data-sub="Aqualamb" data-epochs="1497126600000">Godmaker <b>&middot;</b> </div> 
+        <div class="a" data-id="2179" data-artist="Gold Child" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2179_20170515032159_cb330182.jpg" data-sub="Audiofemme x glamgare" data-epochs="1497114000000">Gold Child <b>&middot;</b> </div> 
+        <div class="a" data-id="2298" data-artist="Gold Dime" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2298_20170515075639_e5306d35.jpg" data-sub="Fire Talk" data-epochs="1497124800000">Gold Dime <b>&middot;</b> </div> 
+        <div class="a" data-id="2212" data-artist="Gold Stars for Everyone" data-venues="Pine Box Rock Shop" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2212_20170515041753_6c7392f9.jpg" data-sub="Unit J Records" data-epochs="1497054600000">Gold Stars for Everyone <b>&middot;</b> </div> 
+        <div class="a" data-id="2120" data-artist="Good Looking Friends" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2120_20170515123139_bcd4106d.jpg" data-sub="Anchorless Records x For It!" data-epochs="1497058200000">Good Looking Friends <b>&middot;</b> </div> 
+        <div class="a" data-id="2217" data-artist="Goodman" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2217_20170515052608_4d285ebd.jpg" data-sub="Invertebrate" data-epochs="1497147600000">Goodman <b>&middot;</b> </div> 
+        <div class="a" data-id="2147" data-artist="Grim Streaker" data-venues="Matchless,Our Wicked Lady,Cape House,Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2147_20170515021135_98aadaf9.jpg" data-sub="Supercrush Studio x Paper Garden Records x Greenpointers.com | Reheated Spaghetti | PopGun | Campers&#x27; Rule x Carabella" data-epochs="1496975400000,1497124800000,1497051000000,1497148200000">Grim Streaker <b>&middot;</b> </div> 
+        <div class="a" data-id="2319" data-artist="Grooms" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2319_20170516101620_271908ed.jpg" data-sub="Ears To Feed x Impose" data-epochs="1497058200000">Grooms <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">H</div> 
+        <div class="a" data-id="2077" data-artist="Happyness" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2077_20170511114422_68a83a3e.jpg" data-sub="Panache" data-epochs="1497145800000">Happyness <b>&middot;</b> </div> 
+        <div class="a" data-id="2119" data-artist="Hard Pass" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2119_20170515122927_4adb3f7e.jpg" data-sub="Anchorless Records x For It!" data-epochs="1497060000000">Hard Pass <b>&middot;</b> </div> 
+        <div class="a" data-id="2247" data-artist="Harvey Lush &amp; His Orchestra" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2247_20170515064233_ce19ec0c.jpg" data-sub="Noise Love + Thursdays for the Cause" data-epochs="1496968200000">Harvey Lush &amp; His Orchestra <b>&middot;</b> </div> 
+        <div class="a" data-id="3213" data-artist="Haybaby" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3213_20170527082417_1cc743f2.jpg" data-sub="Play Too Much" data-epochs="1496977200000">Haybaby <b>&middot;</b> </div> 
+        <div class="a" data-id="3541" data-artist="Hayes Peebles" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3541_20170604104634_eef9407d.jpg" data-sub="Unit J Records" data-epochs="1497060000000">Hayes Peebles <b>&middot;</b> </div> 
+        <div class="a" data-id="2138" data-artist="Heaven&#x27;s Gate" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2138_20170515015637_72fef19b.jpg" data-sub="Dull Tools" data-epochs="1497148200000">Heaven&#x27;s Gate <b>&middot;</b> </div> 
+        <div class="a" data-id="2141" data-artist="Hidden Ritual" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2141_20170515020225_62ab5f7b.jpg" data-sub="Monofonus Press x Astral Spirits" data-epochs="1497062700000">Hidden Ritual <b>&middot;</b> </div> 
+        <div class="a" data-id="2252" data-artist="Hiram-Maxim" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2252_20170515064814_e70dc356.jpg" data-sub="Aqualamb" data-epochs="1497115800000">Hiram-Maxim <b>&middot;</b> </div> 
+        <div class="a" data-id="2641" data-artist="Hnry Flwr" data-venues="Vital Joint" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2641_20170518060200_aae924f8.jpg" data-sub="Vital Joint" data-epochs="1497143700000">Hnry Flwr <b>&middot;</b> </div> 
+        <div class="a" data-id="2118" data-artist="Holly Overton and Midnight People" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2118_20170515122817_faabcc85.jpg" data-sub="El Goodo" data-epochs="1497148200000">Holly Overton and Midnight People <b>&middot;</b> </div> 
+        <div class="a" data-id="2235" data-artist="Holy Holy Vine" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2235_20170515062802_f30157a4.jpg" data-sub="AdHoc" data-epochs="1497054600000">Holy Holy Vine <b>&middot;</b> </div> 
+        <div class="a" data-id="2288" data-artist="Holy Tunics" data-venues="Little Skips" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2288_20170515073710_a84df66d.jpg" data-sub="GP Stripex x NYCDIY.XYZ" data-epochs="1497150000000">Holy Tunics <b>&middot;</b> </div> 
+        <div class="a" data-id="3444" data-artist="HoneyChrome" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3444_20170531072235_32890d40.jpg" data-sub="" data-epochs="1497146400000">HoneyChrome <b>&middot;</b> </div> 
+        <div class="a" data-id="2666" data-artist="HONEYHONEY" data-venues="Sine Metu Stage @ Bedford Ave" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2666_20170519065439_68181a13.jpg" data-sub="" data-epochs="1497124800000">HONEYHONEY <b>&middot;</b> </div> 
+        <div class="a" data-id="2107" data-artist="Honnda" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2107_20170515121013_8e837329.jpg" data-sub="Orange Milk Records" data-epochs="1496982600000">Honnda <b>&middot;</b> </div> 
+        <div class="a" data-id="2070" data-artist="Hoops" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2070_20170511105352_bf67dfa5.jpg" data-sub="" data-epochs="1496975400000">Hoops <b>&middot;</b> </div> 
+        <div class="a" data-id="2160" data-artist="Horoscope" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2160_20170515023152_ff1cce85.jpg" data-sub="AdHoc x Impose x No-Tech" data-epochs="1496896200000">Horoscope <b>&middot;</b> </div> 
+        <div class="a" data-id="2259" data-artist="Horse Jumper of Love" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2259_20170515065725_3c4e7b7f.jpg" data-sub="" data-epochs="1497139200000">Horse Jumper of Love <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">I</div> 
+        <div class="a" data-id="1949" data-artist="I.O.D" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1949_20170509115212_22335c22.jpg" data-sub="Cypher League x Northside present The Pull Up" data-epochs="1496980800000">I.O.D <b>&middot;</b> </div> 
+        <div class="a" data-id="2176" data-artist="Ian Sweet" data-venues="Warsaw" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2176_20170515030151_fa758611.jpg" data-sub="AdHoc" data-epochs="1497059100000">Ian Sweet <b>&middot;</b> </div> 
+        <div class="a" data-id="2243" data-artist="Iconoclasm" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2243_20170515063818_c4770cae.jpg" data-sub="In Blood" data-epochs="1497060900000">Iconoclasm <b>&middot;</b> </div> 
+        <div class="a" data-id="2275" data-artist="Ikue Mori" data-venues="The Hall at MP" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2275_20170515072035_7e1eb5bc.jpg" data-sub="Northside Festival x LPR Present: Downtown Trip" data-epochs="1497060900000">Ikue Mori <b>&middot;</b> </div> 
+        <div class="a" data-id="2203" data-artist="Inalukt" data-venues="Pine Box Rock Shop" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2203_20170515040721_dc694b43.jpg" data-sub="Unit J Records" data-epochs="1497058200000">Inalukt <b>&middot;</b> </div> 
+        <div class="a" data-id="2155" data-artist="Institute" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2155_20170515022311_8ae7dad4.jpg" data-sub="Sacred Bones 10th Anniversary" data-epochs="1497139200000">Institute <b>&middot;</b> </div> 
+        <div class="a" data-id="3532" data-artist="It Was Romance" data-venues="TNT Backstory Studio at Kinfolk 90" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3532_20170604110355_261ee76d.jpg" data-sub="" data-epochs="1497213000000">It Was Romance <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">J</div> 
+        <div class="a" data-id="2665" data-artist="J-Council" data-venues="Sine Metu Stage @ Bedford Ave" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2665_20170519065111_f36a9518.jpg" data-sub="" data-epochs="1497128400000">J-Council <b>&middot;</b> </div> 
+        <div class="a" data-id="2671" data-artist="Jackie Paladino" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2671_20170520083109_41219d60.jpg" data-sub="TJO" data-epochs="1496975400000">Jackie Paladino <b>&middot;</b> </div> 
+        <div class="a" data-id="2273" data-artist="Jacky Winter" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2273_20170515071735_f101c3fa.jpg" data-sub="PopGun" data-epochs="1497132000000">Jacky Winter <b>&middot;</b> </div> 
+        <div class="a" data-id="2674" data-artist="Janani Shankar" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2674_20170520083746_7f3bbe64.jpg" data-sub="TJO" data-epochs="1496967300000">Janani Shankar <b>&middot;</b> </div> 
+        <div class="a" data-id="2143" data-artist="Jay Som" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2143_20170515020605_6bfae29c.jpg" data-sub="" data-epochs="1496961000000">Jay Som <b>&middot;</b> </div> 
+        <div class="a" data-id="2123" data-artist="Jeff Rosenstock" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2123_20170515123921_39389e20.jpg" data-sub="" data-epochs="1497211500000">Jeff Rosenstock <b>&middot;</b> </div> 
+        <div class="a" data-id="1927" data-artist="JLIN" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1927_20170420025612_c8bf948e.jpg" data-sub="" data-epochs="1496988000000">JLIN <b>&middot;</b> </div> 
+        <div class="a" data-id="3434" data-artist="Jody Porter and the Berlin Waltz" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3434_20170531063243_65cc4a93.jpg" data-sub="" data-epochs="1496973600000">Jody Porter and the Berlin Waltz <b>&middot;</b> </div> 
+        <div class="a" data-id="2105" data-artist="Joe McPhee &amp; Tashi Dorji &amp; M. Geddas Gengras" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2105_20170515120411_865e0859.jpg" data-sub="Monofonus Press x Astral Spirits" data-epochs="1497065400000">Joe McPhee &amp; Tashi Dorji &amp; M. Geddas Gengras <b>&middot;</b> </div> 
+        <div class="a" data-id="3250" data-artist="Jonathan Toubin" data-venues="Brooklyn Bowl" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3250_20170529061622_73b65234.jpg" data-sub="Bowl Train" data-epochs="1496894400000">Jonathan Toubin <b>&middot;</b> </div> 
+        <div class="a" data-id="3544" data-artist="Josh Jacobson" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3544_20170604110948_6b0544c7.jpg" data-sub="Audiofemme x glamgare" data-epochs="1497124800000">Josh Jacobson <b>&middot;</b> </div> 
+        <div class="a" data-id="2315" data-artist="Jouska" data-venues="Gold Sounds" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2315_20170515091916_50ee8e45.jpg" data-sub="Tiny Engines" data-epochs="1497058200000">Jouska <b>&middot;</b> </div> 
+        <div class="a" data-id="2078" data-artist="Joy Again" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2078_20170511114535_421402de.jpg" data-sub="" data-epochs="1496972700000">Joy Again <b>&middot;</b> </div> 
+        <div class="a" data-id="3401" data-artist="Julep Maisey" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3401_20170530110326_e08f69f5.jpg" data-sub="" data-epochs="1497146400000">Julep Maisey <b>&middot;</b> </div> 
+        <div class="a" data-id="2667" data-artist="Julia Haltigan" data-venues="Sine Metu Stage @ Bedford Ave" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2667_20170519065606_368719ab.jpg" data-sub="" data-epochs="1497121200000">Julia Haltigan <b>&middot;</b> </div> 
+        <div class="a" data-id="2084" data-artist="Julia Holter (solo)" data-venues="National Sawdust" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2084_20170515111821_31184438.jpg" data-sub="The Creative Independent" data-epochs="1497146400000">Julia Holter (solo) <b>&middot;</b> </div> 
+        <div class="a" data-id="2184" data-artist="Julianna Barwick" data-venues="National Sawdust" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2184_20170515033308_92e6ec36.jpg" data-sub="" data-epochs="1497052800000">Julianna Barwick <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">K</div> 
+        <div class="a" data-id="2285" data-artist="Kal Marks" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2285_20170515072945_4505d93e.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497134700000">Kal Marks <b>&middot;</b> </div> 
+        <div class="a" data-id="2140" data-artist="Kamasi Washington" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2140_20170515020024_019dfb85.jpg" data-sub="" data-epochs="1496964600000">Kamasi Washington <b>&middot;</b> </div> 
+        <div class="a" data-id="2290" data-artist="Kate Mohanty" data-venues="Little Skips" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2290_20170515074612_64b557a7.jpg" data-sub="GP Stripex x NYCDIY.XYZ" data-epochs="1497146400000">Kate Mohanty <b>&middot;</b> </div> 
+        <div class="a" data-id="2109" data-artist="Kate NV" data-venues="Union Pool,Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2109_20170515121401_49707902.jpg" data-sub="Orange Milk Records" data-epochs="1497060000000,1497152700000">Kate NV <b>&middot;</b> </div> 
+        <div class="a" data-id="2623" data-artist="Kelsey Lu" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2623_20170517065944_e60949c8.jpg" data-sub="Pitchfork" data-epochs="1497061800000">Kelsey Lu <b>&middot;</b> </div> 
+        <div class="a" data-id="2181" data-artist="Kinder Than Wolves" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2181_20170515032704_4fbf1928.jpg" data-sub="Audiofemme x glamgare" data-epochs="1497119400000">Kinder Than Wolves <b>&middot;</b> </div> 
+        <div class="a" data-id="2241" data-artist="Knight Terror" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2241_20170515063606_6ed46eb5.jpg" data-sub="In Blood" data-epochs="1497057600000">Knight Terror <b>&middot;</b> </div> 
+        <div class="a" data-id="2309" data-artist="Kristin Kontrol" data-venues="Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2309_20170515090847_b3dd3048.jpg" data-sub="" data-epochs="1497060000000">Kristin Kontrol <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">L</div> 
+        <div class="a" data-id="2215" data-artist="Lady Pills" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2215_20170515051832_3eccf65b.jpg" data-sub="Invertebrate" data-epochs="1497153000000">Lady Pills <b>&middot;</b> </div> 
+        <div class="a" data-id="2080" data-artist="Lætitia Sadier" data-venues="National Sawdust" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2080_20170511115115_2ef9a161.jpg" data-sub="Northside Festival x France Rocks Summerfest x POP Montreal Present" data-epochs="1496979000000">Lætitia Sadier <b>&middot;</b> </div> 
+        <div class="a" data-id="2167" data-artist="Larkin Grimm" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2167_20170515024519_d78088af.jpg" data-sub="Northern Spy Records" data-epochs="1496970000000">Larkin Grimm <b>&middot;</b> </div> 
+        <div class="a" data-id="2125" data-artist="Leapling" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2125_20170515124309_e20f6b1c.jpg" data-sub="PopGun" data-epochs="1496964600000">Leapling <b>&middot;</b> </div> 
+        <div class="a" data-id="2180" data-artist="Letters To Nepal" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2180_20170515032555_7234547e.jpg" data-sub="Audiofemme x glamgare" data-epochs="1497116700000">Letters To Nepal <b>&middot;</b> </div> 
+        <div class="a" data-id="2177" data-artist="Lexie" data-venues="Warsaw" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2177_20170515030448_a993d33a.jpg" data-sub="AdHoc" data-epochs="1497056400000">Lexie <b>&middot;</b> </div> 
+        <div class="a" data-id="2085" data-artist="Lié" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2085_20170515111940_c1f80bc9.jpg" data-sub="Monofonus Press x Astral Spirits" data-epochs="1497060000000">Lié <b>&middot;</b> </div> 
+        <div class="a" data-id="3253" data-artist="Little Racer" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3253_20170529062057_e615eb34.jpg" data-sub="Reheated Spaghetti" data-epochs="1497049200000">Little Racer <b>&middot;</b> </div> 
+        <div class="a" data-id="2257" data-artist="Lo-Pan" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2257_20170515065538_d549ed99.jpg" data-sub="Aqualamb" data-epochs="1497128400000">Lo-Pan <b>&middot;</b> </div> 
+        <div class="a" data-id="3241" data-artist="Love Is A Fist" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3241_20170529060037_8d537518.jpg" data-sub="Lonely Atom Records x TJO" data-epochs="1496972700000">Love Is A Fist <b>&middot;</b> </div> 
+        <div class="a" data-id="2101" data-artist="Lower Dens (performing songs from ABBA&#x27;s Gold: Greatest Hits)" data-venues="Rough Trade" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2101_20170515115858_155c6e06.jpg" data-sub="Bloomsbury’s 33 1/3 Series" data-epochs="1497150000000">Lower Dens (performing songs from ABBA&#x27;s Gold: Greatest Hits) <b>&middot;</b> </div> 
+        <div class="a" data-id="2172" data-artist="Lydia Lunch (an evening of performances)" data-venues="The Hall at MP" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2172_20170515025537_f6d3f38c.jpg" data-sub="Northside Festival x LPR Present: Downtown Trip" data-epochs="1497052800000">Lydia Lunch (an evening of performances) <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">M</div> 
+        <div class="a" data-id="2266" data-artist="M. Lamar" data-venues="Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2266_20170515070821_591ebad6.jpg" data-sub="AdHoc x BrooklynVegan" data-epochs="1496966400000">M. Lamar <b>&middot;</b> </div> 
+        <div class="a" data-id="2094" data-artist="Machine Girl" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2094_20170515113535_7798c73b.jpg" data-sub="Orange Milk Records" data-epochs="1497071700000">Machine Girl <b>&middot;</b> </div> 
+        <div class="a" data-id="2090" data-artist="Macula Dog" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2090_20170515112711_d750c810.jpg" data-sub="Wharf Cat Records x Ramp Local" data-epochs="1497141900000">Macula Dog <b>&middot;</b> </div> 
+        <div class="a" data-id="2097" data-artist="Maharadja Sweets" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2097_20170515115259_159b7a4d.jpg" data-sub="Orange Milk Records" data-epochs="1497139200000">Maharadja Sweets <b>&middot;</b> </div> 
+        <div class="a" data-id="2208" data-artist="Mama Juke" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2208_20170515041406_82707c75.jpg" data-sub="Unit J Records" data-epochs="1496980800000">Mama Juke <b>&middot;</b> </div> 
+        <div class="a" data-id="2317" data-artist="Manalive" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2317_20170515092120_98e451b4.jpg" data-sub="" data-epochs="1497142800000">Manalive <b>&middot;</b> </div> 
+        <div class="a" data-id="2598" data-artist="Mappa Mundi" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2598_20170517042408_2f1c25e0.jpg" data-sub="" data-epochs="1496975400000">Mappa Mundi <b>&middot;</b> </div> 
+        <div class="a" data-id="2204" data-artist="Maria Colores" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2204_20170515040927_403c7d8b.jpg" data-sub="Unit J Records" data-epochs="1497056400000">Maria Colores <b>&middot;</b> </div> 
+        <div class="a" data-id="2091" data-artist="Mary Timony Plays Helium" data-venues="Rough Trade" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2091_20170515113034_f44ca043.jpg" data-sub="" data-epochs="1496973600000">Mary Timony Plays Helium <b>&middot;</b> </div> 
+        <div class="a" data-id="2183" data-artist="Meatbodies" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2183_20170515033206_d000bd7b.jpg" data-sub="AdHoc | Panache" data-epochs="1496977200000">Meatbodies <b>&middot;</b> </div> 
+        <div class="a" data-id="2299" data-artist="Media Jeweler" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2299_20170515080133_fb17c850.jpg" data-sub="Fire Talk" data-epochs="1497127500000">Media Jeweler <b>&middot;</b> </div> 
+        <div class="a" data-id="2597" data-artist="Medium Mystic" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2597_20170517042146_0e870360.jpg" data-sub="" data-epochs="1496971800000">Medium Mystic <b>&middot;</b> </div> 
+        <div class="a" data-id="2164" data-artist="Mega Bog" data-venues="Rough Trade" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2164_20170515023746_532f451d.jpg" data-sub="" data-epochs="1497060000000">Mega Bog <b>&middot;</b> </div> 
+        <div class="a" data-id="2206" data-artist="Megg Farrell" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2206_20170515041212_5aed66b4.jpg" data-sub="Unit J Records" data-epochs="1497063600000">Megg Farrell <b>&middot;</b> </div> 
+        <div class="a" data-id="3245" data-artist="Mezzanine Swimmers" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3245_20170529060711_5961d626.jpg" data-sub="" data-epochs="1496964600000">Mezzanine Swimmers <b>&middot;</b> </div> 
+        <div class="a" data-id="2129" data-artist="Miguel" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2129_20170515125353_76ca9ff2.jpg" data-sub="" data-epochs="1497141900000">Miguel <b>&middot;</b> </div> 
+        <div class="a" data-id="2153" data-artist="Milan to Minsk" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2153_20170515021939_656dda81.jpg" data-sub="Supercrush Studio x  Paper Garden Records x Greenpointers.com" data-epochs="1496967300000">Milan to Minsk <b>&middot;</b> </div> 
+        <div class="a" data-id="2074" data-artist="Mild High Club" data-venues="Music Hall of Williamsburg" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2074_20170511110222_3aefedcc.jpg" data-sub="" data-epochs="1496975400000">Mild High Club <b>&middot;</b> </div> 
+        <div class="a" data-id="2083" data-artist="Mirah" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2083_20170515111621_92dcbc21.jpg" data-sub="AdHoc" data-epochs="1497060000000">Mirah <b>&middot;</b> </div> 
+        <div class="a" data-id="2210" data-artist="Mizuna" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2210_20170515041549_4062edcb.jpg" data-sub="Unit J Records" data-epochs="1497049200000">Mizuna <b>&middot;</b> </div> 
+        <div class="a" data-id="2269" data-artist="Mobley" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2269_20170515071056_9aecfa9e.jpg" data-sub="" data-epochs="1497074400000">Mobley <b>&middot;</b> </div> 
+        <div class="a" data-id="2284" data-artist="Monogold" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2284_20170515072835_8d3cf3b6.jpg" data-sub="Wild Honey Pie present The Beehive" data-epochs="1497066300000">Monogold <b>&middot;</b> </div> 
+        <div class="a" data-id="2223" data-artist="Monograms" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2223_20170515054918_fe7ddd9a.jpg" data-sub="Ears To Feed x Impose" data-epochs="1497052800000">Monograms <b>&middot;</b> </div> 
+        <div class="a" data-id="2079" data-artist="Moor Mother" data-venues="Good Room" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2079_20170511114906_6ef8ae47.jpg" data-sub="Tinnitus x Northside x AdHoc" data-epochs="1496972700000">Moor Mother <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">N</div> 
+        <div class="a" data-id="2302" data-artist="Nassau" data-venues="Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2302_20170515081040_47969726.jpg" data-sub="" data-epochs="1496971800000">Nassau <b>&middot;</b> </div> 
+        <div class="a" data-id="2250" data-artist="Nathaniel Shannon &amp; the Vanishing Twin" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2250_20170515064549_f542233a.jpg" data-sub="Aqualamb" data-epochs="1497110400000">Nathaniel Shannon &amp; the Vanishing Twin <b>&middot;</b> </div> 
+        <div class="a" data-id="3439" data-artist="Native Sun" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3439_20170531065247_18d9879f.jpg" data-sub="PaperCup x Indie Shuffle" data-epochs="1497052800000">Native Sun <b>&middot;</b> </div> 
+        <div class="a" data-id="2174" data-artist="Neaux" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2174_20170515025906_1c1de4b4.jpg" data-sub="Iron Pier Records" data-epochs="1497145500000">Neaux <b>&middot;</b> </div> 
+        <div class="a" data-id="2121" data-artist="Nervous Dater" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2121_20170515123331_37b3fccb.jpg" data-sub="Anchorless Records x For It!" data-epochs="1497056400000">Nervous Dater <b>&middot;</b> </div> 
+        <div class="a" data-id="2200" data-artist="Niall Connolly" data-venues="Lantern Hall" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2200_20170515035656_3606d80b.jpg" data-sub="Unit J Records" data-epochs="1497043800000">Niall Connolly <b>&middot;</b> </div> 
+        <div class="a" data-id="2642" data-artist="nightspace" data-venues="Vital Joint" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2642_20170518060404_52b76d08.jpg" data-sub="Vital Joint" data-epochs="1497146400000">nightspace <b>&middot;</b> </div> 
+        <div class="a" data-id="2102" data-artist="No Ice" data-venues="The Gutter,Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2102_20170515120102_3906c383.jpg" data-sub="El Goodo" data-epochs="1497150000000,1497056400000">No Ice <b>&middot;</b> </div> 
+        <div class="a" data-id="2703" data-artist="No Joy" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2703_20170522070908_f1ce734c.jpg" data-sub="" data-epochs="1496973600000">No Joy <b>&middot;</b> </div> 
+        <div class="a" data-id="2185" data-artist="Noveller" data-venues="Rough Trade" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2185_20170515033402_faede8e8.jpg" data-sub="" data-epochs="1496970000000">Noveller <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">O</div> 
+        <div class="a" data-id="2195" data-artist="Obliques" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2195_20170515034843_d03d12a8.jpg" data-sub="PaperCup x Indie Shuffle" data-epochs="1497060900000">Obliques <b>&middot;</b> </div> 
+        <div class="a" data-id="2225" data-artist="Ohtis" data-venues="Music Hall of Williamsburg" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2225_20170515055108_127d20b9.jpg" data-sub="" data-epochs="1497142800000">Ohtis <b>&middot;</b> </div> 
+        <div class="a" data-id="2214" data-artist="Old Maybe" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2214_20170515051729_717c0a6e.jpg" data-sub="Wharf Cat Records x Ramp Local" data-epochs="1497139200000">Old Maybe <b>&middot;</b> </div> 
+        <div class="a" data-id="2301" data-artist="Olden Yolk" data-venues="Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2301_20170515080918_d1d57e95.jpg" data-sub="" data-epochs="1496975400000">Olden Yolk <b>&middot;</b> </div> 
+        <div class="a" data-id="3666" data-artist="Olukara" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3666_20170607052552_67e4dbc0.jpg" data-sub="" data-epochs="1497049200000">Olukara <b>&middot;</b> </div> 
+        <div class="a" data-id="2227" data-artist="Onesie" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2227_20170515061539_2bbb8054.jpg" data-sub="Rocker Stalker x Behind The Curtains" data-epochs="1497120300000">Onesie <b>&middot;</b> </div> 
+        <div class="a" data-id="2270" data-artist="Oracles" data-venues="Union Pool,Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2270_20170515071225_3eed2003.jpg" data-sub="" data-epochs="1497056400000,1497070800000">Oracles <b>&middot;</b> </div> 
+        <div class="a" data-id="3269" data-artist="OSHUN" data-venues="TNT Backstory Studio at Kinfolk 90" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3269_20170529063643_28e04f3f.jpg" data-sub="Brooklyn Magazine&#x27;s Emerging Artists Series" data-epochs="1497126600000">OSHUN <b>&middot;</b> </div> 
+        <div class="a" data-id="2633" data-artist="Other Houses" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2633_20170518055511_4dedc91b.jpg" data-sub="Iron Pier Records" data-epochs="1497142800000">Other Houses <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">P</div> 
+        <div class="a" data-id="2249" data-artist="Paperhaus" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2249_20170515064441_baa0f5da.jpg" data-sub="Noise Love + Thursdays for the Cause" data-epochs="1496976300000">Paperhaus <b>&middot;</b> </div> 
+        <div class="a" data-id="2264" data-artist="Parrot Dream" data-venues="Gold Sounds" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2264_20170515070552_2d60261a.jpg" data-sub="Cigar City MGMT" data-epochs="1496966400000">Parrot Dream <b>&middot;</b> </div> 
+        <div class="a" data-id="3219" data-artist="Partner" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3219_20170527084458_cf9be4f4.jpg" data-sub="Terrorbird" data-epochs="1497115200000">Partner <b>&middot;</b> </div> 
+        <div class="a" data-id="2089" data-artist="Pat Keen" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2089_20170515112555_4277132e.jpg" data-sub="Wharf Cat Records x Ramp Local" data-epochs="1497144600000">Pat Keen <b>&middot;</b> </div> 
+        <div class="a" data-id="2278" data-artist="Pavo Pavo" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2278_20170515072358_bd142934.jpg" data-sub="Wild Honey Pie present The Beehive" data-epochs="1497052800000">Pavo Pavo <b>&middot;</b> </div> 
+        <div class="a" data-id="2466" data-artist="PC Worship (solo)" data-venues="Alphaville,Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2466_20170516033606_028d5085.jpg" data-sub="Dull Tools | Ears to Feed x Impose" data-epochs="1497141000000,1497047400000">PC Worship (solo) <b>&middot;</b> </div> 
+        <div class="a" data-id="2194" data-artist="Peaer" data-venues="Our Wicked Lady,Sunnyvale,Gold Sounds" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2194_20170515034605_bf7d14a2.jpg" data-sub="PopGun | Exploding in Sound Records x Golden Parachute | Tiny Engines" data-epochs="1497139200000,1497129300000,1497063600000">Peaer <b>&middot;</b> </div> 
+        <div class="a" data-id="2148" data-artist="Pelada" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2148_20170515021258_8419e5bd.jpg" data-sub="AdHoc x Impose x No-Tech" data-epochs="1496899800000">Pelada <b>&middot;</b> </div> 
+        <div class="a" data-id="3539" data-artist="Personal Space" data-venues="Gold Sounds" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3539_20170604102736_2ce27ac2.jpg" data-sub="Tiny Engines x Golden Parachute" data-epochs="1497052800000">Personal Space <b>&middot;</b> </div> 
+        <div class="a" data-id="2233" data-artist="PHarmakon" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2233_20170515062557_289e29e6.jpg" data-sub="Sacred Bones 10th Anniversary" data-epochs="1497149100000">PHarmakon <b>&middot;</b> </div> 
+        <div class="a" data-id="2612" data-artist="Plaid Dracula" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2612_20170517064809_361eb09f.jpg" data-sub="King Pizza" data-epochs="1497054600000">Plaid Dracula <b>&middot;</b> </div> 
+        <div class="a" data-id="3214" data-artist="Plastic Faction" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3214_20170527082628_a8175596.jpg" data-sub="Play Too Much" data-epochs="1496966400000">Plastic Faction <b>&middot;</b> </div> 
+        <div class="a" data-id="3220" data-artist="PONY" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3220_20170527084710_f8b8b6dd.jpg" data-sub="Terrorbird" data-epochs="1497111600000">PONY <b>&middot;</b> </div> 
+        <div class="a" data-id="2154" data-artist="Pop. 1280" data-venues="Brooklyn Bazaar,Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2154_20170515022059_ac7dbf51.jpg" data-sub="Sacred Bones 10th Anniversary | Ears To Feed x Impose" data-epochs="1497142800000,1497063600000">Pop. 1280 <b>&middot;</b> </div> 
+        <div class="a" data-id="2274" data-artist="Psychic Twin" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2274_20170515071926_30f16723.jpg" data-sub="PopGun" data-epochs="1497146400000">Psychic Twin <b>&middot;</b> </div> 
+        <div class="a" data-id="2073" data-artist="Pup" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2073_20170511110109_d50c8c4a.jpg" data-sub="" data-epochs="1497218400000">Pup <b>&middot;</b> </div> 
+        <div class="a" data-id="2163" data-artist="Purr" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2163_20170515023529_59e80caf.jpg" data-sub="" data-epochs="1496970000000">Purr <b>&middot;</b> </div> 
+        <div class="a" data-id="2231" data-artist="Pussywolf" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2231_20170515061949_bc64a7ee.jpg" data-sub="Rocker Stalker x Behind The Curtains" data-epochs="1497131100000">Pussywolf <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">Q</div> 
+        <div class="a" data-id="3413" data-artist="Quicksilver Daydream" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3413_20170531075107_a98887af.jpg" data-sub="" data-epochs="1497139200000">Quicksilver Daydream <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">R</div> 
+        <div class="a" data-id="2116" data-artist="Raccoon Fighter" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2116_20170515122519_540285f4.jpg" data-sub="PaperCup x Indie Shuffle" data-epochs="1497055500000">Raccoon Fighter <b>&middot;</b> </div> 
+        <div class="a" data-id="1951" data-artist="Radamiz" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1951_20170509115416_bf08f8d9.jpg" data-sub="Cypher League x Northside present The Pull Up" data-epochs="1496984400000">Radamiz <b>&middot;</b> </div> 
+        <div class="a" data-id="3215" data-artist="Really Big Pinecone" data-venues="Rough Trade" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3215_20170527082814_5e5787ce.jpg" data-sub="" data-epochs="1497056400000">Really Big Pinecone <b>&middot;</b> </div> 
+        <div class="a" data-id="2168" data-artist="Renata Zeiguer" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2168_20170515024633_dee3b2d5.jpg" data-sub="Northern Spy Records" data-epochs="1496966400000">Renata Zeiguer <b>&middot;</b> </div> 
+        <div class="a" data-id="2076" data-artist="Ricky Eat Acid" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2076_20170511114236_2a32ab87.jpg" data-sub="" data-epochs="1497063600000">Ricky Eat Acid <b>&middot;</b> </div> 
+        <div class="a" data-id="3247" data-artist="Ritual Humor" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3247_20170529061009_7ed0e928.jpg" data-sub="" data-epochs="1496971800000">Ritual Humor <b>&middot;</b> </div> 
+        <div class="a" data-id="1950" data-artist="Rothstein" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_1950_20170509115343_28048cd7.jpg" data-sub="Cypher League x Northside present The Pull Up" data-epochs="1496982600000">Rothstein <b>&middot;</b> </div> 
+        <div class="a" data-id="2222" data-artist="Russian Baths" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2222_20170515054725_88db8874.jpg" data-sub="Ears To Feed x Impose" data-epochs="1497050100000">Russian Baths <b>&middot;</b> </div> 
+        <div class="a" data-id="3252" data-artist="Rvby My Dear" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3252_20170529061844_9ac5ae1c.jpg" data-sub="Paper Scissors" data-epochs="1497118200000">Rvby My Dear <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">S</div> 
+        <div class="a" data-id="2218" data-artist="Saint Marx" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2218_20170515052653_558471ba.jpg" data-sub="Invertebrate" data-epochs="1497142800000">Saint Marx <b>&middot;</b> </div> 
+        <div class="a" data-id="2081" data-artist="Sales" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2081_20170511115226_1078755f.jpg" data-sub="PopGun" data-epochs="1496971800000">Sales <b>&middot;</b> </div> 
+        <div class="a" data-id="2260" data-artist="Salt Cathedral" data-venues="Gold Sounds,The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2260_20170515065834_e2fde8e9.jpg" data-sub="Cigar City MGMT | Wild Honey Pie presents The Beehive" data-epochs="1496894400000,1497054600000">Salt Cathedral <b>&middot;</b> </div> 
+        <div class="a" data-id="3397" data-artist="Sam Himself" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3397_20170530105217_5adf93a5.jpg" data-sub="" data-epochs="1497063600000">Sam Himself <b>&middot;</b> </div> 
+        <div class="a" data-id="2135" data-artist="Samantha" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2135_20170515015245_608108fd.jpg" data-sub="Paper Scissors" data-epochs="1497129600000">Samantha <b>&middot;</b> </div> 
+        <div class="a" data-id="2308" data-artist="Samiam" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2308_20170515081727_7e461f25.jpg" data-sub="" data-epochs="1497145500000">Samiam <b>&middot;</b> </div> 
+        <div class="a" data-id="3667" data-artist="SAMMUS" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3667_20170607052952_7968d226.jpg" data-sub="" data-epochs="1497052200000">SAMMUS <b>&middot;</b> </div> 
+        <div class="a" data-id="2662" data-artist="Saro" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2662_20170519010137_78d2340a.jpg" data-sub="" data-epochs="1497133800000">Saro <b>&middot;</b> </div> 
+        <div class="a" data-id="2683" data-artist="Scam Avenue" data-venues="The Safari Room at El Cortez" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2683_20170520085616_796ea956.jpg" data-sub="Scenic" data-epochs="1497056400000">Scam Avenue <b>&middot;</b> </div> 
+        <div class="a" data-id="3391" data-artist="Sean Henry" data-venues="Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3391_20170530095233_3324b352.jpg" data-sub="" data-epochs="1497141900000">Sean Henry <b>&middot;</b> </div> 
+        <div class="a" data-id="2117" data-artist="Secret Nudist Friends" data-venues="The Gutter,The Gutter,Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2117_20170515122659_b1224552.jpg" data-sub="El Goodo | Paper Scissors | King Pizza" data-epochs="1497060000000,1497146400000,1497124800000">Secret Nudist Friends <b>&middot;</b> </div> 
+        <div class="a" data-id="2144" data-artist="Sharkmuffin" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2144_20170515020710_ca981950.jpg" data-sub="Reheated Spaghetti" data-epochs="1497061800000">Sharkmuffin <b>&middot;</b> </div> 
+        <div class="a" data-id="2132" data-artist="She-Devils" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2132_20170515125622_5d7b6402.jpg" data-sub="AdHoc" data-epochs="1496975400000">She-Devils <b>&middot;</b> </div> 
+        <div class="a" data-id="2165" data-artist="Shilpa Ray" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2165_20170515023940_b0db0ef3.jpg" data-sub="Northern Spy Records" data-epochs="1496977200000">Shilpa Ray <b>&middot;</b> </div> 
+        <div class="a" data-id="2287" data-artist="Sic Tic" data-venues="Little Skips" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2287_20170515073615_a43ce9c0.jpg" data-sub="GP Stripex x NYCDIY.XYZ" data-epochs="1497151800000">Sic Tic <b>&middot;</b> </div> 
+        <div class="a" data-id="2251" data-artist="Skryptor" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2251_20170515064707_31ee2dcf.jpg" data-sub="Aqualamb" data-epochs="1497113100000">Skryptor <b>&middot;</b> </div> 
+        <div class="a" data-id="2145" data-artist="Slang King" data-venues="Cape House" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2145_20170515020755_f0c46497.jpg" data-sub="Reheated Spaghetti" data-epochs="1497056400000">Slang King <b>&middot;</b> </div> 
+        <div class="a" data-id="2240" data-artist="Slashers" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2240_20170515063408_0ccc3812.jpg" data-sub="In Blood" data-epochs="1497064500000">Slashers <b>&middot;</b> </div> 
+        <div class="a" data-id="3216" data-artist="Slaughter Beach, Dog" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3216_20170527083010_cf50147e.jpg" data-sub="Terrorbird" data-epochs="1497126000000">Slaughter Beach, Dog <b>&middot;</b> </div> 
+        <div class="a" data-id="3530" data-artist="Slow Suck" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3530_20170604105551_f2b605c4.jpg" data-sub="TJO" data-epochs="1497058200000">Slow Suck <b>&middot;</b> </div> 
+        <div class="a" data-id="2213" data-artist="Snakehole" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2213_20170515051632_d799626b.jpg" data-sub="Wharf Cat Records x Ramp Local" data-epochs="1497147300000">Snakehole <b>&middot;</b> </div> 
+        <div class="a" data-id="3271" data-artist="Sneaks" data-venues="TNT Backstory Studio at Kinfolk 90" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3271_20170529064341_cf449b5f.jpg" data-sub="Brooklyn Magazine&#x27;s Emerging Artists Series" data-epochs="1496953800000">Sneaks <b>&middot;</b> </div> 
+        <div class="a" data-id="3690" data-artist="SoFar Sounds" data-venues="Artists &amp; Fleas,WMA Studios" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3690_20170607042920_328fa5b8.jpg" data-sub="" data-epochs="1496966400000,1497052800000">SoFar Sounds <b>&middot;</b> </div> 
+        <div class="a" data-id="2142" data-artist="Soft Healer" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2142_20170515020513_86007a02.jpg" data-sub="Monofonus Press x Astral Spirits" data-epochs="1497057300000">Soft Healer <b>&middot;</b> </div> 
+        <div class="a" data-id="2599" data-artist="Soul Worm" data-venues="Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2599_20170517042614_51bb343f.jpg" data-sub="" data-epochs="1496979000000">Soul Worm <b>&middot;</b> </div> 
+        <div class="a" data-id="2258" data-artist="Spencer Radcliffe &amp; Everyone Else" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2258_20170515065627_95b13a1c.jpg" data-sub="" data-epochs="1497141900000">Spencer Radcliffe &amp; Everyone Else <b>&middot;</b> </div> 
+        <div class="a" data-id="2658" data-artist="Spirit Plate" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2658_20170518064225_0fa4186f.jpg" data-sub="Campers&#x27; Rule x Carabella" data-epochs="1497145500000">Spirit Plate <b>&middot;</b> </div> 
+        <div class="a" data-id="2151" data-artist="Spritzer" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2151_20170515021621_45704d17.jpg" data-sub="Supercrush Studio x  Paper Garden Records x Greenpointers.com" data-epochs="1496978100000">Spritzer <b>&middot;</b> </div> 
+        <div class="a" data-id="2236" data-artist="Stove" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2236_20170515062924_6f26cb08.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497121200000">Stove <b>&middot;</b> </div> 
+        <div class="a" data-id="2296" data-artist="Stuyedeyed" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2296_20170515075414_1be70b13.jpg" data-sub="AdHoc" data-epochs="1496970000000">Stuyedeyed <b>&middot;</b> </div> 
+        <div class="a" data-id="2171" data-artist="Suburban Living" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2171_20170515025306_4128843a.jpg" data-sub="PopGun" data-epochs="1497142800000">Suburban Living <b>&middot;</b> </div> 
+        <div class="a" data-id="3552" data-artist="Suicide Pact" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3552_20170605052956_9850eb9a.jpg" data-sub="" data-epochs="1497139200000">Suicide Pact <b>&middot;</b> </div> 
+        <div class="a" data-id="2609" data-artist="Sun Voyager" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2609_20170527081919_5efb627d.jpg" data-sub="King Pizza" data-epochs="1497065400000">Sun Voyager <b>&middot;</b> </div> 
+        <div class="a" data-id="2175" data-artist="Super Natural Psycho" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2175_20170515030054_2d2c55ff.jpg" data-sub="Iron Pier Records" data-epochs="1497141000000">Super Natural Psycho <b>&middot;</b> </div> 
+        <div class="a" data-id="2297" data-artist="Surfbort" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2297_20170515075506_c5171bf8.jpg" data-sub="AdHoc" data-epochs="1496973600000">Surfbort <b>&middot;</b> </div> 
+        <div class="a" data-id="2690" data-artist="Synead" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2690_20170520094611_819872dd.jpg" data-sub="Move Forward Music" data-epochs="1497052800000">Synead <b>&middot;</b> </div> 
+        <div class="a" data-id="2682" data-artist="Syvia" data-venues="The Safari Room at El Cortez" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2682_20170520085338_44106253.jpg" data-sub="Scenic" data-epochs="1497060000000">Syvia <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">T</div> 
+        <div class="a" data-id="2190" data-artist="Tall Friend" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2190_20170515034058_7e106895.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497123900000">Tall Friend <b>&middot;</b> </div> 
+        <div class="a" data-id="2688" data-artist="Tangina Stone" data-venues="Knitting Factory" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2688_20170520094131_05b4e79f.jpg" data-sub="Move Forward Music" data-epochs="1497055800000">Tangina Stone <b>&middot;</b> </div> 
+        <div class="a" data-id="3703" data-artist="Tapedream" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3703_20170610091339_f7440e90.jpg" data-sub="" data-epochs="1497142800000">Tapedream <b>&middot;</b> </div> 
+        <div class="a" data-id="3248" data-artist="The BandDroidz" data-venues="Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3248_20170529061143_a32e5d14.jpg" data-sub="TJO" data-epochs="1497055500000">The BandDroidz <b>&middot;</b> </div> 
+        <div class="a" data-id="2133" data-artist="The Coax" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2133_20170515125755_63f842e5.jpg" data-sub="Paper Scissors" data-epochs="1497120600000">The Coax <b>&middot;</b> </div> 
+        <div class="a" data-id="2226" data-artist="The Cringes" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2226_20170608084508_dd84bbef.jpg" data-sub="Rocker Stalker x Behind The Curtains" data-epochs="1497114900000">The Cringes <b>&middot;</b> </div> 
+        <div class="a" data-id="2277" data-artist="The Dig" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2277_20170515072245_85f3a84d.jpg" data-sub="Wild Honey Pie present The Beehive" data-epochs="1497056400000">The Dig <b>&middot;</b> </div> 
+        <div class="a" data-id="2110" data-artist="The Explosion" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2110_20170515121533_dd09c4b4.jpg" data-sub="" data-epochs="1496974500000">The Explosion <b>&middot;</b> </div> 
+        <div class="a" data-id="2229" data-artist="The Falling Birds" data-venues="Matchless,Tender Trap" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2229_20170515061732_1120732d.jpg" data-sub="Rocker Stalker x Behind The Curtains" data-epochs="1497125700000,1497050100000">The Falling Birds <b>&middot;</b> </div> 
+        <div class="a" data-id="2383" data-artist="The Flag" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2383_20170516112701_ceb806f8.jpg" data-sub="Gimme Tinnitus x Already Dead Tapes" data-epochs="1496979000000">The Flag <b>&middot;</b> </div> 
+        <div class="a" data-id="2246" data-artist="The Flux Machine" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2246_20170515064117_bafb5390.jpg" data-sub="Rocker Stalker x Behind The Curtains" data-epochs="1497117600000">The Flux Machine <b>&middot;</b> </div> 
+        <div class="a" data-id="2122" data-artist="The Hotelier" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2122_20170515123519_18ba710c.jpg" data-sub="" data-epochs="1497215100000">The Hotelier <b>&middot;</b> </div> 
+        <div class="a" data-id="2170" data-artist="The Hunt" data-venues="Brooklyn Bazaar" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2170_20170515025200_88879703.jpg" data-sub="Sacred Bones 10th Anniversary" data-epochs="1497145500000">The Hunt <b>&middot;</b> </div> 
+        <div class="a" data-id="2673" data-artist="The Icebergs" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2673_20170520083509_a60fda91.jpg" data-sub="TJO" data-epochs="1496970000000">The Icebergs <b>&middot;</b> </div> 
+        <div class="a" data-id="2293" data-artist="The Mells" data-venues="Little Skips" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2293_20170515075120_3a806c12.jpg" data-sub="GP Stripex x NYCDIY.XYZ" data-epochs="1497141000000">The Mells <b>&middot;</b> </div> 
+        <div class="a" data-id="2219" data-artist="The Misters" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2219_20170515052751_0262f11d.jpg" data-sub="Invertebrate" data-epochs="1497145200000">The Misters <b>&middot;</b> </div> 
+        <div class="a" data-id="3244" data-artist="The New Resistants" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3244_20170529060532_5db2835d.jpg" data-sub="Lonely Atom Records x TJO" data-epochs="1496964600000">The New Resistants <b>&middot;</b> </div> 
+        <div class="a" data-id="2075" data-artist="The Pains Of Being Pure At Heart" data-venues="Music Hall of Williamsburg" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2075_20170511110332_27739cc6.jpg" data-sub="" data-epochs="1497063600000">The Pains Of Being Pure At Heart <b>&middot;</b> </div> 
+        <div class="a" data-id="3240" data-artist="The Pandemics" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3240_20170529055849_c1b5c708.jpg" data-sub="Lonely Atom Records x TJO" data-epochs="1496975400000">The Pandemics <b>&middot;</b> </div> 
+        <div class="a" data-id="2221" data-artist="The Planes" data-venues="Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2221_20170515053024_157aa7b5.jpg" data-sub="El Goodo" data-epochs="1497054600000">The Planes <b>&middot;</b> </div> 
+        <div class="a" data-id="2220" data-artist="The Regrets" data-venues="Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2220_20170515052909_63bf5133.jpg" data-sub="El Goodo" data-epochs="1497052800000">The Regrets <b>&middot;</b> </div> 
+        <div class="a" data-id="3415" data-artist="The Relatives" data-venues="Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3415_20170531075440_bcb5da75.jpg" data-sub="" data-epochs="1497137400000">The Relatives <b>&middot;</b> </div> 
+        <div class="a" data-id="2610" data-artist="The Rizzos" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2610_20170517064317_4d68e408.jpg" data-sub="King Pizza" data-epochs="1497062700000">The Rizzos <b>&middot;</b> </div> 
+        <div class="a" data-id="2159" data-artist="The Sediment Club" data-venues="Union Pool" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2159_20170515023016_aca91134.jpg" data-sub="Wharf Cat Records x Ramp Local" data-epochs="1497152700000">The Sediment Club <b>&middot;</b> </div> 
+        <div class="a" data-id="2254" data-artist="The Space Merchants" data-venues="Saint Vitus" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2254_20170515065109_2e5c8fee.jpg" data-sub="Aqualamb" data-epochs="1497121200000">The Space Merchants <b>&middot;</b> </div> 
+        <div class="a" data-id="2300" data-artist="The Spookfish" data-venues="Alphaville,Pete&#x27;s Candy Store" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2300_20170515080704_fbd2d4e1.jpg" data-sub="Fire Talk" data-epochs="1497122100000,1497132000000">The Spookfish <b>&middot;</b> </div> 
+        <div class="a" data-id="2672" data-artist="The Tall Pines" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2672_20170520083313_7daff18f.jpg" data-sub="TJO" data-epochs="1496972700000">The Tall Pines <b>&middot;</b> </div> 
+        <div class="a" data-id="2189" data-artist="Thelma" data-venues="Sunnyvale,Gold Sounds" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2189_20170515033804_9d871fcc.jpg" data-sub="Exploding in Sound Records x Golden Parachute | Tiny Engines" data-epochs="1497126600000,1497060900000">Thelma <b>&middot;</b> </div> 
+        <div class="a" data-id="2139" data-artist="Thick" data-venues="Muchmore&#x27;s,Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2139_20170515015730_36d51eba.jpg" data-sub="Paper Scissors | El Goodo" data-epochs="1497127200000,1497058200000">Thick <b>&middot;</b> </div> 
+        <div class="a" data-id="2072" data-artist="Thursday" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2072_20170511105907_9b213bdf.jpg" data-sub="" data-epochs="1497222000000">Thursday <b>&middot;</b> </div> 
+        <div class="a" data-id="2111" data-artist="Timber Timbre" data-venues="Music Hall of Williamsburg" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2111_20170515121700_3eb0d72b.jpg" data-sub="" data-epochs="1497146400000">Timber Timbre <b>&middot;</b> </div> 
+        <div class="a" data-id="2265" data-artist="Tiny Hazard" data-venues="Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2265_20170515070702_b96bce74.jpg" data-sub="AdHoc x BrooklynVegan" data-epochs="1496969100000">Tiny Hazard <b>&middot;</b> </div> 
+        <div class="a" data-id="2207" data-artist="Tongues Unknown" data-venues="Pine Box Rock Shop" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2207_20170515041322_2e44ef3e.jpg" data-sub="Unit J Records" data-epochs="1497065400000">Tongues Unknown <b>&middot;</b> </div> 
+        <div class="a" data-id="2232" data-artist="Tony Molina" data-venues="McCarren Park" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2232_20170515062332_9b55e971.jpg" data-sub="Bloomsbury’s 33 1/3 Series" data-epochs="1497209400000">Tony Molina <b>&middot;</b> </div> 
+        <div class="a" data-id="2572" data-artist="Tony Molina (performing songs from Dinosaur Jr.&#x27;s You&#x27;re Living All Over Me)" data-venues="Rough Trade" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2572_20170516060043_09e019ed.jpg" data-sub="Bloomsbury’s 33 1/3 Series" data-epochs="1497146400000">Tony Molina (performing songs from Dinosaur Jr.&#x27;s You&#x27;re Living All Over Me) <b>&middot;</b> </div> 
+        <div class="a" data-id="2106" data-artist="Total Freedom" data-venues="Good Room" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2106_20170515120747_2d9bede1.jpg" data-sub="Tinnitus x Northside x AdHoc" data-epochs="1496968200000">Total Freedom <b>&middot;</b> </div> 
+        <div class="a" data-id="2103" data-artist="Toyzanne" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2103_20170515120209_c5c5d37b.jpg" data-sub="El Goodo" data-epochs="1497142800000">Toyzanne <b>&middot;</b> </div> 
+        <div class="a" data-id="2173" data-artist="Tredici Bacci String Quartet: performing songs from Koji Kondo’s Super Mario Bros. Soundtrack" data-venues="Rough Trade" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2173_20170515025715_63ea897b.jpg" data-sub="Bloomsbury’s 33 1/3 Series" data-epochs="1497142800000">Tredici Bacci String Quartet: performing songs from Koji Kondo’s Super Mario Bros. Soundtrack <b>&middot;</b> </div> 
+        <div class="a" data-id="2186" data-artist="tubafresh" data-venues="Baby&#x27;s All Right" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2186_20170515033453_52305502.jpg" data-sub="AdHoc" data-epochs="1497057300000">tubafresh <b>&middot;</b> </div> 
+        <div class="a" data-id="3417" data-artist="Twain" data-venues="Park Church Co-Op" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3417_20170531075854_5069bb67.jpg" data-sub="" data-epochs="1497142800000">Twain <b>&middot;</b> </div> 
+        <div class="a" data-id="2191" data-artist="Two Inch Astronaut" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2191_20170515034150_ffae9485.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497145500000">Two Inch Astronaut <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">U</div> 
+        <div class="a" data-id="2295" data-artist="Un Blonde" data-venues="National Sawdust" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2295_20170515075314_24524d70.jpg" data-sub="Northside Festival x France Rocks Summerfest x POP Montreal" data-epochs="1496971800000">Un Blonde <b>&middot;</b> </div> 
+        <div class="a" data-id="2279" data-artist="Uni Ika Ai" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2279_20170515072445_cda9a5ec.jpg" data-sub="Wild Honey Pie present The Beehive" data-epochs="1497062700000">Uni Ika Ai <b>&middot;</b> </div> 
+        <div class="a" data-id="3392" data-artist="Ursula Kennedy" data-venues="Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3392_20170530095816_2a69af83.jpg" data-sub="" data-epochs="1497139200000">Ursula Kennedy <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">V</div> 
+        <div class="a" data-id="2384" data-artist="Video Daughters" data-venues="The Gutter" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2384_20170516112844_ddd866e2.jpg" data-sub="Gimme Tinnitus x Already Dead Tapes" data-epochs="1496973600000">Video Daughters <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">W</div> 
+        <div class="a" data-id="2188" data-artist="W-2" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2188_20170515033704_f6459ae2.jpg" data-sub="Monofonus Press x Astral Spirits" data-epochs="1497055500000">W-2 <b>&middot;</b> </div> 
+        <div class="a" data-id="2192" data-artist="Washer" data-venues="Sunnyvale" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2192_20170515034256_57aec6e6.jpg" data-sub="Exploding in Sound Records x Golden Parachute" data-epochs="1497142800000">Washer <b>&middot;</b> </div> 
+        <div class="a" data-id="2187" data-artist="Weeping Icon" data-venues="Alphaville" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2187_20170515033610_67e1289e.jpg" data-sub="Fire Talk" data-epochs="1497130200000">Weeping Icon <b>&middot;</b> </div> 
+        <div class="a" data-id="2196" data-artist="Wet Leather" data-venues="Our Wicked Lady" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2196_20170515035032_b4b3e887.jpg" data-sub="PaperCup x Indie Shuffle" data-epochs="1497058200000">Wet Leather <b>&middot;</b> </div> 
+        <div class="a" data-id="2316" data-artist="Wild Pink" data-venues="Gold Sounds,Sine Metu Stage @ Bedford Ave" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2316_20170515092010_688472f2.jpg" data-sub="Tiny Engines" data-epochs="1497052800000,1497204000000">Wild Pink <b>&middot;</b> </div> 
+        <div class="a" data-id="2228" data-artist="Wild Sun" data-venues="Matchless" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2228_20170515061636_7d248f44.jpg" data-sub="Rocker Stalker x Behind The Curtains" data-epochs="1497123000000">Wild Sun <b>&middot;</b> </div> 
+        <div class="a" data-id="2629" data-artist="Wildhoney" data-venues="Matchless,Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2629_20170517071629_299625dc.jpg" data-sub="Iron Pier Records | Ears to Feed x Impose" data-epochs="1497148200000,1497060900000">Wildhoney <b>&middot;</b> </div> 
+        <div class="a" data-id="2071" data-artist="William Basinski" data-venues="National Sawdust" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2071_20170511105526_03995168.jpg" data-sub="" data-epochs="1497056400000">William Basinski <b>&middot;</b> </div> 
+        <div class="a" data-id="2283" data-artist="Wilsen" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2283_20170515072739_70b19612.jpg" data-sub="Wild Honey Pie present The Beehive" data-epochs="1497051000000">Wilsen <b>&middot;</b> </div> 
+        <div class="a" data-id="3243" data-artist="Witch Slap" data-venues="The Well" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3243_20170529060416_7f8d76ea.jpg" data-sub="Lonely Atom Records x TJO" data-epochs="1496967300000">Witch Slap <b>&middot;</b> </div> 
+        <div class="a" data-id="3701" data-artist="Wolkoff" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3701_20170610090837_ed32a63f.jpg" data-sub="" data-epochs="1497139200000">Wolkoff <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">Y</div> 
+        <div class="a" data-id="3206" data-artist="Yaeji" data-venues="TNT Backstory Studio at Kinfolk 90" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3206_20170526124203_c62b1c57.jpg" data-sub="" data-epochs="1497040200000">Yaeji <b>&middot;</b> </div> 
+        <div class="a" data-id="3390" data-artist="Yatta" data-venues="Main Drag" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_3390_20170530095119_919e3a8b.jpg" data-sub="" data-epochs="1497144600000">Yatta <b>&middot;</b> </div> 
+        <div class="a" data-id="2216" data-artist="Your Dog" data-venues="Muchmore&#x27;s" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2216_20170515051931_c43b840b.jpg" data-sub="Invertebrate" data-epochs="1497150000000">Your Dog <b>&middot;</b> </div> 
+        <div class="a" data-id="2263" data-artist="Yucky Duster" data-venues="Gold Sounds" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2263_20170515070505_8b5d24e2.jpg" data-sub="Cigar City MGMT" data-epochs="1496970000000">Yucky Duster <b>&middot;</b> </div> 
+        <div class="a" data-id="2318" data-artist="YVETTE" data-venues="Terra Firma" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2318_20170516101456_e18b43a2.jpg" data-sub="Ears To Feed x Impose" data-epochs="1497066300000">YVETTE <b>&middot;</b> </div> 
+      </div>
+    <div class="aSubList">
+      <div class="aDropCap">Z</div> 
+        <div class="a" data-id="2646" data-artist="Ziemba" data-venues="Vital Joint" data-image="//goevent-images.s3.amazonaws.com/northsidebrooklyn-2017/dee40d8d/web/artist_2646_20170518060728_27a8e595.jpg" data-sub="Vital Joint" data-epochs="1497149100000">Ziemba <b>&middot;</b> </div> 
+      </div>
+  </div>
+
+  <div class="vList">
+    <div class="v" data-venue="Alphaville">
+      Alphaville
+    </div>
+    <div class="v" data-venue="Baby&#x27;s All Right">
+      Baby&#x27;s All Right
+    </div>
+    <div class="v" data-venue="Brooklyn Bazaar">
+      Brooklyn Bazaar
+    </div>
+    <div class="v" data-venue="Brooklyn Bowl">
+      Brooklyn Bowl
+    </div>
+    <div class="v" data-venue="Cape House">
+      Cape House
+    </div>
+    <div class="v" data-venue="Gold Sounds">
+      Gold Sounds
+    </div>
+    <div class="v" data-venue="Good Room">
+      Good Room
+    </div>
+    <div class="v" data-venue="Knitting Factory">
+      Knitting Factory
+    </div>
+    <div class="v" data-venue="Lantern Hall">
+      Lantern Hall
+    </div>
+    <div class="v" data-venue="Little Skips">
+      Little Skips
+    </div>
+    <div class="v" data-venue="Main Drag">
+      Main Drag
+    </div>
+    <div class="v" data-venue="Matchless">
+      Matchless
+    </div>
+    <div class="v" data-venue="McCarren Park">
+      McCarren Park
+    </div>
+    <div class="v" data-venue="Muchmore&#x27;s">
+      Muchmore&#x27;s
+    </div>
+    <div class="v" data-venue="Music Hall of Williamsburg">
+      Music Hall of Williamsburg
+    </div>
+    <div class="v" data-venue="National Sawdust">
+      National Sawdust
+    </div>
+    <div class="v" data-venue="Our Wicked Lady">
+      Our Wicked Lady
+    </div>
+    <div class="v" data-venue="Park Church Co-Op">
+      Park Church Co-Op
+    </div>
+    <div class="v" data-venue="Pete&#x27;s Candy Store">
+      Pete&#x27;s Candy Store
+    </div>
+    <div class="v" data-venue="Pine Box Rock Shop">
+      Pine Box Rock Shop
+    </div>
+    <div class="v" data-venue="Rough Trade">
+      Rough Trade
+    </div>
+    <div class="v" data-venue="Saint Vitus">
+      Saint Vitus
+    </div>
+    <div class="v" data-venue="Sine Metu Stage @ Bedford Ave">
+      Sine Metu Stage @ Bedford Ave
+    </div>
+    <div class="v" data-venue="Sunnyvale">
+      Sunnyvale
+    </div>
+    <div class="v" data-venue="TNT Backstory Studio at Kinfolk 90">
+      TNT Backstory Studio at Kinfolk 90
+    </div>
+    <div class="v" data-venue="Tender Trap">
+      Tender Trap
+    </div>
+    <div class="v" data-venue="Terra Firma">
+      Terra Firma
+    </div>
+    <div class="v" data-venue="The Gutter">
+      The Gutter
+    </div>
+    <div class="v" data-venue="The Hall at MP">
+      The Hall at MP
+    </div>
+    <div class="v" data-venue="The Safari Room at El Cortez">
+      The Safari Room at El Cortez
+    </div>
+    <div class="v" data-venue="The Well">
+      The Well
+    </div>
+    <div class="v" data-venue="Union Pool">
+      Union Pool
+    </div>
+    <div class="v" data-venue="Vital Joint">
+      Vital Joint
+    </div>
+    <div class="v" data-venue="Warsaw">
+      Warsaw
+    </div>
+  </div>
+
+  <script src="lib/js/jquery-3.2.1.min.js"></script>
+  <script src="lib/js/lodash-4.17.4.min.js"></script>
+  <script src="ui.js"></script>
+  
+  <script src="main.js"></script> 
+</body>
+</html>
