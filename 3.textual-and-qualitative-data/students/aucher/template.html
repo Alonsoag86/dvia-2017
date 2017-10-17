@@ -9,13 +9,24 @@
 </head>
 <body>
 
-  <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
+  <div class="venues">
+    <h1>Venues</h1>
+      {{#each venues}}
+      <div class="venue" "{{this.cntCat}}" "cnt:{{this.cnt}}" id="{{this.venue}}">{{this.venue}}</div>
       {{/each}}
-    </ul>
+  </div>
+
+  <div class="artists">   
+    <table> 
+      <tr>
+        <th>Day 0</th>
+        <th>Day 1</th>
+        <th>Day 2</th>
+        <th>Day 3</th>
+      </tr>
+
+    </table>
+  </div> 
 
     {{!--
     {{#each shows}}
@@ -27,7 +38,6 @@
     </ul>
     {{/each}}
     --}}
-  </div>
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>

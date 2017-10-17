@@ -26,9 +26,10 @@ s.clientCredentialsGrant()
 
 function fillFollowers(){
 
-	async.eachOfSeries(shows, function (item, i, callback) {
+	async.eachOfSeries(shows, function (show, i, callback) {
+		// var thisShow = shows[i];
 
-		var artist = item.artist.split(' ').join('+');
+		var artist = show.artist.split(' ').join('+');
 		console.log('artist ' + i + ': ' + artist);
 
 		s.searchArtists(artist, {}, function(err, data) {
@@ -36,24 +37,24 @@ function fillFollowers(){
 		  else 
 		  	// default pop value
 		  	var pop = 0;
-
+		  	
 		  	if (data.body.artists.items[0]){
 		  		var items = data.body.artists.items;
-
 		  		for (var a = 0; a < items.length; a++){
-
 		  			// returns multiple matches - try to find the best one
-		  			if (items[a].name.toLowerCase() == item.artist.toLowerCase()) {
+		  			if (items[a].name.toLowerCase() == show.artist.toLowerCase()) {
 		  				console.log('match! ' + items[a].name);
 		  				pop = items[a].popularity;
 		  				break; // once found a good match break
 		  			} else{
 		  				pop = items[0].popularity;
 		  			}
-		  		}	
-		  	} 
+	  			}
+	  		}	
+	  	} 
 
-			shows[i].popularity = pop;
+			shows.popularity = pop;
+
 			console.log( artist + ' popularity: ', shows[i].popularity);
 
 			setTimeout(callback,500);
