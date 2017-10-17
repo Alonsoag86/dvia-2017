@@ -10,24 +10,28 @@
 <body>
 
   <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
-      {{/each}}
-    </ul>
 
-    {{!--
-    {{#each shows}}
-    <h2>{{this.0.artist}}</h2>
-    <ul class="show">
-    {{#each this}}
-    <li>{{this.venue}}</li>
-    {{/each}}
-    </ul>
-    {{/each}}
-    --}}
+        <div class = "summaryContainer">
+            {{#each totalShowCount}} 
+            <h1 font size ="">Total Venues</h1>
+            <h3>{{this}}</h3>
+            {{/each}}
+        </div>
+
+        <div class = "venuesContainer">
+              {{#each venues}} 
+              <h2 class= "shows-{{showCount}}">{{this.0.venue}}</h2>
+        </div>
+            
+        <div class = "artistsContainer">
+            <p>{{#each this}}
+            {{this.artist}}
+            {{/each}}</p>
+            {{/each}}
+        </div>
+
   </div>
+  
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>
