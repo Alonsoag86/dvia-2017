@@ -10,7 +10,7 @@ var tmplSource = fs.readFileSync('template.html', 'utf-8'),
 var byArtist = _.groupBy(data, 'artist');
     byVenue = _.groupBy(data, 'venue');
     listVenue = _.uniq(_.map(data, 'venue')).sort();
-	// showCount =  _.countBy(data, 'venue');
+	showCount =  _.countBy(data, 'venue');
     names = _.uniq(_.map(data, 'artist')).sort();
     duration = _.uniq(_.map(data, 'duration')).sort();
 
@@ -22,7 +22,7 @@ names.forEach(function(name){
 var venues = []
 listVenue.forEach(function(venue){
   venues.push(byVenue[venue]);
-  showCount = _.countBy(venues, 'venue');
+  console.log(showCount);
 });
 
 var totalShowCount =  _.countBy(venues, 'venue');
