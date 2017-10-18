@@ -8,25 +8,50 @@
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
 </head>
 <body>
-
-  <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
+<div class = "table">
+    <div class="column">
+      <h1 class = "date">&nbsp&nbsp&nbsp6.8.17</h1><br><br><h1>Day 1</h1>
+      {{#each day_one_shows}}
+      <h2>{{@key}}</h2>
+        {{#each this}}
+        <h3>{{this.artist}}</h3>
+        <p>{{this.schedule.start}}&nbsp&nbsp........&nbsp&nbsp{{this.schedule.end}}</p>
+        {{/each}}
+      <br><br><br>
       {{/each}}
-    </ul>
-
-    {{!--
-    {{#each shows}}
-    <h2>{{this.0.artist}}</h2>
-    <ul class="show">
-    {{#each this}}
-    <li>{{this.venue}}</li>
-    {{/each}}
-    </ul>
-    {{/each}}
-    --}}
+    </div>
+    <div class="column">
+      <h1 class = "date">&nbsp&nbsp&nbsp6.9.17</h1><br><br><h1>Day 2</h1>
+      {{#each day_two_shows}}
+      <h2>{{@key}}</h2>
+        {{#each this}}
+        <h3>{{this.artist}}</h3>
+        <p>{{this.schedule.start}}&nbsp&nbsp........&nbsp&nbsp{{this.schedule.end}}</p>
+        {{/each}}
+      <br><br><br>
+      {{/each}}
+    </div>
+    <div class="column">
+      <h1 class = "date">&nbsp&nbsp&nbsp6.10.17</h1><br><br><h1>Day 3</h1>
+      {{#each day_three_shows}}
+      <h2>{{@key}}</h2>
+        {{#each this}}
+        <h3>{{this.artist}}</h3>
+        <p>{{this.schedule.start}}&nbsp&nbsp........&nbsp&nbsp{{this.schedule.end}}</p>
+        {{/each}}
+      <br><br><br>
+      {{/each}}
+    </div>
+<div>
+  <!-- <div class="listing">
+    <h1>Venues</h1>
+     <table>
+       <ul>
+         {{#each venues}}
+         <li>{{this}}</li>
+         {{/each}}
+      </ul>
+    </table> -->
   </div>
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
