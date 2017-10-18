@@ -46,7 +46,7 @@ function populateDayField(){
 
 function cleanVenueNames(){
     data.forEach(function(s){
-        s.venueClean = s.venue.replace('\'','').split(' ').join('');
+        s.venueClean = s.venue.replace(/[^\w\s]/ig,'').split(' ').join('');
     })
 }
 
