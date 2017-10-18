@@ -23,8 +23,8 @@ table {border-collapse: collapse; border-spacing: 0; }
 
 
 html, body{
-  background:#e0e0e0;
-  color:#222;
+  /* background:#e0e0e0; */
+  /* color:#222; */
   font-family:"Libre Franklin";
   font-weight:500;
   line-height:1.2em;
@@ -38,3 +38,209 @@ li{
   font-weight:100;
   font-style:italic;
 }
+
+/* mw begins here */
+
+body {
+  background-color: white;
+}
+ 
+.sList {
+    display: block;
+    width: 100%;
+    height: 75px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.sList::-webkit-scrollbar {
+    height: 4px;
+    background-color: #F5F5F5;
+} 
+
+.sList::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #000000;
+}
+
+.sList::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.s {
+    display: inline-block;
+    height: 70px;
+    margin: 0 5px; 
+    /*background: rgb(229, 68, 40); */
+    cursor: pointer;
+} 
+
+.sSub {
+  float: left; 
+  display: inline-block;
+  background: white;
+  position: relative;
+}  
+
+.sImg {
+  width: 68px;
+  height: 68px;
+}
+
+.sSubInfo {
+  color: rgb(229, 68, 40);
+  font-size: .8em;
+}  
+
+#rmSpan {
+  height: 70px; 
+  width: 70px; 
+  position:relative; 
+  top: 50%; transform: 
+  translate(15%, -50%);  
+  font-size: 4em; 
+  display: none; 
+}
+
+.aList {
+  width:78%; 
+  padding:10px; 
+  float:left;
+  text-align: justify; 
+  text-justify: inter-word; 
+  font-variant: small-caps;
+  background-color: white;
+  
+  -moz-column-count: 5;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 5;
+  -webkit-column-gap: 20px;
+  column-count: 5;
+  column-gap: 1.5em;
+}
+
+.aSubList {
+  min-height: 4em; 
+  padding-top: 15px; 
+  padding-bottom: 5px; 
+  
+  -webkit-column-span: 1; 
+  column-span:1;
+}
+
+.aDropCap {
+  float: left; 
+  display: inline-block; 
+  color: black; 
+  font-style: italic; 
+  font-size: 3em; 
+  padding: 2px; 
+  line-height: .5;
+  
+  column-span: 1; 
+  min-width: .7em; 
+  min-height: .7em;
+}
+
+.vList {
+  width:20%; 
+  height: 100%
+  padding:10px; 
+  float:left;
+  background-color: white;
+}
+
+.dList {
+  height:10px;
+  width: 100%;
+  
+  font-size: 1.6em;
+  
+  padding-top: 5px;
+  padding-bottom: 30px;
+  /* background-color: rgb(33,33,33); */
+  background-color: rgb(61,65,72);
+}
+
+.aList > div:nth-child(odd) {
+  color: rgb(0, 0, 0);
+
+  border-bottom-width:1px;
+  border-bottom-color:gray;
+  border-bottom-style: solid;
+}
+
+.aList > div:nth-child(even) {
+  color: rgb(111, 111, 111);
+
+  border-bottom-width:1px;
+  border-bottom-color:gray;
+  border-bottom-style: solid;
+}
+
+/* artist, venue, date*/
+.a, .v, .d, .s>div, .sImg, #rm, .title, .dl { 
+  -moz-transition: all .1s ease-in;
+  -o-transition: all .1s ease-in;
+  -webkit-transition: all .1s ease-in;
+  transition: all .1s ease-in;
+}
+
+#rm {
+  width: 68px;
+  height: 0px;
+  font-size: 4em;
+  opacity: 0;
+  color: rgb(229, 68, 40);
+}
+
+.v { 
+  text-align: right; 
+  color:#777777; 
+  font-variant: small-caps;
+  font-size: 1.1em;
+}
+
+.d { 
+  transform: translateY(9px);
+  text-align: center;
+  color:#eeeeee; 
+  font-variant: small-caps; 
+  float:left;
+  width:20%;
+}
+
+.titleDl { 
+  color:#eeeeee; 
+  font-variant: small-caps; 
+  float:left;
+  width:20%;
+}
+
+.title { 
+  color:#eeeeee; 
+  font-variant: small-caps; 
+  float:left;
+  width:20%;
+}
+
+.dl { 
+  color:#eeeeee; 
+  font-variant: small-caps; 
+  float:left;
+  width:20%;
+  
+  height:0;
+  opacity:0;
+}
+
+.a {
+  column-span: 1;
+  display: inline;
+  font-size: .7em;
+  line-height: .6em;
+}
+
+

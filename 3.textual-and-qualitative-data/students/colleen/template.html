@@ -3,35 +3,33 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Northside Festival Schedule</title>
+  <title>Northside</title>
   <link rel="stylesheet" href="lib/css/typography.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
 </head>
 <body>
+  <div class="container">
+    <h1>Northside Festival Schedule</h1>
 
-  <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
+    {{#each showDate}}  
+     <div id="d{{this.0.time.day}}" class="h2">{{this.0.schedule.date}}</div>
+     {{/each}}
+    <div class="masonry">
+      {{#each showDate}}  
+      {{#each this}}     
+      <div class="item">
+        <ul id="d{{this.time.day}}">
+          <li><h3> {{this.artist}}</h3></li>
+          <li><h4>@ {{this.venue}}</h4></li>
+          <li><p>Doors Open {{this.schedule.start}}</p></li>
+        </ul>
+      </div>
       {{/each}}
-    </ul>
-
-    {{!--
-    {{#each shows}}
-    <h2>{{this.0.artist}}</h2>
-    <ul class="show">
-    {{#each this}}
-    <li>{{this.venue}}</li>
-    {{/each}}
-    </ul>
-    {{/each}}
-    --}}
+      {{/each}}
+    </div>
   </div>
-
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>
   <script src="ui.js"></script>
-
 </body>
 </html>

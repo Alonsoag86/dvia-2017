@@ -3,17 +3,23 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Northside Festival Schedule</title>
+  <title>Northside Festival Scheduler</title>
   <link rel="stylesheet" href="lib/css/typography.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+
 </head>
 <body>
+
+
+<!--
 
   <div class="listing">
     <h1>Artists</h1>
      <ul>
-      {{#each names}}
-      <li>{{this}}</li>
+      {{#each arg as |a|}}
+       <li>{{a.id}} {{a.artist}} {{a.sIds}}</li> 
       {{/each}}
     </ul>
 
@@ -27,11 +33,55 @@
     </ul>
     {{/each}}
     --}}
+    
+  </div>
+-->
+
+
+  <div class="sList" >
+  </div>
+
+  <div class="dList">
+    <div class="titleDl" >
+      <div class="title">
+        NORTHSIDE&middot;FESTIVAL <br>
+        Scheduler
+      </div>
+      <div class="dl">
+        &nbsp;&nbsp;Download <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Schedule
+      </div>
+    </div>
+    {{#each days}}
+    <div class="d" data-fdate="{{this}}">
+      <b>{{this}}</b>
+    </div>
+    {{/each}}
+ </div>
+
+  <div class="aList">
+    {{#each arg}}
+    <div class="aSubList">
+      <div class="aDropCap">{{cap}}</div> 
+        {{#each info}}
+        <div class="a" data-id="{{id}}" data-artist="{{artist}}" data-venues="{{vTitles}}" data-image="{{img}}" data-sub="{{sub}}" data-epochs="{{epochs}}">{{artist}} <b>&middot;</b> </div> 
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="vList">
+    {{#each venues}}
+    <div class="v" data-venue="{{this}}">
+      {{this}}
+    </div>
+    {{/each}}
   </div>
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>
   <script src="ui.js"></script>
-
+  
+  <script src="main.js"></script> 
 </body>
 </html>

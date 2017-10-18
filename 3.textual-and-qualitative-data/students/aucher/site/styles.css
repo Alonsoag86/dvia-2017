@@ -25,16 +25,114 @@ table {border-collapse: collapse; border-spacing: 0; }
 html, body{
   background:#e0e0e0;
   color:#222;
-  font-family:"Libre Franklin";
-  font-weight:500;
+  font-family:"Libre Franklin"; /* only thing we can't change */
+  font-weight:300;
   line-height:1.2em;
+  box-sizing: border-box;
 }
 
-ul{
-  padding-left:1em;
+#wrapper{
+	margin: 20px;
 }
 
-li{
-  font-weight:100;
-  font-style:italic;
+h1{
+	text-align: center;
+	font-size: 300%;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	letter-spacing: .25em;
 }
+
+div {
+	/*width: 16%;*/
+	flex: 1 1 auto;
+}
+
+.venues{
+	box-sizing: border-box;
+	padding: 20px;
+	display: inline-block;;
+	float: left;
+	width: 15%;
+	padding-top: 0px;
+	border-right-style: groove;
+	border-right-width: thin;
+	border-right-color: aliceblue;
+	font-weight: 100;
+
+}
+
+.artists{
+	/*margin: 20px;*/
+	display: inline;
+	float: right;
+	width: 85%;
+}
+
+table{
+	/*margin: 20px;*/
+	display: inline-table;
+	width: 24%;
+	text-align: center;
+	table-layout: fixed;
+}
+
+table td {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	padding-bottom: 1rem;
+}
+
+h2 {
+	/*font-weight: 300;*/
+	font-size: 150%;
+	letter-spacing: .15em;
+	padding-bottom: 2rem;
+	line-height: 1.5;
+	vertical-align: baseline;
+}
+
+th{
+	/*font-weight: 500;*/
+	font-size: 150%;
+	padding-bottom: .75rem;
+	text-transform: uppercase;
+	letter-spacing: .5em;
+}
+
+.time{
+	display: none;
+}
+
+.venues > div{
+	/*padding-top: 1.5em;*/
+	padding-bottom: 2em;
+	line-height: 1.5em;
+
+}
+
+.venues > div:hover{
+	font-weight: 500;
+}
+
+td > div:hover{
+	font-weight: 500;
+}
+
+tr{
+	line-height: 1.5;
+}
+
+.active{
+	font-weight: 500;
+	color: rgb(195, 47, 24);
+	font-size: 125%;
+	display: block;	
+}
+
+.time.active{
+	font-size: 80%;
+}
+/*.listing{
+	padding: 5%;
+}*/
