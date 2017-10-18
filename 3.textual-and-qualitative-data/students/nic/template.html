@@ -17,19 +17,23 @@
       {{/each}}
     </ul> -->
 
- <ul>
-  {{#each location}}
- <li>{{this}}
+
+        <date>Thursday</date>
+
+              <table>
+      {{#each day0}}
+     
+       <ul><venue>{{this.venue}}</venue> <br><artist>{{this.artist}}</artist><br><start>{{this.schedule.start}}</start></ul>;
+      
+      {{/each}}
+ </table>
 
 
 
+ <!-- {{#each shows}}
+ {{this}}
+ {{/each}} -->
 
-
-  
-
- </li>
-  {{/each}}
-</ul>
    
 <!--     {{#each shows}}
     <h2>{{this.0.artist}}</h2>
