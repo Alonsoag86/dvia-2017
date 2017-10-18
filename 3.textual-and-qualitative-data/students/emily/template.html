@@ -20,14 +20,17 @@
 
         <div class = "venuesContainer">
               {{#each venues}} 
-              <h2 class= "shows-{{showCount}}">{{this.0.venue}}</h2>
-        </div>
+              <h2 class= "shows-{{showsCount}}">{{this.0.venue}}</h2>
+        
             
         <div class = "artistsContainer">
-            <p>{{#each this}}
-            {{this.artist}}
-            {{/each}}</p>
+            <p>
+            {{#each this}}
+            {{this.artist}}<br>
             {{/each}}
+            </p>
+        </div>
+        {{/each}}
         </div>
 
   </div>
