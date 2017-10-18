@@ -23,13 +23,26 @@ table {border-collapse: collapse; border-spacing: 0; }
 
 
 html, body{
-  background:#e0e0e0;
+  background: white;
   color:#222;
   font-family:"Libre Franklin";
   font-weight:500;
   line-height:1.2em;
+  letter-spacing: 0.08em;
 }
 
+h1 {
+    margin-bottom: 0; 
+    letter-spacing: 0.3em;
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 20px;
+    font-style: italic; 
+    margin-top: 0;
+    letter-spacing: 0.3em;
+}
 ul{
   padding-left:1em;
 }
@@ -37,4 +50,47 @@ ul{
 li{
   font-weight:100;
   font-style:italic;
+}
+
+th {
+    text-align: left;
+    font-style: italic;
+    padding-bottom: 7px;
+    color: #5FC0EF;
+}
+
+
+.wrapper {
+    background: white;
+    width: 960px;
+    height: 100%;
+    margin: auto;
+    padding: 20px;
+    color: black;
+    
+}
+
+.title {
+    padding-top: 50px;
+}
+
+.daytitle {
+    font-size: 60px;
+    font-style: italic;
+    padding-top: 140px;
+    padding-bottom: 0;
+    color: #FF9A92;
+}
+
+#thursday {
+    padding-top: 100px;
+}
+
+.hour{
+    font-size: 100px;
+    font-style: italic;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    color: #FF9A92;
 }
