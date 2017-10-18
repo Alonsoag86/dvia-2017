@@ -9,11 +9,11 @@ var tmplSource = fs.readFileSync('template.html', 'utf-8'),
 
 var byArtist = _.groupBy(data, 'artist');
     byVenue = _.groupBy(data, 'venue'),
-    names = _.uniq(_.map(data, 'artist')).sort();
+    names = _.uniq(_.map(data, 'venue')).sort();
 
 var shows = []
 names.forEach(function(name){
-  shows.push(byArtist[name])
+  shows.push(byVenue[name])
 })
 
 var markup = template({names:names, shows:shows})

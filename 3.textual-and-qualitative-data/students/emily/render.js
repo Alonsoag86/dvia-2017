@@ -10,9 +10,18 @@ var tmplSource = fs.readFileSync('template.html', 'utf-8'),
 var byArtist = _.groupBy(data, 'artist');
     byVenue = _.groupBy(data, 'venue');
     listVenue = _.uniq(_.map(data, 'venue')).sort();
-	// showCount =  _.countBy(data, 'venue');
+	showCount =  _.countBy(data, 'venue');
     names = _.uniq(_.map(data, 'artist')).sort();
     duration = _.uniq(_.map(data, 'duration')).sort();
+
+var showsCount = _.countBy(data, 'venue')
+// console.log('number of shows at each venue:', showsCount)
+
+var totalCount = _.sum(_.values(showsCount))
+// console.log('total number of shows at all venues:', totalCount)
+
+// console.log('total number of venues:', _.keys(showsCount).length)
+
 
 var shows = []
 names.forEach(function(name){
@@ -22,7 +31,7 @@ names.forEach(function(name){
 var venues = []
 listVenue.forEach(function(venue){
   venues.push(byVenue[venue]);
-  showCount = _.countBy(venues, 'venue');
+  // console.log(showCount);
 });
 
 var totalShowCount =  _.countBy(venues, 'venue');
