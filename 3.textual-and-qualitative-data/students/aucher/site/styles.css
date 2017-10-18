@@ -35,6 +35,14 @@ html, body{
 	margin: 20px;
 }
 
+h1{
+	text-align: center;
+	font-size: 300%;
+	margin-top: 1em;
+	margin-bottom: 2em;
+	letter-spacing: .25em;
+}
+
 div {
 	/*width: 16%;*/
 	flex: 1 1 auto;
@@ -50,7 +58,7 @@ div {
 	border-right-style: groove;
 	border-right-width: thin;
 	border-right-color: aliceblue;
-	font-weight: 200;
+	font-weight: 100;
 
 }
 
@@ -75,18 +83,25 @@ table td {
 	padding-bottom: 1rem;
 }
 
-h1 {
+h2 {
 	/*font-weight: 300;*/
 	font-size: 150%;
-	padding-bottom: 1rem;
+	letter-spacing: .15em;
+	padding-bottom: 2rem;
 	line-height: 1.5;
 	vertical-align: baseline;
 }
 
 th{
-	font-weight: 500;
+	/*font-weight: 500;*/
 	font-size: 150%;
 	padding-bottom: .75rem;
+	text-transform: uppercase;
+	letter-spacing: .5em;
+}
+
+.time{
+	display: none;
 }
 
 .venues > div{
@@ -100,10 +115,24 @@ th{
 	font-weight: 500;
 }
 
+td > div:hover{
+	font-weight: 500;
+}
+
 tr{
 	line-height: 1.5;
 }
 
+.active{
+	font-weight: 500;
+	color: rgb(195, 47, 24);
+	font-size: 125%;
+	display: block;	
+}
+
+.time.active{
+	font-size: 80%;
+}
 /*.listing{
 	padding: 5%;
 }*/
