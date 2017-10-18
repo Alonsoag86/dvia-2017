@@ -14,6 +14,15 @@ var byArtist = _.groupBy(data, 'artist');
     names = _.uniq(_.map(data, 'artist')).sort();
     duration = _.uniq(_.map(data, 'duration')).sort();
 
+var showsCount = _.countBy(data, 'venue')
+// console.log('number of shows at each venue:', showsCount)
+
+var totalCount = _.sum(_.values(showsCount))
+// console.log('total number of shows at all venues:', totalCount)
+
+// console.log('total number of venues:', _.keys(showsCount).length)
+
+
 var shows = []
 names.forEach(function(name){
   shows.push(byArtist[name])
@@ -22,7 +31,7 @@ names.forEach(function(name){
 var venues = []
 listVenue.forEach(function(venue){
   venues.push(byVenue[venue]);
-  console.log(showCount);
+  // console.log(showCount);
 });
 
 var totalShowCount =  _.countBy(venues, 'venue');
