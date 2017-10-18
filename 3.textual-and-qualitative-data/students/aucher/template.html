@@ -9,51 +9,64 @@
 </head>
 <body>
 <div id="wrapper">
+  <h1>Northside Festival Schedule</h1>
   <div class="venues">
-    <h1>Venues</h1>
+    <h2>Venues</h2>
       {{#each venues}}
-      <div class="venue {{this.cntCat}}" "cnt:{{this.cnt}}" id="{{this.venue}}">{{this.venue}}</div>
+      <div class="venue {{this.venueClean}} {{this.cntCat}}" "cnt:{{this.cnt}}" id="{{this.venueClean}}">{{this.venue}}</div>
       {{/each}}
   </div>
 
   <div class="artists">   
     <table class="day0"> 
       <tr>
-        <th>Day 0</th>
+        <th>Thursday</th>
       </tr>
       {{#each day0}}
       <tr>
-        <td class="{{this.venue}} {{this.popularityCat}}">{{this.artist}}</td>
+        <td>
+          <div class="{{this.venueClean}}">{{this.artist}}</div>
+          <div class="{{this.venueClean}} time">[{{this.schedule.start}}]</div>
+        </td>
       </tr>
       {{/each}}
     </table>
     <table class="day1"> 
       <tr>
-        <th>Day 1</th>
+        <th>Friday</th>
       </tr>
       {{#each day1}}
       <tr>
-        <td class="{{this.venue}} {{this.popularityCat}}">{{this.artist}}</td>
+        <td>
+          <div class="{{this.venueClean}}">{{this.artist}}</div>
+          <div class="{{this.venueClean}} time">[{{this.schedule.start}}]</div>
+        </td>
       </tr>
       {{/each}}
     </table>
     <table class="day2"> 
       <tr>
-        <th>Day 2</th>
+        <th>Saturday</th>
       </tr>
       {{#each day2}}
       <tr>
-        <td class="{{this.venue}} {{this.popularityCat}}">{{this.artist}}</td>
+        <td>
+          <div class="{{this.venueClean}}">{{this.artist}}</div>
+          <div class="{{this.venueClean}} time">[{{this.schedule.start}}]</div>
+        </td>
       </tr>
       {{/each}}
     </table>
     <table class="day3"> 
       <tr>
-        <th>Day 3</th>
+        <th>Sunday</th>
       </tr>
       {{#each day3}}
       <tr>
-        <td class="{{this.venue}} {{this.popularityCat}}">{{this.artist}}</td>
+        <td>
+          <div class="{{this.venueClean}}">{{this.artist}}</div>
+          <div class="{{this.venueClean}} time">[{{this.schedule.start}}]</div>
+        </td>
       </tr>
       {{/each}}
     </table>
