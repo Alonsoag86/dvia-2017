@@ -9,6 +9,7 @@ var tmplSource = fs.readFileSync('template.html', 'utf-8'),
 
 //  add popCat to data
     getPopCat();
+    cleanVenueNames();
 
 //  sort data by order of appearance (by start hour field (check am/pm))
     data = _.sortBy(data, function(d) {return d.time.startHour; });
@@ -43,6 +44,11 @@ function populateDayField(){
     })
 }
 
+function cleanVenueNames(){
+    data.forEach(function(s){
+        s.venueClean = s.venue.replace('\'','').split(' ').join('');
+    })
+}
 
 function getPopCat(){
     data.forEach(function(show){
@@ -62,6 +68,7 @@ function getVenueCnt(){
     var venues = data.reduce(function(accum, item) {
         var venue = accum[item.venue] = accum[item.venue] || {};
         venue['venue'] = venue['venue'] || item.venue;
+        venue['venueClean'] = venue['venueClean'] || item.venueClean;
         var total = venue['cnt'] = venue['cnt'] || 0;
         venue.cnt++;
         return accum;
