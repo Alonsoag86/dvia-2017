@@ -28,32 +28,82 @@ html, body{
   font-family:"Libre Franklin"; /* only thing we can't change */
   font-weight:300;
   line-height:1.2em;
+  box-sizing: border-box;
 }
 
-ul{
-  padding-left:1em;
+#wrapper{
+	margin: 20px;
 }
 
-li{
-  font-weight:100;
-  font-style:italic;
+div {
+	/*width: 16%;*/
+	flex: 1 1 auto;
 }
 
-h1{
+.venues{
+	box-sizing: border-box;
+	padding: 20px;
+	display: inline-block;;
+	float: left;
+	width: 15%;
+	padding-top: 0px;
+	border-right-style: groove;
+	border-right-width: thin;
+	border-right-color: aliceblue;
+	font-weight: 200;
+
+}
+
+.artists{
+	/*margin: 20px;*/
+	display: inline;
+	float: right;
+	width: 85%;
+}
+
+table{
+	/*margin: 20px;*/
+	display: inline-table;
+	width: 24%;
+	text-align: center;
+	table-layout: fixed;
+}
+
+table td {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	padding-bottom: 1rem;
+}
+
+h1 {
+	/*font-weight: 300;*/
+	font-size: 150%;
+	padding-bottom: 1rem;
+	line-height: 1.5;
+	vertical-align: baseline;
+}
+
+th{
 	font-weight: 500;
 	font-size: 150%;
+	padding-bottom: .75rem;
 }
 
-span{
-	margin-bottom: 3em;
-	margin-right: 1em;
-	line-height: 2em;
+.venues > div{
+	/*padding-top: 1.5em;*/
+	padding-bottom: 2em;
+	line-height: 1.5em;
+
 }
 
-span:hover{
+.venues > div:hover{
 	font-weight: 500;
 }
 
-.listing{
-	padding: 5%;
+tr{
+	line-height: 1.5;
 }
+
+/*.listing{
+	padding: 5%;
+}*/

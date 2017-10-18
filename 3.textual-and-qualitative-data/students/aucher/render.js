@@ -12,7 +12,7 @@ var tmplSource = fs.readFileSync('template.html', 'utf-8'),
 
 //  sort data by order of appearance (by start hour field (check am/pm))
     data = _.sortBy(data, function(d) {return d.time.startHour; });
-
+    // populateDayField();
 //  create (1) byDayThurs, (2) byDayFri, (3) byDaySat, (4) byDaySun in order of appearance
 var day0 = _.filter(data, function(d) {return d.time.day == 0; }),
     day1 = _.filter(data, function(d) {return d.time.day == 1; }),
@@ -24,10 +24,24 @@ var venueCnt = getVenueCnt();
     venueCnt = _.sortBy(venueCnt, function(d) {return d.venue; });
     getShowCntCat();
 
-    // console.log(venueCnt);
+    // console.log(day0);
+//TODO - merge all days to 1 file that i can then use in the template
 
 var markup = template({venues:venueCnt, day0:day0, day1:day1, day2:day2, day3:day3});
 fs.writeFileSync('site/index.html', markup)
+
+function populateDayField(){
+    data.forEach(function(s){
+        if (s.time.day == 0 )
+            s.day0 = s.artist;
+        else if (s.time.day == 1)
+            s.day1 = s.artist;
+        else if (s.time.day == 2)
+            s.day2 = s.artist;
+        else if (s.time.day ==3)
+            s.day3 = s.artist;
+    })
+}
 
 
 function getPopCat(){

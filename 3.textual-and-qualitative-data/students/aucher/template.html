@@ -8,26 +8,57 @@
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
 </head>
 <body>
-
+<div id="wrapper">
   <div class="venues">
     <h1>Venues</h1>
       {{#each venues}}
-      <div class="venue" "{{this.cntCat}}" "cnt:{{this.cnt}}" id="{{this.venue}}">{{this.venue}}</div>
+      <div class="venue {{this.cntCat}}" "cnt:{{this.cnt}}" id="{{this.venue}}">{{this.venue}}</div>
       {{/each}}
   </div>
 
   <div class="artists">   
-    <table> 
+    <table class="day0"> 
       <tr>
         <th>Day 0</th>
+      </tr>
+      {{#each day0}}
+      <tr>
+        <td class="{{this.venue}} {{this.popularityCat}}">{{this.artist}}</td>
+      </tr>
+      {{/each}}
+    </table>
+    <table class="day1"> 
+      <tr>
         <th>Day 1</th>
+      </tr>
+      {{#each day1}}
+      <tr>
+        <td class="{{this.venue}} {{this.popularityCat}}">{{this.artist}}</td>
+      </tr>
+      {{/each}}
+    </table>
+    <table class="day2"> 
+      <tr>
         <th>Day 2</th>
+      </tr>
+      {{#each day2}}
+      <tr>
+        <td class="{{this.venue}} {{this.popularityCat}}">{{this.artist}}</td>
+      </tr>
+      {{/each}}
+    </table>
+    <table class="day3"> 
+      <tr>
         <th>Day 3</th>
       </tr>
-
+      {{#each day3}}
+      <tr>
+        <td class="{{this.venue}} {{this.popularityCat}}">{{this.artist}}</td>
+      </tr>
+      {{/each}}
     </table>
   </div> 
-
+</div>
     {{!--
     {{#each shows}}
     <h2>{{this.0.artist}}</h2>
