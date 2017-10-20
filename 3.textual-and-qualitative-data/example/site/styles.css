@@ -1,0 +1,94 @@
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {display: block; }
+body {line-height: 1; }
+ol, ul {list-style: none; }
+blockquote, q {quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none; }
+table {border-collapse: collapse; border-spacing: 0; }
+/* end reset */
+
+
+html, body{
+  background:#e0e0e0;
+  color:#222;
+  font-family:"Libre Franklin";
+  font-weight:500;
+  line-height:1.2em;
+}
+
+h1{
+  font-size:42px;
+  line-height:100px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+
+
+.artists{
+  width:800px;
+  margin:auto;
+}
+
+.artists .artist{
+  margin-bottom:1.2em;
+}
+
+.artists .shows{
+  font-weight:100;
+  font-style:italic;
+}
+
+
+
+
+.venues{
+  padding:0 60px;
+}
+
+.venues .listing{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.venues .venue{
+  width:300px;
+  font-weight:700;
+  margin-bottom:2.4em;
+}
+
+
+.venues h2 .count{
+  color:#999;
+  font-weight:500;
+}
+
+.venues .shows{
+  font-weight:100;
+}
+
+.venues .shows li{
+  margin-bottom:1em;
+}
+
+.venues .shows .artist{
+  font-weight:400;
+}
+
+.venues .shows .time{
+  font-style:italic;
+}
