@@ -14,6 +14,7 @@ var byArtist = _.groupBy(data, 'artist');
     names = _.uniq(_.map(data, 'artist')).sort();
     location = _.uniq(_.map(data, 'venue')).sort();
 
+// console.log(location);
 
 var day0 = _.filter(data, function(d) {return d.time.day == 0; }),
     day1 = _.filter(data, function(d) {return d.time.day == 1; }),
@@ -21,16 +22,21 @@ var day0 = _.filter(data, function(d) {return d.time.day == 0; }),
     day3 = _.filter(data, function(d) {return d.time.day == 3; });
 
 
+// console.log (day0);
 
 var shows = []
 names.forEach(function(name){
   shows.push(byVenue[name])
 })
 
+
+
 var venues = []
 location.forEach(function(venue){
-	venues.push(names[names])
+	venues.push(byVenue[venue])
 })
+
+console.log (venues);
 
 var markup = template({names:names, shows:shows, venues:venues, location:location, day0:day0, day1:day1, day2:day2, day3:day3})
 fs.writeFileSync('site/index.html', markup)
