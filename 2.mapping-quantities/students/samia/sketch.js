@@ -22,7 +22,7 @@ var table;
 function preload() {
   //my table is comma separated value "csv"
   //and has a header specifying the columns labels
-  table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.csv", "csv", "header");
+  table = loadTable("significant_month.csv", "csv", "header");
   }
 
 
@@ -111,10 +111,6 @@ for (i=0;i<numberoflonghash;i++) {
 
       rect(x-(boxwidth/2),y-(boxheight/2),x+(boxwidth/2), y+(boxheight/2));
 
-
-
     }
 }
 }
-
-// }mag depth mouse over and add the hover
