@@ -30,6 +30,26 @@ html, body{
   line-height:1.2em;
 }
 
+h1, h2, h3, p {
+	padding:1%;
+	padding-left:0;
+}
+
+h1 {
+	font-size:1em;
+	font-weight:100;
+	letter-spacing:1em;
+	text-transform:uppercase;
+	line-height:2em;
+	padding-left:5%;
+}
+
+h3 {
+	font-size:3em;
+	font-weight:800;
+
+}
+
 ul{
   padding-left:1em;
 }
@@ -37,4 +57,196 @@ ul{
 li{
   font-weight:100;
   font-style:italic;
+}
+
+p {
+	font-weight: 100;
+	cursor:grab;
+}
+
+p {
+	background-color:#c7b299;
+	color: #c7b299;
+	padding-left:40%;
+	padding-right:40%;
+	text-align:center;
+	max-height: 0;
+    transition: max-height 0.25s ease-out;
+    overflow: hidden;
+}
+
+p:hover {
+	background-color: #231f20;
+	color: #c7b299;
+	max-height: 100%;
+    transition: max-height 3s ease-in;
+
+}
+
+h2 {
+	font-size:30px;
+	font-weight:900;
+	letter-spacing:-1%;
+	height:100%;
+	color:#231f20;
+	background-color:#c7b299;
+	text-align:center;
+}
+
+h2.shows-18 {
+	font-size:18px;
+}
+
+h2.shows-25 {
+	font-size:25px;
+}
+
+.listing {
+	position:relative;
+}
+
+.summaryContainer {
+	position:relative;
+	width:100%;
+	height:auto;
+	background-color: #231f20;
+	color: #c7b299;
+	padding-top:2%;
+	padding-bottom:2%;
+	margin:auto;
+	text-align:center;
+}
+
+@keyframes pulse {
+    from {
+        transform : scale(1);
+        transform:rotate(45deg);
+        opacity   : 1;
+    }
+    50% {
+        transform : scale(0.75);
+        transform:rotate(90deg);
+        opacity   : 0.25;
+    }
+    to {
+        transform : scale(1);
+        transform:rotate(180deg);
+        opacity   : 1;
+    }
+}
+
+#bdg1 {
+	width: 30px;
+    height: 30px;
+    left:3%;
+/*    top:10vh;*/
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 4s ease-out;
+    animation-iteration-count: infinite;
+}
+
+#bdg2 {
+	width: 45px;
+    height: 12px;
+    left:6%;
+/*    top:12vh;*/
+    transform:rotate(-120deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 3.5s ease-out;
+    animation-iteration-count: infinite;
+}
+
+#bdg3 {
+	width: 40px;
+    height: 25px;
+    left:60%;
+    top:1%;
+    transform:rotate(20deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 4s ease-out;
+    animation-iteration-count: infinite;
+}
+
+#bdg4 {
+	width: 200px;
+    height: 25px;
+    left:20%;
+    top:1%;
+    transform:rotate(-20deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 3s ease-out;
+    animation-iteration-count: infinite;
+}
+
+#bdg5 {
+	width: 45px;
+    height: 20px;
+    left:20%;
+    top:1%vh;
+    transform:rotate(-120deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 3.5s ease-out;
+    animation-iteration-count: infinite;
+}
+
+#bdg6 {
+	width: 40px;
+    height: 40px;
+    left:40%;
+    top:1vh;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 2.5s ease-out;
+    animation-iteration-count: infinite;
+}
+
+
+#bdg7 {
+	width: 10px;
+    height: 10px;
+    left:48%;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 4s ease-out;
+    animation-iteration-count: infinite;
+}
+
+#bdg8 {
+	width: 40px;
+    height: 40px;
+    left:30%;
+    top:-0.5vh;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 4s ease-out;
+    animation-iteration-count: infinite;
+}
+
+#bdg9 {
+	width: 40px;
+    height: 40px;
+    left:86%;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+    animation: pulse 4s ease-out;
+    animation-iteration-count: infinite;
 }

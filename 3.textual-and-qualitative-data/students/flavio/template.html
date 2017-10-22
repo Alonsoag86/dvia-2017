@@ -9,25 +9,31 @@
 </head>
 <body>
 
-  <div class="listing">
-    <h1>Artists</h1>
+
+<div class="bandcolumn">b<br>a<br>n<br>d<br>s</div>
+  <div class="topcontainer">
+    {{#each venues}}
+    <div class="individualvenues">{{this}}</div>
+    {{/each}}
+  </div>
+
+
+<div class="bandcolumn2">
      <ul>
       {{#each names}}
       <li>{{this}}</li>
       {{/each}}
     </ul>
+</div>
+<!-- {{#each venues}}
+<div class='topcontainer'>
+  <div class="individualvenues">{{this}}</div>
 
-    {{!--
-    {{#each shows}}
-    <h2>{{this.0.artist}}</h2>
-    <ul class="show">
-    {{#each this}}
-    <li>{{this.venue}}</li>
-    {{/each}}
-    </ul>
-    {{/each}}
-    --}}
-  </div>
+</div>
+{{/each}} -->
+
+
+
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>

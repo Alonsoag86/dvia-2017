@@ -7,14 +7,36 @@ var tmplSource = fs.readFileSync('template.html', 'utf-8'),
     template = handlebars.compile(tmplSource),
     data = JSON.parse(fs.readFileSync('assets/shows.json', 'utf-8'));
 
+
+
 var byArtist = _.groupBy(data, 'artist');
     byVenue = _.groupBy(data, 'venue'),
     names = _.uniq(_.map(data, 'artist')).sort();
+    location = _.uniq(_.map(data, 'venue')).sort();
+
+// console.log(location);
+
+var day0 = _.filter(data, function(d) {return d.time.day == 0; }),
+    day1 = _.filter(data, function(d) {return d.time.day == 1; }),
+    day2 = _.filter(data, function(d) {return d.time.day == 2; }), 
+    day3 = _.filter(data, function(d) {return d.time.day == 3; });
+
+
+// console.log (day0);
 
 var shows = []
 names.forEach(function(name){
-  shows.push(byArtist[name])
+  shows.push(byVenue[name])
 })
 
-var markup = template({names:names, shows:shows})
+
+
+var venues = []
+location.forEach(function(venue){
+	venues.push(byVenue[venue])
+})
+
+console.log (venues);
+
+var markup = template({names:names, shows:shows, venues:venues, location:location, day0:day0, day1:day1, day2:day2, day3:day3})
 fs.writeFileSync('site/index.html', markup)
