@@ -8,52 +8,51 @@
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
 </head>
 <body>
-<div class = "table">
-    <div class="column">
-      <h1 class = "date">&nbsp&nbsp&nbsp6.8.17</h1><br><br><h1>Day 1</h1>
-      {{#each day_one_shows}}
-      <h2>{{@key}}</h2>
-        {{#each this}}
-        <h3>{{this.artist}}</h3>
-        <p>{{this.schedule.start}}&nbsp&nbsp........&nbsp&nbsp{{this.schedule.end}}</p>
+      <div class = "div3">
+        {{#each byVenueEachDay}}
+        <h1>{{@key}}</h1>
+        <br>
+        <table>
+          <tr>
+            {{#each this}}
+            <td>
+              <table>
+                {{#each this}}
+                <tr>
+                  <td class = "artist">{{this.artistname}}</td>
+                </tr>
+                <tr>
+                  <td class = "time">{{this.showtime}}</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                {{/each}}
+              </table>
+            </td>
+            {{/each}}
+          </tr>
+        </table>
+        <br>
         {{/each}}
-      <br><br><br>
-      {{/each}}
+      </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class = "div1"><h1>&#129304; Northside Festival Schedule &#129304;</h1></div>
+    <div class = "div2">
+      <div class="column">
+        <h1 class = "date">&nbsp;&nbsp;&nbsp;6.8.17</h1><br><br><h1 class = "day">Day 1</h1>
+      </div>
+      <div class="column">
+        <h1 class = "date">&nbsp;&nbsp;&nbsp;6.9.17</h1><br><br><h1 class = "day">Day 2</h1>
+      </div>
+      <div class="column">
+        <h1 class = "date">&nbsp;&nbsp;&nbsp;6.10.17</h1><br><br><h1 class = "day">Day 3</h1>
+      </div>
+      <div class="column">
+        <h1 class = "date">&nbsp;&nbsp;&nbsp;6.11.17</h1><br><br><h1 class = "day">Day 4</h1>
+      </div>
     </div>
-    <div class="column">
-      <h1 class = "date">&nbsp&nbsp&nbsp6.9.17</h1><br><br><h1>Day 2</h1>
-      {{#each day_two_shows}}
-      <h2>{{@key}}</h2>
-        {{#each this}}
-        <h3>{{this.artist}}</h3>
-        <p>{{this.schedule.start}}&nbsp&nbsp........&nbsp&nbsp{{this.schedule.end}}</p>
-        {{/each}}
-      <br><br><br>
-      {{/each}}
-    </div>
-    <div class="column">
-      <h1 class = "date">&nbsp&nbsp&nbsp6.10.17</h1><br><br><h1>Day 3</h1>
-      {{#each day_three_shows}}
-      <h2>{{@key}}</h2>
-        {{#each this}}
-        <h3>{{this.artist}}</h3>
-        <p>{{this.schedule.start}}&nbsp&nbsp........&nbsp&nbsp{{this.schedule.end}}</p>
-        {{/each}}
-      <br><br><br>
-      {{/each}}
-    </div>
-<div>
-  <!-- <div class="listing">
-    <h1>Venues</h1>
-     <table>
-       <ul>
-         {{#each venues}}
-         <li>{{this}}</li>
-         {{/each}}
-      </ul>
-    </table> -->
-  </div>
-
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>
   <script src="ui.js"></script>

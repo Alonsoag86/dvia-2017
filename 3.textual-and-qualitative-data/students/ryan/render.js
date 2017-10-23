@@ -38,46 +38,42 @@ for (i=0;i<Object.keys(byVenue).length;i++) {
   byVenue[Object.keys(byVenue)[i]] = _.orderBy(byVenue[Object.keys(byVenue)[i]],['time[day]','time[startHour]','time[startMinute]'],['asc','asc','asc'])
 }
 
-console.log(byVenue['Warsaw'][0]['schedule']['start'].slice(-2));
 
-// day one
-var day_one_shows = []
-var day_one_shows_artists = []
- for (i=0;i<places.length;i++) {
-   for (j=0;j<byVenue[places[i]].length;j++) {
-     if (byVenue[places[i]][j]['time']['day'] == 0) {
-       day_one_shows.push(byVenue[places[i]][j])
-     }
-   }
- }
- var day_one_shows_grouped = _.groupBy(day_one_shows,'venue')
+// console.log(places);
 
- // day two
- var day_two_shows = []
- var day_two_shows_artists = []
-  for (i=0;i<places.length;i++) {
-    for (j=0;j<byVenue[places[i]].length;j++) {
-      if (byVenue[places[i]][j]['time']['day'] == 1) {
-        day_two_shows.push(byVenue[places[i]][j])
+var byVenueEachDay = []
+for (i=0;i<places.length;i++) {
+  for (j=0;j<4;j++) {
+    for (k=0;k<byVenue[places[i]].length;k++) {
+      var venue = places[i];
+      var band = ' '
+      var settime = ' '
+      if (byVenue[places[i]][k]['time']['day'] === j) {
+        venue = places[i];
+        band = byVenue[places[i]][k]['artist'];
+        settime = byVenue[places[i]][k]['schedule']['start'] + '  ........  ' + byVenue[places[i]][k]['schedule']['end'];
+        var byVenueEachDayObj = {place:venue, day:j, artistname:band, showtime:settime};
+        byVenueEachDay.push(byVenueEachDayObj);
       }
     }
+    var venue = places[i];
+    var band = ' '
+    var settime = ' '
+    var byVenueEachDayObj = {place:venue, day:j, artistname:band, showtime:settime};
+    byVenueEachDay.push(byVenueEachDayObj);
   }
-  var day_two_shows_grouped = _.groupBy(day_two_shows,'venue')
+}
 
-  // day three
-  var day_three_shows = []
-  var day_three_shows_artists = []
-   for (i=0;i<places.length;i++) {
-     for (j=0;j<byVenue[places[i]].length;j++) {
-       if (byVenue[places[i]][j]['time']['day'] == 2) {
-         day_three_shows.push(byVenue[places[i]][j])
-       }
-     }
-   }
-   var day_three_shows_grouped = _.groupBy(day_three_shows,'venue')
+var byVenueEachDayGrouped = _.groupBy(byVenueEachDay,'place')
 
+ // console.log(byVenueEachDay);
 
- // console.log(day_one_shows_grouped['Music Hall of Williamsburg']);
+ for (i=0;i<Object.keys(byVenueEachDayGrouped).length;i++) {
+   byVenueEachDayGrouped[Object.keys(byVenueEachDayGrouped)[i]] = _.groupBy(byVenueEachDayGrouped[Object.keys(byVenueEachDayGrouped)[i]],'day');
+  //  console.log(byVenueEachDayGrouped[Object.keys(byVenueEachDayGrouped)[i]]);
+ }
 
-var markup = template({day_one_shows:day_one_shows_grouped, day_two_shows:day_two_shows_grouped, day_three_shows: day_three_shows_grouped})
+ console.log(byVenueEachDayGrouped['Brooklyn Bowl']);
+
+var markup = template({byVenueEachDay: byVenueEachDayGrouped})
 fs.writeFileSync('site/index.html', markup)
