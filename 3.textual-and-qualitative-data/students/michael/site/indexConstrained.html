@@ -49,6 +49,13 @@
     padding-left: 1em;
   }
   
+  .time, sup {
+    font-style: oblique;
+    font-weight: bold;
+    /* -ms-transform: rotate(7deg);  IE 9 */
+    /*-webkit-transform: rotate(7deg); Chrome, Safari, Opera */
+    /*transform: rotate(45deg); */
+  }
   </style>
 
 </head>
@@ -7964,9 +7971,10 @@ for (var idx=0; idx < vKeys.length; idx++){
   
   for (var aidx = 0; aidx < v[vKeys[idx]].length; aidx++) {
     a = v[vKeys[idx]][aidx];
-    var buf = v[vKeys[idx]][aidx]["artist"] + "@" + a["schedule"]["start"].replace(":00","").replace(/ /g, '&#160;')
+    //var buf = v[vKeys[idx]][aidx]["artist"] + "@" + a["schedule"]["start"].replace(":00","").replace(/ /g, '&#160;'); // 160 == nbsp
+    var buf = v[vKeys[idx]][aidx]["artist"] + "<div class='time'><sup>" + a["schedule"]["start"].replace(":00","").replace(/ /g, '&#160;') + "</sup></div>";
     //buf = buf.replace(/ /g, '&nbsp;')
-    buf += " &#183; ";
+    // buf += " &#183; ";
       
     if (hasLowerCase(buf)) buf = buf.toUpperCase();
     
@@ -7989,10 +7997,10 @@ for (var idx=0; idx < vKeys.length; idx++){
     
   }
   
-  thStr = thStr.slice(0,-7);
-  frStr = frStr.slice(0,-7);
-  saStr = saStr.slice(0,-7);
-  suStr = suStr.slice(0,-7);
+  // thStr = thStr.slice(0,-7);
+  // frStr = frStr.slice(0,-7);
+  // saStr = saStr.slice(0,-7);
+  // suStr = suStr.slice(0,-7);
   
   //thStr = thStr==""?"~":thStr;
   //frStr = frStr==""?"~":frStr;
