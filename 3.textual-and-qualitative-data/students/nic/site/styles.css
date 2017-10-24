@@ -4,7 +4,7 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
-b, u, i, center, date,
+b, u, i, center, date, day
 dl, dt, dd, ol, ul, li, bg,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
@@ -25,6 +25,10 @@ table {border-collapse: collapse; border-spacing: 0;}
 html, body{
 
   font-family:"Libre Franklin";
+  background-color: #ece6da;
+  color:#1b1610;
+  padding-left:40px;
+
 }
 
 ul{
@@ -32,16 +36,25 @@ ul{
   text-align: center;
 }
 
+day{
+	font-size: 57px;
+	font-weight: 800;
+	text-align: center;
+}
 venue{
-	font-size: 90px;
+	font-size: 28px;
 }
 
 artist{
-	font-size: 60px;
+	font-size: 14px;
+	font-weight: 400;
 }
 
 start{
-	font-size: 30px;
+	font-size: 14px;
+	font-weight: 400;
+	text-align: right;
+	padding-left: 100px;
 }
 
 ul{
@@ -60,8 +73,7 @@ li1{
 
 date{
 	font-weight:100;
-	font-size: 200px;
-	  color:#222;
+	font-size: 56px;
 	  text-transform: uppercase;
 }
 

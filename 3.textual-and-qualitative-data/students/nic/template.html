@@ -11,15 +11,43 @@
 
 <!--   <div class="listing">
  -->     
-     <ul>
-      {{#each day0}}
-      <li><br><venue>{{this.0.venue}}</venue><br><br></li>{{#each this}}<artist>{{this.artist}}<br><start>{{this.schedule.start}}</start><br><br>
+  <div>
+       <ul class="listing">
+      {{#each days}}
+      <li class="artist">
+        <day>{{day}}</day>
+        {{#each venues}}
+        <venue>{{venue}}</venue><br>
+        {{#each shows}}
+        <artist>{{artist}}</artist><start>{{schedule.start}}</start><br>
+        {{/each}}
+        <br>
+        {{/each}}
+       <!--  {{#each shows}}
+        <li class="venue">{{venues}}</li>
+
+        {{/each}} -->
+<!--         <h2>{{venues}}</h2>
+ -->   <!--      <ol class="shows">
+          {{#each shows}}
+          <li>{{venue}}</li>
+          {{/each}}
+        </ol> -->
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+
+
+    <!--  <ul>
+      {{#each days}}
+      <li><br><venue>{{this.0.venues}}</venue><br><br></li>{{#each this}}<artist>{{this.artist}}<br><start>{{this.schedule.start}}</start><br><br>
             {{/each}}
       {{/each}}
     </ul> 
 
 
-        <date>Thursday</date>
+        <date>Thursday</date> -->
 <!-- 
               <table>
       {{#each venue}}

@@ -32,7 +32,7 @@ for (var venueName in venueShows){ // iterate through the keys of venueShows
   venueObjects.push(venueObj)
 };
 
-
+print(venueObjects);
 // sort our list of venue objects by the number of shows per-venue
 var countedVenues = _.sortBy(venueObjects, 'numShows');
 countedVenues.reverse(); // reverse the ordering so the most active venue comes first
