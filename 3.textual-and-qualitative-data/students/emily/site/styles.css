@@ -68,8 +68,8 @@ p {
 	background-color:#c7b299;
 	color: #c7b299;
 	padding-left:40%;
-	padding-right:40%;
-	text-align:center;
+	padding-right:0;
+	text-align:left;
 	max-height: 0;
     transition: max-height 0.25s ease-out;
     overflow: hidden;
@@ -80,7 +80,6 @@ p:hover {
 	color: #c7b299;
 	max-height: 100%;
     transition: max-height 3s ease-in;
-
 }
 
 h2 {
@@ -117,6 +116,10 @@ h2.shows-25 {
 	text-align:center;
 }
 
+.duration {
+	text-indent:40mm;
+}
+
 @keyframes pulse {
     from {
         transform : scale(1);
@@ -151,7 +154,7 @@ h2.shows-25 {
 #bdg2 {
 	width: 45px;
     height: 12px;
-    left:6%;
+    left:89%;
 /*    top:12vh;*/
     transform:rotate(-120deg);
     background: #110f0d;
