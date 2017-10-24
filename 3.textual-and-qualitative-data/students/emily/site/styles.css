@@ -41,13 +41,18 @@ h1 {
 	letter-spacing:1em;
 	text-transform:uppercase;
 	line-height:2em;
-	padding-left:5%;
+/*	padding-left:5%;*/
+	text-align:center;
 }
 
 h3 {
 	font-size:3em;
 	font-weight:800;
+	line-height:0.8em;
+}
 
+h4 {
+	font-weight: 100;
 }
 
 ul{
@@ -68,8 +73,8 @@ p {
 	background-color:#c7b299;
 	color: #c7b299;
 	padding-left:40%;
-	padding-right:0;
-	text-align:left;
+	padding-right:40%;
+	text-align:center;
 	max-height: 0;
     transition: max-height 0.25s ease-out;
     overflow: hidden;
@@ -124,132 +129,615 @@ h2.shows-25 {
     from {
         transform : scale(1);
         transform:rotate(45deg);
-        opacity   : 1;
-    }
-    50% {
-        transform : scale(0.75);
-        transform:rotate(90deg);
         opacity   : 0.25;
     }
+    /*50% {
+        transform : scale(0.75);
+        transform:rotate(180deg);
+        opacity   : 0.25;
+    }*/
     to {
         transform : scale(1);
-        transform:rotate(180deg);
+        transform:rotate(405deg);
         opacity   : 1;
     }
 }
 
-#bdg1 {
-	width: 30px;
-    height: 30px;
-    left:3%;
-/*    top:10vh;*/
+/*venue bdgs by time duration*/
+
+#bdg855 {
+	position:relative;
+	float:left;
+	width: 100px;
+    height: 100px;
+    left:-100%;
+    top:-200px;
     transform:rotate(45deg);
     background: #110f0d;
     opacity:0.8;
     position: relative;
-    animation: pulse 4s ease-out;
-    animation-iteration-count: infinite;
 }
 
-#bdg2 {
-	width: 45px;
-    height: 12px;
-    left:89%;
-/*    top:12vh;*/
-    transform:rotate(-120deg);
-    background: #110f0d;
-    opacity:0.8;
-    position: relative;
-    animation: pulse 3.5s ease-out;
-    animation-iteration-count: infinite;
+#bdg855:hover{
+	animation: pulse 1s ease-out;
+    animation-iteration-count: calc(855/60);
 }
 
-#bdg3 {
-	width: 40px;
-    height: 25px;
-    left:60%;
-    top:1%;
-    transform:rotate(20deg);
-    background: #110f0d;
-    opacity:0.8;
-    position: relative;
-    animation: pulse 4s ease-out;
-    animation-iteration-count: infinite;
-}
-
-#bdg4 {
+#bdg1555 {
+	position:relative;
+	float:left;
 	width: 200px;
-    height: 25px;
-    left:20%;
-    top:1%;
-    transform:rotate(-20deg);
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
     background: #110f0d;
     opacity:0.8;
     position: relative;
-    animation: pulse 3s ease-out;
-    animation-iteration-count: infinite;
 }
 
-#bdg5 {
-	width: 45px;
-    height: 20px;
-    left:20%;
-    top:1%vh;
-    transform:rotate(-120deg);
+#bdg1555:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(1555/60);
+}
+
+#bdg825 {
+	position:relative;
+	float:left;
+	width: 150px;
+    height: 40px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(120deg);
     background: #110f0d;
     opacity:0.8;
     position: relative;
-    animation: pulse 3.5s ease-out;
-    animation-iteration-count: infinite;
 }
+
+#bdg825:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(825/60);
+}
+
+#bdg180 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg180:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(180/60);
+}
+
+#bdg900 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg900:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(900/60);
+}
+
+#bdg540 {
+	position:relative;
+	float:left;
+	width: 150px;
+    height: 50px;
+    left:-100%;
+    top:-50px;
+    transform:rotate(0deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg540:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(540/60);
+}
+
+#bdg165 {
+	position:relative;
+	float:left;
+	width: 40px;
+    height: 30px;
+    left:-100%;
+    top:-10px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg165:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(165/60);
+}
+
+#bdg690 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg690:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(690/60);
+}
+
+#bdg450 {
+	position:relative;
+	float:left;
+	width: 30px;
+    height: 30px;
+    left:-100%;
+    top:-50px;
+    transform:rotate(0deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg450:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(450/60);
+}
+
+#bdg1875 {
+	position:relative;
+	float:left;
+	width: 60px;
+    height: 80px;
+    left:-100%;
+    top:-250px;
+    transform:rotate(120deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg1875:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(1875/60);
+}
+
+#bdg615 {
+	position:relative;
+	float:left;
+	width: 60px;
+    height: 100px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg615:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(615/60);
+}
+
+#bdg210 {
+	position:relative;
+	float:left;
+	width: 40px;
+    height: 60px;
+    left:-100%;
+    top:-50px;
+    transform:rotate(120deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg210:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(210/60);
+}
+
+#bdg525 {
+	position:relative;
+	float:left;
+	width: 100px;
+    height: 50px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg525:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(525/60);
+}
+
+#bdg865 {
+	position:relative;
+	float:left;
+	width: 40px;
+    height: 20px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(120deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg865:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(865/60);
+}
+
+#bdg785 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg785:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(690/60);
+}
+
+#bdg710 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg710:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(710/60);
+}
+
+#bdg420 {
+	position:relative;
+	float:left;
+	width: 30px;
+    height: 30px;
+    left:-100%;
+    top:-10px;
+    transform:rotate(0deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg420:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(420/60);
+}
+
+#bdg930 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg930:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(930/60);
+}
+
+#bdg435 {
+	position:relative;
+	float:left;
+	width: 20px;
+    height: 15px;
+    left:-100%;
+    top:-50px;
+    transform:rotate(0deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg435:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(435/60);
+}
+
+#bdg840 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg840:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(840/60);
+}
+
+#bdg390 {
+	position:relative;
+	float:left;
+	width: 30px;
+    height: 30px;
+    left:-100%;
+    top:-50px;
+    transform:rotate(0deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg390:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(390/60);
+}
+
+#bdg480 {
+	position:relative;
+	float:left;
+	width: 10px;
+    height: 15px;
+    left:-100%;
+    top:-50px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg480:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(480/60);
+}
+
+#bdg1545 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg1545:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(1545/60);
+}
+
+#bdg300 {
+	position:relative;
+	float:left;
+	width: 100px;
+    height: 30px;
+    left:-100%;
+    top:-50px;
+    transform:rotate(0deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg300:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(300/60);
+}
+
+#bdg935 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg935:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(935/60);
+}
+
+#bdg240 {
+	position:relative;
+	float:left;
+	width: 20px;
+    height: 50px;
+    left:-100%;
+    top:50px;
+    transform:rotate(120deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg240:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(240/60);
+}
+
+#bdg645 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg645:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(645/60);
+}
+
+#bdg765 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg765:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(765/60);
+}
+
+#bdg600 {
+	position:relative;
+	float:left;
+	width: 20px;
+    height: 40px;
+    left:-100%;
+    top:-50px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg600:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(600/60);
+}
+
+#bdg180 {
+	position:relative;
+	float:left;
+	width: 80px;
+    height: 5px;
+    left:-100%;
+    top:0px;
+    transform:rotate(0deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg180:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(180/60);
+}
+
+#bdg135 {
+	position:relative;
+	float:left;
+	width: 40px;
+    height: 60px;
+    left:-100%;
+    top:-30px;
+    transform:rotate(0deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg135:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(135/60);
+}
+
+#bdg765 {
+	position:relative;
+	float:left;
+	width: 200px;
+    height: 30px;
+    left:-100%;
+    top:-150px;
+    transform:rotate(45deg);
+    background: #110f0d;
+    opacity:0.8;
+    position: relative;
+}
+
+#bdg765:hover {
+    animation: pulse 1s ease-out;
+    animation-iteration-count: calc(765/60);
+}
+
+
+/*summary bdgs*/
 
 #bdg6 {
-	width: 40px;
-    height: 40px;
-    left:40%;
+/*	float:left;
+	position:relative;*/
+	width: 150px;
+    height: 150px;
+    left:44%;
     top:1vh;
     transform:rotate(45deg);
     background: #110f0d;
     opacity:0.8;
     position: relative;
+}
+
+#bdg6:hover{
     animation: pulse 2.5s ease-out;
-    animation-iteration-count: infinite;
-}
-
-
-#bdg7 {
-	width: 10px;
-    height: 10px;
-    left:48%;
-    transform:rotate(45deg);
-    background: #110f0d;
-    opacity:0.8;
-    position: relative;
-    animation: pulse 4s ease-out;
-    animation-iteration-count: infinite;
-}
-
-#bdg8 {
-	width: 40px;
-    height: 40px;
-    left:30%;
-    top:-0.5vh;
-    transform:rotate(45deg);
-    background: #110f0d;
-    opacity:0.8;
-    position: relative;
-    animation: pulse 4s ease-out;
-    animation-iteration-count: infinite;
-}
-
-#bdg9 {
-	width: 40px;
-    height: 40px;
-    left:86%;
-    transform:rotate(45deg);
-    background: #110f0d;
-    opacity:0.8;
-    position: relative;
-    animation: pulse 4s ease-out;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
 }
