@@ -12,57 +12,24 @@
   <div class="listing">
 
         <div class = "summaryContainer">
-            <div class = "bdg" id = "bdg1"></div>
-            <div class = "bdg" id = "bdg2"></div>
-            <div class = "bdg" id = "bdg3"></div>
-            <div class = "bdg" id = "bdg4"></div>
-            <div class = "bdg" id = "bdg5"></div>
-            <div class = "bdg" id = "bdg6"></div>
-            <div class = "bdg" id = "bdg7"></div>
-            <div class = "bdg" id = "bdg8"></div>
-            <div class = "bdg" id = "bdg9"></div>
-            <div class = "bdg" id = "bdg10"></div>
-            <div class = "bdg" id = "bdg11"></div>
-            <div class = "bdg" id = "bdg12"></div>
-            <div class = "bdg" id = "bdg13"></div>
-            <div class = "bdg" id = "bdg14"></div>
-            <div class = "bdg" id = "bdg15"></div>
-            <div class = "bdg" id = "bdg16"></div>
-            <div class = "bdg" id = "bdg17"></div>
-            <div class = "bdg" id = "bdg18"></div>
-            <div class = "bdg" id = "bdg19"></div>
-            <div class = "bdg" id = "bdg20"></div>
-            <div class = "bdg" id = "bdg21"></div>
-            <div class = "bdg" id = "bdg22"></div>
-            <div class = "bdg" id = "bdg23"></div>
-            <div class = "bdg" id = "bdg24"></div>
-            <div class = "bdg" id = "bdg25"></div>
-            <div class = "bdg" id = "bdg26"></div>
-            <div class = "bdg" id = "bdg27"></div>
-            <div class = "bdg" id = "bdg28"></div>
-            <div class = "bdg" id = "bdg29"></div>
-            <div class = "bdg" id = "bdg30"></div>
-            <div class = "bdg" id = "bdg31"></div>
-            <div class = "bdg" id = "bdg32"></div>
-            <div class = "bdg" id = "bdg33"></div>
-            <div class = "bdg" id = "bdg34"></div>
-            {{#each totalShowCount}} 
-            <h1 font size ="">Northside Festival Venues</h1>
-            <h3>{{this}}</h3>{{/each}}
-            {{#each totalDuration}}
-            <h3>{{this}}</h3>{{/each}}
+            
+            <h1 font size ="">Northside Festival</h1>
+            <!-- <h3>{{#each totalShowCount}}{{this}}{{/each}}</h3><h4>venues</h4> -->
+            <br><div class = "bdg" id = "bdg6"><h3><br>1 Hour</h3></div><br>
         </div>
 
-        <div class = "venuesContainer">
-              {{#each venues}} 
-              <h2 class>{{this.0.venue}}:{{this.totalDuration}}</h2>
         
+              {{#each doubleAlphabetized}}
+        <div id = "{{this.venue}}">
+              <h2 class>{{this.venue}}<!-- : {{this.venueDuration}} min --></h2>
+        </div>
         
         <div class = "artistsContainer">
             <p class = "artist">
-            {{#each this}}
-            {{this.artist}}<span class="duration">:{{this.time.duration}}</span><br>
+            {{#each shows}}
+            {{this.artist}}<!-- <span class="duration">:{{this.time.duration}}</span> --><br>
             {{/each}}
+            <span class = "bdg" id = "bdg{{this.venueDuration}}"></span>
             </p>
         </div>
         {{/each}}
