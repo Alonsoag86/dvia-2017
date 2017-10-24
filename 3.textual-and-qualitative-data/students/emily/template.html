@@ -48,19 +48,20 @@
             <div class = "bdg" id = "bdg34"></div>
             {{#each totalShowCount}} 
             <h1 font size ="">Northside Festival Venues</h1>
-            <h3>{{this}}</h3>
-            {{/each}}
+            <h3>{{this}}</h3>{{/each}}
+            {{#each totalDuration}}
+            <h3>{{this}}</h3>{{/each}}
         </div>
 
         <div class = "venuesContainer">
               {{#each venues}} 
-              <h2 class= "shows-{{showsCount}}">{{this.0.venue}}</h2>
+              <h2 class>{{this.0.venue}}:{{this.totalDuration}}</h2>
         
-            
+        
         <div class = "artistsContainer">
-            <p>
+            <p class = "artist">
             {{#each this}}
-            {{this.artist}}<br>
+            {{this.artist}}<span class="duration">:{{this.time.duration}}</span><br>
             {{/each}}
             </p>
         </div>
@@ -73,6 +74,7 @@
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>
   <script src="ui.js"></script>
+  <script src="main.js"></script>
 
 </body>
 </html>

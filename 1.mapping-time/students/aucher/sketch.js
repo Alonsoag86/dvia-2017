@@ -15,24 +15,30 @@ var minDiameter;
 
 // Colors
 var night;
-var day;
+var dayC;
 var sunrise;
 var sunset;
+var backgroundC;
 var sunriseTime;
 var sunsetTime;
 
+// boolean to control second flashing
+var flash;
+
 function setup() {
   createCanvas(w, h);
-  stroke(255);
+  // stroke(255);
   frameRate(1);
 
   // Colors
   night = color('rgb(29, 55, 80)');
-  day = color('rgb(238, 215, 135)');
-  sunrise = color('rgb(224, 123,	129)');
+  dayC = color('rgb(238, 215, 135)');
+  sunrise = color('rgb(224, 123, 129)');
   sunset = color('rgb(229, 154,	131)');
+  backgroundC = color('rgb(35, 35, 35)');
   sunriseTime = 6;
   sunsetTime = 18;
+  flash = true;
 
   var radius = min(width, height) / 2; // this is the maximum possible radius
   clockDiameter = radius * 1.7; // make slightly smaller than maximum allowed
@@ -43,67 +49,82 @@ function setup() {
 
   cx = width / 2; // centers the clock
   cy = height / 2;
+  frameRate(2);
 }
 
 function draw() {
-  background(0);
+  background(backgroundC);
 
   // Angles for sin() and cos() start at 3 o'clock;
   // subtract HALF_PI to make them start at the top
-  var m = map(minute(), 0, 60, 0, TWO_PI) - HALF_PI;
-  // var h = map(hour(), 0, 24, 0, TWO_PI) - HALF_PI;
-  var h = map(hour(), 0, 24, 0, TWO_PI) - HALF_PI;
+  var m = radians(map(minute(), 0, 60, 0, 360)) - HALF_PI;
+  var h = radians(map(hour(), 0, 24, 0, 360)) - HALF_PI;
 
   // Draw the minute ticks
     beginShape(POINTS);
     var circleNumber = 0;
-  for (var a = 0; a <360; a+= 360/24) {
-    var angle = radians(a) - HALF_PI;
-    var x = cx + cos(angle) * hourCirclePos;
-    var y = cy - sin(angle) * hourCirclePos; // subtract sine to get counterclockwise
-    strokeWeight(3);
-    stroke(80);
-    fill(getHourFill(h, angle, circleNumber)); // fill with color if hour has past
-    ellipse(x, y, hourDiameter, hourDiameter);
+    for (var a = 0; a <360; a+= 360/24) {
+        var angle = radians(a) - HALF_PI;
+        var x = cx + cos(angle) * hourCirclePos;
+        var y = cy - sin(angle) * hourCirclePos; // subtract sine to get counterclockwise
+        strokeWeight(3);
+        fill(getHourFill(h, angle, circleNumber)); // fill with color if hour has past
+        ellipse(x, y, hourDiameter, hourDiameter);
 
-    // for debugging
-    // fill(color('white'));
-    // text(circleNumber, x, y);
-    for (var b = 0; b < 360; b+= 360/60){
-      var subangle = radians(b) - HALF_PI;
-      var subx = x + cos(subangle) * minCirclePos;
-      var suby = y - sin(subangle) * minCirclePos;
-      noStroke();
-      fill(getMinFill(h, m, angle, subangle, circleNumber));
-      ellipse(subx, suby, minDiameter, minDiameter);
-    }
-    circleNumber+=1;
+        for (var b = 0; b < 360; b+= 360/60){
+            var subangle = radians(b) - HALF_PI;
+            var subx = x + cos(subangle) * minCirclePos;
+            var suby = y - sin(subangle) * minCirclePos;
+            noStroke();
+            fill(getMinFill(h, m, angle, subangle, circleNumber));
+            ellipse(subx, suby, minDiameter, minDiameter);
+        }
+        circleNumber+=1;
   }
   endShape();
 }
 
 function getHourFill(h, angle, circleNumber){
-  var c = 0;
+  var c = backgroundC;
   // if current circle angle is past the hour angle
-  if (angle < h) {c = calculateColor(circleNumber);}
+  if (angle < h) {
+      c = calculateColor(circleNumber);
+  } else if (angle == h) {
+      var thisColor = calculateColor(circleNumber);
+      // opacity related part of the hour that has past already
+      var opacity = map(minute(), 0, 60, 0, 255);
+      thisColor = color(thisColor.levels[0], thisColor.levels[1], thisColor.levels[2], opacity);
+      c = thisColor;
+  }
   return c;
 }
 
 function getMinFill(h, m, angle, subangle, circleNumber){
-  var c = 0;
+  var c = backgroundC;
   // if current circle angle is past the hour angle
   if (angle < h) {
     c = calculateColor(circleNumber);
   }
-   else if (angle.toFixed(1) == h.toFixed(1) && subangle < m) {// current hour, minute that has past
+    else if (angle.toFixed(1) === h.toFixed(1) && subangle < m) {// current hour, minute that has past
     c = calculateColor(circleNumber);
   }
+    else if (angle.toFixed(1) === h.toFixed(1) && subangle === m){// current hour, current minute
+      if (flash == true){
+          var thisColor = calculateColor(circleNumber);
+          // opacity related part of the minute that has past already
+          var opacity = map(second(), 0, 60, 0, 255);
+          thisColor = color(thisColor.levels[0], thisColor.levels[1], thisColor.levels[2], opacity);
+          c = thisColor;
+      }
+      flash = !flash;
+  }
+
   return c;
 }
 
 function calculateColor(circleNumber){
   var startColor = night;
-  var endColor = day;
+  var endColor = dayC;
   var colorScale = 0;
   var gradientPadding = 2; // hours for the color transition
 
@@ -121,18 +142,18 @@ function calculateColor(circleNumber){
   } else if (circleNumber >= (sunriseTime) && circleNumber < (sunriseTime + gradientPadding)) {
     // Sunrise>Noon
     startColor = sunrise;
-    endColor = day;
+    endColor = dayC;
     colorScale = map ((circleNumber), sunriseTime, sunriseTime + gradientPadding, 0, 1);
 
   } else if (circleNumber >= sunriseTime + gradientPadding && circleNumber < (sunsetTime - gradientPadding)) {
     // Noon
-    startColor = day;
-    endColor = day;
+    startColor = dayC;
+    endColor = dayC;
     colorScale = 0;
 
   } else if (circleNumber >= (sunsetTime - gradientPadding) && circleNumber < (sunsetTime + gradientPadding)) {
     // Noon>Sunset
-    startColor = day;
+    startColor = dayC;
     endColor = sunset;
     colorScale = map ((circleNumber), sunsetTime - gradientPadding, sunsetTime + gradientPadding, 0, 1);
 
