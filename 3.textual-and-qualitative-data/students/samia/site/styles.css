@@ -25,36 +25,47 @@ table {border-collapse: collapse; border-spacing: 0; }
 html, body{
   background-color: white;
   font-family:"Libre Franklin";
-  font-weight:500;
-  line-height:1.2em;
 }
+
 .header{
-  width: 100px;
+  border-left-width: thick;
+  border-left-color: black;
+  border-left-style: solid;
+  padding: 1em;
+  width: 200px;
   height: 500px;
   background-color: white;
   position: fixed;
-  left: 900px;
+  left: 1300px;
   align-content: right;
 }
 
+.headerone{
+  background-color: black;
+  padding: 5px;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: white;
+  width: 180px;
+}
 
 .key {
   line-height: 50px;
   padding-top: 10px;
   text-transform: uppercase;
   font-weight: 900;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .listing {
-  width: 800px;
+  width: 1200px;
   position: absolute;
 }
 
 .venue {
   font-size: 20px;
   line-height: 50px;
-  font-weight: 300;
+  font-weight: 400;
   padding-left: 1em;
   text-decoration: underline;
   text-decoration-style:double;
@@ -62,9 +73,10 @@ html, body{
 }
 
 .days {
+  padding-left: 10px;
   font-size: 20px;
   line-height: 50px;
-  font-weight: 300;
+  font-weight: 400;
   text-decoration: underline;
   text-decoration-style: double;
 }
@@ -88,7 +100,7 @@ html, body{
 .start {
   font-size: 20px;
   line-height: 20px;
-  font-weight: 300;
+  font-weight: 100;
   font-style:italic;
   display: inline;
 

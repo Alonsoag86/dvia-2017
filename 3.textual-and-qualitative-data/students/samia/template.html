@@ -19,15 +19,35 @@
     </div>
   </div>
 
-  <div class="listing">
-     <ul>
+<div class="listing">
+   <!-- <ul>
       {{#each byArtist}}
       <li class="key">{{@key}}</li>
         {{#each this}}
         <li class="venue day{{this.time.day}}">{{this.venue}}</li>
-         <li class= "start"> | {{this.schedule.start}} | </li>
-         {{/each}}  {{/each}}
-    </ul>
+        {{#each this}}
+        <li class="subtitle day{{this.time.day}}">{{this.subtitle}}</li>
+          <li class="schedule">{{this.schedule}}</li>
+          <li class= "start"> | {{this.schedule.start}} | </li>
+         {{/each}}  {{/each}} {{/each}}
+    </ul>  -->
+
+    <ul>
+          {{#each byArtist}}
+          <li class="key">{{@key}}</li>
+
+            {{#each this}}
+              <li class="venue day{{this.time.day}}">{{this.venue}}</li>
+            {{/each}}  
+
+            {{#each this}}
+              <li class="subtitle day{{this.time.day}}">{{this.subtitle.0}}</li>
+            {{/each}}
+              <li class="schedule">{{this.schedule}}</li>
+                <li class= "start"> | {{this.schedule.start}} | </li>
+                {{/each}}  
+              {{/each}}
+        </ul>
 
     {{!--
     {{#each shows}}
