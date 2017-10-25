@@ -68,7 +68,7 @@ var properlyAlphabetizedVenues = _.sortBy(venueObjects, function(obj){
 });
 
 
-var days = [{day:"thursday",venues:[]},{day:"friday",venues:[]},{day:"saturday",venues:[]},{day:"sunday",venues:[]}];
+var days = [{day:"Thursday",venues:[]},{day:"Friday",venues:[]},{day:"Saturday",venues:[]},{day:"Sunday",venues:[]}];
 for (var i=0; i<properlyAlphabetizedVenues.length; i++){
   var venue = properlyAlphabetizedVenues[i]
   for (var j = 0; j < 4; j++) {

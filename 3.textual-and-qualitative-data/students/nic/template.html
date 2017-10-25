@@ -9,28 +9,41 @@
 </head>
 <body>
 
+  <h1>Northside Festival</h1>
+
   <div class="schedule">
       {{#each days}}
-      <pad1>
+      
         <day>{{day}}</day><br>
  
       <div class="items">
         {{#each venues}}
-         <pad2>
+        <style type="text/css">
+        venue{{@index}} {margin-left: {{@index}}0px;}
+        </style>
+           <venue{{@index}}>
+     
         <venue>{{venue}}</venue><br>
           
         {{#each shows}}
-        <div class="shows"
-         <pad3><artist>{{artist}}</artist><pad4><start>{{schedule.start}}</start></pad4></pad3></div><br>
-        {{/each}} 
+        <div class="shows">
+          <script type="text/javascript">
+
+          </script>
+          <style>
+          index{{@index}} {margin-left: {{@index}}0px; display: flex; width: 30%;}
+        </style>
+           <index{{@index}}>
+        <artist>{{artist}}</artist><start>{{schedule.start}}</start></div><br>
+          </index{{@index}}>
+        {{/each}} </venue{{@index}}>
         <br>    
-                        </pad2>
-
         {{/each}}
-
+        
           </div>
+          
                 {{/each}}
-   </pad1>
+ 
   </div>
 
 
