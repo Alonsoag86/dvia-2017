@@ -9,25 +9,43 @@
 </head>
 <body>
 
-  <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
-      {{/each}}
-    </ul>
+  <h1>Northside Festival</h1>
 
-    {{!--
-    {{#each shows}}
-    <h2>{{this.0.artist}}</h2>
-    <ul class="show">
-    {{#each this}}
-    <li>{{this.venue}}</li>
-    {{/each}}
-    </ul>
-    {{/each}}
-    --}}
+  <div class="schedule">
+      {{#each days}}
+      
+        <day>{{day}}</day><br>
+ 
+      <div class="items">
+        {{#each venues}}
+        <style type="text/css">
+        venue{{@index}} {margin-left: {{@index}}0px;}
+        </style>
+           <venue{{@index}}>
+     
+        <venue>{{venue}}</venue><br>
+          
+        {{#each shows}}
+        <div class="shows">
+          <script type="text/javascript">
+
+          </script>
+          <style>
+          index{{@index}} {margin-left: {{@index}}0px; display: flex; width: 30%;}
+        </style>
+           <index{{@index}}>
+        <artist>{{artist}}</artist><start>{{schedule.start}}</start></div><br>
+          </index{{@index}}>
+        {{/each}} </venue{{@index}}>
+        <br>    
+        {{/each}}
+        
+          </div>
+          
+                {{/each}}
+ 
   </div>
+
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>

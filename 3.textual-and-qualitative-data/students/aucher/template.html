@@ -8,15 +8,70 @@
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
 </head>
 <body>
-
-  <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
+<div id="wrapper">
+  <h1>Northside Festival Schedule</h1>
+  <div class="venues">
+    <h2>Venues</h2>
+      {{#each venues}}
+      <div class="venue {{this.venueClean}} {{this.cntCat}}" "cnt:{{this.cnt}}" id="{{this.venueClean}}">{{this.venue}}</div>
       {{/each}}
-    </ul>
+  </div>
 
+  <div class="artists">   
+    <table class="day0"> 
+      <tr>
+        <th>Thursday</th>
+      </tr>
+      {{#each day0}}
+      <tr>
+        <td>
+          <div class="{{this.venueClean}}">{{this.artist}}</div>
+          <div class="{{this.venueClean}} time">[{{this.schedule.start}}]</div>
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+    <table class="day1"> 
+      <tr>
+        <th>Friday</th>
+      </tr>
+      {{#each day1}}
+      <tr>
+        <td>
+          <div class="{{this.venueClean}}">{{this.artist}}</div>
+          <div class="{{this.venueClean}} time">[{{this.schedule.start}}]</div>
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+    <table class="day2"> 
+      <tr>
+        <th>Saturday</th>
+      </tr>
+      {{#each day2}}
+      <tr>
+        <td>
+          <div class="{{this.venueClean}}">{{this.artist}}</div>
+          <div class="{{this.venueClean}} time">[{{this.schedule.start}}]</div>
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+    <table class="day3"> 
+      <tr>
+        <th>Sunday</th>
+      </tr>
+      {{#each day3}}
+      <tr>
+        <td>
+          <div class="{{this.venueClean}}">{{this.artist}}</div>
+          <div class="{{this.venueClean}} time">[{{this.schedule.start}}]</div>
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+  </div> 
+</div>
     {{!--
     {{#each shows}}
     <h2>{{this.0.artist}}</h2>
@@ -27,7 +82,6 @@
     </ul>
     {{/each}}
     --}}
-  </div>
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>

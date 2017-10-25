@@ -22,7 +22,7 @@ var table;
 function preload() {
   //my table is comma separated value "csv"
   //and has a header specifying the columns labels
-  table = loadTable("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.csv", "csv", "header");
+  table = loadTable("significant_month.csv", "csv", "header");
   }
 
 
@@ -94,19 +94,23 @@ for (i=0;i<numberoflonghash;i++) {
 };
 
   function drawDataPoints(){
-    strokeWeight(5);
-    stroke(255,0,0);
+
+    var boxwidth = 20
+    var boxheight = 10
+
+    strokeWeight(0);
     for(var i=0; i<longitude.length; i++){
       var x = map(longitude[i],longitudeMin, longitudeMax, plotX1, plotX2);
       var y = map(latitude[i],latitudeMin, latitudeMax, plotY2, plotY1);
-      point(x,y);
+
+      if ( type[i] === "earthquake") {
+          fill(255,0,0,50);
+      } else {
+          fill(0,255,0,50);
+    	}
+
+      rect(x-(boxwidth/2),y-(boxheight/2),x+(boxwidth/2), y+(boxheight/2));
+
     }
 }
 }
-
-//       	if ( "type" = "earthquake") {
-//       		fill("red");
-//       	} else {
-//       		fill("yellow");
-//       	}
-// }

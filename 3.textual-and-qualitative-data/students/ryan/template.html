@@ -8,27 +8,51 @@
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
 </head>
 <body>
-
-  <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
-      {{/each}}
-    </ul>
-
-    {{!--
-    {{#each shows}}
-    <h2>{{this.0.artist}}</h2>
-    <ul class="show">
-    {{#each this}}
-    <li>{{this.venue}}</li>
-    {{/each}}
-    </ul>
-    {{/each}}
-    --}}
-  </div>
-
+      <div class = "div3">
+        {{#each byVenueEachDay}}
+        <h1>{{@key}}</h1>
+        <br>
+        <table>
+          <tr>
+            {{#each this}}
+            <td>
+              <table>
+                {{#each this}}
+                <tr>
+                  <td class = "artist">{{this.artistname}}</td>
+                </tr>
+                <tr>
+                  <td class = "time">{{this.showtime}}</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                {{/each}}
+              </table>
+            </td>
+            {{/each}}
+          </tr>
+        </table>
+        <br>
+        {{/each}}
+      </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class = "div1"><h1>&#129304; Northside Festival Schedule &#129304;</h1></div>
+    <div class = "div2">
+      <div class="column">
+        <h1 class = "date">&nbsp;&nbsp;&nbsp;6.8.17</h1><br><br><h1 class = "day">Day 1</h1>
+      </div>
+      <div class="column">
+        <h1 class = "date">&nbsp;&nbsp;&nbsp;6.9.17</h1><br><br><h1 class = "day">Day 2</h1>
+      </div>
+      <div class="column">
+        <h1 class = "date">&nbsp;&nbsp;&nbsp;6.10.17</h1><br><br><h1 class = "day">Day 3</h1>
+      </div>
+      <div class="column">
+        <h1 class = "date">&nbsp;&nbsp;&nbsp;6.11.17</h1><br><br><h1 class = "day">Day 4</h1>
+      </div>
+    </div>
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>
   <script src="ui.js"></script>

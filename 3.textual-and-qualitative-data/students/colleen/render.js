@@ -8,13 +8,36 @@ var tmplSource = fs.readFileSync('template.html', 'utf-8'),
     data = JSON.parse(fs.readFileSync('assets/shows.json', 'utf-8'));
 
 var byArtist = _.groupBy(data, 'artist');
-    byVenue = _.groupBy(data, 'venue'),
+    byTime = _.sortBy(data, function(h){
+    	if (h.time.startHour == '0') 
+    		h.time.startHour = '24';
+    	if (h.time.startHour == '1') 
+    		h.time.startHour = '25';
+    	if (h.time.startHour == '2') 
+    		h.time.startHour = '26';
+    		return h.time.startHour;
+    });
+
+    byDay = _.groupBy(byTime, 'time.day');
+    //console.log(byDay);
+
+    byVenue = _.groupBy(data, 'venue');
     names = _.uniq(_.map(data, 'artist')).sort();
+    days =  _.uniq(_.map(data, 'time.day')).sort();
+
+
 
 var shows = []
-names.forEach(function(name){
+  names.forEach(function(name){
   shows.push(byArtist[name])
 })
 
-var markup = template({names:names, shows:shows})
+ var showDate = []
+ 	 days.forEach(function(day){
+  showDate.push(byDay[day])
+
+ 	})
+
+var markup = template({names:names, shows:shows, showDate:showDate, days:days})
 fs.writeFileSync('site/index.html', markup)
+

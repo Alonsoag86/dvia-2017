@@ -9,13 +9,44 @@
 </head>
 <body>
 
-  <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
-      {{/each}}
-    </ul>
+  <div class= "header">
+    <div class= "headerone"> Northside Festival Schedule </div>
+    <div class="days">
+      <div class= "days day0"> Thursday </div>
+      <div class= "days day1"> Friday </div>
+      <div class= "days day2"> Saturday </div>
+      <div class= "days day3"> Sunday </div>
+    </div>
+  </div>
+
+<div class="listing">
+   <!-- <ul>
+      {{#each byArtist}}
+      <li class="key">{{@key}}</li>
+        {{#each this}}
+        <li class="venue day{{this.time.day}}">{{this.venue}}</li>
+        {{#each this}}
+        <li class="subtitle day{{this.time.day}}">{{this.subtitle}}</li>
+          <li class="schedule">{{this.schedule}}</li>
+          <li class= "start"> | {{this.schedule.start}} | </li>
+         {{/each}}  {{/each}} {{/each}}
+    </ul>  -->
+
+    <ul>
+          {{#each byArtist}}
+          <li class="key">{{@key}}</li>
+            {{#each this}}
+              <li class="venue day{{this.time.day}}">{{this.venue}}</li>
+            {{/each}}  
+
+            {{#each this}}
+              <li class="subtitle day{{this.time.day}}">{{[this.subtitle]}}</li>
+            {{/each}}
+              <li class="schedule">{{this.schedule}}</li>
+                <li class= "start"> | {{this.schedule.start}} | </li>
+                {{/each}}  
+              {{/each}}
+        </ul>
 
     {{!--
     {{#each shows}}
