@@ -45,7 +45,7 @@ for (var venueName in venueShows){ // iterate through the keys of venueShows
   venueObjects.push(venueObj)
 };
 
-print(venueObjects[0]);
+// print(venueObjects[0]);
 
 // makeDate(venueObj.shows);
 // sort our list of venue objects by the number of shows per-venue
@@ -75,7 +75,10 @@ for (var i=0; i<properlyAlphabetizedVenues.length; i++){
     shows = _.filter(shows, function(s){
       return s.time.day == j;
     })
-    days[j].venues.push({venue:venue.venue, shows:shows})
+    if (shows[0]  !== undefined){
+    	days[j].venues.push({venue:venue.venue, shows:shows})
+	    
+	}
   }
 }
 

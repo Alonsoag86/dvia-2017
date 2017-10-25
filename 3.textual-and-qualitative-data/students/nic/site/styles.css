@@ -38,8 +38,8 @@ h1{
 	margin-top: 300px;
 	font-weight: 900;
 	line-height: 0px;
-	word-wrap: normal;
-	overflow-wrap: break-word;
+	word-wrap: nowrap;
+	white-space: nowrap;
 }
 
 h2{
