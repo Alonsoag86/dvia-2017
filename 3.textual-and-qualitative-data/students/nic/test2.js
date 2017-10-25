@@ -11,6 +11,7 @@ function loadTemplate(path){
   return template;
 }
 
+
 function loadJSON(path){
   // loads the text from the file at <path> and returns an unpacked Object or Array after decoding it
   var src = fs.readFileSync(path, 'utf-8'),
@@ -18,11 +19,18 @@ function loadJSON(path){
   return data;
 }
 
-
 var template = loadTemplate('template.html'),    // assigns a function to 'template' that lets us generate HTML
     allShows = loadJSON('assets/shows.json'),    // a simple list of show dictionaries
     venueShows = _.groupBy(allShows, 'venue'),   // a dictionary with venue names as keys, and lists of shows as values
     artistShows = _.groupBy(allShows, 'artist'); // a dictionary with artist names as keys, and lists of shows as values
+
+
+function print(value) {
+  console.log(JSON.stringify(value, null, "---"));
+}
+
+// console.log(venueShows);
+
 
 // create a list of objects of the form:
 // {venue:"name of venue", shows:[{...}, {...}, ...], numShows:#}
@@ -32,10 +40,12 @@ for (var venueName in venueShows){ // iterate through the keys of venueShows
   venueObjects.push(venueObj)
 };
 
-print(venueObjects);
+// console.log(venueObjects);
 // sort our list of venue objects by the number of shows per-venue
 var countedVenues = _.sortBy(venueObjects, 'numShows');
 countedVenues.reverse(); // reverse the ordering so the most active venue comes first
+
+
 
 // sort the original list of venue objects by venue name
 var alphabetizedVenues = _.sortBy(venueObjects, 'venue');
@@ -47,6 +57,22 @@ var properlyAlphabetizedVenues = _.sortBy(venueObjects, function(obj){
   // regardless of the capitalization of "the" (as indicated by the "/i")
   return obj.venue.replace(/^the /i, '')
 });
+
+var days = [{day:"thursday",venues:[]},{day:"friday",venues:[]},{day:"saturday",venues:[]},{day:"sunday",venues:[]}];
+for (var i=0; i<properlyAlphabetizedVenues.length; i++){
+  var venue = properlyAlphabetizedVenues[i]
+  for (var j = 0; j < 4; j++) {
+    var shows = _.filter(venue.shows, function(s){
+      return s.time.day == j;
+    })
+    days[j].venues.push({venue:venue.venue, shows:shows})
+  }
+}
+
+print(days[2].venues[2]);
+
+
+
 
 // take our alphabetized venue list and make sure the artists in each
 // venue are also listed in alphabetical order
