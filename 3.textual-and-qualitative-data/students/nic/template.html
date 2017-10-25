@@ -9,71 +9,30 @@
 </head>
 <body>
 
-<!--   <div class="listing">
- -->     
-  <div>
-       <ul class="listing">
+  <div class="schedule">
       {{#each days}}
-      <li class="artist">
-        <day>{{day}}</day>
+      <pad1>
+        <day>{{day}}</day><br>
+ 
+      <div class="items">
         {{#each venues}}
+         <pad2>
         <venue>{{venue}}</venue><br>
+          
         {{#each shows}}
-        <artist>{{artist}}</artist><start>{{schedule.start}}</start><br>
-        {{/each}}
-        <br>
-        {{/each}}
-       <!--  {{#each shows}}
-        <li class="venue">{{venues}}</li>
+        <div class="shows"
+         <pad3><artist>{{artist}}</artist><pad4><start>{{schedule.start}}</start></pad4></pad3></div><br>
+        {{/each}} 
+        <br>    
+                        </pad2>
 
-        {{/each}} -->
-<!--         <h2>{{venues}}</h2>
- -->   <!--      <ol class="shows">
-          {{#each shows}}
-          <li>{{venue}}</li>
-          {{/each}}
-        </ol> -->
-      </li>
-      {{/each}}
-    </ul>
+        {{/each}}
+
+          </div>
+                {{/each}}
+   </pad1>
   </div>
 
-
-    <!--  <ul>
-      {{#each days}}
-      <li><br><venue>{{this.0.venues}}</venue><br><br></li>{{#each this}}<artist>{{this.artist}}<br><start>{{this.schedule.start}}</start><br><br>
-            {{/each}}
-      {{/each}}
-    </ul> 
-
-
-        <date>Thursday</date> -->
-<!-- 
-              <table>
-      {{#each venue}}
-     
-       <ul><venue>{{this.venue}}</venue> <br><artist>{{this.artist}}</artist><br><start>{{this.schedule.start}}</start></ul>;
-      
-      {{/each}}
- </table> -->
-
-
-
- <!-- {{#each shows}}
- {{this}}
- {{/each}} -->
-
-   
-<!--     {{#each shows}}
-    <h2>{{this.0.artist}}</h2>
-    <ul class="show">
-    {{#each this}}
-    <li>{{this.venue}}</li>
-    {{/each}}
-    </ul>
-    {{/each}} -->
-    
-<!--   </div> -->
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
   <script src="lib/js/lodash-4.17.4.min.js"></script>

@@ -1,5 +1,5 @@
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 */
-html, body, div, span, applet, object, iframe,
+h/*tml, body, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -18,7 +18,7 @@ body {line-height: 1; }
 ol, ul {list-style: none; }
 blockquote, q {quotes: none; }
 blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none; }
-table {border-collapse: collapse; border-spacing: 0;}
+table {border-collapse: collapse; border-spacing: 0;}*/
 /* end reset */
 
 
@@ -27,54 +27,67 @@ html, body{
   font-family:"Libre Franklin";
   background-color: #ece6da;
   color:#1b1610;
-  padding-left:40px;
+  margin: 56px;
 
 }
 
-ul{
-  padding-left:1em;
-  text-align: center;
+pad1{
+	padding-left: 14px;
+	flex: 1;
+}
+
+pad2{
+	padding-left: 28px;
+}
+
+pad3{
+	display: flex;
+	
+}
+
+pad4{
+	
+}
+
+.schedule{
+	display: flex;
 }
 
 day{
 	font-size: 57px;
 	font-weight: 800;
+	align-self: center;
 	text-align: center;
+	text-transform: uppercase;
 }
 venue{
 	font-size: 28px;
+	font-weight: 600;
+	text-transform: uppercase;
+	line-height: 90px;
+
+
 }
 
 artist{
 	font-size: 14px;
 	font-weight: 400;
+	line-height: 16px;
+	flex: 1;
+
 }
 
 start{
 	font-size: 14px;
-	font-weight: 400;
-	text-align: right;
-	padding-left: 100px;
-}
+	font-weight: 300;
+	flex: 1;
+	}
 
-ul{
-  font-weight:900;
-  text-transform: uppercase;
-  text-align: left;
-  font-size: 20px;
-  line-height: 60px;
-  white-space: nowrap;
-  
-}
-
-li1{
-  font-weight:200;
-}
 
 date{
 	font-weight:100;
 	font-size: 56px;
-	  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 tr{
@@ -85,7 +98,16 @@ tr{
 table{
 	/*margin: 20px;*/
 	display: inline-table;
-	width: 24%;
 	text-align: center;
 	table-layout: fixed;
+}
+
+.items{
+	display: flex;
+	flex-direction: column;
+}
+
+.shows{
+	display: flex;
+	width: 33%;
 }
