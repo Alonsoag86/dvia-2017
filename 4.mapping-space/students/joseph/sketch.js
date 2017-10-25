@@ -57,7 +57,6 @@ function setup() {
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
-    removeAllCircles()
 }
 
 function drawDataPoints(){
