@@ -28,30 +28,26 @@ html, body{
 }
 
 .header{
-  border-left-width: thick;
-  border-left-color: black;
-  border-left-style: solid;
-  padding: 1em;
   width: 200px;
-  height: 500px;
-  background-color: white;
   position: fixed;
   left: 1300px;
   align-content: right;
+  padding: 1em;
 }
 
 .headerone{
+  width: 180px;
   background-color: black;
+  margin-top: 20px;
   padding: 5px;
   font-size: 30px;
   text-transform: uppercase;
   color: white;
-  width: 180px;
 }
 
 .key {
   line-height: 50px;
-  padding-top: 10px;
+  padding-top: 20px;
   text-transform: uppercase;
   font-weight: 900;
   font-size: 50px;
@@ -59,12 +55,20 @@ html, body{
 
 .listing {
   width: 1200px;
+  margin-left: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
+  border-right-width: thick;
+  border-right-color: black;
+  border-right-style: solid;
 }
 
 .venue {
   font-size: 20px;
-  line-height: 50px;
+  line-height: 40px;
   font-weight: 400;
   padding-left: 1em;
   text-decoration: underline;
