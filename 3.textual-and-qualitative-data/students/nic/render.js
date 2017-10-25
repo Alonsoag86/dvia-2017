@@ -41,15 +41,11 @@ var template = loadTemplate('template.html'),    // assigns a function to 'templ
 // {venue:"name of venue", shows:[{...}, {...}, ...], numShows:#}
 var venueObjects = [];
 for (var venueName in venueShows){ // iterate through the keys of venueShows
-	for (var showTimes in venueShows.shows){
-		var showStart = {start:venueShows.shows.time.startHour};
-		venueObjects.push(showStart);
-	}
   var venueObj = { venue:venueName, shows:venueShows[venueName], numShows:venueShows[venueName].length};
   venueObjects.push(venueObj)
 };
 
-
+print(venueObjects[0]);
 
 // makeDate(venueObj.shows);
 // sort our list of venue objects by the number of shows per-venue
@@ -68,7 +64,7 @@ var properlyAlphabetizedVenues = _.sortBy(venueObjects, function(obj){
 });
 
 
-var days = [{day:"Thursday",venues:[]},{day:"Friday",venues:[]},{day:"Saturday",venues:[]},{day:"Sunday",venues:[]}];
+var days = [{day:"Thursday June 7th",venues:[]},{day:"Friday June 8th",venues:[]},{day:"Saturday June 9th",venues:[]},{day:"Sunday June 10th",venues:[]}];
 for (var i=0; i<properlyAlphabetizedVenues.length; i++){
   var venue = properlyAlphabetizedVenues[i]
   for (var j = 0; j < 4; j++) {
@@ -88,52 +84,5 @@ for (var i=0; i<properlyAlphabetizedVenues.length; i++){
 // print(days[0]);
 
 
-
-
-// // take our alphabetized venue list and make sure the artists in each
-// // venue are also listed in alphabetical order
-// var chronShows = properlyAlphabetizedVenues.slice() // make a copy of the original list with slice
-// for (var i=0; i<chronShows.length; i++){
-//   var venue = chronShows[i]
-//   venue.shows = _.sortBy(venue.shows, 'time.startHour,time.startMinute')
-// }
-
-
-// // take the alphabetized venue list and group the performances by day
-// // this will mean each item in the list has a 'days' list rather than a 'shows' list. Instead,
-// // each item in the 'days' list is an object with information about the day/date, and a list of 'shows':
-// // [{venue:"name", days:[{date:"text date", day:#, shows[{...}, {...}, ...] }] }, ...]
-// var dayByDayVenues = properlyAlphabetizedVenues.slice()
-// for (var i=0; i<dayByDayVenues.length; i++){
-//   var venue = _.clone(dayByDayVenues[i]);
-//   var grouped = _.groupBy(venue.shows, 'time.day');
-
-//   var days = []
-//   for (var day in grouped){
-//     var todaysShows = grouped[day];
-//     var today = {date:todaysShows[0].schedule.date, day:day, shows:todaysShows}
-//     days.push(today)
-//   }
-//   venue.days = _.sortBy(days, 'day')
-//   venue.numDays = venue.days.length
-//   delete venue.shows
-// }
-
-// //
-// // Now we can do the same kind of unpacking and re-ordering for the artists
-// //
-// var artistObjects = []
-// for (var artistName in artistShows){
-//   var artistObj = {name:artistName, shows:artistShows[artistName], numShows:artistShows[artistName].length}
-//   artistObjects.push(artistObj)
-// }
-
-// var alphabetizedArtists = _.sortBy(artistObjects, function(obj){
-//   return obj.name.replace(/^the /i, '').toLowerCase()
-// })
-// var countedArtists = _.sortBy(artistObjects, 'numShows').reverse();
-
-// try swapping in any of the lists we built above:
-// alphabetizedVenues, properlyAlphabetizedVenues, doubleAlphabetized, countedVenues, alphabetizedArtists, countedArtists
 var markup = template({days:days})
 fs.writeFileSync('site/index.html', markup)

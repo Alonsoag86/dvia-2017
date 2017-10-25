@@ -8,43 +8,36 @@
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
 </head>
 <body>
-
   <h1>Northside Festival</h1>
-
-  <div class="schedule">
+<h2> Brooklyn June 7-11 2017</h2>
+      <h3>Schedule</h3><hr><br><br>
+    <div class="schedule">
       {{#each days}}
-      
-        <day>{{day}}</day><br>
- 
-      <div class="items">
-        {{#each venues}}
-        <style type="text/css">
-        venue{{@index}} {margin-left: {{@index}}0px;}
-        </style>
-           <venue{{@index}}>
-     
-        <venue>{{venue}}</venue><br>
-          
-        {{#each shows}}
-        <div class="shows">
-          <script type="text/javascript">
-
-          </script>
-          <style>
-          index{{@index}} {margin-left: {{@index}}0px; display: flex; width: 30%;}
-        </style>
-           <index{{@index}}>
-        <artist>{{artist}}</artist><start>{{schedule.start}}</start></div><br>
-          </index{{@index}}>
-        {{/each}} </venue{{@index}}>
-        <br>    
-        {{/each}}
-        
-          </div>
-          
-                {{/each}}
- 
-  </div>
+        <day{{@index}}>
+         <day>{{day}}</day><br>
+         <div class="items">
+          {{#each venues}}
+            <style type="text/css">
+            venue{{@index}} {margin-left: {{@index}}0px; display: block; white-space: nowrap; font-weight: {{@index}}00;}
+            </style>
+            <venue{{@index}}>
+              <venue>{{venue}}</venue><br>
+                {{#each shows}}
+                  <div class="shows">
+                    <style>
+                    index{{@index}} {margin-left: {{@index}}0px; display: flex; width: 300px; font-weight: {{@index}}00;}
+                    </style>
+                  <index{{@index}}>
+                  <artist>{{artist}}</artist><start>{{schedule.start}}</start></div><br>
+                  </index{{@index}}>
+                {{/each}} 
+            </venue{{@index}}>
+            <br>    
+          {{/each}}
+        </div>          
+      {{/each}} 
+    </day{{@index}}>
+    </div>
 
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
