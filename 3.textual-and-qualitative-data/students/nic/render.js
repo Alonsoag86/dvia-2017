@@ -3,40 +3,137 @@ var fs = require('fs'),
     _ = require('lodash'),
     handlebars = require('handlebars');
 
-var tmplSource = fs.readFileSync('template.html', 'utf-8'),
-    template = handlebars.compile(tmplSource),
-    data = JSON.parse(fs.readFileSync('assets/shows.json', 'utf-8'));
+
+function loadTemplate(path){
+  // loads a handlebars template file from <path> and returns a compiled templating function
+  var src = fs.readFileSync(path, 'utf-8'),
+      template = handlebars.compile(src);
+  return template;
+}
+
+
+function loadJSON(path){
+  // loads the text from the file at <path> and returns an unpacked Object or Array after decoding it
+  var src = fs.readFileSync(path, 'utf-8'),
+      data = JSON.parse(src);
+  return data;
+}
+
+ function print(value) {
+ 	//writes out all the subkeys
+  console.log(JSON.stringify(value, null, "---"));
+}
+
+function myDateThing(num){
+	return num+7;
+}
+
+function makeDate(item){
+	new Date(2017, 5, myDateThing(item.time.day), item.time.startHour,item.time.startMinute,00,0);
+}
+
+var template = loadTemplate('template.html'),    // assigns a function to 'template' that lets us generate HTML
+    allShows = loadJSON('assets/shows.json'),    // a simple list of show dictionaries
+    venueShows = _.groupBy(allShows, 'venue'),   // a dictionary with venue names as keys, and lists of shows as values
+    artistShows = _.groupBy(allShows, 'artist'); // a dictionary with artist names as keys, and lists of shows as values
+
+// create a list of objects of the form:
+// {venue:"name of venue", shows:[{...}, {...}, ...], numShows:#}
+var venueObjects = [];
+for (var venueName in venueShows){ // iterate through the keys of venueShows
+	for (var showTimes in venueShows.shows){
+		var showStart = {start:venueShows.shows.time.startHour};
+		venueObjects.push(showStart);
+	}
+  var venueObj = { venue:venueName, shows:venueShows[venueName], numShows:venueShows[venueName].length};
+  venueObjects.push(venueObj)
+};
 
 
 
-var byArtist = _.groupBy(data, 'artist');
-    byVenue = _.groupBy(data, 'venue'),
-    names = _.uniq(_.map(data, 'artist')).sort();
-    location = _.uniq(_.map(data, 'venue')).sort();
+// makeDate(venueObj.shows);
+// sort our list of venue objects by the number of shows per-venue
+var countedVenues = _.sortBy(venueObjects, 'numShows');
+countedVenues.reverse(); // reverse the ordering so the most active venue comes first
 
-// console.log(location);
+// sort the original list of venue objects  by venue name
+var alphabetizedVenues = _.sortBy(venueObjects, 'venue');
 
-var day0 = _.filter(data, function(d) {return d.time.day == 0; }),
-    day1 = _.filter(data, function(d) {return d.time.day == 1; }),
-    day2 = _.filter(data, function(d) {return d.time.day == 2; }), 
-    day3 = _.filter(data, function(d) {return d.time.day == 3; });
-
-
-// console.log (day0);
-
-var shows = []
-names.forEach(function(name){
-  shows.push(byVenue[name])
-})
+// sort by venue name but ignore 'the' at the beginning of the name
+var properlyAlphabetizedVenues = _.sortBy(venueObjects, function(obj){
+  // use a regular expression to clip off the letters "the ", but only if they come at
+  // the very beginning of the string (as indicated by the ^ below), and have it match
+  // regardless of the capitalization of "the" (as indicated by the "/i")
+  return obj.venue.replace(/^the /i, '')
+});
 
 
+var days = [{day:"Thursday",venues:[]},{day:"Friday",venues:[]},{day:"Saturday",venues:[]},{day:"Sunday",venues:[]}];
+for (var i=0; i<properlyAlphabetizedVenues.length; i++){
+  var venue = properlyAlphabetizedVenues[i]
+  for (var j = 0; j < 4; j++) {
+  	
+  	var shows = _.sortBy(venue.shows, item => (makeDate(item)));
+  
 
-var venues = []
-location.forEach(function(venue){
-	venues.push(byVenue[venue])
-})
+    shows = _.filter(shows, function(s){
+      return s.time.day == j;
+    })
+    days[j].venues.push({venue:venue.venue, shows:shows})
+  }
+}
 
-console.log (venues);
 
-var markup = template({names:names, shows:shows, venues:venues, location:location, day0:day0, day1:day1, day2:day2, day3:day3})
+
+// print(days[0]);
+
+
+
+
+// // take our alphabetized venue list and make sure the artists in each
+// // venue are also listed in alphabetical order
+// var chronShows = properlyAlphabetizedVenues.slice() // make a copy of the original list with slice
+// for (var i=0; i<chronShows.length; i++){
+//   var venue = chronShows[i]
+//   venue.shows = _.sortBy(venue.shows, 'time.startHour,time.startMinute')
+// }
+
+
+// // take the alphabetized venue list and group the performances by day
+// // this will mean each item in the list has a 'days' list rather than a 'shows' list. Instead,
+// // each item in the 'days' list is an object with information about the day/date, and a list of 'shows':
+// // [{venue:"name", days:[{date:"text date", day:#, shows[{...}, {...}, ...] }] }, ...]
+// var dayByDayVenues = properlyAlphabetizedVenues.slice()
+// for (var i=0; i<dayByDayVenues.length; i++){
+//   var venue = _.clone(dayByDayVenues[i]);
+//   var grouped = _.groupBy(venue.shows, 'time.day');
+
+//   var days = []
+//   for (var day in grouped){
+//     var todaysShows = grouped[day];
+//     var today = {date:todaysShows[0].schedule.date, day:day, shows:todaysShows}
+//     days.push(today)
+//   }
+//   venue.days = _.sortBy(days, 'day')
+//   venue.numDays = venue.days.length
+//   delete venue.shows
+// }
+
+// //
+// // Now we can do the same kind of unpacking and re-ordering for the artists
+// //
+// var artistObjects = []
+// for (var artistName in artistShows){
+//   var artistObj = {name:artistName, shows:artistShows[artistName], numShows:artistShows[artistName].length}
+//   artistObjects.push(artistObj)
+// }
+
+// var alphabetizedArtists = _.sortBy(artistObjects, function(obj){
+//   return obj.name.replace(/^the /i, '').toLowerCase()
+// })
+// var countedArtists = _.sortBy(artistObjects, 'numShows').reverse();
+
+// try swapping in any of the lists we built above:
+// alphabetizedVenues, properlyAlphabetizedVenues, doubleAlphabetized, countedVenues, alphabetizedArtists, countedArtists
+var markup = template({days:days})
 fs.writeFileSync('site/index.html', markup)

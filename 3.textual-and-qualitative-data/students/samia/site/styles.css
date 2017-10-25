@@ -23,65 +23,87 @@ table {border-collapse: collapse; border-spacing: 0; }
 
 
 html, body{
-  background-color: gray;
-  font-family:"Libre Franklin";
-  font-weight:500;
-  line-height:1.2em;
-}
-.header{
-  width: 100px;
-  height: 500px;
   background-color: white;
+  font-family:"Libre Franklin";
+}
+
+.header{
+  width: 200px;
   position: fixed;
-  left: 900px;
+  left: 1300px;
   align-content: right;
+  padding: 1em;
 }
 
-.days {
-  font-size: 20px;
-  line-height: 50px;
-  text-decoration: underline;
-  text-decoration-style: double;
+.headerone{
+  width: 180px;
+  background-color: black;
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: white;
 }
-  .days.day1 {
-    text-decoration-color: red;
-  }
-
-  .days.day2 {
-    text-decoration-color: blue;
-  }
-
-  .days.day3 {
-    text-decoration-color: green;
-  }
-
-  .days.day4 {
-    text-decoration-color: purple;
-  }
 
 .key {
   line-height: 50px;
-  padding-top: 10px;
+  padding-top: 20px;
   text-transform: uppercase;
   font-weight: 900;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .listing {
-  width: 800px;
+  width: 1200px;
+  margin-left: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
+  border-right-width: thick;
+  border-right-color: black;
+  border-right-style: solid;
 }
 
 .venue {
-  font-weight: 300;
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: 400;
   padding-left: 1em;
   text-decoration: underline;
   text-decoration-style:double;
-  text-decoration-color: red;
   display: inline;
 }
 
+.days {
+  padding-left: 10px;
+  font-size: 20px;
+  line-height: 50px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-style: double;
+}
+.day0 {
+    text-decoration-color: rgb(5,206,86);
+  }
+
+.day1 {
+    text-decoration-color: rgb(0,198,193);
+  }
+
+.day2 {
+    text-decoration-color: rgb(115,138,225);
+  }
+
+.day3 {
+    text-decoration-color: rgb(173,83,234);
+  }
+
+
 .start {
+  font-size: 20px;
+  line-height: 20px;
   font-weight: 100;
   font-style:italic;
   display: inline;

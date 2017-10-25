@@ -22,19 +22,148 @@ table {border-collapse: collapse; border-spacing: 0; }
 /* end reset */
 
 
-html, body{
-  background:#e0e0e0;
-  color:#222;
+html{
+	
+} 
+
+head{
+  text-align: center;
+}
+
+body{
+  /*height: 100%;*/
+  /*background:#e0e0e0*/
+  color:#fff;
+  background:#23292f;
+  /*background:#2D2D2F;*/
+  /*background:#33393f;*/
   font-family:"Libre Franklin";
   font-weight:500;
   line-height:1.2em;
+  /*padding-left:7em;*/
+  /*flex-direction:column;*/
 }
 
-ul{
-  padding-left:1em;
-}
 
-li{
+h1{
+  text-align: center;
+  justify-content:center;
   font-weight:100;
-  font-style:italic;
+  line-height:1.2em;
+  font-size:3.4em;
+  letter-spacing:10px;
 }
+
+h2{
+  text-align: center;
+  justify-content:center;
+  font-weight:100;
+  line-height:1.2em;
+  font-size:1.2em;
+  letter-spacing:5px;
+}
+
+.listing{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  /*width: 1100;*/
+  /*background:#003300;*/ /*dark green*/
+  background:#23292f;
+  flex-direction:column;
+  border:2px;
+  flex:1;
+}
+
+.dateheader{
+  color:#fff;
+  background:#4d0000;
+  font-weight:50;
+  line-height:1.2em;
+  font-size:2.0em;
+  justify-content:left;
+  font-weight:50;
+  padding-top:1em;
+  /*padding-left:1em;*/
+  text-align:right;
+  width: 520px;
+}
+
+
+.show{
+  /*show is the ares below the large date - it contains all the venues and individual bands*/
+  display:flex;
+  /*background:#23292f;*/
+  /*background:#002266;*/ /*dark blue*/
+
+  background:#23292f;
+  /*background:#99d8c9;*/
+  justify-content:left;
+  padding:2px;
+  width: 530px;
+  /*align-items:flex-start;*/
+  flex-direction:column;
+}
+
+.showinvenue{
+  display:flex;
+  flex-direction:row;
+ }
+
+.venue{
+  color:#fff;
+  font-weight:50;
+  line-height:1.2em;
+  font-size:2.0em;
+  justify-content:left;
+  font-weight:50;
+  /*padding-left:1em;*/
+  text-align:left;
+}
+
+.artist{
+  text-align:left;
+  /*justify-content:left;*/
+  /*font-style:italic;*/
+  padding:2px;
+  background:#33393f;
+  text-align:left;
+  flex: 0 0 200px;
+  /*flex-grow:3;*/
+  /*width:650;*/
+  padding-left:2em;
+}
+
+.schdate{
+  font-weight:100;
+  /*justify-content:left;*/
+  /*font-style:italic;*/
+  /*padding:2px;*/
+  background:#4d0000;
+  flex: 0 0 0px;
+  /*background:#33393f;*/
+  text-align:right;
+  /*padding-right:2em;*/
+}
+
+.schtime{
+  font-weight:100;
+  /*justify-content:left;*/
+  text-align:right;
+  /*font-style:italic;*/
+  padding:2px;
+  background:#33393f;
+  flex: 0 0 100px;
+  padding-right:2em;
+
+}
+/*
+li:first-child{
+  background:#33393f;
+  background:#99d8c9;
+  font-weight:50;
+  flex:20%;
+  width:100;
+  flex-direction:row;
+}
+*/

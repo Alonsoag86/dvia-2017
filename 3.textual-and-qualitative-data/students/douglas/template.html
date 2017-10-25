@@ -6,27 +6,41 @@
   <title>Northside Festival Schedule</title>
   <link rel="stylesheet" href="lib/css/typography.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="styles.css" type="text/css" charset="utf-8">
+
 </head>
 <body>
+  
+   <h1> Northside Festival Schedule </h1>
+   <h2> June 8-10, 2017 </h2>
 
   <div class="listing">
-    <h1>Artists</h1>
-     <ul>
-      {{#each names}}
-      <li>{{this}}</li>
-      {{/each}}
-    </ul>
-
-    {{!--
-    {{#each shows}}
-    <h2>{{this.0.artist}}</h2>
-    <ul class="show">
-    {{#each this}}
-    <li>{{this.venue}}</li>
+    {{#each hbshows}}
+    <div class="dateheader">
+    {{this.[0].schedule.date}} <!-- the zero means the first concert of your current date being looped -->
+    </div>
+   	 {{#each this}}
+        <div class="show">
+	<div class="venue">
+	{{this.venue}}
+	</div>
+	<div class="showinvenue">
+	<div class="artist">
+    	{{this.artist}}
+	</div>
+    	<!--td>{{this.time.day}}</li-->
+    	<!--td>{{this.time.starthour}}</li-->
+	<div class="schdate">
+	</div>
+	<div class="schtime">
+    	{{this.schedule.start}}
+	</div>
+	<div class="schtime">
+    	{{this.schedule.end}}
+	</div>
+	</div>
+	</div>
+    	{{/each}}
     {{/each}}
-    </ul>
-    {{/each}}
-    --}}
   </div>
 
   <script src="lib/js/jquery-3.2.1.min.js"></script>
@@ -34,4 +48,5 @@
   <script src="ui.js"></script>
 
 </body>
+    <!--h2>{{this.0.venue}}</h2-->
 </html>
