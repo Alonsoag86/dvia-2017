@@ -7,3 +7,4 @@
 - Exercise #1: [Mapping Time](./1.mapping-time)
 - Exercise #2: [Mapping Quantities](./2.mapping-quantities)
 - Exercise #3: [Textual and Qualitative Data](./3.textual-and-qualitative-data)
+- Exercise #4: [Mapping Space](./3.mapping-space)
