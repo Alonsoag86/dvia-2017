@@ -33,7 +33,7 @@ function setup() {
     createCanvas(100, 100);
     background(200);
     textSize(64);
-    text("☃", 18, 72);
+    text("hi", 18, 72);
 
     /*
     LEAFLET CODE
@@ -47,7 +47,7 @@ function setup() {
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
 
     // load a set of map tiles (you shouldn't need to touch this)
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/flaviopessoa/cj9g2gkbh8l142rpc50npax8y/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmxhdmlvcGVzc29hIiwiYSI6IlE1REw1dnMifQ.qVX5tyZ1KQ0os20vZ8pR7w', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
