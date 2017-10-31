@@ -18,6 +18,7 @@ var table;
 // my leaflet.js map
 var mymap;
 
+// slider by github:rikghosh
 // create slider
 var slider;
 
