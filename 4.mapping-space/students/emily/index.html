@@ -3,14 +3,30 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="libraries/leaflet/leaflet.css" /> <!-- default styles -->
   <link rel="stylesheet" href="assets/styles.css" /> <!-- use this for layout customizations -->
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Codystar:300,400" rel="stylesheet">
 </head>
 <body>
+  <div id = "title"><h1>Significant Earthquakes in the Last Month</h1>
+      <div id="info">
+      <p> 
+        <h1 id="question">?</h1>
+        <ul>
+          <li><em>Activate</em> earthquake magnitude selector by clicking the slider toggle:  <span id="toggleIcon"></span></li>
+          <li><em>Navigate</em> magnitudes using the left and right arrow keys</li>
+          <li><em>Specify</em> exact earthquake epicenter by zooming</li>
+          </ul>
+        </p>
+      </div>
+  </div>
   <!-- The container div for our leaflet map -->
   <div id="quake-map"></div>
 
   <!-- load our dependencies and sketch file -->
   <script src="libraries/leaflet/leaflet.js"></script>
   <script src="libraries/p5.js"></script>
+  <script src="libraries/p5.dom.js"></script>
   <script src="libraries/lodash.js"></script>
   <script src="sketch.js"></script>
 

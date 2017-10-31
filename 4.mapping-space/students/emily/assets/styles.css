@@ -1,10 +1,211 @@
 html, body {
   padding: 0;
   margin: 0;
+  background-color:black;
+  color:#c7b299;
+  font-family: 'Codystar', cursive;
+}
+
+#title {
+	text-align:center;
+	font-weight:100;
+	font-size:10px;
+	padding:1%;
+	margin:0;
+	letter-spacing: 0.5em;
 }
 
 /* default dimensions for the leaflet map */
 #quake-map{
-  width: 800px;
-  height: 600px;
+  width: 100%;
+  height: 500px;
+  top:-5%;
+}
+
+#info {
+	width:50px;
+	height:50px;
+	border: 1px solid white;
+	position:relative;
+	float:left;
+	top:-50px;
+	background-color:black;
+	overflow:hidden;
+	bottom:-50px;
+	letter-spacing:0em;
+	text-align:left;
+	font-family:'Lato', sans-serif;
+	-webkit-transition: height 2s ease-in; /* Safari */
+    -webkit-transition: height 2s ease-in;
+	-webkit-transition: width 1s ease-out; /* Safari */
+    transition: width 1s ease-out;
+
+}
+
+em {
+	font-family: 'Codystar', cursive;
+	font-weight:400;
+	text-transform: uppercase;
+	font-style:normal;
+	color:#c7b299;
+}
+
+#info p, ul, ol {
+	color:white;
+	font-size:1.5em;
+	list-style-type: none;
+}
+
+#info:hover {
+	width:100%;
+	height:20%;
+	background-color:black;
+}
+
+#question {
+	font-family:'Lato', sans-serif;
+	text-align:center;
+}
+
+#toggleIcon {
+	width:8px;
+	height:20px;
+	background-color: #c7b299;
+	border: 0.10px solid white;
+	position: absolute;
+	margin-left:5px;
+	animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #c7b299;
+  }
+  100% {
+    background-color: #7f0f7e;
+  }
+}
+
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+	background-color:black;
+	color:white;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 13.8px 0;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  border: 1px solid white;
+  height: 36px;
+  width: 16px;
+  border-radius: 1px;
+  background: #c7b299;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: 1px solid white;
+  height: 36px;
+  width: 16px;
+  border-radius: 1px;
+  background: #c7b299;
+  cursor: pointer;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: -webkit-linear-gradient(left, white , #7f0f7e); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, white, #7f0f7e); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, white, #7f0f7e); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, white , #7f0f7e); /* Standard syntax */
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #6e656e;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #6e656e;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-moz-range-thumb:hover {
+	background:#7f0f7e;
+}
+
+input[type=range]::-moz-range-thumb:hover {
+  border: 1px solid white;
+  height: 36px;
+  width: 16px;
+  border-radius: 1px;
+  background: #7f0f7e;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  border: 1px solid white;
+  height: 36px;
+  width: 16px;
+  border-radius: 1px;
+  background: #7f0f7e;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -14px;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #d0ffff;
+  cursor: pointer;
+  height: 8.4px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
 }
