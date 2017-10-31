@@ -1,3 +1,6 @@
+// citations: https://github.com/fraxen/tectonicplates
+// distance function: http://www.geodatasource.com/developers/javascript
+
 // an array for the magnitude
 var magnitudes;
 // an array for depth
@@ -13,51 +16,41 @@ var depthMin, depthMax;
 var circles = [];
 
 // table as the data set
-var table;
+var table, tec;
 
 // my leaflet.js map
 var mymap;
 
+// max distance from techtonic plate- in kl
+var maxDist = 100;
+
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
+    tec = loadJSON('assets/boundariesWithNames.json');
     table = loadTable("assets/all_month.csv", "csv", "header");
 }
 
 function setup() {
-    /*
-    P5 SETUP
-
-    If you want to draw some diagrams to complement the map view, set up your canvas
-    size, color, etc. here
-    */
-    createCanvas(100, 100);
-    background(200);
-    textSize(64);
-    text("☃", 18, 72);
-
-    /*
-    LEAFLET CODE
-
-    In this case "L" is leaflet. So whenever you want to interact with the leaflet library
-    you have to refer to L first.
-    so for example L.map('mapid') or L.circle([lat, long])
-    */
-
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    mymap = L.map('quake-map')
+        .setView([51.505, -0.09], 2); // zoom level 2
 
     // load a set of map tiles (you shouldn't need to touch this)
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/aucher/cj9epjgcw7bqg2smo8k9rodfm/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        minZoom: 0,
         maxZoom: 18,
         id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
+        accessToken: 'pk.eyJ1IjoiYXVjaGVyIiwiYSI6ImNqODd4NnBndzFjZDQyd3FocnM4Njc2NWQifQ.dql4s6oWRANbYGt44i6n9A'
     }).addTo(mymap);
 
-
+    // mymap.overlay(canvas);
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
+    // findNearestTechtPlate();
+    // console.log(table);
 }
+
 
 function drawDataPoints(){
     strokeWeight(5);
@@ -72,21 +65,21 @@ function drawDataPoints(){
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
     magnitudeMax = getColumnMax("mag");
-    console.log('magnitude range:', [magnitudeMin, magnitudeMax])
+    console.log('magnitude range:', [magnitudeMin, magnitudeMax]);
 
     depthMin = 0.0;
     depthMax = getColumnMax("depth");
-    console.log('depth range:', [depthMin, depthMax])
+    console.log('depth range:', [depthMin, depthMax]);
 
     // cycle through the parallel arrays and add a dot for each event
     for(var i=0; i<depths.length; i++){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
+            // color: 'black',      // the dot stroke color
+            fillColor: '#ffa625', // the dot fill color
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
             radius: magnitudes[i] * 40000
-        });
+        }).bindPopup(`lat: ${latitudes[i]} lon: ${longitudes[i]}`);
 
         // place it on the map
         circle.addTo(mymap);
@@ -100,7 +93,7 @@ function removeAllCircles(){
     // remove each circle from the map and empty our array of references
     circles.forEach(function(circle, i){
         mymap.removeLayer(circle);
-    })
+    });
     circles = [];
 }
 
@@ -125,3 +118,17 @@ function getColumnMax(columnName){
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
 }
+// // adapted from http://www.geodatasource.com/developers/javascript
+// function distance(lat1, lon1, lat2, lon2, unit) {
+//     var radlat1 = Math.PI * lat1/180;
+//     var radlat2 = Math.PI * lat2/180;
+//     var theta = lon1-lon2;
+//     var radtheta = Math.PI * theta/180;
+//     var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+//     dist = Math.acos(dist);
+//     dist = dist * 180/Math.PI;
+//     dist = dist * 60 * 1.1515;
+//     if (unit==="K") { dist = dist * 1.609344 }
+//     if (unit==="N") { dist = dist * 0.8684 }
+//     return dist
+// }
