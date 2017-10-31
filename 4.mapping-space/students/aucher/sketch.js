@@ -21,13 +21,15 @@ var table, tec;
 // my leaflet.js map
 var mymap;
 
+var canvas;
+
 // max distance from techtonic plate- in kl
 var maxDist = 100;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
-    tec = loadJSON('assets/boundariesWithNames.json');
-    table = loadTable("assets/all_month.csv", "csv", "header");
+    tec = loadJSON('assets/tecMapping.json');
+    table = loadTable("assets/all_month.csv", "csv", "header");//, findNearestPlate);
 }
 
 function setup() {
@@ -44,23 +46,64 @@ function setup() {
         accessToken: 'pk.eyJ1IjoiYXVjaGVyIiwiYSI6ImNqODd4NnBndzFjZDQyd3FocnM4Njc2NWQifQ.dql4s6oWRANbYGt44i6n9A'
     }).addTo(mymap);
 
+    L.canvasOverlay()
+        .drawing(drawingOnCanvas)
+        .addTo(mymap);
+    // findNearestPlate();
     // mymap.overlay(canvas);
     // call our function (defined below) that populates the maps with markers based on the table contents
-    drawDataPoints();
-    // findNearestTechtPlate();
-    // console.log(table);
+    // drawDataPoints();
+    console.log(tec);
+    console.log(table);
 }
 
+function drawingOnCanvas(canvasOverlay, params){
+    var ctx = params.canvas.getContext('2d');
+    ctx.clearRect(0,0,params.canvas.width, params.canvas.height);
+    // ctx.fillStyle = "rgba(255,116,0, 0.2)";
+    ctx.strokeStyle = "rgba(0,0,0, 0.2)";
+    for (i in table.rows){
+        var d = table.rows[i].obj,
+            lat = d.latitude,
+            lon = d.longitude;
+        // if (params.bounds.contains([lat, lon])) {
+            dot = canvasOverlay._map.latLngToContainerPoint([lat, lon]);
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, 5, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.closePath();
+        // console.log(dot);
+        // }
+    }
+}
+
+function findNearestPlate(){
+
+    for (t in table.rows){
+        thisEvent = table.rows[t].obj;
+        thisEvent.boundary = 'no boundary';
+        thisEvent.latitude = +thisEvent.latitude;
+        thisEvent.longitude = +thisEvent.longitude;
+
+        for (b in tec){
+            if (thisEvent.latitude <= tec[b].maxLat && thisEvent.latitude >= tec[b].minLat
+                && thisEvent.longitude <= tec[b].maxLon && thisEvent.longitude >= tec[b].minLon){
+                thisEvent.boundary = tec[b].Boundary;
+                console.log(thisEvent.boundary);
+            }
+        }
+    }
+}
 
 function drawDataPoints(){
     strokeWeight(5);
     stroke(255,0,0);
 
     // get the two arrays of interest: depth and magnitude
-    depths = table.getColumn("depth");
-    magnitudes = table.getColumn("mag");
-    latitudes = table.getColumn("latitude");
-    longitudes = table.getColumn("longitude");
+    // depths = table.getColumn("depth");
+    // magnitudes = table.getColumn("mag");
+    // latitudes = table.getColumn("latitude");
+    // longitudes = table.getColumn("longitude");
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -72,20 +115,40 @@ function drawDataPoints(){
     console.log('depth range:', [depthMin, depthMax]);
 
     // cycle through the parallel arrays and add a dot for each event
-    for(var i=0; i<depths.length; i++){
+    for(i in table.rows){
+        thisEvent = table.rows[i].obj;
         // create a new dot
-        var circle = L.circle([latitudes[i], longitudes[i]], {
-            // color: 'black',      // the dot stroke color
-            fillColor: '#ffa625', // the dot fill color
+        var circle = L.circle([thisEvent.latitude, thisEvent.longitude], {
+            color: getColor(thisEvent.boundary),      // the dot stroke color
+            // fillColor: '#ffa625', // the dot fill color
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
-        }).bindPopup(`lat: ${latitudes[i]} lon: ${longitudes[i]}`);
+            radius: thisEvent.mag * 40000
+        }).bindPopup(`lat: ${thisEvent.latitude} lon: ${thisEvent.longitude} bound: ${thisEvent.boundary}`);
 
         // place it on the map
         circle.addTo(mymap);
 
         // save a reference to the circle for later
         circles.push(circle)
+    }
+}
+
+function getColor(b){
+    switch (b){
+        case 'Juan de Fuca - North America':
+            return 'pink';
+        case 'Nazca - South America':
+            return 'orange';
+        case 'Cocos Plate - Caribbean':
+            return 'purple';
+        case 'Eurasian - Filipino':
+            return 'green';
+        case 'Pacific - Australian':
+            return 'powderblue';
+        case 'Eurasian - North America':
+            return 'royalBlue';
+        default:
+            return 'lightGray';
     }
 }
 
