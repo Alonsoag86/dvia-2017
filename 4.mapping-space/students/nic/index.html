@@ -7,6 +7,17 @@
 <body>
   <!-- The container div for our leaflet map -->
   <div id="quake-map"></div>
+  <div id="button">
+    <button type="button" id="All" onclick="sortMag(),masterCircle(0,100);">All</button>
+    <button type="button" id="Minor" onclick="masterCircle(3,3.9);">Minor</button>
+    <button type="button" id="Light" onclick="masterCircle(4,4.9);">Light</button>
+    <button type="button" id="Moderate" onclick="masterCircle(5,5.9);">Moderate</button>
+    <button type="button" id="Strong" onclick="masterCircle(6,6.9);">Strong</button>
+    <button type="button" id="Major" onclick="masterCircle(7,7.9);">Major</button>
+    <button type="button" id="Great" onclick="masterCircle(8,100);">Great</button>
+    <button type="button" id="Clear" onclick="removeAllCircles();">Clear</button>
+
+  </div>
 
   <!-- load our dependencies and sketch file -->
   <script src="libraries/leaflet/leaflet.js"></script>
