@@ -5,6 +5,14 @@ html, body {
 
 /* default dimensions for the leaflet map */
 #quake-map{
-  width: 800px;
-  height: 600px;
+  width: 600px;
+  height: 400px;
+}
+
+div.left_map{
+  position: fixed;
+}
+
+div.right_dash{
+  background-color: lightblue;
 }

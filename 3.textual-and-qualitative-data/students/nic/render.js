@@ -37,14 +37,16 @@ var template = loadTemplate('template.html'),    // assigns a function to 'templ
     venueShows = _.groupBy(allShows, 'venue'),   // a dictionary with venue names as keys, and lists of shows as values
     artistShows = _.groupBy(allShows, 'artist'); // a dictionary with artist names as keys, and lists of shows as values
 
+// print(venueShows);
 // create a list of objects of the form:
 // {venue:"name of venue", shows:[{...}, {...}, ...], numShows:#}
 var venueObjects = [];
 for (var venueName in venueShows){ // iterate through the keys of venueShows
-  var venueObj = { venue:venueName, shows:venueShows[venueName], numShows:venueShows[venueName].length};
-  venueObjects.push(venueObj)
+  var venueObj = { venue:venueName, shows:venueShows[venueName], numShows:venueShows[venueName].length} ;
+   venueObjects.push(venueObj)
 };
 
+print(venueShows["Baby's All Right"].type);
 // print(venueObjects[0]);
 
 // makeDate(venueObj.shows);

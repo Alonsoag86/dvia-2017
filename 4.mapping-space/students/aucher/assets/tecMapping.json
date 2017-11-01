@@ -1,0 +1,44 @@
+[
+  {"Boundary": "Juan de Fuca - North America",
+    "maxLat": 70,
+    "minLat": 18,
+    "maxLon": -107,
+    "minLon": -180
+  },
+  {"Boundary": "Juan de Fuca - North America",
+    "maxLat": 70,
+    "minLat": 33,
+    "maxLon": 180,
+    "minLon": 135
+  },
+  {"Boundary": "Cocos Plate - Caribbean",
+    "maxLat": 17,
+    "minLat": 8,
+    "maxLon": -82,
+    "minLon": -98
+  },
+  {"Boundary": "Nazca - South America",
+    "maxLat": -0.1,
+    "minLat": -46,
+    "maxLon": -66,
+    "minLon": -77
+  },
+  {"Boundary": "Pacific - Australian",
+    "maxLat": -15,
+    "minLat": -35,
+    "maxLon": -170,
+    "minLon": -180
+  },
+  {"Boundary": "Eurasian - Filipino",
+    "maxLat": 33,
+    "minLat": 0,
+    "maxLon": 150,
+    "minLon": 120
+  },
+  {"Boundary": "Eurasian - North America",
+    "maxLat": 100,
+    "minLat": 60,
+    "maxLon": 4,
+    "minLon": -45
+  }
+]
