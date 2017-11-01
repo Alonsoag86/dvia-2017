@@ -129,6 +129,7 @@ function binary(id,value){
         document.getElementById(t_x).style.textDecoration = "none";
             if (x == "All"){
                 clearSelection();
+                removeAllCircles();
             }
         } 
         else{
