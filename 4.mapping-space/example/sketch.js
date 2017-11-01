@@ -32,8 +32,31 @@ function setup() {
     */
     createCanvas(100, 100);
     background(200);
+
+    // on the left, draw a gradient with 9 shades drawn from the red sequential palette
+    var pal = Brewer.sequential('Reds', 9, 0, 100) // (paletteName, numColors, minValue, maxValue)
+    console.log('sequential palette:', pal.colors)
+    for (var i=0; i<100; i++){
+        noStroke()
+        fill(pal.colorForValue(i))
+        rect(0,i, width/2,i+1)
+    }
+
+    // on the right, draw a gradient with 'infinite' (i.e., interpolated) shades drawn from
+    // the red-yellow-green divergent palette
+    var pal2 = Brewer.divergent('RdYlGn', Infinity, 0, 33, 100) // (paletteName, numColors, minValue, midpoint, maxValue)
+    console.log('divergent palette:', pal2.colors)
+    for (var i=0; i<100; i++){
+        noStroke()
+        fill(pal2.colorForValue(i))
+        rect(width/2,i, width,i+1)
+    }
+
+    // happy little snowman
     textSize(64);
+    fill(255)
     text("☃", 18, 72);
+
 
     /*
     LEAFLET CODE
@@ -46,14 +69,14 @@ function setup() {
     // create your own map
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
 
-    // load a set of map tiles (you shouldn't need to touch this)
+    // load a set of map tiles – choose from the different providers demoed here:
+    // https://leaflet-extras.github.io/leaflet-providers/preview/
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
     }).addTo(mymap);
-
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
