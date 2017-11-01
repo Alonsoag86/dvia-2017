@@ -20,7 +20,7 @@ var mymap;
 
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
-    table = loadTable("assets/all_month.csv", "csv", "header");
+    table = loadTable("assets/significant_month.csv", "csv", "header");
 }
 
 function setup() {
@@ -30,10 +30,10 @@ function setup() {
     If you want to draw some diagrams to complement the map view, set up your canvas
     size, color, etc. here
     */
-    createCanvas(100, 100);
+    createCanvas(windowWidth, windowHeight);
     background(200);
     textSize(64);
-    text("quack", 18, 72);
+    text("☃", 18, 72);
 
     /*
     LEAFLET CODE
@@ -47,7 +47,7 @@ function setup() {
     mymap = L.map('quake-map').setView([51.505, -0.09], 3);
 
     // load a set of map tiles (you shouldn't need to touch this)
-    L.tileLayer('https://api.mapbox.com/styles/v1/flaviopessoa/cj9g2gkbh8l142rpc50npax8y/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmxhdmlvcGVzc29hIiwiYSI6IlE1REw1dnMifQ.qVX5tyZ1KQ0os20vZ8pR7w', {
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
@@ -87,6 +87,8 @@ function drawDataPoints(){
             fillOpacity: 0.25,  // use some transparency so we can see overlaps
             radius: magnitudes[i] * 40000
         });
+        
+        circle.bindPopup("Hello! I am Popup! <br> Lat: " + latitudes[i] + " Long: " + longitudes[i]);
 
         // place it on the map
         circle.addTo(mymap);
