@@ -374,8 +374,8 @@ Brewer = (function(){
             },
 
             colorForValue(value){
-                var bin = (value<=mid) ? map(value, min, mid, 0, Math.ceil(_colors.length/2), true)
-                                       : map(value, mid, max, Math.ceil(_colors.length/2), _colors.length, true);
+                var bin = (value<=mid) ? map(value, min, mid, 0, _colors.length/2, true)
+                                       : map(value, mid, max, _colors.length/2, _colors.length, true);
                 if (bins==Infinity && bin%1.0){
                     var one = _colors[Math.floor(bin)],
                         other = _colors[Math.min(Math.ceil(bin), _colors.length-1)];
