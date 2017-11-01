@@ -33,7 +33,11 @@ var s = 30000;
 
 var lo, hi;
 
+var io = 0;
+
 var lohiArray = [];
+
+var buttons = {All:0, Minor:0, Light:0, Moderate:0, Strong:0, Major:0, Great:0};
 
 var colorArray = ["#fef0d9",,,"#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#990000"];
 
@@ -51,8 +55,8 @@ function setup() {
     size, color, etc. here
     */
     noLoop();
-    // createCanvas(window.innerWidth,window.innerHeight);
-    createCanvas(00, 00);
+    createCanvas(window.innerWidth,window.innerHeight);
+    // createCanvas(00, 00);
     background(00);
     textSize(64);
     Slider = createSlider(0, 500000, 30000);
@@ -61,7 +65,6 @@ function setup() {
     Slider.position(centerWidth, SliderHeight);
     s = Slider.value();
 
-    
     /*
     LEAFLET CODE
 
@@ -71,7 +74,7 @@ function setup() {
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([34.0522, 10.2437], 2);
+    mymap = L.map('quake-map').setView([34.0522, 10.2437], 3);
 
     // load a set of map tiles (you shouldn't need to touch this)
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -85,14 +88,15 @@ function setup() {
     
     // drawDataPoints();
 
-    }
+}
 
-function radius(){
-        color(255);
-        ellipse(20, 700, 500,500);
+
+// function radius(){
+//         color(255);
+//         ellipse(20, 700, 500,500);
         
-    }
-    radius();
+//     }
+//     radius();
 
 
 function printTimes(){
@@ -114,8 +118,30 @@ function lengthTime(){
 }
 
 function sortMag(){
-    console.log(table);
 }
+
+function binary(id){
+    if (buttons.id == 1){
+        buttons.id = 0;
+        document.getElementById(id).style.outline = "0px solid #000";
+        console.log(id, buttons.id);
+    } 
+    if(buttons.id == 0) {
+        buttons.id =1;
+        document.getElementById(id).style.color = "black";
+        document.getElementById(id).style.outline = "4px dashed #000";
+        document.getElementById(id).style.outlineOffset = "-4px";
+        console.log(id, buttons.id);
+    }
+
+}
+
+function clearSelection(){
+
+}
+// function mousePressed(){
+//     console.log(io);
+// }
 
 function masterCircle(lo,hi){
 
@@ -179,7 +205,7 @@ function masterCircle(lo,hi){
 
 // console.log(hi);
 
-function mouseClick(){
+function mouseDragged(){
     removeAllCircles();
     masterCircle(lohiArray[0],lohiArray[1]);
 }
@@ -216,6 +242,14 @@ function removeAllCircles(){
         mymap.removeLayer(circle);
     })
     circles = [];
+    delete buttons.id;
+    var keyNames = Object.keys(buttons);
+    for (var i in keyNames) {
+    // keyNames[i] = 0;
+    console.log(keyNames[i]);
+    document.getElementById(keyNames[i]).style.outline = "0px solid #000";
+}
+    
 }
 
 // get the maximum value within a column
