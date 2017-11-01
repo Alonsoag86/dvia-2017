@@ -47,9 +47,8 @@ function setup() {
     // create your own map
     mymap = L.map('quake-map',)
         .setView([31.505, -0.09], 2); // zoom level 2
-    //
     // // load a set of map tiles (you shouldn't need to touch this)
-    L.tileLayer('https://api.mapbox.com/styles/v1/aucher/cj9epjgcw7bqg2smo8k9rodfm/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/aucher/cj9hbpjk39rl92ro4jznwsbk8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXVjaGVyIiwiYSI6ImNqODd4NnBndzFjZDQyd3FocnM4Njc2NWQifQ.dql4s6oWRANbYGt44i6n9A', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         minZoom: 0,
         maxZoom: 18,
@@ -71,7 +70,7 @@ function findNearestPlate(){
 
     for (t in table.rows){
         thisEvent = table.rows[t].obj;
-        thisEvent.boundary = 'no boundary';
+        thisEvent.boundary = '_No Boundary_';
         thisEvent.latitude = +thisEvent.latitude;
         thisEvent.longitude = +thisEvent.longitude;
 
@@ -137,17 +136,17 @@ function drawCircle(thisEvent, r, o){
 function getColor(b){
     switch (b){
         case 'Juan de Fuca - North America':
-            return 'pink';
+            return '#66c2a5';
         case 'Nazca - South America':
-            return 'orange';
+            return '#fc8d62';
         case 'Cocos Plate - Caribbean':
-            return 'purple';
+            return '#8da0cb';
         case 'Eurasian - Filipino':
-            return 'green';
+            return '#e78ac3';
         case 'Pacific - Australian':
-            return 'powderblue';
+            return '#a6d854';
         case 'Eurasian - North America':
-            return 'royalBlue';
+            return '#ffd92f';
         default:
             return 'lightGray';
     }
@@ -164,15 +163,16 @@ function drawSummaryStats(){
         obj = item.obj;
         return obj.boundary;
     });
+    // boundaryCnt = _.sortBy(boundaryCnt);
 
-    let rowH = 50,
+    let rowH = 30,
         rowS = 0;
 
-    textSize(36);
+    textSize(24);
     noStroke();
     for (b in boundaryCnt){
         fill(getColor(b));
-        text(`${b}: ${boundaryCnt[b]}`, rowH, rowH + rowS);
+        text(`${b}: ${boundaryCnt[b]}`, 0, rowH + rowS);
         rowS+=50;
     };
 
