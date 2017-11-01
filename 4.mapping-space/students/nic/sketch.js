@@ -51,14 +51,17 @@ function setup() {
     size, color, etc. here
     */
     noLoop();
-    createCanvas(800, 100);
-    background(200);
+    // createCanvas(window.innerWidth,window.innerHeight);
+    createCanvas(00, 00);
+    background(00);
     textSize(64);
-    Slider = createSlider(0, 200000, 30000);
-    Slider.position(20, 700);
+    Slider = createSlider(0, 500000, 30000);
+    var centerWidth = ((window.innerWidth/2) - (Slider.width/2));
+    var SliderHeight = (window.innerHeight*.8)
+    Slider.position(centerWidth, SliderHeight);
     s = Slider.value();
 
-
+    
     /*
     LEAFLET CODE
 
@@ -84,7 +87,12 @@ function setup() {
 
     }
 
-
+function radius(){
+        color(255);
+        ellipse(20, 700, 500,500);
+        
+    }
+    radius();
 
 
 function printTimes(){
@@ -171,10 +179,9 @@ function masterCircle(lo,hi){
 
 // console.log(hi);
 
-function mouseClicked(){
+function mouseClick(){
     removeAllCircles();
     masterCircle(lohiArray[0],lohiArray[1]);
-    console.log(lohiArray)
 }
 //     function minor(i){
 // // create a new dot

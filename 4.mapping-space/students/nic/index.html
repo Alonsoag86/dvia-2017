@@ -8,15 +8,25 @@
   <!-- The container div for our leaflet map -->
   <div id="quake-map"></div>
   <div id="button">
-    <button type="button" id="All" onclick="sortMag(),masterCircle(0,100);">All</button>
-    <button type="button" id="Minor" onclick="masterCircle(3,3.9);">Minor</button>
-    <button type="button" id="Light" onclick="masterCircle(4,4.9);">Light</button>
-    <button type="button" id="Moderate" onclick="masterCircle(5,5.9);">Moderate</button>
-    <button type="button" id="Strong" onclick="masterCircle(6,6.9);">Strong</button>
-    <button type="button" id="Major" onclick="masterCircle(7,7.9);">Major</button>
-    <button type="button" id="Great" onclick="masterCircle(8,100);">Great</button>
-    <button type="button" id="Clear" onclick="removeAllCircles();">Clear</button>
+    <button type="button" id="All" onclick="sortMag(),masterCircle(0,100);"></button>
+    <button type="button" id="Minor" onclick="masterCircle(3,3.9);"></button>
+    <button type="button" id="Light" onclick="masterCircle(4,4.9);"></button>
+    <button type="button" id="Moderate" onclick="masterCircle(5,5.9);"></button>
+    <button type="button" id="Strong" onclick="masterCircle(6,6.9);"></button>
+    <button type="button" id="Major" onclick="masterCircle(7,7.9);"></button>
+    <button type="button" id="Great" onclick="masterCircle(8,100);"></button>
+    <button type="button" id="Clear" onclick="removeAllCircles();"></button>
 
+  </div>
+  <div id="labels">
+    <div id="buttonText">All</div>
+    <div id="buttonText">Minor</br>3 - 3.9</div>
+    <div id="buttonText">Light</br>4 - 4.9</div>
+    <div id="buttonText">Moderate</br>5 - 5.9</div>
+    <div id="buttonText">Strong</br>6 - 6.9</div>
+    <div id="buttonText">Major</br>7 - 7.9</div>
+    <div id="buttonText">Great</br>8 - 8.9</div>
+    <div id="buttonText">Clear</div>
   </div>
 
   <!-- load our dependencies and sketch file -->
