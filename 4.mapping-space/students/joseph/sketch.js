@@ -41,13 +41,13 @@ function setup() {
     Slider.position(100, 625);
     Slider.style('width', '400px');
     
-
     writeHeatData(heatTable);
+    console.log(heatPoints)
     var testData = {
-      max: 30,
+      max: 100,
+      min: -3.26,
       data: heatPoints
     };
-
 
     var baseLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -59,7 +59,8 @@ function setup() {
 
     var cfg = {
         // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-        "maxOpacity": .6,
+        "maxOpacity": .8,
+        "minOpacity":.03,
         // scales the radius based on map zoom
         "scaleRadius": true, 
         // if set to false the heatmap uses the global maximum for colorization
@@ -72,9 +73,10 @@ function setup() {
         lngField: 'lng',
         // which field name in your data represents the data value - default "value"
         gradient: {
+              '0.25': 'Blue',
               '0.50': 'Purple',
-              '0.95': 'Red',
-              '0.99': 'Yellow'
+              '0.75': "Red",
+              '0.95': 'Yellow'
             }
       };
 
@@ -82,8 +84,8 @@ function setup() {
     var heatmapLayer = new HeatmapOverlay(cfg);
 
     mymap = new L.Map('quake-map', {
-        center: new L.LatLng(51.505, -0.09),
-        zoom: 3,
+        center: new L.LatLng(51.505, 0.09),
+        zoom: 2,
         layers: [baseLayer, heatmapLayer]
     });
 
@@ -104,6 +106,7 @@ function writeHeatData(data){
     magnitudes = data.getColumn("mag");
     latitudes = data.getColumn("latitude");
     longitudes = data.getColumn("longitude");
+    depths = table.getColumn("depth");
 
     console.log(latitudes[3]);
 
@@ -111,11 +114,12 @@ function writeHeatData(data){
          var heatData = new Object();
          heatData.lat = latitudes[i];
          heatData.lng = longitudes[i];
-         if(magnitudes[i] > 4){
+         if(magnitudes[i] > 0){
             heatData.radius = magnitudes[i];
         } else{
             heatData.radius = 0;
         }
+        heatData.value = depths[i];
         heatPoints.push(heatData);
 
     }
@@ -183,6 +187,13 @@ function getColumnMax(columnName){
 
     // or do it the 'easy way' by using lodash:
     return _.max(colValues);
+
+function getColumnMin(columnName){
+     var colStrings = table.getColumn(columnName);
+     var colValues = _.map(colStrings, float);
+
+     return _.min(colValues);
+}
 
 
 function removeAllCircles(){
