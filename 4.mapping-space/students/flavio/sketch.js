@@ -33,7 +33,7 @@ function setup() {
     createCanvas(100, 100);
     background(200);
     textSize(64);
-    text("hi", 18, 72);
+    text("quack", 18, 72);
 
     /*
     LEAFLET CODE
