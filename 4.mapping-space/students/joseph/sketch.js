@@ -84,7 +84,7 @@ function setup() {
     var heatmapLayer = new HeatmapOverlay(cfg);
 
     mymap = new L.Map('quake-map', {
-        center: new L.LatLng(61.505, -150.09),
+        center: new L.LatLng(41.505, 60.09),
         zoom: 2,
         layers: [baseLayer, heatmapLayer]
     });
