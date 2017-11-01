@@ -122,18 +122,25 @@ function sortMag(){
 function binary(id,value){
     var x = id;
     var y = value;
+    var t_x = "t_"+id;
         if (y == "true"){
         document.getElementById(x).style.outline = "0px solid #000";
         document.getElementById(x).value = false;
-        document.getElementById("labels").style.fontWeight = "100px";
-
+        document.getElementById(t_x).style.textDecoration = "none";
+            if (x == "All"){
+                clearSelection();
+                removeAllCircles();
+            }
         } 
         else{
+                        if (x == "All"){
+                clearSelection();
+            }
         document.getElementById(x).style.color = "black";
         document.getElementById(x).style.outline = "3px dashed #000";
         document.getElementById(x).style.outlineOffset = "-3px";
-        document.getElementById("labels").style.fontStyle = "bold";
         document.getElementById(x).value = true;
+        document.getElementById(t_x).style.textDecoration = "underline";
         }
 
     
@@ -288,7 +295,10 @@ function clearSelection(){
     delete buttons.passId;
     var keyNames = Object.keys(buttons);
     for (var i in keyNames) {
+        var t_keyNames= "t_"+(keyNames[i]);
     document.getElementById(keyNames[i]).style.outline = "0px solid #000";
+    document.getElementById(t_keyNames).style.textDecoration = "none";
+
     buttons = {All:false, Minor:false, Light:false, Moderate:false, Strong:false, Major:false, Great:false};
     removeAllCircles();
 }
