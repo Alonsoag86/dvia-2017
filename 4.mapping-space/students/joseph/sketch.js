@@ -119,7 +119,7 @@ function writeHeatData(data){
         } else{
             heatData.radius = 0;
         }
-        heatData.value = depths[i];
+        heatData.value = depths[i] * 10;
         heatPoints.push(heatData);
 
     }
