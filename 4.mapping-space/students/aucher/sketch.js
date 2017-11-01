@@ -1,3 +1,6 @@
+// citations: https://github.com/fraxen/tectonicplates
+// distance function: http://www.geodatasource.com/developers/javascript
+
 // an array for the magnitude
 var magnitudes;
 // an array for depth
@@ -13,115 +16,194 @@ var depthMin, depthMax;
 var circles = [];
 
 // table as the data set
-var table;
+var table, tec;
 
 // my leaflet.js map
 var mymap;
 
+    // accessToken = 'pk.eyJ1IjoiYXVjaGVyIiwiYSI6ImNqODd4NnBndzFjZDQyd3FocnM4Njc2NWQifQ.dql4s6oWRANbYGt44i6n9A',
+    // options = {
+    //     lat: 0,
+    //     lng: 0,
+    //     zoom: 1,
+    //     studio: true, // false to use non studio styles
+    //     style: 'mapbox://styles/aucher/cj87xw3fi3z8a2qpbdhsqfcw8'
+    // };
+
+// var mappa = new Mappa('Mapbox', accessToken);
+// var canvas;
+
+
+// max distance from techtonic plate- in kl
+var maxDist = 100;
+
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
-    table = loadTable("assets/all_month.csv", "csv", "header");
+    tec = loadJSON('assets/tecMapping.json');
+    table = loadTable("assets/all_month.csv", "csv", "header", findNearestPlate);
 }
 
 function setup() {
-    /*
-    P5 SETUP
-
-    If you want to draw some diagrams to complement the map view, set up your canvas
-    size, color, etc. here
-    */
-    createCanvas(100, 100);
-    background(200);
-    textSize(64);
-    text("☃", 18, 72);
-
-    /*
-    LEAFLET CODE
-
-    In this case "L" is leaflet. So whenever you want to interact with the leaflet library
-    you have to refer to L first.
-    so for example L.map('mapid') or L.circle([lat, long])
-    */
-
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
-
-    // load a set of map tiles (you shouldn't need to touch this)
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    mymap = L.map('quake-map',)
+        .setView([31.505, -0.09], 2); // zoom level 2
+    // // load a set of map tiles (you shouldn't need to touch this)
+    L.tileLayer('https://api.mapbox.com/styles/v1/aucher/cj9hbpjk39rl92ro4jznwsbk8/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXVjaGVyIiwiYSI6ImNqODd4NnBndzFjZDQyd3FocnM4Njc2NWQifQ.dql4s6oWRANbYGt44i6n9A', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        minZoom: 0,
         maxZoom: 18,
         id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
+        accessToken: 'pk.eyJ1IjoiYXVjaGVyIiwiYSI6ImNqODd4NnBndzFjZDQyd3FocnM4Njc2NWQifQ.dql4s6oWRANbYGt44i6n9A'
     }).addTo(mymap);
-
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
+
+    createCanvas(800, 600);
+    drawSummaryStats();
+    // console.log(tec);
+    // console.log(table);
+}
+
+
+function findNearestPlate(){
+
+    for (t in table.rows){
+        thisEvent = table.rows[t].obj;
+        thisEvent.boundary = '_No Boundary_';
+        thisEvent.latitude = +thisEvent.latitude;
+        thisEvent.longitude = +thisEvent.longitude;
+
+        for (b in tec){
+            if (thisEvent.latitude <= tec[b].maxLat && thisEvent.latitude >= tec[b].minLat
+                && thisEvent.longitude <= tec[b].maxLon && thisEvent.longitude >= tec[b].minLon){
+                thisEvent.boundary = tec[b].Boundary;
+            }
+        }
+    }
 }
 
 function drawDataPoints(){
-    strokeWeight(5);
+    strokeWeight(2);
     stroke(255,0,0);
-
-    // get the two arrays of interest: depth and magnitude
-    depths = table.getColumn("depth");
-    magnitudes = table.getColumn("mag");
-    latitudes = table.getColumn("latitude");
-    longitudes = table.getColumn("longitude");
-
-    // get minimum and maximum values for both
-    magnitudeMin = 0.0;
-    magnitudeMax = getColumnMax("mag");
-    console.log('magnitude range:', [magnitudeMin, magnitudeMax])
-
-    depthMin = 0.0;
-    depthMax = getColumnMax("depth");
-    console.log('depth range:', [depthMin, depthMax])
-
+    var radius = 10000, // in meters
+        rstep = 50000,
+        o = 0.25;
     // cycle through the parallel arrays and add a dot for each event
-    for(var i=0; i<depths.length; i++){
-        // create a new dot
-        var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
-            fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
-        });
+    for(i in table.rows){
+        thisEvent = table.rows[i].obj;
+        drawCircle(thisEvent, radius, o);
 
-        // place it on the map
-        circle.addTo(mymap);
+        if (thisEvent.mag > 2){
+            drawCircle(thisEvent, radius + 1 * rstep, 0);
+        }
 
-        // save a reference to the circle for later
-        circles.push(circle)
+        if (thisEvent.mag > 3){
+            drawCircle(thisEvent, radius + 2 * rstep, 0);
+        }
+
+        if (thisEvent.mag > 4){
+            drawCircle(thisEvent, radius + 3 * rstep, 0);
+        }
+
+        if (thisEvent.mag > 5){
+            drawCircle(thisEvent, radius + 4 * rstep, 0);
+        }
+
+        if (thisEvent.mag > 6){
+            drawCircle(thisEvent, radius + 5 * rstep, 0);
+        }
+
     }
+}
+
+function drawCircle(thisEvent, r, o){
+    var circle = L.circle([thisEvent.latitude, thisEvent.longitude], {
+        color: getColor(thisEvent.boundary),      // the dot stroke color
+        fillColor: getColor(thisEvent.boundary), // the dot fill color
+        fillOpacity: o,  // use some transparency so we can see overlaps
+        radius: r,
+        opacity: 0.6,
+        weight: 2
+    }).bindPopup(`<p>${(thisEvent.place.toUpperCase())} 
+            <br /> lat: ${thisEvent.latitude} lon: ${thisEvent.longitude}
+            <br /> ${thisEvent.boundary}
+            </p>`);
+    circle.addTo(mymap);
+    circles.push(circle);
+}
+
+function getColor(b){
+    switch (b){
+        case 'Juan de Fuca - North America':
+            return '#66c2a5';
+        case 'Nazca - South America':
+            return '#fc8d62';
+        case 'Cocos Plate - Caribbean':
+            return '#8da0cb';
+        case 'Eurasian - Filipino':
+            return '#e78ac3';
+        case 'Pacific - Australian':
+            return '#a6d854';
+        case 'Eurasian - North America':
+            return '#ffd92f';
+        default:
+            return 'lightGray';
+    }
+}
+
+function drawSummaryStats(){
+    let time = table.getColumn("time");
+
+    let maxTime = _.max(time),
+        minTime = _.min(time);
+        // boundaries = _.uniq(_.map(table.rows, function(d){return d.obj.boundary;}));
+
+    let boundaryCnt = _.countBy(table.rows, function(item) {
+        obj = item.obj;
+        return obj.boundary;
+    });
+    // boundaryCnt = _.sortBy(boundaryCnt);
+
+    let rowH = 30,
+        rowS = 0;
+
+    textSize(24);
+    noStroke();
+    for (b in boundaryCnt){
+        fill(getColor(b));
+        text(`${b}: ${boundaryCnt[b]}`, 0, rowH + rowS);
+        rowS+=50;
+    };
+
+    console.log(boundaryCnt);
 }
 
 function removeAllCircles(){
     // remove each circle from the map and empty our array of references
     circles.forEach(function(circle, i){
         mymap.removeLayer(circle);
-    })
+    });
     circles = [];
 }
 
-// get the maximum value within a column
-function getColumnMax(columnName){
-    // get the array of strings in the specified column
-    var colStrings = table.getColumn(columnName);
 
-    // convert to a list of numbers by running each element through the `float` function
-    var colValues = _.map(colStrings, float);
-
-    // find the max value by manually stepping through the list and replacing `m` each time we
-    // encounter a value larger than the biggest we've seen so far
-    var m = 0.0;
-    for(var i=0; i<colValues.length; i++){
-        if (colValues[i] > m){
-            m = colValues[i];
-        }
-    }
-    return m;
-
-    // or do it the 'easy way' by using lodash:
-    // return _.max(colValues);
-}
+// function drawingOnCanvas(canvasOverlay, params){
+//     var ctx = params.canvas.getContext('2d');
+//     ctx.clearRect(0,0,params.canvas.width, params.canvas.height);
+//     // ctx.fillStyle = "rgba(255,116,0, 0.2)";
+//     ctx.strokeStyle = "rgba(0,0,0, 0.3)";
+//     for (i in table.rows){
+//         var d = table.rows[i].obj,
+//             lat = d.latitude,
+//             lon = d.longitude;
+//         // if (params.bounds.contains([lat, lon])) {
+//             dot = canvasOverlay._map.latLngToContainerPoint([lat, lon]);
+//             ctx.beginPath();
+//             ctx.arc(dot.x, dot.y, 5, 0, Math.PI * 2);
+//             ctx.stroke();
+//             ctx.closePath();
+//         // console.log(dot);
+//         // }
+//     }
+// }
