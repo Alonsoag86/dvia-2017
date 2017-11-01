@@ -18,6 +18,15 @@ var table;
 // my leaflet.js map
 var mymap;
 
+// slider by github:rikghosh
+// create slider
+var slider;
+
+//earthquakes selected
+var earthquake;
+
+var w = windowWidth/2;
+
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("assets/all_month.csv", "csv", "header");
@@ -30,10 +39,13 @@ function setup() {
     If you want to draw some diagrams to complement the map view, set up your canvas
     size, color, etc. here
     */
-    createCanvas(100, 100);
-    background(200);
-    textSize(64);
-    text("☃", 18, 72);
+    createCanvas(windowWidth, windowHeight);
+    background(0);
+
+    //create slider
+    slider = createSlider(0, 7, 0.00, 0.05);
+    slider.position(110, windowHeight-60);
+    slider.style('width', String(windowWidth - 250));
 
     /*
     LEAFLET CODE
@@ -44,7 +56,12 @@ function setup() {
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+    // mymap = L.map('quake-map').setView([51.505, -0.09], 3);
+
+    mymap = L.map('quake-map').setView([10,0], 1.5);
+    mymap._layersMaxZoom=15; 
+    mymap.doubleClickZoom=true;
+    mymap.zoomDelta=2;
 
     // load a set of map tiles (you shouldn't need to touch this)
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -54,10 +71,36 @@ function setup() {
         accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
     }).addTo(mymap);
 
+    slider.changed(coverOld);
+
+}
+
+function draw(){
+
+    strokeWeight(0.5);
+    stroke(255);
+    fill(110, 101, 110);
+    rect(windowWidth-110, windowHeight-670, 70, 30);
+
+    removeAllCircles();
+    // variable for current value of slider to subset data
+    earthquake = slider.value();
+    
+    fill(255);
+    noStroke();
+    textFont('Helvetica Neue');
+    text(slider.value(), windowWidth-85, windowHeight-650);
+    // cover old text when slider is changed with blank box
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
 }
+
+function coverOld() {
+    noStroke();
+    fill(110, 81, 109);
+    rect(windowWidth-110, windowHeight-670, 70, 30);
+    };
 
 function drawDataPoints(){
     strokeWeight(5);
@@ -65,34 +108,65 @@ function drawDataPoints(){
 
     // get the two arrays of interest: depth and magnitude
     depths = table.getColumn("depth");
-    magnitudes = table.getColumn("mag");
+    magnitudes = table.getColumn("mag").sort();
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
+    places = table.getColumn("place");
+    times = table.getColumn("time");
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
     magnitudeMax = getColumnMax("mag");
-    console.log('magnitude range:', [magnitudeMin, magnitudeMax])
+    // console.log('magnitude range:', [magnitudeMin, magnitudeMax])
 
     depthMin = 0.0;
     depthMax = getColumnMax("depth");
-    console.log('depth range:', [depthMin, depthMax])
+    // console.log('depth range:', [depthMin, depthMax])
 
     // cycle through the parallel arrays and add a dot for each event
-    for(var i=0; i<depths.length; i++){
+    for(var i=0; i<magnitudes.length; i++){
+
+        if (magnitudes[i]>=earthquake-0.04 && magnitudes[i]<=earthquake+0.04){
         // create a new dot
         var circle = L.circle([latitudes[i], longitudes[i]], {
-            color: 'red',      // the dot stroke color
-            fillColor: '#f03', // the dot fill color
-            fillOpacity: 0.25,  // use some transparency so we can see overlaps
-            radius: magnitudes[i] * 40000
+            color: 'black',    // the dot stroke color
+            weight:20,
+            opacity: 0.50,
+            fillColor: 'purple', // the dot fill color
+            fillOpacity: 1,  // use some transparency so we can see overlaps
+            radius: 200,
         });
 
-        // place it on the map
-        circle.addTo(mymap);
+        // var circleCenter = L.circle([latitudes[i], longitudes[i]], {
+        //     color:'transparent',
+        //     fillColor: 'black', // the dot fill color
+        //     radius: 100,
+        // });
+
+         // specify popup options 
+        var customOptions ={
+        'maxWidth': '500',
+        'className' : 'custom',
+        }
+
+        circle.bindPopup(magnitudes[i] + " earthquake at " + places[i] + " on " + times[i], customOptions).openPopup();
+
+        circle.on('mouseover', function (e) {
+            this.openPopup();
+        });
+        circle.on('mouseout', function (e) {
+            this.closePopup();
+        });
 
         // save a reference to the circle for later
-        circles.push(circle)
+        // circleCenters.push(circleCenter);
+        circles.push(circle);
+
+         // place it on the map
+        // circleCenter.addTo(mymap);
+        circle.addTo(mymap);
+
+        }
     }
 }
 
@@ -124,4 +198,13 @@ function getColumnMax(columnName){
 
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
+}
+
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    slider.value()-=0.01;
+  } else if (keyCode === RIGHT_ARROW) {
+    slider.value()+=0.01;
+  }
+  return false;
 }
