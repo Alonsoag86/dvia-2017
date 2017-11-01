@@ -33,18 +33,18 @@ function setup() {
     If you want to draw some diagrams to complement the map view, set up your canvas
     size, color, etc. here
     */
-    createCanvas(100, 100);
-    background(200);
+    createCanvas(800, 600);
     textSize(64);
-    text("☃", 18, 72);
-    Slider = createSlider(0, 31, 0, 1);
-    Slider.position(100, 625);
-    Slider.style('width', '400px');
+    textAlign(CENTER);
+    // Slider = createSlider(0, 31, 31, 1);
+    // Slider.position(windowWidth/3, windowHeight-60);
+    // text("Time", 500, 710);
+    // Slider.style('width', '400px');
     
     writeHeatData(heatTable);
     console.log(heatPoints)
     var testData = {
-      max: 100,
+      max: 50,
       min: -3.26,
       data: heatPoints
     };
@@ -84,7 +84,7 @@ function setup() {
     var heatmapLayer = new HeatmapOverlay(cfg);
 
     mymap = new L.Map('quake-map', {
-        center: new L.LatLng(51.505, 0.09),
+        center: new L.LatLng(61.505, -150.09),
         zoom: 2,
         layers: [baseLayer, heatmapLayer]
     });
@@ -206,6 +206,5 @@ function removeAllCircles(){
 }
 
 function draw(){
-    text("Day", Slider.x * 2 + Slider.width, 35);
 }
 
