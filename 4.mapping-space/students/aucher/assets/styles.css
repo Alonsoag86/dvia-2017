@@ -3,8 +3,19 @@ html, body {
   margin: 0;
 }
 
+
 /* default dimensions for the leaflet map */
 #quake-map{
+    /*display: block;*/
   width: 800px;
   height: 600px;
+  margin: auto;
+  margin-top: 5%;
+}
+
+canvas{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    /*margin-top: 5%;*/
 }

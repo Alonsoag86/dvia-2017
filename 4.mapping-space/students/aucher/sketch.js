@@ -45,8 +45,8 @@ function preload() {
 
 function setup() {
     // create your own map
-    mymap = L.map('quake-map', {renderer: L.canvas()})
-        .setView([51.505, -0.09], 2); // zoom level 2
+    mymap = L.map('quake-map',)
+        .setView([31.505, -0.09], 2); // zoom level 2
     //
     // // load a set of map tiles (you shouldn't need to touch this)
     L.tileLayer('https://api.mapbox.com/styles/v1/aucher/cj9epjgcw7bqg2smo8k9rodfm/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
@@ -59,6 +59,9 @@ function setup() {
 
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
+
+    createCanvas(800, 600);
+    drawSummaryStats();
     // console.log(tec);
     // console.log(table);
 }
@@ -76,7 +79,6 @@ function findNearestPlate(){
             if (thisEvent.latitude <= tec[b].maxLat && thisEvent.latitude >= tec[b].minLat
                 && thisEvent.longitude <= tec[b].maxLon && thisEvent.longitude >= tec[b].minLon){
                 thisEvent.boundary = tec[b].Boundary;
-                console.log(thisEvent.boundary);
             }
         }
     }
@@ -86,7 +88,7 @@ function drawDataPoints(){
     strokeWeight(2);
     stroke(255,0,0);
     var radius = 10000, // in meters
-        rstep = 40000,
+        rstep = 50000,
         o = 0.25;
     // cycle through the parallel arrays and add a dot for each event
     for(i in table.rows){
@@ -124,7 +126,10 @@ function drawCircle(thisEvent, r, o){
         radius: r,
         opacity: 0.6,
         weight: 2
-    }).bindPopup(`lat: ${thisEvent.latitude} lon: ${thisEvent.longitude} bound: ${thisEvent.boundary}`);
+    }).bindPopup(`<p>${(thisEvent.place.toUpperCase())} 
+            <br /> lat: ${thisEvent.latitude} lon: ${thisEvent.longitude}
+            <br /> ${thisEvent.boundary}
+            </p>`);
     circle.addTo(mymap);
     circles.push(circle);
 }
@@ -148,6 +153,32 @@ function getColor(b){
     }
 }
 
+function drawSummaryStats(){
+    let time = table.getColumn("time");
+
+    let maxTime = _.max(time),
+        minTime = _.min(time);
+        // boundaries = _.uniq(_.map(table.rows, function(d){return d.obj.boundary;}));
+
+    let boundaryCnt = _.countBy(table.rows, function(item) {
+        obj = item.obj;
+        return obj.boundary;
+    });
+
+    let rowH = 50,
+        rowS = 0;
+
+    textSize(36);
+    noStroke();
+    for (b in boundaryCnt){
+        fill(getColor(b));
+        text(`${b}: ${boundaryCnt[b]}`, rowH, rowH + rowS);
+        rowS+=50;
+    };
+
+    console.log(boundaryCnt);
+}
+
 function removeAllCircles(){
     // remove each circle from the map and empty our array of references
     circles.forEach(function(circle, i){
@@ -156,27 +187,6 @@ function removeAllCircles(){
     circles = [];
 }
 
-// get the maximum value within a column
-function getColumnMax(columnName){
-    // get the array of strings in the specified column
-    var colStrings = table.getColumn(columnName);
-
-    // convert to a list of numbers by running each element through the `float` function
-    var colValues = _.map(colStrings, float);
-
-    // find the max value by manually stepping through the list and replacing `m` each time we
-    // encounter a value larger than the biggest we've seen so far
-    var m = 0.0;
-    for(var i=0; i<colValues.length; i++){
-        if (colValues[i] > m){
-            m = colValues[i];
-        }
-    }
-    return m;
-
-    // or do it the 'easy way' by using lodash:
-    // return _.max(colValues);
-}
 
 // function drawingOnCanvas(canvasOverlay, params){
 //     var ctx = params.canvas.getContext('2d');
