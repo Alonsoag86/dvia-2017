@@ -29,7 +29,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(windowWidth, windowHeight*2);
     background(236,227,211);
     
     // create title
@@ -37,26 +37,26 @@ function setup() {
     textFont('Courier');
     text("⚐ RECENT EARTHQUAKES EXPLORER", 120, 50);
     
-    // create slider explanatory text
-    textSize(12);
-    text("Use this slider to navigate through different earthquakes:", 120, windowHeight - 70)
-    
-    // create slider
-    slider = createSlider(0, table.getRowCount()-1, 0, 1);
-    slider.position(110, windowHeight - 50);
-    slider.style('width', String(windowWidth - 130));
-    
     // plot boundaries
     plotX1 = 100;
     plotX2 = width*0.5;
     plotY1 = 150;
-    plotY2 = height*0.56 + plotY1;
+    plotY2 = height*0.56/2 + plotY1;
+    
+    // create slider explanatory text
+    textSize(12);
+    text("Use this slider to navigate through different earthquakes:", 120, plotY2 + 60)
+    
+    // create slider
+    slider = createSlider(0, table.getRowCount()-1, 0, 1);
+    slider.position(110, plotY2 + 70);
+    slider.style('width', String(windowWidth - 130));
     
     // draw axes
     stroke(128);
     strokeWeight(3);
     // vertical
-    line(plotX1, 0, plotX1, windowHeight);
+    line(plotX1, 0, plotX1, height);
     // horizontal
     line(0, plotY2, windowWidth, plotY2);
     
@@ -67,7 +67,7 @@ function setup() {
     
     // draw horizontal grid lines
     strokeWeight(1);
-    for (var i=-10; i<=25; i+=magnitudeInterval){
+    for (var i=-100; i<=25; i+=magnitudeInterval){
         noStroke();
         textSize(8);
         textAlign(RIGHT, CENTER);
@@ -100,12 +100,17 @@ function setup() {
         // draw a line for each interval
         strokeWeight(1);
         stroke(128, 60);
-        line(x, 0, x, windowHeight);
+        line(x, 0, x, height);
 
         // write value
         if (i > 0 && i <= depthMax){
             text(floor(i), x + 10, plotY2 + 15);
         }
+        
+        textSize(15);
+        strokeWeight(0);
+;
+        
     } 
     
     // background for information box
