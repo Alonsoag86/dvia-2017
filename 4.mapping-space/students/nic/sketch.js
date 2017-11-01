@@ -37,7 +37,7 @@ var io = 0;
 
 var lohiArray = [];
 
-var buttons = {All:0, Minor:0, Light:0, Moderate:0, Strong:0, Major:0, Great:0};
+var buttons = {All:false, Minor:false, Light:false, Moderate:false, Strong:false, Major:false, Great:false};
 
 var colorArray = ["#fef0d9",,,"#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#990000"];
 
@@ -55,9 +55,8 @@ function setup() {
     size, color, etc. here
     */
     noLoop();
-    createCanvas(window.innerWidth,window.innerHeight);
-    // createCanvas(00, 00);
-    background(00);
+    createCanvas(window.innerWidth,200);
+    background("#1E1E1E");
     textSize(64);
     Slider = createSlider(0, 500000, 30000);
     var centerWidth = ((window.innerWidth/2) - (Slider.width/2));
@@ -120,19 +119,26 @@ function lengthTime(){
 function sortMag(){
 }
 
-function binary(id){
-    if (buttons.id == 1){
-        buttons.id = 0;
-        document.getElementById(id).style.outline = "0px solid #000";
-        console.log(id, buttons.id);
-    } 
-    if(buttons.id == 0) {
-        buttons.id =1;
-        document.getElementById(id).style.color = "black";
-        document.getElementById(id).style.outline = "4px dashed #000";
-        document.getElementById(id).style.outlineOffset = "-4px";
-        console.log(id, buttons.id);
-    }
+function binary(id,value){
+    var x = id;
+    var y = value;
+        if (y == "true"){
+        document.getElementById(x).style.outline = "0px solid #000";
+        document.getElementById(x).value = false;
+        document.getElementById("labels").style.fontWeight = "100px";
+
+        } 
+        else{
+        document.getElementById(x).style.color = "black";
+        document.getElementById(x).style.outline = "3px dashed #000";
+        document.getElementById(x).style.outlineOffset = "-3px";
+        document.getElementById("labels").style.fontStyle = "bold";
+        document.getElementById(x).value = true;
+        }
+
+    
+    drawCycle();
+    // console.log(document.getElementById("id").value);
 
 }
 
@@ -142,6 +148,48 @@ function clearSelection(){
 // function mousePressed(){
 //     console.log(io);
 // }
+
+function drawCycle(){
+    circles.forEach(function(circle, i){
+        mymap.removeLayer(circle);
+    })
+    circles = [];
+    console.log(document.getElementById("All").value);
+    if(document.getElementById("All").value == "true"){
+        masterCircle(0,100);
+        masterCircle(3,3.9);
+        masterCircle(4,4.9);
+        masterCircle(5,5.9);
+        masterCircle(6,6.9);
+        masterCircle(7,7.9);
+        masterCircle(8,100);
+    }
+
+    if(document.getElementById("Minor").value == "true"){
+        masterCircle(3,3.9);
+    }
+
+    if(document.getElementById("Light").value == "true"){
+        masterCircle(4,4.9);  
+    }
+
+    if(document.getElementById("Moderate").value == "true"){
+        masterCircle(5,5.9);
+    }
+
+    if(document.getElementById("Strong").value == "true"){
+        masterCircle(6,6.9);
+    }
+
+    if(document.getElementById("Major").value == "true"){
+        masterCircle(7,7.9);
+    }
+
+    if(document.getElementById("Great").value == "true"){
+        masterCircle(8,100);
+    }
+}
+
 
 function masterCircle(lo,hi){
 
@@ -206,8 +254,8 @@ function masterCircle(lo,hi){
 // console.log(hi);
 
 function mouseDragged(){
-    removeAllCircles();
-    masterCircle(lohiArray[0],lohiArray[1]);
+    drawCycle();
+    // masterCircle(lohiArray[0],lohiArray[1]);
 }
 //     function minor(i){
 // // create a new dot
@@ -236,18 +284,21 @@ function mouseDragged(){
 
 //     }
 
+function clearSelection(){
+    delete buttons.passId;
+    var keyNames = Object.keys(buttons);
+    for (var i in keyNames) {
+    document.getElementById(keyNames[i]).style.outline = "0px solid #000";
+    buttons = {All:false, Minor:false, Light:false, Moderate:false, Strong:false, Major:false, Great:false};
+    removeAllCircles();
+}
+
 function removeAllCircles(){
     // remove each circle from the map and empty our array of references
     circles.forEach(function(circle, i){
         mymap.removeLayer(circle);
     })
     circles = [];
-    delete buttons.id;
-    var keyNames = Object.keys(buttons);
-    for (var i in keyNames) {
-    // keyNames[i] = 0;
-    console.log(keyNames[i]);
-    document.getElementById(keyNames[i]).style.outline = "0px solid #000";
 }
     
 }
