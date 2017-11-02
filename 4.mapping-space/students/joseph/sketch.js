@@ -58,20 +58,13 @@ function setup() {
     })
 
     var cfg = {
-        // radius should be small ONLY if scaleRadius is true (or small radius is intended)
         "maxOpacity": .8,
         "minOpacity":.03,
         // scales the radius based on map zoom
         "scaleRadius": true, 
-        // if set to false the heatmap uses the global maximum for colorization
-        // if activated: uses the data maximum within the current map boundaries 
-        //   (there will always be a red spot with useLocalExtremas true)
         "useLocalExtrema": false,
-        // which field name in your data represents the latitude - default "lat"
         latField: 'lat',
-        // which field name in your data represents the longitude - default "lng"
         lngField: 'lng',
-        // which field name in your data represents the data value - default "value"
         gradient: {
               '0.25': 'Blue',
               '0.50': 'Purple',
@@ -93,7 +86,6 @@ function setup() {
 
     heatmapLayer.setData(testData);
 
-    // make accessible for debugging
     layer = heatmapLayer;
 
     times = table.getColumn("time");
@@ -119,7 +111,7 @@ function writeHeatData(data){
         } else{
             heatData.radius = 0;
         }
-        heatData.value = depths[i] * 10;
+        heatData.value = magnitudes[i] * 10;
         heatPoints.push(heatData);
 
     }
