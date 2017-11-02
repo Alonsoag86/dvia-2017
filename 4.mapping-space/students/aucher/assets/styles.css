@@ -16,9 +16,9 @@ h1, h3{
 /* default dimensions for the leaflet map */
 #quake-map{
     /*display: block;*/
-  width: 800px;
-  height: 600px;
-  margin: auto;
+  width: 98%;
+  height: 90%;
+  /*margin: auto;*/
   margin-top: 1rem;
 }
 
