@@ -5,9 +5,18 @@
   <link rel="stylesheet" href="assets/styles.css" /> <!-- use this for layout customizations -->
 </head>
 <body>
+  
   <!-- The container div for our leaflet map -->
   <div id="quake-map"></div>
 
+  <svg id="duration" width="50px" height="50px" viewBox="0 0 42 42" class="donut" style="display: none;">
+<!--
+    <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
+-->
+    <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3"></circle>
+    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#000000" stroke-width="3" stroke-dasharray="90 180" stroke-dashoffset="40"></circle>
+  </svg>
+  
   <!-- load our dependencies and sketch file -->
   <script src="libraries/leaflet/leaflet.js"></script>
   <script src="libraries/p5.js"></script>
@@ -16,16 +25,6 @@
   <script src="sketch.js"></script>
 
   <!-- p5.js will create a canvas element here at runtime -->
-  <img src="assets/labcolors.png"> <span>Richter Scale (0-8)</span><br>
-  <img src="assets/50.png"> <span>10m</span><img src="assets/75.png"> <span>15min</span><img src="assets/100.png"> <span>20min</span><br>
-  Duration of event<br>
   
-  <svg width="50px" height="50px" viewBox="0 0 42 42" class="donut">
-<!--
-    <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
--->
-    <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3"></circle>
-    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#000000" stroke-width="3" stroke-dasharray="90 180" stroke-dashoffset="40"></circle>
-  </svg>
 </body>
 </html>
