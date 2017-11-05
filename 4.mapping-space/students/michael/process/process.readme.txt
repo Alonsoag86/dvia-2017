@@ -1,0 +1,9 @@
+Incorporated Magnitude & Duration
+
+Location = Map pins, text on mouseover
+Magnitude = LCH color scale from yellow to red
+Duration = Donut on mouseover scaled to largest in sample
+
+Map chosen = Washed out colors to be distinct from pins and donut
+
+UI: onhover events
