@@ -4,89 +4,188 @@ html, body {
   background: #1E1E1E;
 }
 
-#labels{
-	display: flex;
-	text-align: center;
-	padding: 60px;
-	padding-top: 30px;
-	padding-bottom: 10px;
-	font: 28px helvetica, sans-serif;
-	line-height: 30px;
+#t_Minor{
+	font-weight: bold;
+	width: 100%;
 }
+
+
 
 #button{
 	display: flex;
 	padding: 60px;
 	padding-bottom: 12px;
+	/*width: 50%;*/
+	-webkit-appearance: none;
+	background-color: #1E1E1E;
+	justify-content: center;
+	align-items: stretch;
+	height: 320px;
 	
 	   }
 
 #buttonText{
+	display: flex;
 	color: white;
-	align-content: flex-end;
-	width: 40%;
-	padding-left: 60px;
-	padding-right: 60px;
+	display: flex;
+	text-align: center;
+	font: 28px helvetica, sans-serif;
+	line-height: 30px;
+	flex-direction: column;
+	align-items: stretch;
+	padding-top: 18px;
 
 }
 
 #All{
+	display: flex;
+	height: 100%;
 	border: none;
-	align-self: flex-end;
 	width: 40%;
-	height:40px;
-	background: #fef0d9;
+	-webkit-appearance: none;
+ 	background-color: #1E1E1E;
+ 	flex-direction: column;
+ 	justify-content: flex-end;
+	align-self: flex-end;
+	align-items: stretch;
+
+ 		/*height:100px;*/
+	/*background: #fef0d9;*/
+}
+#AllBar{
+	border: none;
+	height: 40px;
+	width: 100%;
+	background-color: #fef0d9;
 }
 
 #Minor{
+	display: flex;
+	height: 100%;
 	border: none;
-	align-self: flex-end;
 	width: 40%;
-	height: 8px;
-	background: #fdd49e;
+	-webkit-appearance: none;
+ 	background-color: #1E1E1E;
+ 	flex-direction: column;
+ 	justify-content: flex-end;
+	align-self: flex-end;
+	align-items: stretch;
+
 }
 
-#Light{
+#MinorBar{
 	border: none;
-	align-self: flex-end;
+	height: 8px;
+	width: 100%;
+	background-color: #fdd49e;
+}
+
+#Light{	
+	display: flex;
+	height: 100%;
+	border: none;
 	width: 40%;
+	-webkit-appearance: none;
+ 	background-color: #1E1E1E;
+ 	flex-direction: column;
+ 	justify-content: flex-end;
+	align-self: flex-end;
+	align-items: stretch;
+
+}
+
+#LightBar{
+		border: none;
 	height: 16px;
-	background: #fdbb84;
+	width: 100%;
+	background-color: #fdbb84;
 }
 
 #Moderate{
+	display: flex;
+	height: 100%;
 	border: none;
-	align-self: flex-end;
 	width: 40%;
-	height: 32px;
-	background: #fc8d59;
+	-webkit-appearance: none;
+ 	background-color: #1E1E1E;
+ 	flex-direction: column;
+ 	justify-content: flex-end;
+	align-self: flex-end;
+	align-items: stretch;
 
+}
+
+#ModerateBar{
+	border: none;
+	height: 32px;
+	width: 100%;
+	background-color: #fc8d59;
 }
 
 #Strong{
+	display: flex;
+	height: 100%;
 	border: none;
-	align-self: flex-end;
 	width: 40%;
-	height: 64px;
-	background: #ef6548;
+	-webkit-appearance: none;
+ 	background-color: #1E1E1E;
+ 	flex-direction: column;
+ 	justify-content: flex-end;
+	align-self: flex-end;
+	align-items: stretch;
+
 }
 
-#Major{
+#StrongBar{
 	border: none;
-	align-self: flex-end;
+	height: 64px;
+	width: 100%;
+	background-color: #ef6548;
+}
+
+
+#Major{
+	display: flex;
+	height: 100%;
+	border: none;
 	width: 40%;
+	-webkit-appearance: none;
+ 	background-color: #1E1E1E;
+ 	flex-direction: column;
+ 	justify-content: flex-end;
+	align-self: flex-end;
+	align-items: stretch;
+
+}
+
+#MajorBar{
+	border: none;
 	height: 128px;
-	background: #d7301f;
+	width: 100%;
+	background-color: #d7301f;
 }
 
 #Great{
+	display: flex;
+	height: 100%;
 	border: none;
-	/*align-self: flex-end;*/
 	width: 40%;
-	height: 256px;
-	vertical-align: text-top;
-	background: #990000;	
+	-webkit-appearance: none;
+ 	background-color: #1E1E1E;
+ 	flex-direction: column;
+ 	justify-content: flex-end;
+	align-self: flex-end;
+	align-items: stretch;
+
 }
+
+#GreatBar{
+	border: none;
+	height: 256px;
+	width: 100%;
+	background-color: #990000;
+}
+
 
 #Clear{
 	border: none;

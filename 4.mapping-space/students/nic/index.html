@@ -7,27 +7,64 @@
 <body>
   <!-- The container div for our leaflet map -->
   <div id="quake-map"></div>
-  <div id="button">
-    <button type="button" id="All" value=false ondblclick ="binary(this.id,this.value);"></button>
-    <button type="button" id="Minor" value=false ondblclick ="binary(this.id,this.value);"></button>
-    <button type="button" id="Light" value=false ondblclick ="binary(this.id,this.value);"></button>
-    <button type="button" id="Moderate" value=false ondblclick ="binary(this.id,this.value);"></button>
-    <button type="button" id="Strong" value=false ondblclick ="binary(this.id,this.value);"></button>
-    <button type="button" id="Major" value=false ondblclick ="binary(this.id,this.value);"></button>
-    <button type="button" id="Great" value=false ondblclick ="binary(this.id,this.value);"></button>
-    <button type="button" id="Clear" value=false ondblclick ="clearSelection();"></button>
+    <div id="button">
+    <button id="All" value=false  onclick ="binary(this.id,this.value);">
+      <div id="AllBar"></div>
+      <div id="buttonText">
+        <div id="t_All"><b>All</b></div>
+      </div>
+
+    </button>
+    <button type="button" id="Minor" value=false onclick ="binary(this.id,this.value);">
+      <div id="MinorBar"></div>
+      <div id="buttonText">
+      <div id="t_Minor">Minor</div>
+    <num>3 - 3.9</num></div>
+
+  </button>
+    <button type="button" id="Light" value=false onclick ="binary(this.id,this.value);">
+      <div id="LightBar"></div>
+      <div id="buttonText">
+        <div id="t_Light"><b>Light</b></div>
+      <num>4 - 4.9</num></div>
+
+    </button>
+    <button type="button" id="Moderate" value=false onclick ="binary(this.id,this.value);">
+      <div id="ModerateBar"></div>
+        <div id="buttonText">
+          <div id="t_Moderate"><b>Moderate</b></div>
+      <num>5 - 5.9</num></div>
+
+    </button>
+    <button type="button" id="Strong" value=false onclick ="binary(this.id,this.value);">
+      <div id="StrongBar"></div>
+    <div id="buttonText">
+      <div id="t_Strong"><b>Strong</b></div>
+    <num>6 - 6.9</num></div>
+    </button>
+    <button type="button" id="Major" value=false onclick ="binary(this.id,this.value);">
+      <div id="MajorBar"></div>
+    <div id="buttonText">
+      <div id="t_Major"><b>Major</b></div>
+    <num>7 - 7.9</num></div>
+    </button>
+    <button type="button" id="Great" value=false onclick ="binary(this.id,this.value);">
+      <div id="GreatBar"></div>
+    <div id="buttonText">
+      <div id="t_Great"><b>Great</b></div>
+    <num>8 - 8.9</num></div>
+    </button>
+    <button type="button" id="Clear" value=false onclick ="clearSelection();">
+    <div id="buttonText"><div id="t_Clear"><b>Clear</b></div></div>
+  </div>
+  </button>
 
   </div>
   <div id="labels">
-    <div id="buttonText"><div id="t_All"><b>All</b></div></div>
-    <div id="buttonText"><div id="t_Minor"><b>Minor</b></div></br>3 - 3.9</div>
-    <div id="buttonText"><div id="t_Light"><b>Light</b></div></br>4 - 4.9</div>
-    <div id="buttonText"><div id="t_Moderate"><b>Moderate</b></div></br>5 - 5.9</div>
-    <div id="buttonText"><div id="t_Strong"><b>Strong</b></div></br>6 - 6.9</div>
-    <div id="buttonText"><div id="t_Major"><b>Major</b></div></br>7 - 7.9</div>
-    <div id="buttonText"><div id="t_Great"><b>Great</b></div></br>8 - 8.9</div>
-    <div id="buttonText"><div id="t_Clear"><b>Clear</b></div></div>
+    
+    
   </div>
+
 
   <!-- load our dependencies and sketch file -->
   <script src="libraries/leaflet/leaflet.js"></script>
@@ -35,6 +72,7 @@
   <script src="libraries/p5.dom.js"></script>
   <script src="libraries/lodash.js"></script>
   <script src="sketch.js"></script>
+  <script src="libraries/jquery-3.2.1.js"></script>
 
   <!-- p5.js will create a canvas element here at runtime -->
 </body>
