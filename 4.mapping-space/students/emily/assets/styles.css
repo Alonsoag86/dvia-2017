@@ -123,10 +123,10 @@ input[type=range]::-moz-range-thumb {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: -webkit-linear-gradient(left, white , #A82128); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, white, #A82128); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, white, #A82128); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, white , #A82128); /* Standard syntax */
+  background: -webkit-linear-gradient(left, #fed976 20%, #800026 80%); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #fed976 20%, #800026 80%); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #fed976 20%, #800026 80%); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #fed976 20%, #800026 80%); /* Standard syntax */
 }
 
 input[type=range]::-webkit-slider-runnable-track {

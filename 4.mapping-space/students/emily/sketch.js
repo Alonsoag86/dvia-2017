@@ -135,7 +135,7 @@ function drawDataPoints(){
 
         if (magnitudes[i]>=earthquake-0.04 && magnitudes[i]<=earthquake+0.04){
         // create a new dot
-        var pal = Brewer.sequential('Reds', 'Infinity', 1, 9)
+        var pal = Brewer.sequential('YlOrRd', 'Infinity', 1, 6)
         var circle = L.circle([latitudes[i], longitudes[i]], {
             color: pal.colorForValue(magnitudes[i]),    // the dot stroke color
             // color:'black',
