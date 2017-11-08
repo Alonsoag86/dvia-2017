@@ -1,19 +1,53 @@
-1.
+make sure you outline the subject matter being considered, the question being asked, and the format it is in
+
+
+
+1.  
+SM: Time Zones
+Q: Using two different time zones, what are the overlapping daily activities (sleeping, eating, working, leisure) between two people?
+F: Digital, interactive, Diagram
 
 2.
+SM: After School Time
+Q:  Using the established ID scanner at the University Center, what information can I discover about the school after class hours, 8am-10pm?
+F: Print, Static, Diagram
 
 3.
+SM: Nature
+Q: What are the different types of nature that are found in New York City and which themes are best in categorizing them?
+F: Digital, Interactive, Map
 
-4.
+4. 
+SM: Noise
+Q: Depending on the address, at what floor above ground should the ideal New Yorker live to avoid noise from the ground level? 
+F: Print, Static, Map
 
-5.
+5. 
+SM: Subject of Books
+Q: Which books are checked out the most in the public library? How has it changed over the years? 
+F: Print, Static, Diagram
 
 6.
+SM: Streets
+Q: How can we map out the streets of New York to show the best suited sidewalks for pedestrians?  
+F: Print/Digital, Static, Map
 
 7.
+SM: Time After Work
+Q: At which times does the city clean its streets, parks, public spaces?  
+F: Print, Static, Diagram
 
 8.
+SM: Food
+Q: In comparison to other cultures, how fast do Americans eat their food? 
+F: Digital, Interactive, Diagram
 
 9.
+SM: Rats
+Q: What are the overlapping popular streets that human and rats populate? 
+F: Digital/Print, static, Diagram
 
 10.
+SM: Wi-Fi
+Q: Who uses the Wi-Fi stands across the city and which ones are more popular? 
+F: Digital, Interactive, Map
