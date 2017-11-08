@@ -18,14 +18,23 @@ var table;
 // my leaflet.js map
 var mymap;
 
+var  rsImg;
+var p50, p75, p100;
+
 function preload() {
     // load the CSV data into our `table` variable and clip out the header row
     table = loadTable("assets/all_month.csv", "csv", "header");
     table = loadTable("assets/significant_month.csv", "csv", "header");
+    
+    rsImg = loadImage("assets/labcolors.png");
+    p50 = loadImage("assets/50.png");
+    p75 = loadImage("assets/75.png");
+    p100 = loadImage("assets/100.png");
 }
 
 // CIE LAB colors from http://davidjohnstone.net/pages/lch-lab-colour-gradient-picker
 magColors = [ "#fceabb", "#ffdfaf", "#ffd4a2", "#ffc996", "#ffbd8a", "#ffb27e", "#ffa672", "#ff9a67", "#ff8e5b", "#ff824f", "#ff7444", "#ff6638", "#ff572c", "#ff4620", "#ff2f12", "#ff0000"];
+
 
 function setup() {
     /*
@@ -34,11 +43,8 @@ function setup() {
     If you want to draw some diagrams to complement the map view, set up your canvas
     size, color, etc. here
     */
-    createCanvas(100, 100);
-    background(200);
-    textSize(64);
-    text("☃", 18, 72);
-
+    createCanvas(800, 100);
+    
     /*
     LEAFLET CODE
 
@@ -69,12 +75,43 @@ function setup() {
     
     // call our function (defined below) that populates the maps with markers based on the table contents
     drawDataPoints();
+    
+}
+
+var placeTxt = ""
+
+function draw() {
+  
+    stroke(0);
+    strokeWeight(0);
+    
+    background('#99DFFB');
+    textSize(20);
+    //text("☃", 18, 72);
+    
+    var tOff = 10;
+    
+    image(rsImg, 0, 0);
+    text("Richter Scale (0-8)", 135, 20);
+    textSize(17);
+    text("Hover over location for duration. (minutes)", 0, 45);
+    textSize(15);
+    image(p50, 0, 50);
+    text("10m", 0+tOff, 80);
+    image(p75, 135, 50);
+    text("15m", 135+tOff, 80);
+    image(p100, 275, 50);
+    text("20m", 275+tOff, 80);
+
+    textSize(25);
+    text("Location:", 475, 35);
+    textSize(20);
+    text(placeTxt, 475, 80);
 }
 
 var properties = {
   colorId: "green"
 }
-
    
 function drawDataPoints(){
     strokeWeight(5);
@@ -86,6 +123,7 @@ function drawDataPoints(){
     latitudes = table.getColumn("latitude");
     longitudes = table.getColumn("longitude");
     durations = table.getColumn("dmin");
+    place = table.getColumn("place");
 
     // get minimum and maximum values for both
     magnitudeMin = 0.0;
@@ -118,7 +156,7 @@ function drawDataPoints(){
           left: -1.5rem;
           top: -1.5rem;
           position: relative;
-          opacity: 0.8;
+          opacity: 0.6;
           border-radius: 3rem 3rem 0;
           transform: rotate(45deg);
           mwborder: 1px solid #FFFFFF`
@@ -144,11 +182,14 @@ function drawDataPoints(){
           var coords = mymap.latLngToContainerPoint(this._latlng);
           $(".donut").css("display", "inline");
           $(".donut").css("position", "absolute");
-          $(".donut").css("left", coords["x"]-37);
-          $(".donut").css("top", coords["y"]-59);
+          $(".donut").css("left", coords["x"]-27);
+          $(".donut").css("top", coords["y"]-49);
           $(".donut").css("z-index", "400");
           $(".donut").css("transform", "translate(-10, -20)");
           var curIdx = latitudes.indexOf(str(this._latlng["lat"]));
+          
+          placeTxt = place[curIdx];
+          
           dur = parseFloat(durations[curIdx]);
           dur = Math.ceil(dur);
           console.log(dur)
@@ -164,6 +205,7 @@ function drawDataPoints(){
         });
         m.on('mouseout', function(e) {
           $(".donut").css("display", "none");
+          placeTxt = '';
         });
           
         // place it on the map
@@ -208,3 +250,5 @@ function getColumnMax(columnName){
     // or do it the 'easy way' by using lodash:
     // return _.max(colValues);
 }
+
+

@@ -1,0 +1,33 @@
+#
+# List of URLs pointing to publicly accessible data (including a brief description of the subject matter & data format)
+#
+# For example, the earthquake feeds we've been using could be summarized as:
+#   Description: Realtime feeds of recent earthquake times, locations, and magnitudes
+#   Provider: the US Geological Survey
+#   Format: multiple CSV files with different time/magnitude windows
+#   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
+
+Description: Public repository for Animal Tracking datasets compiled during the span of various research efforts
+Provider: MovBank Data Repository
+Format: CSV’s files, organised by their original research
+URL: https://www.datarepository.movebank.org/
+
+Description: Environmental Data Track Annotation (ENV-DATA)
+Provider: MovBank
+Format: CSV’s returned from online interface
+URL: https://www.movebank.org/node/6607
+
+Description:Tsunami Event Database 
+Provider:NGDC/WDS
+Format: CSV’s returned from online interface
+URL: https://www.ngdc.noaa.gov/nndc/struts/form?t=101650&s=70&d=7
+
+Description: Wikipedia Reference API
+Provider: MediaWiki
+Format: RESTful API calls return JSON/XML
+URL: https://www.programmableweb.com/api/wikipedia
+
+Description: Historical Crypto Data
+Provider: Sudalai Kumar
+Format: Single Csv
+URL:https://www.kaggle.com/sudalairajkumar/cryptocurrencypricehistory

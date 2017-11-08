@@ -8,14 +8,14 @@
   <link href="https://fonts.googleapis.com/css?family=Codystar:300,400" rel="stylesheet">
 </head>
 <body>
-  <div id = "title"><h1>Significant Earthquakes in the Last Month</h1>
+  <div id = "title"><h1>Find That Recent Earthquake</h1>
       <div id="info">
       <p> 
         <h1 id="question">?</h1>
         <ul>
           <li><em>Activate</em> earthquake magnitude selector by clicking the slider toggle:  <span id="toggleIcon"></span></li>
           <li><em>Navigate</em> magnitudes using the left and right arrow keys</li>
-          <li><em>Specify</em> exact earthquake epicenter by zooming</li>
+          <li><em>Specify</em> exact earthquake epicenter with double clicks. First double click takes you to the region. Second double click takes you to the neighborhood. </li>
           </ul>
         </p>
       </div>
@@ -24,6 +24,7 @@
   <div id="quake-map"></div>
 
   <!-- load our dependencies and sketch file -->
+  <script src="libraries/brewer.js"></script>
   <script src="libraries/leaflet/leaflet.js"></script>
   <script src="libraries/p5.js"></script>
   <script src="libraries/p5.dom.js"></script>

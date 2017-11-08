@@ -1,0 +1,19 @@
+1. Global Animal Movement and Migration Tracking - Mapping aggregated GPS movement from different species populations, and potentially coupling Them to environmental factors and changes. Obvious candidate for spatial representation
+
+2. Tsunami Data - Similar to USGS Feed, compile a chronological dataset of tsunami events, including intensity as measured by deaths and vertical runup. Given the close relationship between the two events, coupling the datasets visually could highlight potential spatial relations
+
+3. Wikipedia Graph - Since wikipedia pages within a given domain/subdomain can be viewed as highly connected graphs, visualisation attempts could prove useful in framing and representing the semantic connections between nodes.
+ 
+4. Cryptocurrency Tracking - Given both the intense interest and FUD surrounding the most popular crytocurrencies currently, Aggregating historical data across a span of these coins and visualising their variance across time could well represent crypto trends in comparison with fiat, and potentially shed light on their value as a currency vs. as a commodity
+
+5.
+
+6.
+
+7.
+
+8.
+
+9.
+
+10.

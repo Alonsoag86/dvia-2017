@@ -40,6 +40,7 @@ var lohiArray = [];
 var buttons = {All:false, Minor:false, Light:false, Moderate:false, Strong:false, Major:false, Great:false};
 
 var colorArray = ["#fef0d9",,,"#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#990000"];
+var colorObject ={All:"#fef0d9", Minor:"#fdd49e", Light:"#fdbb84", Moderate:"#fc8d59", Strong:"#ef6548", Major:"#d7301f", Great:"#990000"}
 
 
 function preload() {
@@ -55,14 +56,20 @@ function setup() {
     size, color, etc. here
     */
     noLoop();
-    createCanvas(window.innerWidth,200);
-    background("#1E1E1E");
+    // createCanvas(window.innerWidth,2000);
+    // background("#1E1E1E");
     textSize(64);
     Slider = createSlider(0, 500000, 30000);
     var centerWidth = ((window.innerWidth/2) - (Slider.width/2));
-    var SliderHeight = (window.innerHeight*.8)
-    Slider.position(centerWidth, SliderHeight);
+    var SliderHeight = (window.innerHeight*.8);
+    Slider.position(200, SliderHeight);
     s = Slider.value();
+    Slider.style('width','400px');
+
+    
+
+
+
 
     /*
     LEAFLET CODE
@@ -123,22 +130,27 @@ function binary(id,value){
     var x = id;
     var y = value;
     var t_x = "t_"+id;
+    var xBar = id+"Bar";
+            console.log(x);
+            console.log(y);
+
         if (y == "true"){
-        document.getElementById(x).style.outline = "0px solid #000";
+        document.getElementById(xBar).style.boxShadow = "0px 0px 0px ";
         document.getElementById(x).value = false;
         document.getElementById(t_x).style.textDecoration = "none";
             if (x == "All"){
                 clearSelection();
-                removeAllCircles();
+                // removeAllCircles();
             }
         } 
         else{
                         if (x == "All"){
                 clearSelection();
             }
+        document.getElementById(xBar).style.boxShadow = "0px 0px 25px #fef0d9";
         document.getElementById(x).style.color = "black";
-        document.getElementById(x).style.outline = "3px dashed #000";
-        document.getElementById(x).style.outlineOffset = "-3px";
+        // document.getElementById(x).style.outline = "3px dashed #000";
+        // document.getElementById(x).style.outlineOffset = "-3px";
         document.getElementById(x).value = true;
         document.getElementById(t_x).style.textDecoration = "underline";
         }
@@ -161,7 +173,6 @@ function drawCycle(){
         mymap.removeLayer(circle);
     })
     circles = [];
-    console.log(document.getElementById("All").value);
     if(document.getElementById("All").value == "true"){
         masterCircle(0,100);
         masterCircle(3,3.9);
@@ -234,7 +245,7 @@ function masterCircle(lo,hi){
         var circle = L.circle([latitudes[i], longitudes[i]], {
             stroke: 0,
             fillColor: (colorArray[lo]), // the dot fill color
-            fillOpacity: 0.5,  // use some transparency so we can see overlaps
+            fillOpacity: 1,  // use some transparency so we can see overlaps
             radius: s,
         });
             // circle.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
