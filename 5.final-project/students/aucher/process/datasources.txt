@@ -7,27 +7,37 @@
 #   Format: multiple CSV files with different time/magnitude windows
 #   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
 
-Description:
-Provider:
-Format:
-URL:
+Description: Data about different diseases and life expectancy
+Provider: Centers for Disease Control and Prevention
+Format: all sorts, depends on the data
+URL: https://www.cdc.gov/DataStatistics/
 
-Description:
-Provider:
-Format:
-URL:
+Description: Data on payments doctors receive from different parties -- Name of doctor, geographic information, payer information, as well as type of payment
+Provider: Centers for Medicare & Medicaid Services
+Format: CSVs and and API
+URL: https://openpaymentsdata.cms.gov/
 
-Description:
-Provider:
-Format:
-URL:
+Description: National Park Usage Statistics
+Provider: National Park Service
+Format: Many tables that you can save in many different formats (csv, xml, etc.)
+URL: https://irma.nps.gov/Stats/Reports/Park/YOSE
 
-Description:
-Provider:
-Format:
-URL:
+Description: Medicare Part D Opioid Prescribing Mapping Tool
+Provider: Centers for Medicare & Medicaid Services
+Format: xlsx
+URL: https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/OpioidMap.html
 
-Description:
-Provider:
-Format:
-URL:
+Description: The Commodity Flow Survey provides information on commodities shipped, their value, weight, and mode of transportation, as well as the origin and destination of shipments of commodities from manufacturing, mining, wholesale, and selected retail and services establishments
+Provider: Data.gov
+Format: csv
+URL: https://catalog.data.gov/dataset/commodity-flow-survey
+
+Description: Agriculture Subsidies and payments from the US Gov
+Provider: Environmental Working Group via U.S. Department of Agriculture pursuant to the Freedom of Information Act
+Format: mostly tables on the website -- couldn't find additional export
+URL: https://farm.ewg.org/region.php?fips=00000&regionname=theUnitedStates
+
+Description: The National Longitudinal Surveys (NLS) are a set of surveys designed to gather information at multiple points in time on the labor market activities and other significant life events of several groups of men and women. For more than 4 decades, NLS data have served as an important tool for economists, sociologists, and other researchers.
+Provider: NLS
+Format: xlsx
+URL: https://www.bls.gov/nls/tables.htm
