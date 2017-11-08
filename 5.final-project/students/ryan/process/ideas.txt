@@ -1,19 +1,44 @@
-1.
+1. Food Deserts - Are there significant 'food deserts' in NY (communities without close access to grocery or healthy food)?
 
-2.
+Map out locations of grocery stores/density of grocery stores throughout NY (maybe each one, maybe by area, etc.).
+Overlay this on top of population density to find out what areas are the biggest food deserts.
 
-3.
+The visualization would be an interactive map in heat-map style, related to a lot of the maps discussed by Robert Simmon - https://www.youtube.com/watch?v=DjJr8D4Bxjw#t=23m28s
+Visualization can reveal where most people live far from grocery stores, since food deserts pose a serious problem to social health.
 
-4.
+Next steps would be to find population information (from US Census info), and try to find some kind of data source for grocery stores in NY.
 
-5.
 
-6.
+2. Exploring the most dominant NBA teams ever. Across all seasons/years, how many teams have had which level of success? What are the general trends, and what teams are the outliers?
+Plot an interactive histogram of NBA teams by record (wins or win %), with each point having more information on who the team was, what their record was, and any other advanced stats that might be worthwhile to pursue.
+Based on different avenues to explore, seeing this data in histogram form could provide insight on overall success by player (highlight all teams that player was on, for example), identify particularly dominant teams, etc.
 
-7.
 
-8.
+3. Effectiveness of US Presidents - what presidents were in office for the most passed legislation? How does this relate to their approval ratings? How was this affected my monumental outside events?
+Inspiration: Lupi/Accurat's Life of Painters work
+This could be a static chart, tracking approval rating, legislation passed through Congress, and charting out large events (like wars, controversies, etc.)
 
-9.
 
-10.
+4. Exploring how gun legislation as affected violent deaths in countries across the world.
+Similar format and layout ideas as idea #4, but this visualization would explore what gun legislation has been passed in different countries across the world, and how that relates with big stories or violent deaths in those countries.
+This would largely be to highlight and explore different avenues and strategies for dealing with this complicated problem.
+Idea would be a simple line chart tracking death based on violent crime, with vertical breaks for legislation passed (with a brief explanation on what that legislation entails).
+
+
+5. Charting Immigration. Would answer the questions of how has the volume of immigration in the US changed in the recent past? What countries represent the largest proportion of immigration? How has this changed based on major world events/crises?
+This is inspired by Jer Thorpe's "We Were Strangers Once Too". I found myself wanting to dive more into the data and explore it to better understand who the American immigrant population was.
+
+
+6. For popular shows, how have the IMDB ratings of their episodes changed over time? What are the most popular episodes? Seasons?
+This would probably be an interactive chart on web.
+
+7. NBA - is the three-point centric strategy effective? Teams have started to take more threes and shots in the paint and less midrange jumpers. How does this correlate to win %?
+I really like the heat charts that you see for players, can do the same for teams to understand success rates for majority of shots in a given spot.
+
+
+8. Turnstile frequency from the MTA on a city-wide scale throughout different hours of the day, creating a google-maps like traffic view. At what time of the day are stations most busy? Going in which directions?
+How can commuters avoid the rush while still getting to work on time? How early will they have to get up?
+
+9. Campaign donations - which candidate in local (or national) elections received the most donations? From which donors?
+
+10. Pokemon stats - which is the best pokemon? Who has the strongest attacks, defenses, most effective against other pokemon, etc.

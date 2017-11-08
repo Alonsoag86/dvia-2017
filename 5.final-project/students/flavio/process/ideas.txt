@@ -1,19 +1,29 @@
-1.
+1. The world of Cosac Naify - Dataviz research going through all books published by this brazillian publishing house. In a short span, they produced a variety of art books, repackaged classics and humanities stuff, all done with so much quality. We would get a picture of 1) Their subjects 2) Books by year 3) Formats 4) Authors and maybe 5) Cover colors. 
+Format: Series of visualizations, article format, interactive (maybe extracting a print version at the end)
 
-2.
+2. Top ten movies by movie directors: grabbing BFI/Criterion/Cahiers du Cinema lists, we could develop a huge treemap for the favorite movies, each area filled by the movie trailer or maybe most viewed clip on Youtube of said movie. We could sort it by different properties (lenght of clip, lenght of original movie, year, country...).
+Format: Interactive Treemap
 
-3.
+3. Comedy roots: going through IMDB, sort who were the writers of SNL, where did they go and maybe trace some sort of graph showing their influence in movie and TV culture as a whole.
+Format: Interactive Treemap
 
-4.
+4. Opiod deaths: WHO data or US data showing the rise of opiod deaths; maybe compare it to other health crisis as well, to give sense of scope; not just plot regular numbers, also view growth in %.
+Format: Article with various graphics
 
-5.
+5. Rise of privatised schools in Brazil: since the early 2000s, there was an incredible growth in College/University creation in Brazil, due to advances in economy and social programs. However, some critics say the ones who took advantage of this scenario were a small group within the private educational sector. There's data showing some correlation between number of institutions and slice of national budget for educational loans, but there's a chance to see this deeper: showing global patterns and trends.
+Format: Article with various graphics
 
-6.
+6. Size of financial markets. Showing first how much money financial markets hold, we go and show where they are located, how much money goes through them, and types of companies within it.
+Format: Interactive map and small multiples for comparisons between countries (or stock markets?)
 
-7.
+7. Volcanoes around the world: There's data in the same vein as the earquake one. Plotting volcano data, trying to understand its properties and showing eruptions in time-related fashion.
+Format: Interactive Map and dashboard
 
-8.
+8. BOTs around the world: where are they created, reports of BOT scamming and phishing, numbers per users per social media site.
+Format: ?
 
-9.
+9. GIF ecology: trying to parse GIPHY/IMGUR data; common tags, sizes, sort them by time and graphical properties, load them as huge canvas updating.
+Format: Interactive Treemap
 
-10.
+10. Lost in coding: tracking initiaves in translating/introducing coding and programming knowledge in non-English languages. Track GIT repositories or Stack Overflow questions in different language/origins. Searching Youtube for tech-related-teaching channels. How this compares to US as a whole, and how posit questions on disadvantage on a global and more code-based society.
+Format: Scrollable visualization
