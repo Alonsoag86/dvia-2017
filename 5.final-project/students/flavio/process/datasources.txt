@@ -7,27 +7,27 @@
 #   Format: multiple CSV files with different time/magnitude windows
 #   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
 
-Description:
-Provider:
-Format:
-URL:
+Description: National catalogue of books in Brazil
+Provider: National Library of Brasil
+Format: Search queries returns individual results, needs to be scraped tho
+URL: https://www.bn.gov.br/
 
-Description:
-Provider:
-Format:
-URL:
+Description: List of directors' favorite movies
+Provider: British Film Institute
+Format: plain HTML (individual lists are in individual pages)
+URL: http://www.bfi.org.uk/news/sight-sound-2012-directors-top-ten
 
-Description:
-Provider:
-Format:
-URL:
+Description: Stats for death by opiods
+Provider: CDC; Center for Drug Abuse
+Format: CSV, XLS
+URL: https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6043a4.htm / https://www.drugabuse.gov/related-topics/trends-statistics/overdose-death-rates
 
-Description:
-Provider:
-Format:
-URL:
+Description: Volcano-related data, real-time and non-real-time
+Provider: National Centers for Environmental Information, Smithsonian Institue/Global Volcanism Program
+Format: XLS, Html files
+URL: http://volcano.si.edu/# https://www.ngdc.noaa.gov/nndc/servlet/ShowDatasets?dataset=102557&search_look=50&display_look=50
 
-Description:
-Provider:
-Format:
-URL:
+Description: Stats for Github repositories
+Provider: Github
+Format: API requests (probably JSON files?)
+URL: https://www.githubarchive.org/
