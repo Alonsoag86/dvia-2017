@@ -1,4 +1,4 @@
-		1. Microbial reaction: Visualize the cell division rates of e. coli in different substrates or hypothesized tumor growth rates. 
+	1. Microbial reaction: Visualize the cell division rates of e. coli in different substrates or hypothesized tumor growth rates. 
 	- https://www.synapse.org/#!Synapse:syn1936427  | http://dmoserv3.bco-dmo.org/jg/serv/BCO-DMO/HiCO2_AdaptCyano/cell_physio_size.html0%7Bdir=dmoserv3.whoi.edu/jg/dir/BCO-DMO/HiCO2_AdaptCyano/,info=dmoserv3.bco-dmo.org/jg/info/BCO-DMO/HiCO2_AdaptCyano/physiology_cell_size%7D
 	
 	2. Screen time: Looks for daily and weekly trends in phone and copmuter usage. 
