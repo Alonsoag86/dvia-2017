@@ -1,19 +1,39 @@
-1.
+1. Deaths by Race 
+Contextualize and contrast the impact of violence on US populations by race.  One goal would be to highlight the disparity between the perception and reality of how white populations are affected.  Method: line graph or static bar graph.
 
-2.
+2. Yearly temperatures including highs / lows		
 
-3.
+The hope would be to graph decades of temperatures in hopes of illuminating the greater frequency of record highs as well as the delta between max/min for the year.  Method: Line graph
 
-4.
+3.  Global warming and how it relates to population stability metrics
+    The goal here would be to suggest a relationship between climate change and the relationship in quality of life per country.  Quality of life metrics could include access to water, sanitation, education, etc.   Method: Multiple Line graph / interactive filters
+    
+4. Per country wealth metrics
 
-5.
+Looking at wealth metrics per country and the relationship between natural resource use over several years.  A lower natural resource usage should track for those countries who have transitioned to service economies while predominantly poorer countries bear the brunt of greater disruptive resource extraction.
 
-6.
 
-7.
+5.  What annoys New Yorkers by location
 
-8.
+Looking at various regions around NYC and what they predominantly find worth phoning 311 about.  
+The guess is you would find geographic trends related to neighborhood and (if supplementary  datasets could be found) culture/economic factors.   Method: Interactive Map/heat map
 
-9.
+6. Recidivism rates vs privatization of prisons.
 
-10.
+Contrast the two and see if there is a correlation between 
+
+7. Traffic around NYC
+
+Using Yellow-Taxi-Trip-Data, I will attempt to show the most congested parts of the city over the course of a day.    Method: Map / Bar graph
+
+8. NYC Department image control vs efficacy 
+
+Using "NYC Social Media Usage" map various NYC government agencies use of social media verses their relative budgets and performance metrics.
+
+9. Health of trees around NYC
+
+Using "1995-Street-Tree-Census" map the health of trees and if possible contrasted with local population economic metrics.
+
+10. NYC floodplain estimations
+
+Using "Sea-Level-Rise-Maps-2020s-100-year-Floodplain" estimations map what the effects will be with regards to businesses in the area, displaced populations, etc.  Method: Map / markers
