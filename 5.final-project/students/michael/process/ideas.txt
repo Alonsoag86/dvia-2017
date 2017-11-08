@@ -37,3 +37,7 @@ Using "1995-Street-Tree-Census" map the health of trees and if possible contrast
 10. NYC floodplain estimations
 
 Using "Sea-Level-Rise-Maps-2020s-100-year-Floodplain" estimations map what the effects will be with regards to businesses in the area, displaced populations, etc.  Method: Map / markers
+
+11. Cost of being healthy
+
+This is a mashup of produce cost / nutritional value framed by the usrda.  It will attempt to show what the dollar cost would be of maintaining a healthy diet.  It could be extended by economic data to show which locales are prohibitied economically from this goal.
