@@ -7,27 +7,27 @@
 #   Format: multiple CSV files with different time/magnitude windows
 #   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
 
-Description:
-Provider:
-Format:
-URL:
+Description: txt files containing every MTA turnstile across stations, updated a week at a time. Each rows includes cumulatives. Description: http://web.mta.info/developers/resources/nyct/turnstile/ts_Field_Description.txt
+Provider: MTA
+Format: one txt file, published weekly. Will need to find additional information on each stop (specifically location).
+URL: http://web.mta.info/developers/turnstile.html
 
-Description:
-Provider:
+Description: Census data charting the population and demographic/metadata on each person, as of 2010
+Provider: US Census Bureau
 Format:
-URL:
+URL: https://www2.census.gov/census_2010/04-Summary_File_1/New_York/
 
-Description:
-Provider:
-Format:
-URL:
+Description: Gun death data for the US for 2012-2014
+Provider: CDC, aggregated and cleaned by 538, then made available to the public.
+Format: one csv file (full_data), along with R code that pulls down and cleans this data
+URL: https://github.com/fivethirtyeight/guns-data
 
-Description:
-Provider:
-Format:
-URL:
+Description: Season results for all NBA franchises from 1946-47 to 2017-18, played in the NBA/BAA, sorted by descending Wins
+Provider: basketball-reference.com
+Format: Web table. Will need to explore API or scraping options
+URL: https://www.basketball-reference.com/play-index/tsl_finder.cgi?request=1&match=single&type=team_totals&lg_id=NBA&order_by=wins
 
-Description:
-Provider:
-Format:
-URL:
+Description: Metadata on 721 different Pokemon and their basic stats, including raw attributes that can be used to calculate how much damage an attack will do in the games
+Provider: Pokemon.com, pokemondb, bulbapedia. Aggregated and uploaded to Kaggle.
+Format: one CSV file
+URL: https://www.kaggle.com/abcsds/pokemon
