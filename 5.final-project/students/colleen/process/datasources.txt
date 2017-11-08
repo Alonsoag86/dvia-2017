@@ -1,33 +1,70 @@
 #
 # List of URLs pointing to publicly accessible data (including a brief description of the subject matter & data format)
 #
-# For example, the earthquake feeds we've been using could be summarized as:
-#   Description: Realtime feeds of recent earthquake times, locations, and magnitudes
-#   Provider: the US Geological Survey
-#   Format: multiple CSV files with different time/magnitude windows
-#   URL: https://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php
 
-Description:
-Provider:
-Format:
-URL:
+Description: US Voter turnout and registration status by state, supplementary data on voter demographics
+Provider: United States Elections Project http://www.electproject.org/
+Format: csv, 2000-2016
+URL: http://www.electproject.org/home/voter-turnout/voter-turnout-data, https://docs.google.com/spreadsheets/d/1VAcF0eJ06y_8T4o2gvIL4YcyQy8pxb1zYkgXF76Uu1s/edit?usp=sharing
 
-Description:
-Provider:
-Format:
-URL:
+Description: US voters and registered voters as share of voter population
+Provider: Kaiser Family Foundation
+Format: csv
+URL: https://www.kff.org/other/state-indicator/number-of-voters-and-voter-registration-in-thousands-as-a-share-of-the-voter-population/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D
 
-Description:
-Provider:
-Format:
-URL:
+Description: MTA Data Information pertaining to MTA (Metropolitan Transportation Authority of the State of New York) subways, buses, commuter rail, bridges, and tunnels
+Provider: NYC Open Data
+Format: (requires registration for feed access)
+URL: https://data.cityofnewyork.us/Transportation/MTA-Data/mmu8-8w8b
 
-Description:
-Provider:
-Format:
-URL:
+Description: Income and Poverty in the United States, US  Income by region, race, gender, age
+Provider: US Census Bureau
+Format: xls, csv
+URL: https://www.census.gov/data/tables/2017/demo/income-poverty/p60-259.html
 
-Description:
-Provider:
-Format:
-URL:
+Description: US median household income by state
+Provider: Kaiser Family Foundation
+Format: csv
+URL: https://www.kff.org/other/state-indicator/median-annual-income/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D
+
+Description: What a Family of Four Would Need to Earn in Selected Urban Areas to Have Purchasing Power Equal to 400% of the Federal Poverty Level ($97,000)
+Provider: Kaiser Family Foundation
+Format: csv
+URL: https://www.kff.org/other/state-indicator/cost-of-living-variation/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D
+
+Description: US health insurance coverage & uninsured by state- indicators of age, federal poverty level, type of coverage- medicaid, employer, private, etc)
+Provider:Kaiser Family Foundation
+Format: csv
+URL:https://www.kff.org/state-category/health-coverage-uninsured/
+
+Description: Health Insurance in the United States: 2016, US health coverage, age, cost, household income, race, gender, region
+Provider: US Census Bureau
+Format: xls, csv
+URL: https://www.census.gov/data/tables/2017/demo/health-insurance/p60-260.html
+
+Description: Madagascar Plague outbreak situation reports/ Global Health Observatory data repository
+Provider: World Health Origanization (WHO) API
+Format: csv, json, xml
+URL: http://www.afro.who.int/health-topics/plague/plague-outbreak-situation-reports
+http://apps.who.int/gho/data/node.home
+
+Description: Cryptocurrency growth- Bitcoin price index, ICO tracker, Ethereum Price, Blockchain Venture Capital, Coindesk Api
+Provider: Coindesk
+Format: CSV
+URL: https://www.coindesk.com/price/
+https://www.coindesk.com/bitcoin-venture-capital/
+
+Description: Restoring Internet Freedom Comments (WC Docket No. 17-108) comment, state, name, date received, date filed
+Provider: Federal Communications Commission
+Formats: json
+URL: https://ecfsapi.fcc.gov/filings?sort=date_disseminated%2CDESC&type=json&proceedings.name=17-108
+
+Description: Flint Michigan, Levels of lead in blood since 2015, levels at sentinel sites and residential homes ocmparatively
+Provider: Taking Action on Flint Water
+Formats: pdf
+URL: http://www.michigan.gov/flintwater/0,6092,7-345-76292_76294_76297---,00.html
+
+Description: NYC Running Trails
+Provider: Map My Run
+Formats: 
+URL: http://www.mapmyrun.com/us/new-york-city-ny/

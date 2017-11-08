@@ -1,19 +1,31 @@
-1.
+1.Voter turnout by state, eligible vs registered vs cast votes- last election only or over time- by gender by race by age. Possible secondary exploration- potential voters who are denied right bc of felony conviction for non violent crimes- percent of population and potential effect on elections.
 
-2.
+2. Flint Michigan water crisis - compare to water quality we are familiar with drinksbility of ocean rivers puddles toilet water etc. What level of contamination comparatively.
 
-3.
+3.Where people run in nyc and how far, highlight by most popular routes
 
-4.
+4. FCC comments filed on restoring digital freedom- net neutrality support by state, deeper exploration by zipcode NYC.
 
-5.
+5.Mta subway lines with least/ most delays
+https://data.cityofnewyork.us/Transportation/MTA-Data/mmu8-8w8b
 
-6.
+6.Debt mapping- comparing income versus cost of living across the country
+Basically what does the debt crisis look like truly? - inspired by mike bostock home price
 
-7.
+7.Healthcare coverage- who has it where and what does it cost, what type of coverage, most at risk areas.
 
-8.
+8. Mapping the rise of crypto currency Bitcoin, Ethereum, ICO's, etc.
 
-9.
+9. Bubonic plague outbreak, containment, indicators and spread. Secondary exploration, show relative to an ebola outbreak- indicate threshold of global threat versus containment.
 
-10.
+10. #TakeAKnee- NFL protests since Colin  Kaepernick took a knee to present day- fans/ players/ Coaches /owners
+(May have to collect data )
+https://www.washingtonpost.com/news/politics/wp/2017/10/24/the-nfl-player-protests-broken-down-by-team-and-week/?utm_term=.af2631221086
+
+
+
+
+
+
+
+
