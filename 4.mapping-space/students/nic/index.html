@@ -2,23 +2,40 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="libraries/leaflet/leaflet.css" /> <!-- default styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seismic Events - Past 30 Days</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="assets/styles.css" /> <!-- use this for layout customizations -->
+    <script>
+  $( function() {
+    $( "#slider" ).slider("enable", {min:0}, {max:500000}, {value: 30000});
+  } );
+  </script>
 </head>
 <body>
   <!-- The container div for our leaflet map -->
   <div id="quake-map"></div>
+  <controls>
+</controls>
+
     <div id="button">
-    <button id="All" value=false  onclick ="binary(this.id,this.value);">
-      <div id="AllBar"></div>
+      <button type="button" id="labels"> <category>Category</category><mag>Magnitude</mag> </button>
+
+      <button type="button" id="All" value=false onclick ="binary(this.id,this.value);">
+        <div id="AllBar"></div>
       <div id="buttonText">
         <div id="t_All"><b>All</b></div>
+        <num>0 - 10</num>
       </div>
-
     </button>
+    
     <button type="button" id="Minor" value=false onclick ="binary(this.id,this.value);">
       <div id="MinorBar"></div>
       <div id="buttonText">
-      <div id="t_Minor">Minor</div>
+      <div id="t_Minor"><b>Minor</b></div>
     <num>3 - 3.9</num></div>
 
   </button>
@@ -60,10 +77,7 @@
   </button>
 
   </div>
-  <div id="labels">
-    
-    
-  </div>
+
 
 
   <!-- load our dependencies and sketch file -->

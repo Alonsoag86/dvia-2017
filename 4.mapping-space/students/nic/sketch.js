@@ -56,19 +56,22 @@ function setup() {
     size, color, etc. here
     */
     noLoop();
-    // createCanvas(window.innerWidth,2000);
-    // background("#1E1E1E");
-    textSize(64);
-    Slider = createSlider(0, 500000, 30000);
-    var centerWidth = ((window.innerWidth/2) - (Slider.width/2));
+    createCanvas(window.innerWidth,window.innerHeight);
+    background("#1E1E1E");
+    textSize(18);
+    fill(255);
+    var centerWidth = ((window.innerWidth/2));
     var SliderHeight = (window.innerHeight*.8);
-    Slider.position(200, SliderHeight);
+    text("Circle Radius", centerWidth, 580);
+    Slider = createSlider(0, 500000, 30000);
+    Slider.position(centerWidth, 600);
     s = Slider.value();
+    text("Circle Opacity", centerWidth, 600);
     Slider.style('width','400px');
-
-    
-
-
+    SliderOp = createSlider(0, 100, 100);
+    SliderOp.position(centerWidth, 700);
+    o = SliderOp.value();
+    SliderOp.style('width','400px');
 
 
     /*
@@ -80,30 +83,16 @@ function setup() {
     */
 
     // create your own map
-    mymap = L.map('quake-map').setView([34.0522, 10.2437], 3);
+    mymap = L.map('quake-map').setView([34.0522, 10.2437], 2);
 
-    // load a set of map tiles (you shouldn't need to touch this)
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        // attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.dark',
-        accessToken: 'pk.eyJ1IjoiZHZpYTIwMTciLCJhIjoiY2o5NmsxNXIxMDU3eTMxbnN4bW03M3RsZyJ9.VN5cq0zpf-oep1n1OjRSEA'
-    }).addTo(mymap); 
+    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_nolabels/{z}/{x}/{y}.png', {
 
-    // call our function (defined below) that populates the maps with markers based on the table contents
-    
-    // drawDataPoints();
+    subdomains: 'abcd',
+    minZoom: 2,
+    maxZoom: 19,
+}).addTo(mymap);
 
 }
-
-
-// function radius(){
-//         color(255);
-//         ellipse(20, 700, 500,500);
-        
-//     }
-//     radius();
-
 
 function printTimes(){
     time = table.getColumn("time");
@@ -131,13 +120,11 @@ function binary(id,value){
     var y = value;
     var t_x = "t_"+id;
     var xBar = id+"Bar";
-            console.log(x);
-            console.log(y);
 
         if (y == "true"){
         document.getElementById(xBar).style.boxShadow = "0px 0px 0px ";
         document.getElementById(x).value = false;
-        document.getElementById(t_x).style.textDecoration = "none";
+        document.getElementById(t_x).style.textShadow = "none";
             if (x == "All"){
                 clearSelection();
                 // removeAllCircles();
@@ -146,13 +133,14 @@ function binary(id,value){
         else{
                         if (x == "All"){
                 clearSelection();
+
             }
-        document.getElementById(xBar).style.boxShadow = "0px 0px 25px #fef0d9";
+        document.getElementById(xBar).style.boxShadow = "0px 0px 15px #fef0d9";
         document.getElementById(x).style.color = "black";
         // document.getElementById(x).style.outline = "3px dashed #000";
         // document.getElementById(x).style.outlineOffset = "-3px";
         document.getElementById(x).value = true;
-        document.getElementById(t_x).style.textDecoration = "underline";
+        document.getElementById(t_x).style.textShadow = "0px 0px 15px #fef0d9";
         }
 
     
@@ -241,11 +229,13 @@ function masterCircle(lo,hi){
     function createCircle(i,lo){
     // create a new dot
         var s = Slider.value();
+        var o = SliderOp.value();
+        var op = map(o, 0, 100, 0, 1);
 
         var circle = L.circle([latitudes[i], longitudes[i]], {
             stroke: 0,
             fillColor: (colorArray[lo]), // the dot fill color
-            fillOpacity: 1,  // use some transparency so we can see overlaps
+            fillOpacity: op,  // use some transparency so we can see overlaps
             radius: s,
         });
             // circle.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
@@ -271,9 +261,12 @@ function masterCircle(lo,hi){
 
 // console.log(hi);
 
+function mousePressed(){
+    drawCycle();
+}
+
 function mouseDragged(){
     drawCycle();
-    // masterCircle(lohiArray[0],lohiArray[1]);
 }
 //     function minor(i){
 // // create a new dot
@@ -307,8 +300,10 @@ function clearSelection(){
     var keyNames = Object.keys(buttons);
     for (var i in keyNames) {
         var t_keyNames= "t_"+(keyNames[i]);
-    document.getElementById(keyNames[i]).style.outline = "0px solid #000";
-    document.getElementById(t_keyNames).style.textDecoration = "none";
+        var xBar = (keyNames[i])+"Bar";
+    document.getElementById(xBar).style.boxShadow = "0px 0px 0px ";
+    document.getElementById(t_keyNames).style.textShadow = "none";
+    document.getElementById(keyNames[i]).value = false;
 
     buttons = {All:false, Minor:false, Light:false, Moderate:false, Strong:false, Major:false, Great:false};
     removeAllCircles();
